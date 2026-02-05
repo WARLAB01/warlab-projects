@@ -1,0 +1,21 @@
+environment: dev
+s3:
+  bucket: "${S3_BUCKET:-hr-datamart-dev}"
+  prefix: "workday/hrdp"
+  iam_role_arn: "${REDSHIFT_IAM_ROLE_ARN:-arn:aws:iam::ACCOUNT_ID:role/RedshiftS3Role}"
+redshift:
+  host: "${REDSHIFT_HOST:-localhost}"
+  port: 5439
+  database: "${REDSHIFT_DB:-hr_datamart}"
+  iam_role_arn: "${REDSHIFT_IAM_ROLE_ARN:-arn:aws:iam::ACCOUNT_ID:role/RedshiftS3Role}"
+schemas:
+  l1: "l1_workday"
+  l3: "l3_workday"
+feeds:
+  timestamp_format: "%Y%m%d%H%M%S"
+  date_format: "%Y-%m-%d"
+runtime:
+  dry_run: false
+  seed: 42
+  data_date: "2026-02-05"
+  restatement_months: 24
