@@ -1,0 +1,201 @@
+Job_Profile_ID|Job_Profile_WID|AAP_Job_Group|Bonus_Eligibility|Customer_Facing|EEO1_Code|Job_Collection|Loan_Originator_Code|National_Occupation_Code|Occupation_Code|Recruitment_Channel|Standard_Occupation_Code|Stock
+JP00001|WID00000001|Sales|Not Eligible|No|EEO2|Collection_MKTG|LO003|NOC5040|OCC838|University|SOC86-4203|Not Eligible
+JP00002|WID00000002|Officials and Managers|Eligible|No|EEO1|Collection_LEGAL|LO003|NOC7224|OCC923|Referral|SOC66-6484|Not Eligible
+JP00003|WID00000003|Service|Partial|Yes|EEO5|Collection_MKTG|LO002|NOC8848|OCC421|External|SOC60-6228|Not Eligible
+JP00004|WID00000004|Service|Partial|No|EEO4|Collection_MKTG||NOC5592|OCC936|University|SOC56-2865|
+JP00005|WID00000005|Professionals|Partial|Yes|EEO9|Collection_ENG||NOC4434|OCC548|Referral|SOC98-2133|Not Eligible
+JP00006|WID00000006|Service|Not Eligible|Yes|EEO5|Collection_SAL|LO003|NOC3525|OCC832|University|SOC58-2211|Not Eligible
+JP00007|WID00000007|Administrative|Not Eligible|No|EEO9|Collection_LEGAL|LO001|NOC6890|OCC818|Internal|SOC23-5067|
+JP00008|WID00000008|Service|Not Eligible|Yes|EEO1|Collection_LEGAL|LO003|NOC8052|OCC208|Internal|SOC22-5239|Eligible
+JP00009|WID00000009|Administrative|Partial|Yes|EEO8|Collection_MKTG||NOC8586|OCC890|External|SOC54-1402|Not Eligible
+JP00010|WID00000010|Officials and Managers|Not Eligible|No|EEO2|Collection_FIN|LO002|NOC6707|OCC419|Referral|SOC68-4389|
+JP00011|WID00000011|Sales|Not Eligible|No|EEO2|Collection_IT||NOC6225|OCC168|Referral|SOC15-2885|Eligible
+JP00012|WID00000012|Technicians|Partial|Yes|EEO3|Collection_SAL|LO002|NOC3623|OCC438|University|SOC69-4798|Not Eligible
+JP00013|WID00000013|Service|Eligible|Yes|EEO7|Collection_LEGAL|LO001|NOC4232|OCC560|University|SOC59-1072|
+JP00014|WID00000014|Professionals|Eligible|No|EEO2|Collection_FIN|LO002|NOC6993|OCC433|External|SOC68-2867|Not Eligible
+JP00015|WID00000015|Service|Not Eligible|No|EEO7|Collection_LEGAL|LO001|NOC6700|OCC460|University|SOC89-3826|
+JP00016|WID00000016|Service|Not Eligible|Yes|EEO3|Collection_MKTG|LO001|NOC4908|OCC412|Internal|SOC33-7116|
+JP00017|WID00000017|Professionals|Partial|No|EEO7|Collection_HR||NOC7931|OCC290|University|SOC91-9804|
+JP00018|WID00000018|Service|Eligible|Yes|EEO8|Collection_OPS|LO002|NOC4065|OCC422|University|SOC89-1878|Not Eligible
+JP00019|WID00000019|Officials and Managers|Not Eligible|Yes|EEO4|Collection_LEGAL||NOC7703|OCC801|University|SOC63-8272|Not Eligible
+JP00020|WID00000020|Professionals|Eligible|Yes|EEO4|Collection_OPS|LO001|NOC5503|OCC330|Referral|SOC31-8492|
+JP00021|WID00000021|Service|Not Eligible|Yes|EEO2|Collection_OPS|LO003|NOC9880|OCC942|Internal|SOC66-9951|Eligible
+JP00022|WID00000022|Sales|Eligible|Yes|EEO5|Collection_ENG||NOC5305|OCC456|Internal|SOC66-2923|Eligible
+JP00023|WID00000023|Professionals|Partial|No|EEO7|Collection_HR|LO002|NOC4385|OCC933|External|SOC17-6747|
+JP00024|WID00000024|Technicians|Partial|Yes|EEO6|Collection_OPS|LO003|NOC5380|OCC978|Internal|SOC27-7743|Eligible
+JP00025|WID00000025|Technicians|Partial|Yes|EEO3|Collection_SAL|LO002|NOC6277|OCC948|External|SOC96-7434|Not Eligible
+JP00026|WID00000026|Professionals|Partial|No|EEO7|Collection_LEGAL||NOC2237|OCC748|Internal|SOC61-9447|
+JP00027|WID00000027|Technicians|Partial|No|EEO8|Collection_IT|LO003|NOC1040|OCC989|Internal|SOC68-6869|Eligible
+JP00028|WID00000028|Administrative|Not Eligible|Yes|EEO7|Collection_SAL||NOC5399|OCC430|Referral|SOC53-9967|
+JP00029|WID00000029|Professionals|Partial|No|EEO6|Collection_ENG|LO001|NOC2631|OCC741|University|SOC12-3035|Eligible
+JP00030|WID00000030|Sales|Not Eligible|Yes|EEO7|Collection_SAL|LO002|NOC5945|OCC262|Referral|SOC21-6905|Not Eligible
+JP00031|WID00000031|Officials and Managers|Not Eligible|Yes|EEO1|Collection_LEGAL|LO003|NOC4836|OCC539|Internal|SOC22-1017|Eligible
+JP00032|WID00000032|Sales|Eligible|Yes|EEO4|Collection_IT|LO001|NOC1132|OCC812|Referral|SOC25-7919|
+JP00033|WID00000033|Professionals|Not Eligible|Yes|EEO4|Collection_LEGAL|LO001|NOC2678|OCC205|Referral|SOC57-5902|Eligible
+JP00034|WID00000034|Sales|Eligible|Yes|EEO2|Collection_ENG|LO002|NOC8210|OCC459|External|SOC90-3480|Not Eligible
+JP00035|WID00000035|Administrative|Partial|No|EEO4|Collection_FIN|LO001|NOC3293|OCC870|Internal|SOC85-7291|Not Eligible
+JP00036|WID00000036|Sales|Not Eligible|Yes|EEO4|Collection_OPS|LO001|NOC5065|OCC666|Referral|SOC98-1439|
+JP00037|WID00000037|Technicians|Eligible|Yes|EEO7|Collection_OPS|LO001|NOC4921|OCC606|University|SOC24-4949|Not Eligible
+JP00038|WID00000038|Service|Partial|Yes|EEO9|Collection_ENG|LO003|NOC6185|OCC235|University|SOC82-7895|Not Eligible
+JP00039|WID00000039|Administrative|Partial|Yes|EEO8|Collection_FIN|LO001|NOC2106|OCC114|Referral|SOC37-1652|Eligible
+JP00040|WID00000040|Sales|Partial|No|EEO9|Collection_LEGAL||NOC7590|OCC184|External|SOC45-2369|Not Eligible
+JP00041|WID00000041|Officials and Managers|Partial|Yes|EEO3|Collection_MKTG||NOC2083|OCC417|University|SOC40-1948|Eligible
+JP00042|WID00000042|Officials and Managers|Not Eligible|Yes|EEO8|Collection_ENG|LO003|NOC3877|OCC222|Internal|SOC27-1185|Eligible
+JP00043|WID00000043|Sales|Not Eligible|No|EEO3|Collection_MKTG|LO002|NOC5403|OCC850|Internal|SOC13-6488|Not Eligible
+JP00044|WID00000044|Technicians|Partial|Yes|EEO5|Collection_FIN||NOC8457|OCC623|Referral|SOC17-9185|
+JP00045|WID00000045|Professionals|Not Eligible|Yes|EEO5|Collection_FIN|LO001|NOC4742|OCC858|Internal|SOC15-1201|Eligible
+JP00046|WID00000046|Officials and Managers|Not Eligible|No|EEO7|Collection_HR|LO002|NOC1579|OCC666|University|SOC38-6272|Eligible
+JP00047|WID00000047|Sales|Partial|No|EEO5|Collection_FIN|LO003|NOC2956|OCC614|Internal|SOC32-4656|
+JP00048|WID00000048|Officials and Managers|Not Eligible|Yes|EEO8|Collection_OPS|LO003|NOC6362|OCC188|University|SOC11-7044|Eligible
+JP00049|WID00000049|Technicians|Partial|No|EEO4|Collection_IT|LO003|NOC9083|OCC891|External|SOC79-5016|Eligible
+JP00050|WID00000050|Officials and Managers|Not Eligible|Yes|EEO4|Collection_MKTG|LO001|NOC6488|OCC101|University|SOC49-2703|Eligible
+JP00051|WID00000051|Administrative|Eligible|No|EEO8|Collection_ENG|LO002|NOC5584|OCC195|Internal|SOC39-9515|Not Eligible
+JP00052|WID00000052|Service|Not Eligible|No|EEO2|Collection_FIN|LO002|NOC7461|OCC176|Internal|SOC65-3141|Eligible
+JP00053|WID00000053|Technicians|Not Eligible|No|EEO7|Collection_MKTG|LO003|NOC8417|OCC378|External|SOC19-4321|Eligible
+JP00054|WID00000054|Administrative|Eligible|Yes|EEO2|Collection_HR||NOC8635|OCC421|University|SOC25-9780|Not Eligible
+JP00055|WID00000055|Professionals|Not Eligible|No|EEO8|Collection_OPS|LO001|NOC2481|OCC261|Referral|SOC99-1660|Eligible
+JP00056|WID00000056|Technicians|Eligible|Yes|EEO4|Collection_MKTG||NOC9412|OCC150|Referral|SOC43-3848|Eligible
+JP00057|WID00000057|Sales|Not Eligible|Yes|EEO2|Collection_IT|LO001|NOC3290|OCC224|Internal|SOC17-4641|Eligible
+JP00058|WID00000058|Professionals|Not Eligible|No|EEO2|Collection_OPS|LO001|NOC1357|OCC166|External|SOC92-8265|Eligible
+JP00059|WID00000059|Officials and Managers|Not Eligible|Yes|EEO1|Collection_IT|LO001|NOC3752|OCC687|University|SOC60-9128|Eligible
+JP00060|WID00000060|Sales|Partial|No|EEO3|Collection_MKTG|LO002|NOC4066|OCC381|Referral|SOC67-3435|Eligible
+JP00061|WID00000061|Administrative|Partial|Yes|EEO5|Collection_IT||NOC8848|OCC162|Internal|SOC45-7275|Eligible
+JP00062|WID00000062|Sales|Eligible|Yes|EEO9|Collection_ENG||NOC6883|OCC591|University|SOC54-9231|Not Eligible
+JP00063|WID00000063|Sales|Not Eligible|Yes|EEO1|Collection_MKTG|LO002|NOC1480|OCC930|Referral|SOC17-8728|
+JP00064|WID00000064|Technicians|Partial|Yes|EEO3|Collection_FIN|LO002|NOC4951|OCC372|Internal|SOC38-7363|Not Eligible
+JP00065|WID00000065|Professionals|Eligible|Yes|EEO6|Collection_MKTG|LO001|NOC6761|OCC681|External|SOC82-4084|Not Eligible
+JP00066|WID00000066|Administrative|Not Eligible|Yes|EEO8|Collection_ENG|LO001|NOC1920|OCC338|External|SOC12-9625|Not Eligible
+JP00067|WID00000067|Officials and Managers|Not Eligible|Yes|EEO3|Collection_MKTG|LO002|NOC6301|OCC160|Internal|SOC28-3320|Eligible
+JP00068|WID00000068|Administrative|Not Eligible|Yes|EEO6|Collection_LEGAL|LO001|NOC6514|OCC409|Referral|SOC27-3580|
+JP00069|WID00000069|Sales|Partial|No|EEO6|Collection_HR|LO003|NOC4657|OCC781|External|SOC58-6026|
+JP00070|WID00000070|Service|Not Eligible|Yes|EEO3|Collection_ENG||NOC1530|OCC286|Referral|SOC88-4619|
+JP00071|WID00000071|Administrative|Eligible|No|EEO3|Collection_MKTG|LO001|NOC4899|OCC455|Referral|SOC31-2453|
+JP00072|WID00000072|Service|Partial|No|EEO8|Collection_ENG|LO003|NOC4435|OCC355|Internal|SOC54-5205|Eligible
+JP00073|WID00000073|Service|Eligible|Yes|EEO7|Collection_IT||NOC3725|OCC523|University|SOC58-6754|
+JP00074|WID00000074|Sales|Eligible|No|EEO4|Collection_HR||NOC2207|OCC918|Internal|SOC47-1328|Not Eligible
+JP00075|WID00000075|Technicians|Eligible|Yes|EEO6|Collection_HR||NOC3636|OCC849|Internal|SOC80-2525|Not Eligible
+JP00076|WID00000076|Administrative|Partial|No|EEO1|Collection_LEGAL|LO002|NOC8113|OCC260|Internal|SOC22-6424|Eligible
+JP00077|WID00000077|Professionals|Not Eligible|No|EEO5|Collection_OPS|LO002|NOC2571|OCC150|University|SOC83-9043|Eligible
+JP00078|WID00000078|Officials and Managers|Not Eligible|Yes|EEO7|Collection_FIN|LO003|NOC8869|OCC304|Internal|SOC13-4390|Eligible
+JP00079|WID00000079|Service|Not Eligible|Yes|EEO8|Collection_FIN|LO003|NOC7512|OCC582|University|SOC94-5341|Eligible
+JP00080|WID00000080|Service|Partial|No|EEO3|Collection_MKTG||NOC7052|OCC291|University|SOC15-5313|Not Eligible
+JP00081|WID00000081|Sales|Not Eligible|Yes|EEO5|Collection_ENG|LO002|NOC2584|OCC187|Referral|SOC79-7782|
+JP00082|WID00000082|Professionals|Partial|Yes|EEO7|Collection_LEGAL||NOC4860|OCC587|Referral|SOC20-7468|
+JP00083|WID00000083|Officials and Managers|Partial|Yes|EEO2|Collection_IT|LO002|NOC3738|OCC316|External|SOC26-1699|Not Eligible
+JP00084|WID00000084|Officials and Managers|Partial|No|EEO4|Collection_HR|LO003|NOC6238|OCC844|Internal|SOC21-7358|
+JP00085|WID00000085|Sales|Partial|No|EEO5|Collection_IT|LO001|NOC9561|OCC900|University|SOC24-7790|Eligible
+JP00086|WID00000086|Professionals|Partial|Yes|EEO2|Collection_FIN|LO003|NOC9775|OCC452|University|SOC43-7275|
+JP00087|WID00000087|Sales|Partial|No|EEO1|Collection_HR|LO003|NOC7602|OCC247|University|SOC14-7484|Not Eligible
+JP00088|WID00000088|Service|Eligible|Yes|EEO8|Collection_OPS|LO003|NOC1331|OCC445|Referral|SOC49-5593|Not Eligible
+JP00089|WID00000089|Service|Partial|Yes|EEO4|Collection_HR|LO003|NOC8259|OCC892|Referral|SOC44-7828|
+JP00090|WID00000090|Service|Eligible|Yes|EEO8|Collection_SAL||NOC8937|OCC877|Referral|SOC17-9442|Eligible
+JP00091|WID00000091|Officials and Managers|Not Eligible|No|EEO3|Collection_ENG|LO002|NOC4158|OCC996|External|SOC17-5087|Eligible
+JP00092|WID00000092|Sales|Eligible|No|EEO4|Collection_OPS|LO003|NOC8605|OCC617|University|SOC91-3029|
+JP00093|WID00000093|Officials and Managers|Eligible|No|EEO8|Collection_IT|LO002|NOC8775|OCC700|Referral|SOC54-3679|Not Eligible
+JP00094|WID00000094|Service|Partial|Yes|EEO5|Collection_ENG||NOC1813|OCC266|External|SOC38-4688|
+JP00095|WID00000095|Professionals|Not Eligible|No|EEO9|Collection_ENG|LO001|NOC8767|OCC235|External|SOC86-1138|Eligible
+JP00096|WID00000096|Technicians|Partial|No|EEO5|Collection_LEGAL||NOC6713|OCC570|Referral|SOC37-8646|Not Eligible
+JP00097|WID00000097|Service|Partial|No|EEO2|Collection_ENG|LO003|NOC5631|OCC405|Internal|SOC71-2045|Not Eligible
+JP00098|WID00000098|Technicians|Partial|No|EEO5|Collection_OPS|LO003|NOC4086|OCC253|External|SOC17-7620|
+JP00099|WID00000099|Technicians|Partial|Yes|EEO1|Collection_IT|LO003|NOC5250|OCC528|University|SOC59-1578|
+JP00100|WID00000100|Service|Partial|Yes|EEO6|Collection_SAL||NOC6873|OCC619|Referral|SOC31-3967|Not Eligible
+JP00101|WID00000101|Officials and Managers|Not Eligible|Yes|EEO5|Collection_HR|LO003|NOC2463|OCC327|Referral|SOC38-6031|Not Eligible
+JP00102|WID00000102|Technicians|Not Eligible|No|EEO5|Collection_IT|LO001|NOC8709|OCC154|Internal|SOC70-4187|
+JP00103|WID00000103|Officials and Managers|Partial|No|EEO9|Collection_OPS||NOC1885|OCC991|External|SOC27-4281|Not Eligible
+JP00104|WID00000104|Sales|Partial|No|EEO3|Collection_MKTG|LO002|NOC2324|OCC599|Referral|SOC90-3897|Not Eligible
+JP00105|WID00000105|Service|Eligible|Yes|EEO8|Collection_OPS|LO002|NOC3762|OCC690|External|SOC72-2442|Eligible
+JP00106|WID00000106|Administrative|Not Eligible|No|EEO7|Collection_LEGAL||NOC7280|OCC104|Internal|SOC78-4267|
+JP00107|WID00000107|Technicians|Eligible|No|EEO9|Collection_SAL|LO001|NOC1067|OCC741|External|SOC38-6641|Not Eligible
+JP00108|WID00000108|Professionals|Eligible|No|EEO9|Collection_OPS|LO002|NOC2069|OCC943|Internal|SOC48-5764|Not Eligible
+JP00109|WID00000109|Service|Partial|No|EEO7|Collection_HR|LO003|NOC9031|OCC467|External|SOC31-7609|Eligible
+JP00110|WID00000110|Professionals|Eligible|Yes|EEO4|Collection_ENG|LO002|NOC3017|OCC475|Internal|SOC58-5190|
+JP00111|WID00000111|Administrative|Eligible|Yes|EEO2|Collection_ENG|LO001|NOC2897|OCC526|University|SOC58-3024|
+JP00112|WID00000112|Technicians|Not Eligible|Yes|EEO4|Collection_ENG|LO003|NOC7895|OCC777|Internal|SOC94-9524|Not Eligible
+JP00113|WID00000113|Administrative|Partial|Yes|EEO7|Collection_FIN|LO001|NOC5631|OCC216|Internal|SOC73-4254|
+JP00114|WID00000114|Professionals|Not Eligible|Yes|EEO6|Collection_LEGAL|LO003|NOC3627|OCC140|University|SOC36-8875|Not Eligible
+JP00115|WID00000115|Professionals|Eligible|Yes|EEO2|Collection_FIN||NOC3443|OCC192|Internal|SOC22-5192|
+JP00116|WID00000116|Professionals|Not Eligible|No|EEO5|Collection_IT|LO001|NOC2635|OCC932|External|SOC15-5760|Not Eligible
+JP00117|WID00000117|Service|Not Eligible|No|EEO2|Collection_FIN|LO001|NOC1158|OCC972|External|SOC94-3793|Not Eligible
+JP00118|WID00000118|Technicians|Not Eligible|No|EEO2|Collection_MKTG|LO003|NOC3996|OCC216|University|SOC61-8479|Not Eligible
+JP00119|WID00000119|Sales|Partial|No|EEO7|Collection_HR|LO001|NOC3171|OCC812|Internal|SOC30-2699|Not Eligible
+JP00120|WID00000120|Administrative|Not Eligible|No|EEO3|Collection_LEGAL|LO003|NOC1472|OCC983|External|SOC71-8997|Eligible
+JP00121|WID00000121|Sales|Not Eligible|Yes|EEO2|Collection_OPS|LO003|NOC1202|OCC821|External|SOC95-6542|
+JP00122|WID00000122|Administrative|Partial|Yes|EEO7|Collection_SAL||NOC6664|OCC779|University|SOC29-1894|Eligible
+JP00123|WID00000123|Service|Eligible|No|EEO8|Collection_HR|LO001|NOC9055|OCC428|External|SOC52-5557|Eligible
+JP00124|WID00000124|Administrative|Eligible|No|EEO7|Collection_SAL|LO001|NOC8521|OCC554|University|SOC21-9166|Not Eligible
+JP00125|WID00000125|Technicians|Eligible|No|EEO1|Collection_FIN||NOC7755|OCC136|Internal|SOC21-5990|
+JP00126|WID00000126|Administrative|Eligible|No|EEO6|Collection_MKTG|LO001|NOC4652|OCC964|University|SOC52-8751|
+JP00127|WID00000127|Service|Not Eligible|No|EEO2|Collection_FIN|LO002|NOC1035|OCC449|Referral|SOC91-5783|
+JP00128|WID00000128|Administrative|Not Eligible|Yes|EEO1|Collection_HR||NOC3301|OCC941|University|SOC23-5166|
+JP00129|WID00000129|Professionals|Eligible|Yes|EEO7|Collection_SAL||NOC4122|OCC833|Referral|SOC23-7790|Eligible
+JP00130|WID00000130|Service|Partial|Yes|EEO8|Collection_IT|LO002|NOC9172|OCC104|Internal|SOC80-8091|
+JP00131|WID00000131|Sales|Partial|Yes|EEO3|Collection_HR|LO001|NOC7347|OCC773|Referral|SOC74-7302|Not Eligible
+JP00132|WID00000132|Administrative|Partial|Yes|EEO5|Collection_LEGAL|LO003|NOC5819|OCC563|External|SOC27-7762|
+JP00133|WID00000133|Service|Partial|No|EEO9|Collection_MKTG|LO002|NOC4291|OCC314|Referral|SOC97-6657|
+JP00134|WID00000134|Professionals|Partial|Yes|EEO9|Collection_MKTG|LO001|NOC6771|OCC675|University|SOC84-7839|
+JP00135|WID00000135|Service|Partial|No|EEO7|Collection_ENG|LO001|NOC1414|OCC490|External|SOC16-1927|Eligible
+JP00136|WID00000136|Technicians|Eligible|No|EEO5|Collection_HR|LO001|NOC5835|OCC308|Internal|SOC55-8415|Eligible
+JP00137|WID00000137|Administrative|Partial|Yes|EEO9|Collection_LEGAL|LO002|NOC9370|OCC903|Referral|SOC98-1769|Not Eligible
+JP00138|WID00000138|Sales|Not Eligible|No|EEO9|Collection_ENG|LO001|NOC5117|OCC307|University|SOC38-7025|
+JP00139|WID00000139|Administrative|Partial|Yes|EEO4|Collection_OPS||NOC3906|OCC799|Internal|SOC33-3847|
+JP00140|WID00000140|Administrative|Eligible|No|EEO1|Collection_LEGAL|LO003|NOC5329|OCC233|External|SOC84-5178|Eligible
+JP00141|WID00000141|Technicians|Not Eligible|Yes|EEO1|Collection_HR|LO003|NOC1833|OCC892|Referral|SOC72-6866|Eligible
+JP00142|WID00000142|Service|Not Eligible|Yes|EEO3|Collection_FIN|LO002|NOC7814|OCC656|University|SOC21-6724|Eligible
+JP00143|WID00000143|Professionals|Partial|No|EEO6|Collection_MKTG|LO003|NOC4579|OCC870|University|SOC81-1144|Eligible
+JP00144|WID00000144|Service|Not Eligible|No|EEO4|Collection_SAL|LO001|NOC6258|OCC490|Internal|SOC59-5203|
+JP00145|WID00000145|Service|Not Eligible|Yes|EEO9|Collection_MKTG||NOC8975|OCC144|Referral|SOC93-4154|Not Eligible
+JP00146|WID00000146|Administrative|Eligible|Yes|EEO3|Collection_ENG|LO001|NOC4453|OCC786|External|SOC97-7950|Eligible
+JP00147|WID00000147|Professionals|Partial|No|EEO2|Collection_HR|LO001|NOC8523|OCC834|Referral|SOC14-2433|Eligible
+JP00148|WID00000148|Officials and Managers|Eligible|No|EEO9|Collection_FIN|LO002|NOC5237|OCC517|University|SOC67-7626|Not Eligible
+JP00149|WID00000149|Technicians|Eligible|No|EEO2|Collection_ENG|LO001|NOC1745|OCC817|Internal|SOC55-9238|Eligible
+JP00150|WID00000150|Technicians|Partial|No|EEO2|Collection_OPS||NOC7249|OCC504|Internal|SOC70-3561|
+JP00151|WID00000151|Professionals|Eligible|No|EEO9|Collection_OPS|LO002|NOC5883|OCC793|Referral|SOC11-3316|Eligible
+JP00152|WID00000152|Officials and Managers|Eligible|No|EEO9|Collection_FIN|LO003|NOC4441|OCC866|Referral|SOC37-7760|
+JP00153|WID00000153|Administrative|Eligible|Yes|EEO3|Collection_SAL|LO003|NOC4183|OCC217|External|SOC95-1891|
+JP00154|WID00000154|Sales|Partial|Yes|EEO5|Collection_FIN|LO003|NOC2608|OCC302|University|SOC52-6851|Eligible
+JP00155|WID00000155|Service|Partial|Yes|EEO2|Collection_OPS|LO001|NOC4170|OCC425|University|SOC67-6379|
+JP00156|WID00000156|Service|Not Eligible|Yes|EEO6|Collection_MKTG||NOC3762|OCC104|Referral|SOC41-4629|
+JP00157|WID00000157|Service|Partial|No|EEO5|Collection_MKTG|LO002|NOC6432|OCC998|University|SOC69-8296|Not Eligible
+JP00158|WID00000158|Technicians|Not Eligible|Yes|EEO3|Collection_FIN|LO003|NOC3293|OCC651|External|SOC43-2252|
+JP00159|WID00000159|Officials and Managers|Eligible|Yes|EEO7|Collection_SAL|LO001|NOC5269|OCC656|University|SOC93-3435|Not Eligible
+JP00160|WID00000160|Sales|Eligible|No|EEO3|Collection_IT|LO001|NOC7500|OCC472|Internal|SOC94-4913|
+JP00161|WID00000161|Service|Eligible|Yes|EEO8|Collection_HR|LO002|NOC3395|OCC853|University|SOC55-1662|Eligible
+JP00162|WID00000162|Sales|Eligible|Yes|EEO5|Collection_MKTG|LO002|NOC1701|OCC784|External|SOC76-6918|Not Eligible
+JP00163|WID00000163|Sales|Not Eligible|Yes|EEO1|Collection_MKTG|LO001|NOC9542|OCC748|Referral|SOC43-9918|
+JP00164|WID00000164|Professionals|Not Eligible|No|EEO6|Collection_FIN|LO003|NOC7165|OCC328|University|SOC55-6653|Not Eligible
+JP00165|WID00000165|Sales|Partial|Yes|EEO9|Collection_HR||NOC3713|OCC335|Internal|SOC75-5600|Eligible
+JP00166|WID00000166|Professionals|Eligible|Yes|EEO6|Collection_FIN|LO002|NOC7793|OCC930|Referral|SOC24-8889|
+JP00167|WID00000167|Sales|Not Eligible|Yes|EEO3|Collection_LEGAL|LO001|NOC4992|OCC144|External|SOC83-3639|Eligible
+JP00168|WID00000168|Service|Partial|Yes|EEO3|Collection_ENG|LO002|NOC5231|OCC284|University|SOC86-1305|
+JP00169|WID00000169|Service|Partial|No|EEO2|Collection_SAL||NOC8723|OCC988|University|SOC31-4594|Not Eligible
+JP00170|WID00000170|Administrative|Eligible|Yes|EEO9|Collection_OPS|LO002|NOC6614|OCC564|Internal|SOC39-7196|Not Eligible
+JP00171|WID00000171|Professionals|Eligible|Yes|EEO4|Collection_LEGAL|LO002|NOC2577|OCC281|University|SOC88-1639|
+JP00172|WID00000172|Administrative|Eligible|Yes|EEO8|Collection_HR|LO001|NOC8069|OCC634|University|SOC57-1711|
+JP00173|WID00000173|Administrative|Not Eligible|Yes|EEO8|Collection_LEGAL|LO003|NOC2600|OCC535|External|SOC42-8817|Eligible
+JP00174|WID00000174|Officials and Managers|Not Eligible|No|EEO5|Collection_SAL|LO001|NOC1116|OCC691|Internal|SOC76-1117|Not Eligible
+JP00175|WID00000175|Service|Eligible|No|EEO7|Collection_MKTG|LO001|NOC3535|OCC536|Referral|SOC43-9783|Not Eligible
+JP00176|WID00000176|Administrative|Not Eligible|No|EEO7|Collection_SAL||NOC8904|OCC283|Referral|SOC81-8925|Not Eligible
+JP00177|WID00000177|Technicians|Partial|No|EEO7|Collection_HR|LO001|NOC4764|OCC557|External|SOC22-4513|
+JP00178|WID00000178|Sales|Not Eligible|Yes|EEO3|Collection_LEGAL|LO001|NOC2492|OCC943|External|SOC70-8133|Eligible
+JP00179|WID00000179|Officials and Managers|Not Eligible|Yes|EEO6|Collection_FIN|LO001|NOC7296|OCC510|Referral|SOC86-1941|Eligible
+JP00180|WID00000180|Service|Not Eligible|No|EEO1|Collection_SAL|LO003|NOC4190|OCC134|External|SOC88-3776|
+JP00181|WID00000181|Officials and Managers|Not Eligible|Yes|EEO1|Collection_HR|LO001|NOC5520|OCC898|University|SOC55-7474|Not Eligible
+JP00182|WID00000182|Administrative|Eligible|Yes|EEO2|Collection_FIN|LO003|NOC6703|OCC455|Referral|SOC38-4187|Not Eligible
+JP00183|WID00000183|Sales|Partial|Yes|EEO5|Collection_HR||NOC9294|OCC209|Internal|SOC74-5821|Not Eligible
+JP00184|WID00000184|Officials and Managers|Partial|No|EEO9|Collection_OPS||NOC7178|OCC676|University|SOC41-6565|Not Eligible
+JP00185|WID00000185|Service|Not Eligible|Yes|EEO8|Collection_FIN|LO003|NOC2106|OCC491|External|SOC96-4767|Not Eligible
+JP00186|WID00000186|Sales|Not Eligible|Yes|EEO5|Collection_SAL|LO003|NOC2523|OCC508|Referral|SOC19-3924|Not Eligible
+JP00187|WID00000187|Technicians|Not Eligible|Yes|EEO5|Collection_HR|LO002|NOC9175|OCC854|External|SOC40-4965|Not Eligible
+JP00188|WID00000188|Professionals|Eligible|Yes|EEO4|Collection_MKTG|LO002|NOC2747|OCC222|Internal|SOC96-9071|
+JP00189|WID00000189|Officials and Managers|Partial|Yes|EEO8|Collection_MKTG|LO003|NOC9066|OCC688|Referral|SOC72-3996|
+JP00190|WID00000190|Technicians|Not Eligible|Yes|EEO3|Collection_ENG||NOC8836|OCC653|Internal|SOC74-6689|Not Eligible
+JP00191|WID00000191|Service|Eligible|No|EEO2|Collection_IT|LO003|NOC1137|OCC112|External|SOC58-2650|Not Eligible
+JP00192|WID00000192|Technicians|Partial|No|EEO3|Collection_OPS|LO002|NOC5413|OCC582|Referral|SOC56-4013|Not Eligible
+JP00193|WID00000193|Sales|Eligible|No|EEO6|Collection_MKTG||NOC5581|OCC561|External|SOC83-3148|
+JP00194|WID00000194|Service|Eligible|Yes|EEO5|Collection_SAL||NOC7240|OCC300|External|SOC29-8749|Eligible
+JP00195|WID00000195|Professionals|Not Eligible|No|EEO3|Collection_MKTG||NOC5915|OCC356|Internal|SOC60-2621|
+JP00196|WID00000196|Professionals|Eligible|Yes|EEO5|Collection_IT|LO001|NOC8370|OCC862|Referral|SOC43-6914|Not Eligible
+JP00197|WID00000197|Administrative|Partial|No|EEO6|Collection_ENG||NOC2986|OCC459|External|SOC83-9821|Eligible
+JP00198|WID00000198|Technicians|Not Eligible|No|EEO9|Collection_IT||NOC2284|OCC490|Referral|SOC69-3373|Eligible
+JP00199|WID00000199|Service|Not Eligible|No|EEO7|Collection_FIN|LO001|NOC3654|OCC451|External|SOC50-6191|
+JP00200|WID00000200|Technicians|Partial|No|EEO7|Collection_OPS||NOC6950|OCC865|University|SOC62-3741|Eligible

@@ -1,0 +1,201 @@
+Department_ID|Department_WID|Department_Name|Dept_Name_with_Manager_Name|Active|Parent_Dept_ID|Owner_EIN|Department_Level|PRIMARY_LOCATION_CODE|Type|Subtype
+DPT00001|DWID00000001|Engineering|Engineering|True||EMP00337|1|LOC00057|Department|Business Unit
+DPT00002|DWID00000002|Sales|Sales|True||EMP00083|1|LOC00018|Department|Business Unit
+DPT00003|DWID00000003|Marketing|Marketing|True||EMP00182|1|LOC00096|Department|Business Unit
+DPT00004|DWID00000004|Finance|Finance|True||EMP00223|1|LOC00001|Department|Business Unit
+DPT00005|DWID00000005|Human Resources|Human Resources|True||EMP00184|1|LOC00091|Department|Business Unit
+DPT00006|DWID00000006|Operations|Operations|True|DPT00002|EMP00057|2|LOC00025|Department|Function
+DPT00007|DWID00000007|IT|IT|True|DPT00003|EMP00021|2|LOC00018|Department|Function
+DPT00008|DWID00000008|Legal|Legal|True|DPT00004|EMP00216|2|LOC00096|Department|Function
+DPT00009|DWID00000009|Facilities|Facilities|True|DPT00003|EMP00462|2|LOC00005|Department|Function
+DPT00010|DWID00000010|Procurement|Procurement|True|DPT00002|EMP00342|2|LOC00026|Department|Function
+DPT00011|DWID00000011|Quality Assurance|Quality Assurance|True|DPT00004|EMP00492|2|LOC00086|Department|Function
+DPT00012|DWID00000012|Supply Chain|Supply Chain|True|DPT00003|EMP00061|2|LOC00054|Department|Function
+DPT00013|DWID00000013|Research & Development|Research & Development|True|DPT00004|EMP00282|2|LOC00064|Department|Function
+DPT00014|DWID00000014|Quality Assurance Team 13|Supply Chain Team 13|True|DPT00013|EMP00385|3|LOC00065|Department|Section
+DPT00015|DWID00000015|IT Team 14|Marketing Team 14|True|DPT00012|EMP00056|2|LOC00017|Department|Function
+DPT00016|DWID00000016|Facilities Team 15|Engineering Team 15|True|DPT00006|EMP00122|2|LOC00087|Department|Team
+DPT00017|DWID00000017|Procurement Team 16|Supply Chain Team 16|False|DPT00014|EMP00246|3|LOC00037|Department|Team
+DPT00018|DWID00000018|Research & Development Team 17|IT Team 17|True|DPT00003|EMP00079|2|LOC00032|Department|Team
+DPT00019|DWID00000019|Human Resources Team 18|Supply Chain Team 18|True|DPT00004|EMP00421|3|LOC00026|Department|Team
+DPT00020|DWID00000020|Supply Chain Team 19|Supply Chain Team 19|True|DPT00004|EMP00093|2|LOC00076|Department|Section
+DPT00021|DWID00000021|Finance Team 20|Sales Team 20|True|DPT00005|EMP00020|3|LOC00025|Department|Function
+DPT00022|DWID00000022|Engineering Team 21|Procurement Team 21|True|DPT00014|EMP00443|2|LOC00049|Department|Team
+DPT00023|DWID00000023|Human Resources Team 22|Supply Chain Team 22|True|DPT00017|EMP00119|2|LOC00044|Department|Team
+DPT00024|DWID00000024|Engineering Team 23|Facilities Team 23|True|DPT00016|EMP00027|3|LOC00015|Department|Team
+DPT00025|DWID00000025|Human Resources Team 24|Operations Team 24|True|DPT00012|EMP00127|3|LOC00007|Department|Function
+DPT00026|DWID00000026|Engineering Team 25|Engineering Team 25|True|DPT00002|EMP00165|2|LOC00037|Department|Team
+DPT00027|DWID00000027|Procurement Team 26|Sales Team 26|True|DPT00009|EMP00130|3|LOC00047|Department|Team
+DPT00028|DWID00000028|Sales Team 27|Sales Team 27|True|DPT00010|EMP00350|2|LOC00043|Department|Team
+DPT00029|DWID00000029|Research & Development Team 28|Operations Team 28|True|DPT00024|EMP00302|3|LOC00031|Department|Section
+DPT00030|DWID00000030|Finance Team 29|Procurement Team 29|True|DPT00009|EMP00455|2|LOC00017|Department|Section
+DPT00031|DWID00000031|Procurement Team 30|Sales Team 30|False|DPT00024|EMP00496|2|LOC00025|Department|Section
+DPT00032|DWID00000032|Sales Team 31|Sales Team 31|True|DPT00015|EMP00317|3|LOC00039|Department|Section
+DPT00033|DWID00000033|Research & Development Team 32|Finance Team 32|True|DPT00031|EMP00079|2|LOC00017|Department|Function
+DPT00034|DWID00000034|Facilities Team 33|Supply Chain Team 33|True|DPT00027|EMP00450|3|LOC00047|Department|Team
+DPT00035|DWID00000035|IT Team 34|Sales Team 34|True|DPT00008|EMP00269|2|LOC00022|Department|Section
+DPT00036|DWID00000036|Supply Chain Team 35|Marketing Team 35|True|DPT00018|EMP00490|2|LOC00089|Department|Function
+DPT00037|DWID00000037|Legal Team 36|Quality Assurance Team 36|True|DPT00026|EMP00263|2|LOC00022|Department|Team
+DPT00038|DWID00000038|IT Team 37|Facilities Team 37|True|DPT00033|EMP00206|3|LOC00027|Department|Function
+DPT00039|DWID00000039|Marketing Team 38|Procurement Team 38|True|DPT00001|EMP00357|2|LOC00066|Department|Team
+DPT00040|DWID00000040|Supply Chain Team 39|Supply Chain Team 39|True|DPT00033|EMP00156|2|LOC00038|Department|Section
+DPT00041|DWID00000041|Facilities Team 40|Sales Team 40|True|DPT00018|EMP00024|2|LOC00038|Department|Function
+DPT00042|DWID00000042|Marketing Team 41|Human Resources Team 41|True|DPT00041|EMP00139|2|LOC00083|Department|Function
+DPT00043|DWID00000043|Facilities Team 42|Sales Team 42|False|DPT00014|EMP00178|3|LOC00042|Department|Function
+DPT00044|DWID00000044|Human Resources Team 43|Supply Chain Team 43|True|DPT00036|EMP00460|3|LOC00042|Department|Function
+DPT00045|DWID00000045|Engineering Team 44|Operations Team 44|True|DPT00041|EMP00495|3|LOC00023|Department|Team
+DPT00046|DWID00000046|Facilities Team 45|Quality Assurance Team 45|True|DPT00002|EMP00399|2|LOC00093|Department|Section
+DPT00047|DWID00000047|IT Team 46|Quality Assurance Team 46|True|DPT00045|EMP00321|2|LOC00057|Department|Function
+DPT00048|DWID00000048|Human Resources Team 47|Finance Team 47|True|DPT00021|EMP00414|3|LOC00020|Department|Team
+DPT00049|DWID00000049|Supply Chain Team 48|Supply Chain Team 48|True|DPT00015|EMP00076|3|LOC00012|Department|Team
+DPT00050|DWID00000050|Legal Team 49|Marketing Team 49|True|DPT00012|EMP00091|2|LOC00073|Department|Team
+DPT00051|DWID00000051|Marketing Team 50|Quality Assurance Team 50|True|DPT00047|EMP00159|2|LOC00023|Department|Team
+DPT00052|DWID00000052|Procurement Team 51|Finance Team 51|False|DPT00044|EMP00037|3|LOC00032|Department|Team
+DPT00053|DWID00000053|IT Team 52|Sales Team 52|True|DPT00042|EMP00071|2|LOC00078|Department|Function
+DPT00054|DWID00000054|IT Team 53|Engineering Team 53|True|DPT00025|EMP00007|2|LOC00017|Department|Function
+DPT00055|DWID00000055|Sales Team 54|Human Resources Team 54|True|DPT00050|EMP00322|2|LOC00002|Department|Function
+DPT00056|DWID00000056|Supply Chain Team 55|Operations Team 55|True|DPT00035|EMP00044|2|LOC00018|Department|Team
+DPT00057|DWID00000057|Procurement Team 56|Legal Team 56|True|DPT00049|EMP00158|3|LOC00062|Department|Function
+DPT00058|DWID00000058|Engineering Team 57|Facilities Team 57|True|DPT00016|EMP00322|2|LOC00003|Department|Function
+DPT00059|DWID00000059|Facilities Team 58|Human Resources Team 58|True|DPT00007|EMP00454|3|LOC00019|Department|Function
+DPT00060|DWID00000060|Finance Team 59|Engineering Team 59|True|DPT00059|EMP00198|2|LOC00046|Department|Section
+DPT00061|DWID00000061|Finance Team 60|Quality Assurance Team 60|True|DPT00019|EMP00453|2|LOC00063|Department|Function
+DPT00062|DWID00000062|Finance Team 61|Sales Team 61|True|DPT00008|EMP00145|3|LOC00010|Department|Section
+DPT00063|DWID00000063|Sales Team 62|Operations Team 62|True|DPT00022|EMP00471|2|LOC00006|Department|Section
+DPT00064|DWID00000064|Marketing Team 63|IT Team 63|True|DPT00010|EMP00308|2|LOC00087|Department|Team
+DPT00065|DWID00000065|Quality Assurance Team 64|Quality Assurance Team 64|True|DPT00020|EMP00419|3|LOC00045|Department|Function
+DPT00066|DWID00000066|Legal Team 65|Quality Assurance Team 65|True|DPT00035|EMP00136|2|LOC00001|Department|Function
+DPT00067|DWID00000067|Operations Team 66|Marketing Team 66|True|DPT00019|EMP00370|3|LOC00009|Department|Function
+DPT00068|DWID00000068|Supply Chain Team 67|Human Resources Team 67|True|DPT00055|EMP00166|2|LOC00024|Department|Team
+DPT00069|DWID00000069|Operations Team 68|Legal Team 68|True|DPT00046|EMP00356|3|LOC00078|Department|Section
+DPT00070|DWID00000070|Marketing Team 69|Research & Development Team 69|True|DPT00043|EMP00472|2|LOC00050|Department|Team
+DPT00071|DWID00000071|Facilities Team 70|Facilities Team 70|True|DPT00064|EMP00275|2|LOC00050|Department|Function
+DPT00072|DWID00000072|Facilities Team 71|Procurement Team 71|True|DPT00054|EMP00416|2|LOC00090|Department|Function
+DPT00073|DWID00000073|Operations Team 72|Engineering Team 72|True|DPT00031|EMP00436|2|LOC00047|Department|Section
+DPT00074|DWID00000074|Marketing Team 73|Sales Team 73|False|DPT00061|EMP00179|3|LOC00100|Department|Function
+DPT00075|DWID00000075|Legal Team 74|Marketing Team 74|True|DPT00038|EMP00283|3|LOC00032|Department|Function
+DPT00076|DWID00000076|Engineering Team 75|Supply Chain Team 75|True|DPT00029|EMP00493|2|LOC00049|Department|Section
+DPT00077|DWID00000077|Supply Chain Team 76|IT Team 76|True|DPT00004|EMP00360|2|LOC00085|Department|Section
+DPT00078|DWID00000078|Legal Team 77|Procurement Team 77|True|DPT00010|EMP00016|2|LOC00047|Department|Function
+DPT00079|DWID00000079|Finance Team 78|Sales Team 78|False|DPT00011|EMP00426|3|LOC00020|Department|Function
+DPT00080|DWID00000080|Supply Chain Team 79|Marketing Team 79|True|DPT00061|EMP00358|3|LOC00061|Department|Team
+DPT00081|DWID00000081|Legal Team 80|Research & Development Team 80|True|DPT00044|EMP00007|3|LOC00015|Department|Function
+DPT00082|DWID00000082|Quality Assurance Team 81|Engineering Team 81|True|DPT00008|EMP00089|2|LOC00002|Department|Team
+DPT00083|DWID00000083|Quality Assurance Team 82|Legal Team 82|True|DPT00055|EMP00425|3|LOC00074|Department|Section
+DPT00084|DWID00000084|Supply Chain Team 83|Finance Team 83|True|DPT00040|EMP00081|3|LOC00012|Department|Section
+DPT00085|DWID00000085|Marketing Team 84|Supply Chain Team 84|True|DPT00049|EMP00317|2|LOC00029|Department|Team
+DPT00086|DWID00000086|Supply Chain Team 85|Facilities Team 85|True|DPT00024|EMP00040|3|LOC00062|Department|Team
+DPT00087|DWID00000087|Quality Assurance Team 86|IT Team 86|True|DPT00084|EMP00085|2|LOC00048|Department|Section
+DPT00088|DWID00000088|Finance Team 87|Human Resources Team 87|True|DPT00055|EMP00040|3|LOC00078|Department|Team
+DPT00089|DWID00000089|Finance Team 88|Human Resources Team 88|True|DPT00004|EMP00055|2|LOC00028|Department|Section
+DPT00090|DWID00000090|Research & Development Team 89|Human Resources Team 89|True|DPT00002|EMP00104|2|LOC00031|Department|Team
+DPT00091|DWID00000091|Procurement Team 90|Procurement Team 90|False|DPT00011|EMP00405|3|LOC00006|Department|Function
+DPT00092|DWID00000092|Sales Team 91|Human Resources Team 91|False|DPT00041|EMP00183|3|LOC00051|Department|Section
+DPT00093|DWID00000093|Operations Team 92|Research & Development Team 92|True|DPT00025|EMP00183|2|LOC00090|Department|Section
+DPT00094|DWID00000094|Operations Team 93|IT Team 93|True|DPT00013|EMP00258|2|LOC00065|Department|Function
+DPT00095|DWID00000095|Procurement Team 94|Research & Development Team 94|True|DPT00004|EMP00301|2|LOC00038|Department|Function
+DPT00096|DWID00000096|Quality Assurance Team 95|Legal Team 95|False|DPT00020|EMP00321|2|LOC00092|Department|Function
+DPT00097|DWID00000097|Research & Development Team 96|Quality Assurance Team 96|True|DPT00028|EMP00394|2|LOC00065|Department|Section
+DPT00098|DWID00000098|Procurement Team 97|Quality Assurance Team 97|True|DPT00094|EMP00394|3|LOC00058|Department|Function
+DPT00099|DWID00000099|Human Resources Team 98|Operations Team 98|True|DPT00044|EMP00482|3|LOC00006|Department|Section
+DPT00100|DWID00000100|IT Team 99|Finance Team 99|True|DPT00088|EMP00313|2|LOC00020|Department|Section
+DPT00101|DWID00000101|Legal Team 100|Sales Team 100|True|DPT00081|EMP00074|3|LOC00071|Department|Function
+DPT00102|DWID00000102|Sales Team 101|Legal Team 101|True|DPT00064|EMP00479|3|LOC00021|Department|Function
+DPT00103|DWID00000103|Procurement Team 102|Operations Team 102|True|DPT00036|EMP00037|2|LOC00091|Department|Team
+DPT00104|DWID00000104|Legal Team 103|Human Resources Team 103|True|DPT00034|EMP00227|2|LOC00016|Department|Section
+DPT00105|DWID00000105|Engineering Team 104|Operations Team 104|True|DPT00063|EMP00206|3|LOC00080|Department|Section
+DPT00106|DWID00000106|Legal Team 105|Operations Team 105|True|DPT00017|EMP00320|3|LOC00048|Department|Function
+DPT00107|DWID00000107|IT Team 106|Facilities Team 106|True|DPT00088|EMP00450|2|LOC00080|Department|Section
+DPT00108|DWID00000108|Supply Chain Team 107|Research & Development Team 107|True|DPT00008|EMP00421|2|LOC00020|Department|Function
+DPT00109|DWID00000109|IT Team 108|Marketing Team 108|True|DPT00038|EMP00438|2|LOC00029|Department|Team
+DPT00110|DWID00000110|Quality Assurance Team 109|Sales Team 109|True|DPT00060|EMP00240|3|LOC00014|Department|Function
+DPT00111|DWID00000111|Supply Chain Team 110|Sales Team 110|True|DPT00024|EMP00473|3|LOC00099|Department|Team
+DPT00112|DWID00000112|IT Team 111|Operations Team 111|False|DPT00026|EMP00176|3|LOC00028|Department|Section
+DPT00113|DWID00000113|Legal Team 112|Sales Team 112|True|DPT00095|EMP00020|2|LOC00061|Department|Function
+DPT00114|DWID00000114|Finance Team 113|Operations Team 113|True|DPT00082|EMP00308|3|LOC00008|Department|Team
+DPT00115|DWID00000115|IT Team 114|Legal Team 114|True|DPT00102|EMP00109|2|LOC00098|Department|Section
+DPT00116|DWID00000116|Human Resources Team 115|Human Resources Team 115|True|DPT00055|EMP00043|2|LOC00009|Department|Team
+DPT00117|DWID00000117|Sales Team 116|Human Resources Team 116|True|DPT00052|EMP00232|3|LOC00068|Department|Function
+DPT00118|DWID00000118|Human Resources Team 117|Marketing Team 117|True|DPT00086|EMP00048|3|LOC00044|Department|Team
+DPT00119|DWID00000119|Finance Team 118|Operations Team 118|True|DPT00022|EMP00247|3|LOC00069|Department|Section
+DPT00120|DWID00000120|Marketing Team 119|Supply Chain Team 119|True|DPT00101|EMP00468|3|LOC00002|Department|Section
+DPT00121|DWID00000121|Procurement Team 120|Finance Team 120|False|DPT00101|EMP00342|2|LOC00042|Department|Section
+DPT00122|DWID00000122|Supply Chain Team 121|Supply Chain Team 121|True|DPT00106|EMP00376|3|LOC00002|Department|Function
+DPT00123|DWID00000123|Legal Team 122|Marketing Team 122|True|DPT00115|EMP00163|2|LOC00087|Department|Team
+DPT00124|DWID00000124|Facilities Team 123|Supply Chain Team 123|False|DPT00034|EMP00231|2|LOC00082|Department|Team
+DPT00125|DWID00000125|Procurement Team 124|Sales Team 124|False|DPT00082|EMP00382|2|LOC00054|Department|Section
+DPT00126|DWID00000126|Research & Development Team 125|Marketing Team 125|True|DPT00070|EMP00111|3|LOC00027|Department|Function
+DPT00127|DWID00000127|Quality Assurance Team 126|Procurement Team 126|True|DPT00125|EMP00190|3|LOC00003|Department|Team
+DPT00128|DWID00000128|Human Resources Team 127|Facilities Team 127|True|DPT00115|EMP00064|3|LOC00084|Department|Team
+DPT00129|DWID00000129|IT Team 128|Operations Team 128|True|DPT00106|EMP00278|3|LOC00067|Department|Team
+DPT00130|DWID00000130|Marketing Team 129|Legal Team 129|True|DPT00030|EMP00091|2|LOC00070|Department|Team
+DPT00131|DWID00000131|Human Resources Team 130|Quality Assurance Team 130|True|DPT00098|EMP00224|3|LOC00090|Department|Section
+DPT00132|DWID00000132|Sales Team 131|Research & Development Team 131|True|DPT00026|EMP00046|2|LOC00079|Department|Team
+DPT00133|DWID00000133|Legal Team 132|Supply Chain Team 132|True|DPT00027|EMP00475|2|LOC00082|Department|Team
+DPT00134|DWID00000134|Procurement Team 133|Research & Development Team 133|False|DPT00129|EMP00149|3|LOC00028|Department|Function
+DPT00135|DWID00000135|Facilities Team 134|IT Team 134|True|DPT00117|EMP00439|3|LOC00016|Department|Team
+DPT00136|DWID00000136|IT Team 135|Quality Assurance Team 135|True|DPT00119|EMP00380|3|LOC00001|Department|Team
+DPT00137|DWID00000137|Facilities Team 136|Human Resources Team 136|True|DPT00058|EMP00338|3|LOC00040|Department|Team
+DPT00138|DWID00000138|Engineering Team 137|IT Team 137|False|DPT00062|EMP00014|2|LOC00048|Department|Section
+DPT00139|DWID00000139|Operations Team 138|Marketing Team 138|True|DPT00082|EMP00221|2|LOC00072|Department|Team
+DPT00140|DWID00000140|Procurement Team 139|Quality Assurance Team 139|True|DPT00050|EMP00027|3|LOC00017|Department|Section
+DPT00141|DWID00000141|Supply Chain Team 140|Marketing Team 140|True|DPT00100|EMP00163|2|LOC00056|Department|Function
+DPT00142|DWID00000142|Supply Chain Team 141|Research & Development Team 141|True|DPT00026|EMP00061|3|LOC00098|Department|Section
+DPT00143|DWID00000143|Facilities Team 142|Marketing Team 142|True|DPT00067|EMP00105|2|LOC00012|Department|Function
+DPT00144|DWID00000144|Engineering Team 143|Quality Assurance Team 143|True|DPT00112|EMP00079|2|LOC00080|Department|Section
+DPT00145|DWID00000145|Sales Team 144|Procurement Team 144|True|DPT00140|EMP00381|2|LOC00059|Department|Section
+DPT00146|DWID00000146|Marketing Team 145|Finance Team 145|True|DPT00092|EMP00114|3|LOC00025|Department|Section
+DPT00147|DWID00000147|Supply Chain Team 146|Research & Development Team 146|True|DPT00063|EMP00194|3|LOC00085|Department|Function
+DPT00148|DWID00000148|Sales Team 147|Marketing Team 147|True|DPT00071|EMP00327|2|LOC00015|Department|Team
+DPT00149|DWID00000149|Sales Team 148|Marketing Team 148|True|DPT00032|EMP00459|2|LOC00012|Department|Function
+DPT00150|DWID00000150|Operations Team 149|Finance Team 149|True|DPT00127|EMP00252|2|LOC00053|Department|Function
+DPT00151|DWID00000151|Quality Assurance Team 150|Sales Team 150|True|DPT00125|EMP00215|3|LOC00041|Department|Section
+DPT00152|DWID00000152|Research & Development Team 151|Marketing Team 151|True|DPT00116|EMP00006|2|LOC00085|Department|Section
+DPT00153|DWID00000153|Sales Team 152|Operations Team 152|True|DPT00009|EMP00248|2|LOC00021|Department|Section
+DPT00154|DWID00000154|Sales Team 153|Finance Team 153|True|DPT00066|EMP00275|2|LOC00067|Department|Section
+DPT00155|DWID00000155|Finance Team 154|Operations Team 154|True|DPT00040|EMP00112|2|LOC00042|Department|Function
+DPT00156|DWID00000156|Sales Team 155|Supply Chain Team 155|True|DPT00057|EMP00065|3|LOC00036|Department|Team
+DPT00157|DWID00000157|Sales Team 156|Operations Team 156|True|DPT00052|EMP00334|3|LOC00060|Department|Section
+DPT00158|DWID00000158|IT Team 157|Facilities Team 157|True|DPT00127|EMP00473|2|LOC00033|Department|Function
+DPT00159|DWID00000159|Quality Assurance Team 158|Supply Chain Team 158|True|DPT00051|EMP00202|2|LOC00075|Department|Section
+DPT00160|DWID00000160|Marketing Team 159|Research & Development Team 159|True|DPT00080|EMP00370|3|LOC00056|Department|Team
+DPT00161|DWID00000161|Procurement Team 160|Supply Chain Team 160|True|DPT00109|EMP00164|2|LOC00078|Department|Team
+DPT00162|DWID00000162|Finance Team 161|Procurement Team 161|True|DPT00110|EMP00460|2|LOC00058|Department|Function
+DPT00163|DWID00000163|Facilities Team 162|Human Resources Team 162|True|DPT00009|EMP00151|3|LOC00051|Department|Function
+DPT00164|DWID00000164|Marketing Team 163|Research & Development Team 163|True|DPT00030|EMP00405|2|LOC00046|Department|Function
+DPT00165|DWID00000165|Finance Team 164|Quality Assurance Team 164|True|DPT00019|EMP00075|3|LOC00016|Department|Function
+DPT00166|DWID00000166|Supply Chain Team 165|Engineering Team 165|True|DPT00082|EMP00110|3|LOC00073|Department|Team
+DPT00167|DWID00000167|Facilities Team 166|Sales Team 166|True|DPT00060|EMP00309|2|LOC00068|Department|Function
+DPT00168|DWID00000168|Facilities Team 167|Human Resources Team 167|True|DPT00027|EMP00485|2|LOC00074|Department|Section
+DPT00169|DWID00000169|Quality Assurance Team 168|Research & Development Team 168|True|DPT00108|EMP00417|3|LOC00026|Department|Function
+DPT00170|DWID00000170|Research & Development Team 169|Legal Team 169|True|DPT00013|EMP00141|3|LOC00016|Department|Function
+DPT00171|DWID00000171|Marketing Team 170|Procurement Team 170|True|DPT00116|EMP00197|2|LOC00074|Department|Function
+DPT00172|DWID00000172|Engineering Team 171|Quality Assurance Team 171|True|DPT00073|EMP00295|2|LOC00060|Department|Team
+DPT00173|DWID00000173|IT Team 172|Engineering Team 172|True|DPT00034|EMP00471|2|LOC00044|Department|Section
+DPT00174|DWID00000174|Sales Team 173|Legal Team 173|False|DPT00005|EMP00411|3|LOC00093|Department|Team
+DPT00175|DWID00000175|Operations Team 174|Research & Development Team 174|True|DPT00071|EMP00041|3|LOC00064|Department|Section
+DPT00176|DWID00000176|IT Team 175|Human Resources Team 175|True|DPT00013|EMP00233|3|LOC00083|Department|Function
+DPT00177|DWID00000177|Procurement Team 176|Sales Team 176|False|DPT00096|EMP00025|2|LOC00018|Department|Function
+DPT00178|DWID00000178|Supply Chain Team 177|Supply Chain Team 177|True|DPT00083|EMP00088|2|LOC00025|Department|Section
+DPT00179|DWID00000179|Facilities Team 178|Engineering Team 178|True|DPT00095|EMP00445|2|LOC00034|Department|Function
+DPT00180|DWID00000180|Engineering Team 179|Human Resources Team 179|False|DPT00029|EMP00169|3|LOC00035|Department|Section
+DPT00181|DWID00000181|Marketing Team 180|Procurement Team 180|True|DPT00044|EMP00065|3|LOC00019|Department|Section
+DPT00182|DWID00000182|Quality Assurance Team 181|Legal Team 181|True|DPT00106|EMP00268|2|LOC00074|Department|Team
+DPT00183|DWID00000183|Legal Team 182|Human Resources Team 182|True|DPT00170|EMP00375|3|LOC00029|Department|Function
+DPT00184|DWID00000184|Research & Development Team 183|Human Resources Team 183|True|DPT00068|EMP00181|2|LOC00085|Department|Section
+DPT00185|DWID00000185|Supply Chain Team 184|Sales Team 184|False|DPT00053|EMP00254|2|LOC00028|Department|Function
+DPT00186|DWID00000186|Finance Team 185|Legal Team 185|True|DPT00172|EMP00097|3|LOC00014|Department|Team
+DPT00187|DWID00000187|Procurement Team 186|Research & Development Team 186|True|DPT00054|EMP00440|3|LOC00098|Department|Team
+DPT00188|DWID00000188|Legal Team 187|Quality Assurance Team 187|True|DPT00182|EMP00259|2|LOC00017|Department|Function
+DPT00189|DWID00000189|IT Team 188|Legal Team 188|True|DPT00094|EMP00263|2|LOC00100|Department|Team
+DPT00190|DWID00000190|Sales Team 189|Human Resources Team 189|True|DPT00049|EMP00352|3|LOC00074|Department|Section
+DPT00191|DWID00000191|Marketing Team 190|Legal Team 190|True|DPT00027|EMP00382|2|LOC00031|Department|Function
+DPT00192|DWID00000192|Marketing Team 191|Human Resources Team 191|False|DPT00118|EMP00339|3|LOC00046|Department|Team
+DPT00193|DWID00000193|Facilities Team 192|Sales Team 192|True|DPT00031|EMP00109|2|LOC00051|Department|Section
+DPT00194|DWID00000194|Facilities Team 193|Operations Team 193|False|DPT00111|EMP00140|3|LOC00013|Department|Function
+DPT00195|DWID00000195|IT Team 194|Supply Chain Team 194|True|DPT00167|EMP00100|3|LOC00025|Department|Team
+DPT00196|DWID00000196|Procurement Team 195|Human Resources Team 195|True|DPT00046|EMP00253|3|LOC00014|Department|Section
+DPT00197|DWID00000197|Quality Assurance Team 196|Finance Team 196|True|DPT00013|EMP00113|2|LOC00007|Department|Function
+DPT00198|DWID00000198|Human Resources Team 197|Finance Team 197|False|DPT00148|EMP00052|3|LOC00029|Department|Section
+DPT00199|DWID00000199|Supply Chain Team 198|IT Team 198|True|DPT00180|EMP00052|2|LOC00094|Department|Section
+DPT00200|DWID00000200|Legal Team 199|Finance Team 199|True|DPT00069|EMP00105|3|LOC00082|Department|Team

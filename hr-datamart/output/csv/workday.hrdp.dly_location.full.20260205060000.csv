@@ -1,0 +1,101 @@
+Location_ID|Location_WID|Location_Name|Inactive|Address_Line_1|Address_Line_2|City|Region|REGION_NAME|Country|COUNTRY_NAME|Location_Postal_Code|Location_Identifier|Latitude|Longitude|Location_Type|Location_Usage_Type|Trade_Name|Worksite_ID_Code
+LOC00001|LWID00000001|New York Office|N|974 Main Street||New York|NY|NY Region|US|United States|40753|LOCID0001|41.5505637|-68.87157307|Office|Manufacturing||WSI00001
+LOC00002|LWID00000002|Los Angeles Office|N|205 Main Street||Los Angeles|CA|CA Region|US|United States|72021|LOCID0002|38.7108436|-128.28628063|Factory|Administrative||WSI00002
+LOC00003|LWID00000003|Chicago Office|N|732 Oak Street||Chicago|IL|IL Region|US|United States|61097|LOCID0003|32.73426634|-113.91922624|Retail|Retail||WSI00003
+LOC00004|LWID00000004|Houston Office|N|234 Maple Street|Suite 129|Houston|TX|TX Region|US|United States|14607|LOCID0004|41.58872838|-74.07602687|Retail|Retail||WSI00004
+LOC00005|LWID00000005|Phoenix Office|N|991 Maple Street|Suite 661|Phoenix|AZ|AZ Region|US|United States|68306|LOCID0005|28.3778727|-68.34840141|Warehouse|Retail||WSI00005
+LOC00006|LWID00000006|Philadelphia Office|N|751 Maple Street||Philadelphia|PA|PA Region|US|United States|93858|LOCID0006|40.98820622|-109.87201367|Retail|Retail||WSI00006
+LOC00007|LWID00000007|San Antonio Office|N|924 Main Street||San Antonio|TX|TX Region|US|United States|57943|LOCID0007|35.30509514|-119.87835996|Office|Administrative||WSI00007
+LOC00008|LWID00000008|San Diego Office|N|876 Oak Street||San Diego|CA|CA Region|US|United States|71498|LOCID0008|38.3774722|-85.29495236|Factory|Retail||WSI00008
+LOC00009|LWID00000009|Dallas Office|N|884 Elm Street|Suite 711|Dallas|TX|TX Region|US|United States|40305|LOCID0009|44.9191846|-94.36620728|Warehouse|Retail|Trade 9|WSI00009
+LOC00010|LWID00000010|San Jose Office|N|547 Elm Street||San Jose|CA|CA Region|US|United States|94671|LOCID0010|34.74308175|-105.40672608|Retail|Administrative||WSI00010
+LOC00011|LWID00000011|Austin Office|N|345 Maple Street|Suite 727|Austin|TX|TX Region|US|United States|99737|LOCID0011|31.79662792|-87.85029234|Retail|Retail||WSI00011
+LOC00012|LWID00000012|Jacksonville Office|N|170 Oak Street||Jacksonville|FL|FL Region|US|United States|24464|LOCID0012|40.92231774|-89.8475881|Retail|Retail||WSI00012
+LOC00013|LWID00000013|Denver Office|N|119 Oak Street||Denver|CO|CO Region|US|United States|80119|LOCID0013|25.55327214|-66.79838068|Retail|Distribution||WSI00013
+LOC00014|LWID00000014|Boston Office|N|548 Main Street||Boston|MA|MA Region|US|United States|29750|LOCID0014|25.36812117|-115.88277446|Factory|Distribution|Trade 14|WSI00014
+LOC00015|LWID00000015|Seattle Office|N|610 Pine Street||Seattle|WA|WA Region|US|United States|14159|LOCID0015|33.25621618|-75.16949055|Warehouse|Administrative||WSI00015
+LOC00016|LWID00000016|New York Office|N|501 Main Street|Suite 285|New York|NY|NY Region|US|United States|35191|LOCID0016|47.39247446|-113.74483468|Factory|Administrative||WSI00016
+LOC00017|LWID00000017|Los Angeles Office|N|886 Oak Street||Los Angeles|CA|CA Region|US|United States|68059|LOCID0017|31.17905478|-65.3551984|Warehouse|Retail|Trade 17|WSI00017
+LOC00018|LWID00000018|Chicago Office|N|196 Maple Street|Suite 313|Chicago|IL|IL Region|US|United States|71974|LOCID0018|34.72807401|-67.52109673|Retail|Manufacturing||WSI00018
+LOC00019|LWID00000019|Houston Office|N|143 Maple Street|Suite 359|Houston|TX|TX Region|US|United States|73075|LOCID0019|40.9630003|-117.08296393|Office|Manufacturing|Trade 19|WSI00019
+LOC00020|LWID00000020|Phoenix Office|N|341 Elm Street||Phoenix|AZ|AZ Region|US|United States|31936|LOCID0020|44.85975993|-91.9947041|Factory|Manufacturing||WSI00020
+LOC00021|LWID00000021|Philadelphia Office|N|143 Maple Street|Suite 586|Philadelphia|PA|PA Region|US|United States|88146|LOCID0021|28.87479856|-79.898195|Warehouse|Manufacturing||WSI00021
+LOC00022|LWID00000022|San Antonio Office|N|802 Maple Street||San Antonio|TX|TX Region|US|United States|91937|LOCID0022|26.50130839|-106.8913511|Warehouse|Administrative||WSI00022
+LOC00023|LWID00000023|San Diego Office|N|338 Pine Street|Suite 907|San Diego|CA|CA Region|US|United States|94495|LOCID0023|43.91743808|-77.64085052|Factory|Manufacturing||WSI00023
+LOC00024|LWID00000024|Dallas Office|N|486 Pine Street|Suite 356|Dallas|TX|TX Region|US|United States|15175|LOCID0024|37.13255333|-101.56249973|Retail|Retail||WSI00024
+LOC00025|LWID00000025|San Jose Office|N|291 Maple Street||San Jose|CA|CA Region|US|United States|71393|LOCID0025|31.88311157|-75.96227643|Warehouse|Administrative||WSI00025
+LOC00026|LWID00000026|Austin Office|N|560 Pine Street|Suite 654|Austin|TX|TX Region|US|United States|58118|LOCID0026|36.35197449|-79.56533602|Factory|Manufacturing|Trade 26|WSI00026
+LOC00027|LWID00000027|Jacksonville Office|N|734 Pine Street|Suite 344|Jacksonville|FL|FL Region|US|United States|52034|LOCID0027|43.02508907|-87.21118787|Factory|Manufacturing||WSI00027
+LOC00028|LWID00000028|Denver Office|N|609 Maple Street||Denver|CO|CO Region|US|United States|47110|LOCID0028|33.065001|-88.34124456|Office|Administrative||WSI00028
+LOC00029|LWID00000029|Boston Office|N|168 Main Street|Suite 232|Boston|MA|MA Region|US|United States|33414|LOCID0029|46.83731944|-116.86486314|Factory|Manufacturing||WSI00029
+LOC00030|LWID00000030|Seattle Office|N|684 Elm Street|Suite 638|Seattle|WA|WA Region|US|United States|91785|LOCID0030|42.53285054|-113.36399553|Retail|Manufacturing||WSI00030
+LOC00031|LWID00000031|New York Office|N|172 Main Street|Suite 313|New York|NY|NY Region|US|United States|95950|LOCID0031|37.28513754|-72.16512386|Office|Retail|Trade 31|WSI00031
+LOC00032|LWID00000032|Los Angeles Office|N|162 Pine Street|Suite 525|Los Angeles|CA|CA Region|US|United States|58374|LOCID0032|44.85623943|-126.21049841|Retail|Administrative|Trade 32|WSI00032
+LOC00033|LWID00000033|Chicago Office|N|954 Pine Street||Chicago|IL|IL Region|US|United States|38298|LOCID0033|49.01466864|-123.68724874|Warehouse|Retail||WSI00033
+LOC00034|LWID00000034|Houston Office|N|638 Oak Street|Suite 283|Houston|TX|TX Region|US|United States|83193|LOCID0034|43.72985895|-103.01300098|Office|Distribution||WSI00034
+LOC00035|LWID00000035|Phoenix Office|N|819 Elm Street|Suite 270|Phoenix|AZ|AZ Region|US|United States|33644|LOCID0035|38.74913666|-97.19496927|Warehouse|Retail|Trade 35|WSI00035
+LOC00036|LWID00000036|Philadelphia Office|N|422 Maple Street|Suite 432|Philadelphia|PA|PA Region|US|United States|58722|LOCID0036|35.30858229|-88.83934656|Retail|Manufacturing||WSI00036
+LOC00037|LWID00000037|San Antonio Office|N|319 Elm Street|Suite 862|San Antonio|TX|TX Region|US|United States|43303|LOCID0037|34.00021362|-100.59377418|Factory|Administrative|Trade 37|WSI00037
+LOC00038|LWID00000038|San Diego Office|N|391 Maple Street||San Diego|CA|CA Region|US|United States|27705|LOCID0038|49.83530024|-110.38029249|Retail|Manufacturing||WSI00038
+LOC00039|LWID00000039|Dallas Office|N|422 Main Street|Suite 806|Dallas|TX|TX Region|US|United States|46170|LOCID0039|47.97780207|-96.76735326|Warehouse|Administrative||WSI00039
+LOC00040|LWID00000040|San Jose Office|N|464 Oak Street||San Jose|CA|CA Region|US|United States|58114|LOCID0040|47.24063381|-113.75930112|Retail|Distribution||WSI00040
+LOC00041|LWID00000041|Austin Office|N|509 Maple Street|Suite 851|Austin|TX|TX Region|US|United States|20118|LOCID0041|43.08951317|-78.46122737|Warehouse|Retail|Trade 41|WSI00041
+LOC00042|LWID00000042|Jacksonville Office|N|806 Maple Street|Suite 197|Jacksonville|FL|FL Region|US|United States|88018|LOCID0042|41.05636558|-127.57084625|Factory|Administrative|Trade 42|WSI00042
+LOC00043|LWID00000043|Denver Office|N|889 Pine Street||Denver|CO|CO Region|US|United States|66925|LOCID0043|35.41304282|-73.5909787|Warehouse|Administrative||WSI00043
+LOC00044|LWID00000044|Boston Office|N|747 Elm Street||Boston|MA|MA Region|US|United States|78731|LOCID0044|26.0295563|-94.90456759|Warehouse|Distribution||WSI00044
+LOC00045|LWID00000045|Seattle Office|N|326 Oak Street||Seattle|WA|WA Region|US|United States|61495|LOCID0045|49.27600612|-81.0653868|Office|Manufacturing||WSI00045
+LOC00046|LWID00000046|New York Office|N|905 Elm Street||New York|NY|NY Region|US|United States|54062|LOCID0046|27.06362782|-92.85636162|Office|Retail||WSI00046
+LOC00047|LWID00000047|Los Angeles Office|N|508 Maple Street||Los Angeles|CA|CA Region|US|United States|27088|LOCID0047|44.05082299|-98.74003737|Warehouse|Retail||WSI00047
+LOC00048|LWID00000048|Chicago Office|N|685 Oak Street|Suite 853|Chicago|IL|IL Region|US|United States|78714|LOCID0048|31.15614601|-125.34314128|Factory|Distribution||WSI00048
+LOC00049|LWID00000049|Houston Office|N|689 Main Street||Houston|TX|TX Region|US|United States|64209|LOCID0049|35.58851506|-107.3599893|Retail|Distribution||WSI00049
+LOC00050|LWID00000050|Phoenix Office|N|124 Pine Street||Phoenix|AZ|AZ Region|US|United States|55838|LOCID0050|40.40552486|-65.63965315|Factory|Manufacturing||WSI00050
+LOC00051|LWID00000051|Philadelphia Office|N|937 Oak Street||Philadelphia|PA|PA Region|US|United States|58997|LOCID0051|28.89978043|-82.64836106|Office|Administrative|Trade 51|WSI00051
+LOC00052|LWID00000052|San Antonio Office|N|348 Maple Street|Suite 989|San Antonio|TX|TX Region|US|United States|47707|LOCID0052|25.34333232|-84.90331037|Office|Distribution||WSI00052
+LOC00053|LWID00000053|San Diego Office|N|123 Pine Street||San Diego|CA|CA Region|US|United States|80517|LOCID0053|30.29688284|-94.48242609|Retail|Retail||WSI00053
+LOC00054|LWID00000054|Dallas Office|N|244 Main Street||Dallas|TX|TX Region|US|United States|96969|LOCID0054|38.16997726|-113.3953376|Office|Distribution||WSI00054
+LOC00055|LWID00000055|San Jose Office|N|813 Maple Street||San Jose|CA|CA Region|US|United States|70943|LOCID0055|41.3689468|-129.45827861|Factory|Distribution||WSI00055
+LOC00056|LWID00000056|Austin Office|N|775 Pine Street|Suite 119|Austin|TX|TX Region|US|United States|48337|LOCID0056|46.68526107|-87.78827559|Warehouse|Retail||WSI00056
+LOC00057|LWID00000057|Jacksonville Office|N|826 Main Street|Suite 596|Jacksonville|FL|FL Region|US|United States|88263|LOCID0057|38.28901613|-117.88286982|Factory|Administrative||WSI00057
+LOC00058|LWID00000058|Denver Office|N|642 Pine Street||Denver|CO|CO Region|US|United States|61563|LOCID0058|43.609768|-128.80580535|Retail|Distribution||WSI00058
+LOC00059|LWID00000059|Boston Office|N|341 Maple Street||Boston|MA|MA Region|US|United States|18127|LOCID0059|40.64480909|-72.88597718|Office|Distribution||WSI00059
+LOC00060|LWID00000060|Seattle Office|N|449 Elm Street|Suite 189|Seattle|WA|WA Region|US|United States|60096|LOCID0060|38.0179461|-85.93033172|Warehouse|Retail||WSI00060
+LOC00061|LWID00000061|New York Office|N|256 Elm Street|Suite 719|New York|NY|NY Region|US|United States|53160|LOCID0061|36.22922963|-121.4348114|Warehouse|Manufacturing|Trade 61|WSI00061
+LOC00062|LWID00000062|Los Angeles Office|N|416 Maple Street|Suite 540|Los Angeles|CA|CA Region|US|United States|29025|LOCID0062|41.40579383|-93.28512132|Warehouse|Distribution||WSI00062
+LOC00063|LWID00000063|Chicago Office|N|645 Main Street||Chicago|IL|IL Region|US|United States|29073|LOCID0063|43.17698833|-80.24672418|Factory|Retail||WSI00063
+LOC00064|LWID00000064|Houston Office|N|863 Pine Street||Houston|TX|TX Region|US|United States|34632|LOCID0064|27.66928582|-117.99147772|Retail|Manufacturing||WSI00064
+LOC00065|LWID00000065|Phoenix Office|N|336 Main Street||Phoenix|AZ|AZ Region|US|United States|72469|LOCID0065|28.35216569|-75.00101466|Factory|Distribution||WSI00065
+LOC00066|LWID00000066|Philadelphia Office|N|496 Elm Street||Philadelphia|PA|PA Region|US|United States|31467|LOCID0066|29.83149574|-127.90507904|Office|Distribution|Trade 66|WSI00066
+LOC00067|LWID00000067|San Antonio Office|N|327 Oak Street|Suite 167|San Antonio|TX|TX Region|US|United States|33209|LOCID0067|48.17758015|-65.93420343|Factory|Distribution|Trade 67|WSI00067
+LOC00068|LWID00000068|San Diego Office|N|352 Elm Street||San Diego|CA|CA Region|US|United States|15482|LOCID0068|40.19824895|-76.41864654|Retail|Retail||WSI00068
+LOC00069|LWID00000069|Dallas Office|N|860 Maple Street|Suite 637|Dallas|TX|TX Region|US|United States|94068|LOCID0069|46.8945743|-78.85020895|Office|Retail||WSI00069
+LOC00070|LWID00000070|San Jose Office|N|998 Main Street|Suite 351|San Jose|CA|CA Region|US|United States|77987|LOCID0070|38.44672859|-66.05100816|Office|Retail||WSI00070
+LOC00071|LWID00000071|Austin Office|N|745 Main Street||Austin|TX|TX Region|US|United States|67613|LOCID0071|34.95099729|-110.20398039|Retail|Retail||WSI00071
+LOC00072|LWID00000072|Jacksonville Office|N|401 Maple Street|Suite 806|Jacksonville|FL|FL Region|US|United States|77760|LOCID0072|47.59189117|-99.86736805|Factory|Administrative|Trade 72|WSI00072
+LOC00073|LWID00000073|Denver Office|N|215 Oak Street|Suite 812|Denver|CO|CO Region|US|United States|81618|LOCID0073|28.38266685|-103.11864517|Factory|Administrative||WSI00073
+LOC00074|LWID00000074|Boston Office|N|704 Oak Street|Suite 192|Boston|MA|MA Region|US|United States|42778|LOCID0074|33.1018695|-87.84253203|Warehouse|Administrative||WSI00074
+LOC00075|LWID00000075|Seattle Office|N|823 Elm Street|Suite 187|Seattle|WA|WA Region|US|United States|78657|LOCID0075|42.68197797|-82.75320067|Warehouse|Retail||WSI00075
+LOC00076|LWID00000076|New York Office|N|144 Oak Street|Suite 679|New York|NY|NY Region|US|United States|96445|LOCID0076|46.56681198|-119.46193374|Warehouse|Manufacturing|Trade 76|WSI00076
+LOC00077|LWID00000077|Los Angeles Office|N|152 Elm Street||Los Angeles|CA|CA Region|US|United States|68491|LOCID0077|32.21951344|-118.25475829|Warehouse|Manufacturing||WSI00077
+LOC00078|LWID00000078|Chicago Office|N|883 Pine Street||Chicago|IL|IL Region|US|United States|75225|LOCID0078|46.38527641|-94.67242463|Office|Retail||WSI00078
+LOC00079|LWID00000079|Houston Office|N|702 Elm Street||Houston|TX|TX Region|US|United States|67917|LOCID0079|26.98512293|-90.99336322|Warehouse|Distribution||WSI00079
+LOC00080|LWID00000080|Phoenix Office|N|670 Oak Street||Phoenix|AZ|AZ Region|US|United States|29432|LOCID0080|26.37659845|-107.31371084|Warehouse|Administrative||WSI00080
+LOC00081|LWID00000081|Philadelphia Office|N|958 Maple Street||Philadelphia|PA|PA Region|US|United States|21495|LOCID0081|26.22578407|-102.89779995|Warehouse|Manufacturing||WSI00081
+LOC00082|LWID00000082|San Antonio Office|N|725 Maple Street|Suite 675|San Antonio|TX|TX Region|US|United States|33254|LOCID0082|49.1573316|-81.29323741|Retail|Administrative||WSI00082
+LOC00083|LWID00000083|San Diego Office|N|406 Pine Street||San Diego|CA|CA Region|US|United States|59668|LOCID0083|45.50661856|-80.70127079|Office|Distribution||WSI00083
+LOC00084|LWID00000084|Dallas Office|N|224 Pine Street||Dallas|TX|TX Region|US|United States|64232|LOCID0084|38.11615523|-84.77108267|Office|Administrative||WSI00084
+LOC00085|LWID00000085|San Jose Office|N|744 Maple Street|Suite 595|San Jose|CA|CA Region|US|United States|89269|LOCID0085|48.34729187|-65.89190125|Retail|Retail||WSI00085
+LOC00086|LWID00000086|Austin Office|N|424 Pine Street|Suite 738|Austin|TX|TX Region|US|United States|56380|LOCID0086|48.1776342|-90.07115124|Factory|Retail||WSI00086
+LOC00087|LWID00000087|Jacksonville Office|N|284 Maple Street||Jacksonville|FL|FL Region|US|United States|48074|LOCID0087|49.48144149|-129.89724038|Office|Retail||WSI00087
+LOC00088|LWID00000088|Denver Office|N|220 Oak Street|Suite 524|Denver|CO|CO Region|US|United States|64269|LOCID0088|26.13730474|-107.27274711|Warehouse|Administrative||WSI00088
+LOC00089|LWID00000089|Boston Office|N|806 Pine Street||Boston|MA|MA Region|US|United States|18891|LOCID0089|32.69431373|-97.06517424|Retail|Administrative||WSI00089
+LOC00090|LWID00000090|Seattle Office|N|441 Pine Street||Seattle|WA|WA Region|US|United States|84569|LOCID0090|40.39983357|-128.10737018|Warehouse|Manufacturing||WSI00090
+LOC00091|LWID00000091|New York Office|N|446 Elm Street|Suite 916|New York|NY|NY Region|US|United States|14660|LOCID0091|41.14130552|-98.702791|Factory|Distribution||WSI00091
+LOC00092|LWID00000092|Los Angeles Office|N|933 Elm Street|Suite 157|Los Angeles|CA|CA Region|US|United States|78298|LOCID0092|32.48359367|-82.87732997|Retail|Administrative||WSI00092
+LOC00093|LWID00000093|Chicago Office|N|801 Pine Street|Suite 914|Chicago|IL|IL Region|US|United States|56346|LOCID0093|26.65532603|-120.2951811|Office|Distribution|Trade 93|WSI00093
+LOC00094|LWID00000094|Houston Office|N|741 Maple Street|Suite 684|Houston|TX|TX Region|US|United States|89388|LOCID0094|34.73915685|-91.31252864|Retail|Distribution|Trade 94|WSI00094
+LOC00095|LWID00000095|Phoenix Office|N|378 Elm Street||Phoenix|AZ|AZ Region|US|United States|41148|LOCID0095|34.28958942|-76.08526452|Retail|Manufacturing||WSI00095
+LOC00096|LWID00000096|Philadelphia Office|N|279 Main Street||Philadelphia|PA|PA Region|US|United States|14901|LOCID0096|44.44475979|-70.632|Factory|Administrative|Trade 96|WSI00096
+LOC00097|LWID00000097|San Antonio Office|N|612 Oak Street||San Antonio|TX|TX Region|US|United States|73369|LOCID0097|43.31102667|-95.9641825|Retail|Manufacturing|Trade 97|WSI00097
+LOC00098|LWID00000098|San Diego Office|N|200 Maple Street|Suite 235|San Diego|CA|CA Region|US|United States|36894|LOCID0098|43.11426581|-100.14105331|Office|Administrative||WSI00098
+LOC00099|LWID00000099|Dallas Office|N|145 Maple Street|Suite 441|Dallas|TX|TX Region|US|United States|71194|LOCID0099|47.2296469|-123.29831609|Retail|Administrative||WSI00099
+LOC00100|LWID00000100|San Jose Office|N|419 Oak Street||San Jose|CA|CA Region|US|United States|35237|LOCID0100|32.16418443|-95.40207263|Factory|Administrative||WSI00100

@@ -1,0 +1,1715 @@
+{
+  "datamart": "HR Datamart",
+  "version": "1.0",
+  "generated_date": "2026-02-05",
+  "feeds": [
+    {
+      "feed_id": "INT6020",
+      "feed_name": "Grade Profile",
+      "description": "Compensation grade profiles with salary ranges and segments",
+      "source": "Workday",
+      "frequency": "Daily",
+      "filename_pattern": "workday.hrdp.dly_grade_profile.full.YYYYMMDDHHMMSS.csv",
+      "primary_key": ["Grade_Profile_ID"],
+      "fields": [
+        {
+          "name": "Grade_ID",
+          "type": "varchar(15)",
+          "nullable": false,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Unique identifier for the grade"
+        },
+        {
+          "name": "Grade_Name",
+          "type": "varchar(200)",
+          "nullable": false,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Name of the grade"
+        },
+        {
+          "name": "Grade_Profile_Currency_Code",
+          "type": "varchar(3)",
+          "nullable": false,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Currency code (e.g., USD, CAD)"
+        },
+        {
+          "name": "Grade_Profile_ID",
+          "type": "varchar(30)",
+          "nullable": false,
+          "pk": true,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Unique identifier for grade profile"
+        },
+        {
+          "name": "Effective_Date",
+          "type": "date",
+          "nullable": false,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Date when grade profile became effective"
+        },
+        {
+          "name": "Grade_Profile_Name",
+          "type": "varchar(200)",
+          "nullable": false,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Name of the grade profile"
+        },
+        {
+          "name": "Grade_Profile_Number_of_Segements",
+          "type": "integer",
+          "nullable": false,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Number of segments in the grade profile"
+        },
+        {
+          "name": "Grade_Profile_Salary_Range_Maximum",
+          "type": "decimal(19,4)",
+          "nullable": false,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "restricted",
+          "description": "Maximum salary for the grade profile"
+        },
+        {
+          "name": "Grade_Profile_Salary_Range_Midpoint",
+          "type": "decimal(19,4)",
+          "nullable": false,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "restricted",
+          "description": "Midpoint salary for the grade profile"
+        },
+        {
+          "name": "Grade_Profile_Salary_Range_Minimjum",
+          "type": "decimal(19,4)",
+          "nullable": false,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "restricted",
+          "description": "Minimum salary for the grade profile"
+        },
+        {
+          "name": "Grade_Profile_Segement_1_Top",
+          "type": "decimal(19,4)",
+          "nullable": false,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "restricted",
+          "description": "Top of segment 1"
+        },
+        {
+          "name": "Grade_Profile_Segement_2_Top",
+          "type": "decimal(19,4)",
+          "nullable": false,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "restricted",
+          "description": "Top of segment 2"
+        },
+        {
+          "name": "Grade_Profile_Segement_3_Top",
+          "type": "decimal(19,4)",
+          "nullable": false,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "restricted",
+          "description": "Top of segment 3"
+        },
+        {
+          "name": "Grade_Profile_Segement_4_Top",
+          "type": "decimal(19,4)",
+          "nullable": false,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "restricted",
+          "description": "Top of segment 4"
+        },
+        {
+          "name": "Grade_Profile_Segement_5_Top",
+          "type": "decimal(19,4)",
+          "nullable": false,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "restricted",
+          "description": "Top of segment 5"
+        }
+      ]
+    },
+    {
+      "feed_id": "INT6021",
+      "feed_name": "Job Profile",
+      "description": "Job profiles with compensation grades, job families, and management levels",
+      "source": "Workday",
+      "frequency": "Daily",
+      "filename_pattern": "workday.hrdp.dly_job_profile.full.YYYYMMDDHHMMSS.csv",
+      "primary_key": ["Job_Profile_ID"],
+      "fields": [
+        {
+          "name": "Compensation_Grade",
+          "type": "varchar(15)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "restricted",
+          "description": "Associated compensation grade"
+        },
+        {
+          "name": "Critical_Job_Flag",
+          "type": "char(1)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Y/N flag indicating if job is critical"
+        },
+        {
+          "name": "Difficult_to_Fill_Flag",
+          "type": "char(1)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Y/N flag indicating if job is difficult to fill"
+        },
+        {
+          "name": "Inactive_Flag",
+          "type": "boolean",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "True if job profile is inactive"
+        },
+        {
+          "name": "Job_Category_Code",
+          "type": "varchar(30)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Code for job category"
+        },
+        {
+          "name": "Job_Category_Name",
+          "type": "varchar(100)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Name of job category"
+        },
+        {
+          "name": "Job_Exempt_Canada",
+          "type": "varchar(50)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Exemption status in Canada"
+        },
+        {
+          "name": "Job_Exempt_US",
+          "type": "varchar(50)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Exemption status in US"
+        },
+        {
+          "name": "Job_Family",
+          "type": "varchar(15)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Job family code"
+        },
+        {
+          "name": "Job_Family_Group",
+          "type": "varchar(100)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Job family group identifier"
+        },
+        {
+          "name": "Job_Family_Group_Name",
+          "type": "varchar(50)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Name of job family group"
+        },
+        {
+          "name": "Job_Family_Name",
+          "type": "varchar(100)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Name of job family"
+        },
+        {
+          "name": "Job_Level_Code",
+          "type": "varchar(15)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Code for job level"
+        },
+        {
+          "name": "Job_Level_Name",
+          "type": "varchar(15)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Name of job level"
+        },
+        {
+          "name": "Job_Profile_Code",
+          "type": "varchar(30)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Code for job profile"
+        },
+        {
+          "name": "Job_Profile_Description",
+          "type": "varchar(65535)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Description of job profile"
+        },
+        {
+          "name": "Job_Profile_ID",
+          "type": "varchar(30)",
+          "nullable": false,
+          "pk": true,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Unique identifier for job profile"
+        },
+        {
+          "name": "Job_Profile_Name",
+          "type": "varchar(200)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Name of job profile"
+        },
+        {
+          "name": "Job_Profile_Summary",
+          "type": "varchar(65535)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Summary of job profile"
+        },
+        {
+          "name": "Job_Profile_WID",
+          "type": "varchar(32)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Workday ID for job profile"
+        },
+        {
+          "name": "Job_Title",
+          "type": "varchar(200)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Title of the job"
+        },
+        {
+          "name": "Management_Level_Code",
+          "type": "varchar(30)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Code for management level"
+        },
+        {
+          "name": "Management_Level_Name",
+          "type": "varchar(200)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Name of management level"
+        },
+        {
+          "name": "Pay_Rate_Type",
+          "type": "varchar(30)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Type of pay rate (Salary, Hourly, etc.)"
+        },
+        {
+          "name": "Public_Job",
+          "type": "boolean",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "True if job is publicly advertised"
+        },
+        {
+          "name": "Work_Shift_Required",
+          "type": "boolean",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "True if shift work is required"
+        },
+        {
+          "name": "JOB_MATRIX",
+          "type": "varchar(100)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Job matrix classification"
+        },
+        {
+          "name": "IS_PEOPLE_MANAGER",
+          "type": "boolean",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "True if position manages people"
+        },
+        {
+          "name": "IS_MANAGER",
+          "type": "boolean",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "True if position is managerial"
+        },
+        {
+          "name": "FREQUENCY",
+          "type": "varchar(15)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Pay frequency"
+        }
+      ]
+    },
+    {
+      "feed_id": "INT6022",
+      "feed_name": "Job Classification",
+      "description": "Job classification attributes linked to job profiles",
+      "source": "Workday",
+      "frequency": "Daily",
+      "filename_pattern": "workday.hrdp.dly_job_classification.full.YYYYMMDDHHMMSS.csv",
+      "primary_key": ["Job_Profile_ID"],
+      "foreign_keys": [
+        {
+          "column": "Job_Profile_ID",
+          "references_table": "INT6021",
+          "references_column": "Job_Profile_ID"
+        }
+      ],
+      "fields": [
+        {
+          "name": "Job_Profile_ID",
+          "type": "varchar(30)",
+          "nullable": false,
+          "pk": true,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "FK to Job Profile"
+        },
+        {
+          "name": "Job_Profile_WID",
+          "type": "varchar(32)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Workday ID for job profile"
+        },
+        {
+          "name": "AAP_Job_Group",
+          "type": "varchar(200)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Affirmative Action Plan job group"
+        },
+        {
+          "name": "Bonus_Eligibility",
+          "type": "varchar(100)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "restricted",
+          "description": "Bonus eligibility status"
+        },
+        {
+          "name": "Customer_Facing",
+          "type": "varchar(15)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Yes/No indicator for customer-facing role"
+        },
+        {
+          "name": "EEO1_Code",
+          "type": "varchar(100)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "EEO-1 job category"
+        },
+        {
+          "name": "Job_Collection",
+          "type": "varchar(100)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Job collection grouping"
+        },
+        {
+          "name": "Loan_Originator_Code",
+          "type": "varchar(30)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Loan originator code if applicable"
+        },
+        {
+          "name": "National_Occupation_Code",
+          "type": "varchar(200)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "National occupation code"
+        },
+        {
+          "name": "Occupation_Code",
+          "type": "varchar(200)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Occupation code"
+        },
+        {
+          "name": "Recruitment_Channel",
+          "type": "varchar(15)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Preferred recruitment channel"
+        },
+        {
+          "name": "Standard_Occupation_Code",
+          "type": "varchar(200)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Standard occupation code"
+        },
+        {
+          "name": "Stock",
+          "type": "varchar(100)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "restricted",
+          "description": "Stock grant eligibility"
+        }
+      ]
+    },
+    {
+      "feed_id": "INT6023",
+      "feed_name": "Location",
+      "description": "Work locations with geographic and administrative details",
+      "source": "Workday",
+      "frequency": "Daily",
+      "filename_pattern": "workday.hrdp.dly_location.full.YYYYMMDDHHMMSS.csv",
+      "primary_key": ["Location_ID"],
+      "fields": [
+        {
+          "name": "Location_ID",
+          "type": "varchar(30)",
+          "nullable": false,
+          "pk": true,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Unique location identifier"
+        },
+        {
+          "name": "Location_WID",
+          "type": "varchar(30)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Workday ID for location"
+        },
+        {
+          "name": "Location_Name",
+          "type": "varchar(100)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Name of location"
+        },
+        {
+          "name": "Inactive",
+          "type": "varchar(5)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Y/N indicator for inactive locations"
+        },
+        {
+          "name": "Address_Line_1",
+          "type": "varchar(200)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Street address line 1"
+        },
+        {
+          "name": "Address_Line_2",
+          "type": "varchar(200)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Street address line 2"
+        },
+        {
+          "name": "City",
+          "type": "varchar(100)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "City name"
+        },
+        {
+          "name": "Region",
+          "type": "varchar(2)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "State/province code"
+        },
+        {
+          "name": "REGION_NAME",
+          "type": "varchar(50)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "State/province name"
+        },
+        {
+          "name": "Country",
+          "type": "varchar(2)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Country code"
+        },
+        {
+          "name": "COUNTRY_NAME",
+          "type": "varchar(50)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Country name"
+        },
+        {
+          "name": "Location_Postal_Code",
+          "type": "varchar(15)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Postal code"
+        },
+        {
+          "name": "Location_Identifier",
+          "type": "varchar(30)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Additional location identifier"
+        },
+        {
+          "name": "Latitude",
+          "type": "decimal(11,8)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Geographic latitude"
+        },
+        {
+          "name": "Longitude",
+          "type": "decimal(11,8)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Geographic longitude"
+        },
+        {
+          "name": "Location_Type",
+          "type": "varchar(30)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Type of location (Office, Warehouse, etc.)"
+        },
+        {
+          "name": "Location_Usage_Type",
+          "type": "varchar(30)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Usage type of location"
+        },
+        {
+          "name": "Trade_Name",
+          "type": "varchar(30)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Trade name if applicable"
+        },
+        {
+          "name": "Worksite_ID_Code",
+          "type": "varchar(30)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Worksite identifier code"
+        }
+      ]
+    },
+    {
+      "feed_id": "INT6024",
+      "feed_name": "Company",
+      "description": "Company master data with business units and currencies",
+      "source": "Workday",
+      "frequency": "Daily",
+      "filename_pattern": "workday.hrdp.dly_company.full.YYYYMMDDHHMMSS.csv",
+      "primary_key": ["Company_ID"],
+      "fields": [
+        {
+          "name": "Company_ID",
+          "type": "varchar(15)",
+          "nullable": false,
+          "pk": true,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Unique company identifier"
+        },
+        {
+          "name": "Company_WID",
+          "type": "varchar(32)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Workday ID for company"
+        },
+        {
+          "name": "Company_Name",
+          "type": "varchar(100)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Name of company"
+        },
+        {
+          "name": "Company_Code",
+          "type": "varchar(15)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Code for company"
+        },
+        {
+          "name": "Business_Unit",
+          "type": "varchar(30)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Business unit identifier"
+        },
+        {
+          "name": "Company_Subtype",
+          "type": "varchar(15)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Subtype of company (Subsidiary, Division, etc.)"
+        },
+        {
+          "name": "Company_Currency",
+          "type": "varchar(3)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Default currency for company"
+        }
+      ]
+    },
+    {
+      "feed_id": "INT6025",
+      "feed_name": "Cost Center",
+      "description": "Cost center master data with hierarchical information",
+      "source": "Workday",
+      "frequency": "Daily",
+      "filename_pattern": "workday.hrdp.dly_cost_center.full.YYYYMMDDHHMMSS.csv",
+      "primary_key": ["Cost_Center_ID"],
+      "fields": [
+        {
+          "name": "Cost_Center_ID",
+          "type": "varchar(15)",
+          "nullable": false,
+          "pk": true,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Unique cost center identifier"
+        },
+        {
+          "name": "Cost_Center_WID",
+          "type": "varchar(32)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Workday ID for cost center"
+        },
+        {
+          "name": "Cost_Center_Code",
+          "type": "varchar(15)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Code for cost center"
+        },
+        {
+          "name": "Cost_Center_Name",
+          "type": "varchar(100)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Name of cost center"
+        },
+        {
+          "name": "Hierarchy",
+          "type": "varchar(2000)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Hierarchical path of cost center"
+        },
+        {
+          "name": "Subtype",
+          "type": "varchar(15)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Subtype of cost center"
+        }
+      ]
+    },
+    {
+      "feed_id": "INT6032",
+      "feed_name": "Positions",
+      "description": "Position master data with job and organizational assignments",
+      "source": "Workday",
+      "frequency": "Daily",
+      "filename_pattern": "workday.hrdp.dly_positions.full.YYYYMMDDHHMMSS.csv",
+      "primary_key": ["Position_ID"],
+      "foreign_keys": [
+        {
+          "column": "Job_Profile",
+          "references_table": "INT6021",
+          "references_column": "Job_Profile_ID"
+        },
+        {
+          "column": "Supervisory_Organization",
+          "references_table": "INT6025",
+          "references_column": "Cost_Center_ID"
+        },
+        {
+          "column": "Location",
+          "references_table": "INT6023",
+          "references_column": "Location_ID"
+        }
+      ],
+      "fields": [
+        {
+          "name": "Position_ID",
+          "type": "varchar(30)",
+          "nullable": false,
+          "pk": true,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Unique position identifier"
+        },
+        {
+          "name": "Supervisory_Organization",
+          "type": "varchar(100)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "FK to Cost Center or Department"
+        },
+        {
+          "name": "Effective_Date",
+          "type": "date",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Date position became effective"
+        },
+        {
+          "name": "Reason",
+          "type": "varchar(256)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Reason for position creation/change"
+        },
+        {
+          "name": "Worker_Type",
+          "type": "varchar(30)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Type of worker (Employee, Contractor, Intern)"
+        },
+        {
+          "name": "Worker_Sub_Type",
+          "type": "varchar(30)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Subtype of worker"
+        },
+        {
+          "name": "Job_Profile",
+          "type": "varchar(30)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "FK to Job Profile"
+        },
+        {
+          "name": "Job_Title",
+          "type": "varchar(200)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Job title"
+        },
+        {
+          "name": "Business_Title",
+          "type": "varchar(200)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Business title"
+        },
+        {
+          "name": "Time_Type",
+          "type": "varchar(256)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Type of time engagement"
+        },
+        {
+          "name": "Location",
+          "type": "varchar(100)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "FK to Location"
+        }
+      ]
+    },
+    {
+      "feed_id": "INT6028",
+      "feed_name": "Department Hierarchy",
+      "description": "Department master data with hierarchical structure",
+      "source": "Workday",
+      "frequency": "Daily",
+      "filename_pattern": "workday.hrdp.dly_department_hierarchy.full.YYYYMMDDHHMMSS.csv",
+      "primary_key": ["Department_ID"],
+      "fields": [
+        {
+          "name": "Department_ID",
+          "type": "varchar(15)",
+          "nullable": false,
+          "pk": true,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Unique department identifier"
+        },
+        {
+          "name": "Department_WID",
+          "type": "varchar(32)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Workday ID for department"
+        },
+        {
+          "name": "Department_Name",
+          "type": "varchar(200)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Name of department"
+        },
+        {
+          "name": "Dept_Name_with_Manager_Name",
+          "type": "varchar(200)",
+          "nullable": true,
+          "pk": false,
+          "pii": true,
+          "sensitivity": "restricted",
+          "description": "Department name with manager name"
+        },
+        {
+          "name": "Active",
+          "type": "boolean",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "True if department is active"
+        },
+        {
+          "name": "Parent_Dept_ID",
+          "type": "varchar(15)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Parent department identifier for hierarchy"
+        },
+        {
+          "name": "Owner_EIN",
+          "type": "varchar(15)",
+          "nullable": true,
+          "pk": false,
+          "pii": true,
+          "sensitivity": "restricted",
+          "description": "Employee ID of department owner (PII)"
+        },
+        {
+          "name": "Department_Level",
+          "type": "integer",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Hierarchical level of department"
+        },
+        {
+          "name": "PRIMARY_LOCATION_CODE",
+          "type": "varchar(15)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Primary location code"
+        },
+        {
+          "name": "Type",
+          "type": "varchar(30)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Type of department"
+        },
+        {
+          "name": "Subtype",
+          "type": "varchar(30)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Subtype of department"
+        }
+      ]
+    },
+    {
+      "feed_id": "INT0095E",
+      "feed_name": "Worker Job",
+      "description": "Transactional employee job assignments with effective dating",
+      "source": "Workday",
+      "frequency": "Daily",
+      "filename_pattern": "workday.hrdp.dly_worker_job.full.YYYYMMDDHHMMSS.csv",
+      "primary_key": ["Employee_ID", "Transaction_WID", "Position_ID", "Effective_Date"],
+      "foreign_keys": [
+        {
+          "column": "Job_Profile_ID",
+          "references_table": "INT6021",
+          "references_column": "Job_Profile_ID"
+        },
+        {
+          "column": "Position_ID",
+          "references_table": "INT6032",
+          "references_column": "Position_ID"
+        },
+        {
+          "column": "Location",
+          "references_table": "INT6023",
+          "references_column": "Location_ID"
+        },
+        {
+          "column": "Manager_ID",
+          "references_table": "INT0095E",
+          "references_column": "Employee_ID"
+        }
+      ],
+      "important_notes": "Transactional feed. Multiple rows per employee with different effective dates. Employee_ID and Manager_ID are PII.",
+      "fields": [
+        {
+          "name": "Employee_ID",
+          "type": "varchar(15)",
+          "nullable": false,
+          "pk": true,
+          "pii": true,
+          "sensitivity": "restricted",
+          "description": "Unique employee identifier (PII)"
+        },
+        {
+          "name": "Transaction_WID",
+          "type": "varchar(32)",
+          "nullable": false,
+          "pk": true,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Unique transaction identifier"
+        },
+        {
+          "name": "Transaction_Effective_Date",
+          "type": "date",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Date transaction became effective"
+        },
+        {
+          "name": "Transaction_Entry_Date",
+          "type": "datetime",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Date/time transaction was entered"
+        },
+        {
+          "name": "Transaction_Type",
+          "type": "varchar(256)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Type of transaction (Hire, Transfer, etc.)"
+        },
+        {
+          "name": "Position_ID",
+          "type": "varchar(15)",
+          "nullable": false,
+          "pk": true,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "FK to Position"
+        },
+        {
+          "name": "Effective_Date",
+          "type": "date",
+          "nullable": false,
+          "pk": true,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Effective date of job assignment"
+        },
+        {
+          "name": "Worker_Type",
+          "type": "varchar(30)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Type of worker"
+        },
+        {
+          "name": "Worker_Sub-Type",
+          "type": "varchar(30)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Subtype of worker"
+        },
+        {
+          "name": "Business_Title",
+          "type": "varchar(200)",
+          "nullable": true,
+          "pk": false,
+          "pii": true,
+          "sensitivity": "restricted",
+          "description": "Business title (PII)"
+        },
+        {
+          "name": "Business_Site_ID",
+          "type": "varchar(30)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "FK to Location"
+        },
+        {
+          "name": "Mailstop_Floor",
+          "type": "varchar(30)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Mailstop or floor location"
+        },
+        {
+          "name": "Worker_Status",
+          "type": "varchar(30)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Status of worker (Active, On Leave, Terminated)"
+        },
+        {
+          "name": "Active",
+          "type": "boolean",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "True if employee is active"
+        },
+        {
+          "name": "Active_Status_Date",
+          "type": "date",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Date of active status"
+        },
+        {
+          "name": "Hire_Date",
+          "type": "date",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Employee hire date"
+        },
+        {
+          "name": "Original_Hire_Date",
+          "type": "date",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Original hire date"
+        },
+        {
+          "name": "Hire_Reason",
+          "type": "varchar(256)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Reason for hire"
+        },
+        {
+          "name": "Employment_End_Date",
+          "type": "date",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Date employment ended"
+        },
+        {
+          "name": "Terminated",
+          "type": "boolean",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "True if employee terminated"
+        },
+        {
+          "name": "Termination_Date",
+          "type": "date",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Date of termination"
+        },
+        {
+          "name": "Manager_ID",
+          "type": "varchar(15)",
+          "nullable": true,
+          "pk": false,
+          "pii": true,
+          "sensitivity": "restricted",
+          "description": "Employee ID of manager (PII)"
+        },
+        {
+          "name": "Job_Profile_ID",
+          "type": "varchar(30)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "FK to Job Profile"
+        },
+        {
+          "name": "Location",
+          "type": "varchar(100)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "FK to Location"
+        },
+        {
+          "name": "Job_Title",
+          "type": "varchar(200)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Job title"
+        }
+      ]
+    },
+    {
+      "feed_id": "INT0096",
+      "feed_name": "Worker Organization",
+      "description": "Transactional employee organizational assignments (Company, Cost Center, Department)",
+      "source": "Workday",
+      "frequency": "Daily",
+      "filename_pattern": "workday.hrdp.dly_worker_organization.full.YYYYMMDDHHMMSS.csv",
+      "primary_key": ["Employee_ID", "Transaction_WID", "Organization_Type"],
+      "foreign_keys": [
+        {
+          "column": "Organization_ID",
+          "references_table": "INT6024|INT6025|INT6028",
+          "references_column": "Company_ID|Cost_Center_ID|Department_ID",
+          "notes": "Organization_ID references different tables based on Organization_Type"
+        }
+      ],
+      "important_notes": "Transactional feed. Each employee has assignments for Company, Cost Center, and Supervisory Organization. Employee_ID is PII.",
+      "fields": [
+        {
+          "name": "Employee_ID",
+          "type": "varchar(15)",
+          "nullable": false,
+          "pk": true,
+          "pii": true,
+          "sensitivity": "restricted",
+          "description": "Unique employee identifier (PII)"
+        },
+        {
+          "name": "Transaction_WID",
+          "type": "varchar(32)",
+          "nullable": false,
+          "pk": true,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Unique transaction identifier"
+        },
+        {
+          "name": "Transaction_Effective_Date",
+          "type": "date",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Date transaction became effective"
+        },
+        {
+          "name": "Transaction_Entry_Date",
+          "type": "datetime",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Date/time transaction was entered"
+        },
+        {
+          "name": "Transaction_Type",
+          "type": "varchar(256)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Type of transaction"
+        },
+        {
+          "name": "Organization_ID",
+          "type": "varchar(15)",
+          "nullable": true,
+          "pk": true,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Organization identifier (varies by type)"
+        },
+        {
+          "name": "Organization_Type",
+          "type": "varchar(15)",
+          "nullable": true,
+          "pk": true,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Type of organization (Company, Cost Center, Supervisory Organization)"
+        },
+        {
+          "name": "Sequence_Number",
+          "type": "number",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Sequence number"
+        },
+        {
+          "name": "Worker_Workday_ID",
+          "type": "varchar(32)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Workday ID"
+        }
+      ]
+    },
+    {
+      "feed_id": "INT0098",
+      "feed_name": "Worker Compensation",
+      "description": "Transactional employee compensation records with grades and pay ranges",
+      "source": "Workday",
+      "frequency": "Daily",
+      "filename_pattern": "workday.hrdp.dly_worker_compensation.full.YYYYMMDDHHMMSS.csv",
+      "primary_key": ["Employee_ID", "Transaction_WID"],
+      "foreign_keys": [
+        {
+          "column": "Comp_Grade_Profile_Proposed",
+          "references_table": "INT6020",
+          "references_column": "Grade_Profile_ID"
+        }
+      ],
+      "important_notes": "Transactional feed. Multiple compensation records per employee over time. Salary fields are restricted sensitivity. Employee_ID is PII.",
+      "fields": [
+        {
+          "name": "Employee_ID",
+          "type": "varchar(15)",
+          "nullable": false,
+          "pk": true,
+          "pii": true,
+          "sensitivity": "restricted",
+          "description": "Unique employee identifier (PII)"
+        },
+        {
+          "name": "Transaction_WID",
+          "type": "varchar(32)",
+          "nullable": false,
+          "pk": true,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Unique transaction identifier"
+        },
+        {
+          "name": "Transaction_Effective_Date",
+          "type": "date",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Date transaction became effective"
+        },
+        {
+          "name": "Transaction_Entry_Moment",
+          "type": "datetime",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Date/time transaction was entered"
+        },
+        {
+          "name": "Transaction_Type",
+          "type": "varchar(256)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Type of transaction (Hire, Compensation Update, etc.)"
+        },
+        {
+          "name": "Compensation_Package_Proposed",
+          "type": "varchar(15)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "restricted",
+          "description": "Proposed compensation package"
+        },
+        {
+          "name": "Compensation_Grade_Proposed",
+          "type": "varchar(15)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "restricted",
+          "description": "Proposed compensation grade"
+        },
+        {
+          "name": "Comp_Grade_Profile_Proposed",
+          "type": "varchar(30)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "restricted",
+          "description": "FK to Grade Profile"
+        },
+        {
+          "name": "Compensation_Step_Proposed",
+          "type": "varchar(30)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "restricted",
+          "description": "Proposed compensation step"
+        },
+        {
+          "name": "Pay_Range_Minimum",
+          "type": "number",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "restricted",
+          "description": "Minimum of pay range"
+        },
+        {
+          "name": "Pay_Range_Midpoint",
+          "type": "number",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "restricted",
+          "description": "Midpoint of pay range"
+        },
+        {
+          "name": "Pay_Range_Maximum",
+          "type": "number",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "restricted",
+          "description": "Maximum of pay range"
+        },
+        {
+          "name": "Base_Pay_Proposed_Amount",
+          "type": "number",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "restricted",
+          "description": "Proposed base pay amount"
+        },
+        {
+          "name": "Base_Pay_Proposed_Currency",
+          "type": "varchar(3)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "restricted",
+          "description": "Currency of proposed base pay"
+        },
+        {
+          "name": "Base_Pay_Proposed_Frequency",
+          "type": "varchar(30)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "restricted",
+          "description": "Frequency of base pay (Annual, etc.)"
+        },
+        {
+          "name": "Benefits_Annual_Rate_ABBR",
+          "type": "number",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "restricted",
+          "description": "Annual benefits rate"
+        },
+        {
+          "name": "Pay_Rate_Type",
+          "type": "varchar(30)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Type of pay rate"
+        },
+        {
+          "name": "Compensation",
+          "type": "number",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "restricted",
+          "description": "Total compensation"
+        },
+        {
+          "name": "Worker_Workday_ID",
+          "type": "varchar(32)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Workday ID"
+        }
+      ]
+    },
+    {
+      "feed_id": "INT270",
+      "feed_name": "Rescinded",
+      "description": "Records of rescinded transactions for data quality tracking",
+      "source": "Workday",
+      "frequency": "Daily",
+      "filename_pattern": "workday.hrdp.dly_rescinded.full.YYYYMMDDHHMMSS.csv",
+      "primary_key": ["workday_id"],
+      "fields": [
+        {
+          "name": "workday_id",
+          "type": "varchar(32)",
+          "nullable": false,
+          "pk": true,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Workday ID of rescinded transaction"
+        },
+        {
+          "name": "idp_table",
+          "type": "varchar(256)",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Name of table containing rescinded record (INT095E, INT096, INT098)"
+        },
+        {
+          "name": "rescinded_moment",
+          "type": "datetime",
+          "nullable": true,
+          "pk": false,
+          "pii": false,
+          "sensitivity": "public",
+          "description": "Date/time when record was rescinded"
+        }
+      ]
+    }
+  ]
+}

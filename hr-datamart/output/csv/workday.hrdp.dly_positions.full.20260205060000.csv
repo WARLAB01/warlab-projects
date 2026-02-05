@@ -1,0 +1,601 @@
+Position_ID|Supervisory_Organization|Effective_Date|Reason|Worker_Type|Worker_Sub_Type|Job_Profile|Job_Title|Business_Title|Time_Type|Location
+POS00001|CC00083|2026-02-05|New Position|Employee|Contract|JP00019|Network Engineer|Network Engineer|Contract|LOC00018
+POS00002|CC00018|2026-02-05|Reorganization|Contractor|Contract|JP00022|Sales Executive|Sales Executive|Temporary|LOC00059
+POS00003|CC00055|2026-02-05|Reclass|Contractor|Contract|JP00131|HR Manager|HR Manager|Seasonal|LOC00029
+POS00004|CC00055|2026-02-05|Reclass|Employee|Contract|JP00048|Project Manager|Project Manager|Temporary|LOC00092
+POS00005|CC00035|2026-02-05|Reorganization|Intern|Seasonal|JP00129|System Administrator|System Administrator|Regular|LOC00005
+POS00006|CC00062|2026-02-05|Expansion|Employee|Contract|JP00146|Product Manager|Product Manager|Regular|LOC00019
+POS00007|CC00094|2026-02-05|Reclass|Contractor|Contract|JP00187|HR Manager|HR Manager|Regular|LOC00067
+POS00008|CC00012|2026-02-05|Replacement|Contractor|Regular|JP00157|Security Analyst|Security Analyst|Seasonal|LOC00079
+POS00009|CC00044|2026-02-05|Reclass|Employee|Contract|JP00014|Finance Manager|Finance Manager|Contract|LOC00066
+POS00010|CC00074|2026-02-05|Expansion|Contractor|Seasonal|JP00121|Business Analyst|Business Analyst|Seasonal|LOC00038
+POS00011|CC00005|2026-02-05|Reclass|Intern|Seasonal|JP00043|Sales Executive|Sales Executive|Seasonal|LOC00008
+POS00012|CC00061|2026-02-05|Reclass|Employee|Regular|JP00162|System Administrator|System Administrator|Seasonal|LOC00095
+POS00013|CC00004|2026-02-05|Expansion|Contractor|Regular|JP00160|Product Manager|Product Manager|Temporary|LOC00065
+POS00014|CC00036|2026-02-05|Expansion|Employee|Seasonal|JP00020|Product Manager|Product Manager|Seasonal|LOC00033
+POS00015|CC00095|2026-02-05|New Position|Intern|Temporary|JP00004|Sales Executive|Sales Executive|Temporary|LOC00085
+POS00016|CC00048|2026-02-05|Replacement|Contractor|Temporary|JP00115|Network Engineer|Network Engineer|Contract|LOC00024
+POS00017|CC00005|2026-02-05|Expansion|Employee|Temporary|JP00136|Sales Executive|Sales Executive|Temporary|LOC00064
+POS00018|CC00053|2026-02-05|Reorganization|Employee|Contract|JP00193|Security Analyst|Security Analyst|Temporary|LOC00027
+POS00019|CC00094|2026-02-05|Expansion|Employee|Seasonal|JP00148|Finance Manager|Finance Manager|Regular|LOC00007
+POS00020|CC00060|2026-02-05|Reorganization|Contractor|Seasonal|JP00043|Sales Executive|Sales Executive|Contract|LOC00096
+POS00021|CC00069|2026-02-05|Replacement|Contractor|Contract|JP00193|Security Analyst|Security Analyst|Contract|LOC00034
+POS00022|CC00068|2026-02-05|Reorganization|Employee|Seasonal|JP00038|Marketing Manager|Marketing Manager|Contract|LOC00049
+POS00023|CC00041|2026-02-05|Reclass|Intern|Regular|JP00174|Data Analyst|Data Analyst|Regular|LOC00069
+POS00024|CC00046|2026-02-05|Reorganization|Intern|Seasonal|JP00164|Operations Manager|Operations Manager|Seasonal|LOC00035
+POS00025|CC00013|2026-02-05|Expansion|Intern|Contract|JP00069|System Administrator|System Administrator|Contract|LOC00099
+POS00026|CC00096|2026-02-05|Replacement|Intern|Temporary|JP00173|Finance Manager|Finance Manager|Seasonal|LOC00087
+POS00027|CC00024|2026-02-05|Expansion|Intern|Regular|JP00177|Product Manager|Product Manager|Regular|LOC00009
+POS00028|CC00053|2026-02-05|New Position|Intern|Regular|JP00004|Sales Executive|Sales Executive|Contract|LOC00045
+POS00029|CC00093|2026-02-05|Expansion|Contractor|Temporary|JP00057|System Administrator|System Administrator|Regular|LOC00004
+POS00030|CC00012|2026-02-05|New Position|Intern|Temporary|JP00159|Network Engineer|Network Engineer|Regular|LOC00091
+POS00031|CC00012|2026-02-05|Reclass|Employee|Contract|JP00031|Network Engineer|Network Engineer|Temporary|LOC00015
+POS00032|CC00024|2026-02-05|Expansion|Contractor|Contract|JP00179|Operations Manager|Operations Manager|Regular|LOC00082
+POS00033|CC00036|2026-02-05|Reorganization|Intern|Seasonal|JP00117|System Administrator|System Administrator|Seasonal|LOC00021
+POS00034|CC00010|2026-02-05|Expansion|Employee|Contract|JP00200|Project Manager|Project Manager|Contract|LOC00043
+POS00035|CC00034|2026-02-05|Expansion|Employee|Contract|JP00016|Sales Executive|Sales Executive|Regular|LOC00063
+POS00036|CC00079|2026-02-05|Reorganization|Employee|Contract|JP00052|Network Engineer|Network Engineer|Regular|LOC00019
+POS00037|CC00099|2026-02-05|Reorganization|Employee|Regular|JP00139|Accountant|Accountant|Contract|LOC00092
+POS00038|CC00014|2026-02-05|New Position|Employee|Regular|JP00067|Accountant|Accountant|Seasonal|LOC00100
+POS00039|CC00003|2026-02-05|Reorganization|Employee|Regular|JP00115|Network Engineer|Network Engineer|Regular|LOC00086
+POS00040|CC00035|2026-02-05|Replacement|Intern|Seasonal|JP00100|System Administrator|System Administrator|Contract|LOC00074
+POS00041|CC00066|2026-02-05|Reorganization|Contractor|Contract|JP00001|Quality Assurance|Quality Assurance|Contract|LOC00094
+POS00042|CC00009|2026-02-05|Reclass|Employee|Regular|JP00200|Project Manager|Project Manager|Contract|LOC00089
+POS00043|CC00062|2026-02-05|New Position|Intern|Seasonal|JP00200|Project Manager|Project Manager|Seasonal|LOC00088
+POS00044|CC00052|2026-02-05|New Position|Intern|Regular|JP00078|Project Manager|Project Manager|Seasonal|LOC00069
+POS00045|CC00011|2026-02-05|Reorganization|Contractor|Temporary|JP00088|Finance Manager|Finance Manager|Temporary|LOC00071
+POS00046|CC00050|2026-02-05|Replacement|Contractor|Contract|JP00011|Software Engineer|Software Engineer|Regular|LOC00081
+POS00047|CC00046|2026-02-05|Reorganization|Employee|Contract|JP00177|Product Manager|Product Manager|Temporary|LOC00018
+POS00048|CC00025|2026-02-05|New Position|Intern|Temporary|JP00010|Marketing Manager|Marketing Manager|Contract|LOC00050
+POS00049|CC00070|2026-02-05|Expansion|Contractor|Contract|JP00017|Data Analyst|Data Analyst|Regular|LOC00005
+POS00050|CC00008|2026-02-05|Expansion|Intern|Regular|JP00087|Product Manager|Product Manager|Contract|LOC00016
+POS00051|CC00084|2026-02-05|Reclass|Contractor|Temporary|JP00055|Operations Manager|Operations Manager|Temporary|LOC00010
+POS00052|CC00095|2026-02-05|Replacement|Contractor|Regular|JP00010|Marketing Manager|Marketing Manager|Contract|LOC00080
+POS00053|CC00032|2026-02-05|Replacement|Employee|Temporary|JP00012|System Administrator|System Administrator|Regular|LOC00040
+POS00054|CC00059|2026-02-05|Reclass|Employee|Regular|JP00025|Security Analyst|Security Analyst|Regular|LOC00015
+POS00055|CC00077|2026-02-05|Reclass|Employee|Regular|JP00128|Accountant|Accountant|Temporary|LOC00055
+POS00056|CC00095|2026-02-05|Reorganization|Contractor|Regular|JP00087|Product Manager|Product Manager|Temporary|LOC00042
+POS00057|CC00098|2026-02-05|New Position|Intern|Temporary|JP00055|Operations Manager|Operations Manager|Seasonal|LOC00009
+POS00058|CC00036|2026-02-05|Replacement|Contractor|Temporary|JP00031|Network Engineer|Network Engineer|Seasonal|LOC00071
+POS00059|CC00057|2026-02-05|Replacement|Intern|Regular|JP00043|Sales Executive|Sales Executive|Temporary|LOC00013
+POS00060|CC00079|2026-02-05|Reorganization|Employee|Regular|JP00162|System Administrator|System Administrator|Contract|LOC00011
+POS00061|CC00001|2026-02-05|Replacement|Employee|Seasonal|JP00002|Product Manager|Product Manager|Contract|LOC00089
+POS00062|CC00061|2026-02-05|Replacement|Employee|Temporary|JP00198|System Administrator|System Administrator|Seasonal|LOC00067
+POS00063|CC00053|2026-02-05|Replacement|Employee|Regular|JP00116|Operations Manager|Operations Manager|Temporary|LOC00092
+POS00064|CC00079|2026-02-05|New Position|Intern|Seasonal|JP00128|Accountant|Accountant|Seasonal|LOC00054
+POS00065|CC00072|2026-02-05|Replacement|Employee|Regular|JP00002|Product Manager|Product Manager|Regular|LOC00080
+POS00066|CC00098|2026-02-05|Reclass|Intern|Temporary|JP00093|HR Manager|HR Manager|Contract|LOC00099
+POS00067|CC00085|2026-02-05|Replacement|Contractor|Regular|JP00161|Data Analyst|Data Analyst|Temporary|LOC00015
+POS00068|CC00088|2026-02-05|Reorganization|Contractor|Temporary|JP00039|Security Analyst|Security Analyst|Temporary|LOC00086
+POS00069|CC00007|2026-02-05|Expansion|Contractor|Temporary|JP00012|System Administrator|System Administrator|Contract|LOC00033
+POS00070|CC00079|2026-02-05|Reorganization|Employee|Regular|JP00086|Operations Manager|Operations Manager|Regular|LOC00069
+POS00071|CC00021|2026-02-05|New Position|Contractor|Regular|JP00046|Business Analyst|Business Analyst|Regular|LOC00031
+POS00072|CC00057|2026-02-05|Reclass|Intern|Seasonal|JP00185|Marketing Manager|Marketing Manager|Contract|LOC00026
+POS00073|CC00087|2026-02-05|Expansion|Employee|Regular|JP00192|Data Analyst|Data Analyst|Seasonal|LOC00030
+POS00074|CC00031|2026-02-05|Reorganization|Employee|Contract|JP00026|Data Analyst|Data Analyst|Temporary|LOC00010
+POS00075|CC00075|2026-02-05|Reorganization|Employee|Contract|JP00121|Business Analyst|Business Analyst|Temporary|LOC00028
+POS00076|CC00059|2026-02-05|Replacement|Contractor|Seasonal|JP00157|Security Analyst|Security Analyst|Temporary|LOC00059
+POS00077|CC00025|2026-02-05|Expansion|Contractor|Temporary|JP00185|Marketing Manager|Marketing Manager|Seasonal|LOC00017
+POS00078|CC00089|2026-02-05|Reclass|Employee|Seasonal|JP00009|Project Manager|Project Manager|Temporary|LOC00015
+POS00079|CC00059|2026-02-05|Reorganization|Employee|Seasonal|JP00120|Network Engineer|Network Engineer|Temporary|LOC00038
+POS00080|CC00021|2026-02-05|Reclass|Employee|Temporary|JP00155|Software Engineer|Software Engineer|Regular|LOC00053
+POS00081|CC00063|2026-02-05|Replacement|Intern|Contract|JP00134|Operations Manager|Operations Manager|Contract|LOC00036
+POS00082|CC00094|2026-02-05|Reorganization|Intern|Temporary|JP00004|Sales Executive|Sales Executive|Temporary|LOC00042
+POS00083|CC00075|2026-02-05|Replacement|Intern|Temporary|JP00112|Marketing Manager|Marketing Manager|Regular|LOC00054
+POS00084|CC00006|2026-02-05|Reorganization|Intern|Regular|JP00012|System Administrator|System Administrator|Contract|LOC00068
+POS00085|CC00062|2026-02-05|New Position|Contractor|Contract|JP00101|Network Engineer|Network Engineer|Temporary|LOC00011
+POS00086|CC00097|2026-02-05|New Position|Intern|Contract|JP00143|Operations Manager|Operations Manager|Temporary|LOC00017
+POS00087|CC00038|2026-02-05|Replacement|Intern|Regular|JP00092|Accountant|Accountant|Regular|LOC00062
+POS00088|CC00040|2026-02-05|Replacement|Intern|Contract|JP00172|Quality Assurance|Quality Assurance|Regular|LOC00059
+POS00089|CC00099|2026-02-05|Replacement|Intern|Contract|JP00119|Sales Executive|Sales Executive|Temporary|LOC00048
+POS00090|CC00060|2026-02-05|New Position|Intern|Regular|JP00161|Data Analyst|Data Analyst|Contract|LOC00089
+POS00091|CC00068|2026-02-05|New Position|Contractor|Contract|JP00086|Operations Manager|Operations Manager|Seasonal|LOC00090
+POS00092|CC00070|2026-02-05|Reclass|Employee|Regular|JP00157|Security Analyst|Security Analyst|Seasonal|LOC00095
+POS00093|CC00066|2026-02-05|Expansion|Employee|Regular|JP00015|Marketing Manager|Marketing Manager|Contract|LOC00047
+POS00094|CC00080|2026-02-05|New Position|Contractor|Seasonal|JP00120|Network Engineer|Network Engineer|Temporary|LOC00083
+POS00095|CC00091|2026-02-05|New Position|Intern|Temporary|JP00144|Security Analyst|Security Analyst|Temporary|LOC00043
+POS00096|CC00070|2026-02-05|New Position|Intern|Contract|JP00062|Data Analyst|Data Analyst|Temporary|LOC00097
+POS00097|CC00098|2026-02-05|Replacement|Contractor|Seasonal|JP00191|Business Analyst|Business Analyst|Seasonal|LOC00065
+POS00098|CC00055|2026-02-05|Expansion|Employee|Regular|JP00175|Product Manager|Product Manager|Seasonal|LOC00045
+POS00099|CC00063|2026-02-05|Reclass|Intern|Regular|JP00116|Operations Manager|Operations Manager|Contract|LOC00091
+POS00100|CC00087|2026-02-05|Reclass|Contractor|Contract|JP00137|Network Engineer|Network Engineer|Seasonal|LOC00087
+POS00101|CC00009|2026-02-05|Replacement|Contractor|Regular|JP00178|Operations Manager|Operations Manager|Regular|LOC00051
+POS00102|CC00037|2026-02-05|New Position|Employee|Temporary|JP00046|Business Analyst|Business Analyst|Seasonal|LOC00015
+POS00103|CC00019|2026-02-05|Reorganization|Employee|Temporary|JP00179|Operations Manager|Operations Manager|Regular|LOC00038
+POS00104|CC00088|2026-02-05|Reclass|Employee|Contract|JP00107|Project Manager|Project Manager|Seasonal|LOC00054
+POS00105|CC00095|2026-02-05|New Position|Contractor|Temporary|JP00114|Finance Manager|Finance Manager|Regular|LOC00003
+POS00106|CC00067|2026-02-05|Expansion|Contractor|Seasonal|JP00060|Business Analyst|Business Analyst|Seasonal|LOC00063
+POS00107|CC00086|2026-02-05|Reclass|Intern|Contract|JP00152|Project Manager|Project Manager|Contract|LOC00039
+POS00108|CC00017|2026-02-05|Expansion|Employee|Seasonal|JP00146|Product Manager|Product Manager|Temporary|LOC00062
+POS00109|CC00037|2026-02-05|New Position|Employee|Seasonal|JP00096|HR Manager|HR Manager|Seasonal|LOC00059
+POS00110|CC00080|2026-02-05|Replacement|Intern|Seasonal|JP00043|Sales Executive|Sales Executive|Temporary|LOC00023
+POS00111|CC00089|2026-02-05|Replacement|Employee|Temporary|JP00182|Product Manager|Product Manager|Regular|LOC00006
+POS00112|CC00074|2026-02-05|Replacement|Contractor|Seasonal|JP00082|Security Analyst|Security Analyst|Seasonal|LOC00024
+POS00113|CC00072|2026-02-05|New Position|Intern|Seasonal|JP00053|HR Manager|HR Manager|Seasonal|LOC00019
+POS00114|CC00058|2026-02-05|Reclass|Employee|Seasonal|JP00096|HR Manager|HR Manager|Regular|LOC00004
+POS00115|CC00064|2026-02-05|Replacement|Contractor|Seasonal|JP00104|Operations Manager|Operations Manager|Temporary|LOC00001
+POS00116|CC00070|2026-02-05|Reclass|Contractor|Seasonal|JP00190|Marketing Manager|Marketing Manager|Contract|LOC00038
+POS00117|CC00074|2026-02-05|Replacement|Intern|Contract|JP00194|Project Manager|Project Manager|Seasonal|LOC00089
+POS00118|CC00094|2026-02-05|Reorganization|Employee|Temporary|JP00029|Accountant|Accountant|Regular|LOC00040
+POS00119|CC00052|2026-02-05|Reclass|Employee|Contract|JP00007|Network Engineer|Network Engineer|Seasonal|LOC00012
+POS00120|CC00008|2026-02-05|Reclass|Intern|Temporary|JP00084|Project Manager|Project Manager|Temporary|LOC00099
+POS00121|CC00026|2026-02-05|New Position|Employee|Contract|JP00072|Business Analyst|Business Analyst|Regular|LOC00066
+POS00122|CC00025|2026-02-05|Reorganization|Contractor|Regular|JP00101|Network Engineer|Network Engineer|Seasonal|LOC00051
+POS00123|CC00092|2026-02-05|Reorganization|Contractor|Contract|JP00038|Marketing Manager|Marketing Manager|Seasonal|LOC00002
+POS00124|CC00045|2026-02-05|Expansion|Contractor|Contract|JP00073|Network Engineer|Network Engineer|Regular|LOC00028
+POS00125|CC00057|2026-02-05|Reorganization|Contractor|Seasonal|JP00187|HR Manager|HR Manager|Temporary|LOC00094
+POS00126|CC00094|2026-02-05|Reorganization|Employee|Regular|JP00109|Data Analyst|Data Analyst|Temporary|LOC00027
+POS00127|CC00061|2026-02-05|Reclass|Contractor|Regular|JP00078|Project Manager|Project Manager|Contract|LOC00012
+POS00128|CC00053|2026-02-05|Expansion|Contractor|Temporary|JP00002|Product Manager|Product Manager|Contract|LOC00091
+POS00129|CC00097|2026-02-05|Replacement|Employee|Temporary|JP00146|Product Manager|Product Manager|Contract|LOC00038
+POS00130|CC00063|2026-02-05|New Position|Contractor|Seasonal|JP00142|Sales Executive|Sales Executive|Contract|LOC00072
+POS00131|CC00060|2026-02-05|Replacement|Employee|Regular|JP00190|Marketing Manager|Marketing Manager|Temporary|LOC00034
+POS00132|CC00082|2026-02-05|Reorganization|Employee|Seasonal|JP00077|Software Engineer|Software Engineer|Contract|LOC00023
+POS00133|CC00089|2026-02-05|Replacement|Employee|Regular|JP00126|Operations Manager|Operations Manager|Seasonal|LOC00064
+POS00134|CC00077|2026-02-05|Expansion|Intern|Contract|JP00018|System Administrator|System Administrator|Contract|LOC00034
+POS00135|CC00088|2026-02-05|Reorganization|Intern|Regular|JP00161|Data Analyst|Data Analyst|Seasonal|LOC00066
+POS00136|CC00074|2026-02-05|New Position|Contractor|Temporary|JP00188|Software Engineer|Software Engineer|Regular|LOC00019
+POS00137|CC00060|2026-02-05|Replacement|Contractor|Temporary|JP00082|Security Analyst|Security Analyst|Regular|LOC00035
+POS00138|CC00054|2026-02-05|Expansion|Employee|Seasonal|JP00093|HR Manager|HR Manager|Seasonal|LOC00068
+POS00139|CC00010|2026-02-05|Reclass|Employee|Temporary|JP00164|Operations Manager|Operations Manager|Regular|LOC00077
+POS00140|CC00022|2026-02-05|Reclass|Contractor|Seasonal|JP00193|Security Analyst|Security Analyst|Seasonal|LOC00035
+POS00141|CC00090|2026-02-05|Expansion|Employee|Seasonal|JP00176|Data Analyst|Data Analyst|Temporary|LOC00002
+POS00142|CC00067|2026-02-05|Expansion|Contractor|Contract|JP00036|Product Manager|Product Manager|Contract|LOC00044
+POS00143|CC00014|2026-02-05|Replacement|Employee|Temporary|JP00042|Accountant|Accountant|Temporary|LOC00072
+POS00144|CC00089|2026-02-05|Reclass|Intern|Regular|JP00158|System Administrator|System Administrator|Contract|LOC00059
+POS00145|CC00015|2026-02-05|Replacement|Employee|Contract|JP00020|Product Manager|Product Manager|Seasonal|LOC00040
+POS00146|CC00047|2026-02-05|Replacement|Contractor|Seasonal|JP00177|Product Manager|Product Manager|Temporary|LOC00091
+POS00147|CC00004|2026-02-05|New Position|Employee|Temporary|JP00078|Project Manager|Project Manager|Temporary|LOC00089
+POS00148|CC00040|2026-02-05|Replacement|Employee|Temporary|JP00059|Project Manager|Project Manager|Regular|LOC00055
+POS00149|CC00098|2026-02-05|New Position|Employee|Regular|JP00177|Product Manager|Product Manager|Contract|LOC00097
+POS00150|CC00006|2026-02-05|Replacement|Employee|Regular|JP00111|Software Engineer|Software Engineer|Regular|LOC00061
+POS00151|CC00033|2026-02-05|New Position|Employee|Seasonal|JP00031|Network Engineer|Network Engineer|Regular|LOC00097
+POS00152|CC00016|2026-02-05|Reclass|Employee|Temporary|JP00025|Security Analyst|Security Analyst|Temporary|LOC00086
+POS00153|CC00004|2026-02-05|New Position|Employee|Seasonal|JP00090|System Administrator|System Administrator|Seasonal|LOC00046
+POS00154|CC00065|2026-02-05|Reclass|Employee|Regular|JP00042|Accountant|Accountant|Regular|LOC00075
+POS00155|CC00002|2026-02-05|Reclass|Employee|Temporary|JP00196|Accountant|Accountant|Seasonal|LOC00022
+POS00156|CC00069|2026-02-05|New Position|Intern|Regular|JP00194|Project Manager|Project Manager|Temporary|LOC00065
+POS00157|CC00061|2026-02-05|Expansion|Intern|Temporary|JP00182|Product Manager|Product Manager|Contract|LOC00087
+POS00158|CC00024|2026-02-05|Expansion|Contractor|Contract|JP00028|Quality Assurance|Quality Assurance|Temporary|LOC00066
+POS00159|CC00053|2026-02-05|New Position|Contractor|Regular|JP00059|Project Manager|Project Manager|Contract|LOC00015
+POS00160|CC00018|2026-02-05|Reorganization|Contractor|Seasonal|JP00134|Operations Manager|Operations Manager|Regular|LOC00011
+POS00161|CC00064|2026-02-05|New Position|Contractor|Seasonal|JP00084|Project Manager|Project Manager|Contract|LOC00077
+POS00162|CC00040|2026-02-05|Reorganization|Employee|Contract|JP00189|Sales Executive|Sales Executive|Seasonal|LOC00055
+POS00163|CC00009|2026-02-05|Reorganization|Intern|Seasonal|JP00049|Marketing Manager|Marketing Manager|Temporary|LOC00002
+POS00164|CC00063|2026-02-05|New Position|Contractor|Contract|JP00173|Finance Manager|Finance Manager|Regular|LOC00016
+POS00165|CC00051|2026-02-05|Reorganization|Intern|Regular|JP00037|Operations Manager|Operations Manager|Temporary|LOC00009
+POS00166|CC00026|2026-02-05|Expansion|Employee|Contract|JP00094|Network Engineer|Network Engineer|Regular|LOC00030
+POS00167|CC00093|2026-02-05|Reorganization|Contractor|Seasonal|JP00109|Data Analyst|Data Analyst|Contract|LOC00046
+POS00168|CC00086|2026-02-05|Reclass|Contractor|Contract|JP00122|Sales Executive|Sales Executive|Seasonal|LOC00019
+POS00169|CC00059|2026-02-05|New Position|Employee|Seasonal|JP00197|Project Manager|Project Manager|Contract|LOC00064
+POS00170|CC00081|2026-02-05|Replacement|Employee|Regular|JP00060|Business Analyst|Business Analyst|Regular|LOC00009
+POS00171|CC00087|2026-02-05|New Position|Employee|Contract|JP00128|Accountant|Accountant|Seasonal|LOC00020
+POS00172|CC00080|2026-02-05|Reclass|Employee|Regular|JP00078|Project Manager|Project Manager|Contract|LOC00060
+POS00173|CC00038|2026-02-05|Reorganization|Contractor|Seasonal|JP00052|Network Engineer|Network Engineer|Seasonal|LOC00070
+POS00174|CC00003|2026-02-05|New Position|Contractor|Regular|JP00140|Finance Manager|Finance Manager|Contract|LOC00058
+POS00175|CC00049|2026-02-05|Reorganization|Contractor|Regular|JP00081|Software Engineer|Software Engineer|Regular|LOC00023
+POS00176|CC00085|2026-02-05|Expansion|Intern|Temporary|JP00143|Operations Manager|Operations Manager|Contract|LOC00056
+POS00177|CC00040|2026-02-05|Reorganization|Contractor|Regular|JP00035|Accountant|Accountant|Contract|LOC00085
+POS00178|CC00088|2026-02-05|Reclass|Intern|Contract|JP00142|Sales Executive|Sales Executive|Contract|LOC00072
+POS00179|CC00065|2026-02-05|New Position|Contractor|Seasonal|JP00041|Network Engineer|Network Engineer|Contract|LOC00076
+POS00180|CC00079|2026-02-05|Expansion|Contractor|Seasonal|JP00097|Project Manager|Project Manager|Regular|LOC00004
+POS00181|CC00006|2026-02-05|Replacement|Contractor|Seasonal|JP00152|Project Manager|Project Manager|Regular|LOC00098
+POS00182|CC00044|2026-02-05|Reorganization|Employee|Contract|JP00161|Data Analyst|Data Analyst|Seasonal|LOC00046
+POS00183|CC00045|2026-02-05|New Position|Intern|Temporary|JP00106|Software Engineer|Software Engineer|Temporary|LOC00031
+POS00184|CC00040|2026-02-05|Reclass|Employee|Regular|JP00166|Operations Manager|Operations Manager|Seasonal|LOC00015
+POS00185|CC00022|2026-02-05|New Position|Intern|Seasonal|JP00087|Product Manager|Product Manager|Regular|LOC00059
+POS00186|CC00055|2026-02-05|Reclass|Intern|Contract|JP00169|Quality Assurance|Quality Assurance|Seasonal|LOC00003
+POS00187|CC00061|2026-02-05|Reclass|Employee|Seasonal|JP00179|Operations Manager|Operations Manager|Contract|LOC00074
+POS00188|CC00042|2026-02-05|Reclass|Employee|Contract|JP00100|System Administrator|System Administrator|Regular|LOC00089
+POS00189|CC00027|2026-02-05|Expansion|Contractor|Seasonal|JP00173|Finance Manager|Finance Manager|Temporary|LOC00079
+POS00190|CC00047|2026-02-05|Reorganization|Employee|Contract|JP00077|Software Engineer|Software Engineer|Regular|LOC00069
+POS00191|CC00037|2026-02-05|Expansion|Employee|Seasonal|JP00055|Operations Manager|Operations Manager|Contract|LOC00029
+POS00192|CC00096|2026-02-05|New Position|Intern|Regular|JP00160|Product Manager|Product Manager|Seasonal|LOC00035
+POS00193|CC00073|2026-02-05|Reclass|Contractor|Contract|JP00018|System Administrator|System Administrator|Temporary|LOC00045
+POS00194|CC00084|2026-02-05|Expansion|Intern|Seasonal|JP00020|Product Manager|Product Manager|Contract|LOC00085
+POS00195|CC00041|2026-02-05|Replacement|Contractor|Contract|JP00139|Accountant|Accountant|Seasonal|LOC00080
+POS00196|CC00059|2026-02-05|Reclass|Employee|Regular|JP00132|Business Analyst|Business Analyst|Temporary|LOC00074
+POS00197|CC00028|2026-02-05|Reorganization|Contractor|Contract|JP00128|Accountant|Accountant|Regular|LOC00067
+POS00198|CC00047|2026-02-05|Reorganization|Employee|Temporary|JP00052|Network Engineer|Network Engineer|Temporary|LOC00096
+POS00199|CC00098|2026-02-05|Expansion|Contractor|Contract|JP00176|Data Analyst|Data Analyst|Seasonal|LOC00009
+POS00200|CC00027|2026-02-05|Reorganization|Contractor|Seasonal|JP00163|Network Engineer|Network Engineer|Temporary|LOC00033
+POS00201|CC00077|2026-02-05|Replacement|Contractor|Temporary|JP00176|Data Analyst|Data Analyst|Regular|LOC00020
+POS00202|CC00004|2026-02-05|Replacement|Contractor|Contract|JP00050|System Administrator|System Administrator|Contract|LOC00072
+POS00203|CC00055|2026-02-05|New Position|Employee|Temporary|JP00112|Marketing Manager|Marketing Manager|Seasonal|LOC00018
+POS00204|CC00034|2026-02-05|Expansion|Intern|Temporary|JP00008|Finance Manager|Finance Manager|Regular|LOC00093
+POS00205|CC00003|2026-02-05|New Position|Employee|Seasonal|JP00125|Data Analyst|Data Analyst|Seasonal|LOC00009
+POS00206|CC00047|2026-02-05|New Position|Contractor|Temporary|JP00105|Data Analyst|Data Analyst|Temporary|LOC00015
+POS00207|CC00095|2026-02-05|Reclass|Employee|Seasonal|JP00147|Network Engineer|Network Engineer|Contract|LOC00012
+POS00208|CC00077|2026-02-05|New Position|Contractor|Seasonal|JP00061|Marketing Manager|Marketing Manager|Contract|LOC00096
+POS00209|CC00031|2026-02-05|Reorganization|Employee|Temporary|JP00191|Business Analyst|Business Analyst|Regular|LOC00023
+POS00210|CC00036|2026-02-05|Reorganization|Contractor|Seasonal|JP00055|Operations Manager|Operations Manager|Regular|LOC00063
+POS00211|CC00048|2026-02-05|New Position|Contractor|Contract|JP00137|Network Engineer|Network Engineer|Contract|LOC00088
+POS00212|CC00036|2026-02-05|Replacement|Contractor|Contract|JP00064|System Administrator|System Administrator|Seasonal|LOC00040
+POS00213|CC00083|2026-02-05|Reclass|Employee|Regular|JP00006|Quality Assurance|Quality Assurance|Temporary|LOC00033
+POS00214|CC00050|2026-02-05|Expansion|Intern|Seasonal|JP00142|Sales Executive|Sales Executive|Regular|LOC00069
+POS00215|CC00057|2026-02-05|Reorganization|Employee|Contract|JP00061|Marketing Manager|Marketing Manager|Seasonal|LOC00039
+POS00216|CC00097|2026-02-05|Replacement|Contractor|Temporary|JP00024|Accountant|Accountant|Temporary|LOC00057
+POS00217|CC00041|2026-02-05|Reorganization|Employee|Seasonal|JP00162|System Administrator|System Administrator|Regular|LOC00100
+POS00218|CC00061|2026-02-05|Reorganization|Contractor|Contract|JP00126|Operations Manager|Operations Manager|Regular|LOC00021
+POS00219|CC00034|2026-02-05|Reclass|Employee|Seasonal|JP00179|Operations Manager|Operations Manager|Contract|LOC00078
+POS00220|CC00071|2026-02-05|Expansion|Contractor|Regular|JP00187|HR Manager|HR Manager|Regular|LOC00083
+POS00221|CC00024|2026-02-05|Reorganization|Intern|Temporary|JP00165|Software Engineer|Software Engineer|Regular|LOC00052
+POS00222|CC00081|2026-02-05|Expansion|Contractor|Regular|JP00052|Network Engineer|Network Engineer|Regular|LOC00021
+POS00223|CC00067|2026-02-05|Replacement|Intern|Contract|JP00064|System Administrator|System Administrator|Seasonal|LOC00058
+POS00224|CC00095|2026-02-05|Replacement|Contractor|Temporary|JP00123|Business Analyst|Business Analyst|Seasonal|LOC00037
+POS00225|CC00011|2026-02-05|Reorganization|Contractor|Temporary|JP00051|Operations Manager|Operations Manager|Contract|LOC00049
+POS00226|CC00029|2026-02-05|New Position|Employee|Temporary|JP00147|Network Engineer|Network Engineer|Regular|LOC00060
+POS00227|CC00034|2026-02-05|Replacement|Employee|Contract|JP00051|Operations Manager|Operations Manager|Contract|LOC00077
+POS00228|CC00020|2026-02-05|New Position|Contractor|Temporary|JP00067|Accountant|Accountant|Regular|LOC00002
+POS00229|CC00068|2026-02-05|Reorganization|Contractor|Contract|JP00184|Accountant|Accountant|Regular|LOC00029
+POS00230|CC00027|2026-02-05|Replacement|Contractor|Seasonal|JP00183|Security Analyst|Security Analyst|Contract|LOC00049
+POS00231|CC00056|2026-02-05|Replacement|Intern|Temporary|JP00034|Software Engineer|Software Engineer|Seasonal|LOC00094
+POS00232|CC00025|2026-02-05|Reorganization|Employee|Contract|JP00174|Data Analyst|Data Analyst|Temporary|LOC00004
+POS00233|CC00034|2026-02-05|Replacement|Intern|Contract|JP00075|Data Analyst|Data Analyst|Temporary|LOC00048
+POS00234|CC00088|2026-02-05|Reorganization|Employee|Regular|JP00150|Marketing Manager|Marketing Manager|Contract|LOC00018
+POS00235|CC00089|2026-02-05|Reorganization|Intern|Temporary|JP00083|Project Manager|Project Manager|Contract|LOC00091
+POS00236|CC00095|2026-02-05|Reclass|Contractor|Regular|JP00109|Data Analyst|Data Analyst|Regular|LOC00072
+POS00237|CC00007|2026-02-05|Expansion|Employee|Contract|JP00016|Sales Executive|Sales Executive|Seasonal|LOC00078
+POS00238|CC00077|2026-02-05|New Position|Employee|Seasonal|JP00172|Quality Assurance|Quality Assurance|Contract|LOC00039
+POS00239|CC00086|2026-02-05|Expansion|Employee|Regular|JP00102|Project Manager|Project Manager|Temporary|LOC00034
+POS00240|CC00065|2026-02-05|Reorganization|Contractor|Contract|JP00044|Network Engineer|Network Engineer|Temporary|LOC00012
+POS00241|CC00091|2026-02-05|Reclass|Contractor|Temporary|JP00082|Security Analyst|Security Analyst|Seasonal|LOC00015
+POS00242|CC00006|2026-02-05|Replacement|Contractor|Seasonal|JP00081|Software Engineer|Software Engineer|Seasonal|LOC00056
+POS00243|CC00034|2026-02-05|Reclass|Contractor|Seasonal|JP00073|Network Engineer|Network Engineer|Contract|LOC00022
+POS00244|CC00095|2026-02-05|Reorganization|Employee|Contract|JP00081|Software Engineer|Software Engineer|Regular|LOC00025
+POS00245|CC00007|2026-02-05|Replacement|Employee|Regular|JP00039|Security Analyst|Security Analyst|Contract|LOC00034
+POS00246|CC00091|2026-02-05|Reorganization|Contractor|Regular|JP00042|Accountant|Accountant|Contract|LOC00006
+POS00247|CC00046|2026-02-05|Reclass|Contractor|Contract|JP00114|Finance Manager|Finance Manager|Contract|LOC00015
+POS00248|CC00019|2026-02-05|New Position|Contractor|Regular|JP00185|Marketing Manager|Marketing Manager|Temporary|LOC00037
+POS00249|CC00022|2026-02-05|Reclass|Contractor|Temporary|JP00047|HR Manager|HR Manager|Regular|LOC00068
+POS00250|CC00074|2026-02-05|Replacement|Contractor|Regular|JP00197|Project Manager|Project Manager|Temporary|LOC00099
+POS00251|CC00087|2026-02-05|New Position|Contractor|Regular|JP00128|Accountant|Accountant|Seasonal|LOC00088
+POS00252|CC00016|2026-02-05|Reorganization|Contractor|Regular|JP00175|Product Manager|Product Manager|Seasonal|LOC00020
+POS00253|CC00011|2026-02-05|Reorganization|Intern|Contract|JP00008|Finance Manager|Finance Manager|Contract|LOC00081
+POS00254|CC00077|2026-02-05|New Position|Contractor|Regular|JP00069|System Administrator|System Administrator|Contract|LOC00042
+POS00255|CC00094|2026-02-05|Reclass|Employee|Temporary|JP00188|Software Engineer|Software Engineer|Regular|LOC00083
+POS00256|CC00042|2026-02-05|New Position|Intern|Regular|JP00073|Network Engineer|Network Engineer|Contract|LOC00012
+POS00257|CC00033|2026-02-05|Replacement|Employee|Contract|JP00103|HR Manager|HR Manager|Regular|LOC00003
+POS00258|CC00021|2026-02-05|Reorganization|Contractor|Seasonal|JP00054|HR Manager|HR Manager|Temporary|LOC00016
+POS00259|CC00063|2026-02-05|Reorganization|Intern|Seasonal|JP00077|Software Engineer|Software Engineer|Temporary|LOC00046
+POS00260|CC00013|2026-02-05|Expansion|Intern|Temporary|JP00171|HR Manager|HR Manager|Contract|LOC00058
+POS00261|CC00061|2026-02-05|Expansion|Intern|Contract|JP00100|System Administrator|System Administrator|Regular|LOC00097
+POS00262|CC00048|2026-02-05|Reclass|Employee|Contract|JP00109|Data Analyst|Data Analyst|Contract|LOC00012
+POS00263|CC00066|2026-02-05|Expansion|Contractor|Temporary|JP00011|Software Engineer|Software Engineer|Temporary|LOC00064
+POS00264|CC00081|2026-02-05|Reclass|Employee|Seasonal|JP00135|Accountant|Accountant|Contract|LOC00056
+POS00265|CC00062|2026-02-05|Expansion|Employee|Temporary|JP00021|Product Manager|Product Manager|Seasonal|LOC00032
+POS00266|CC00055|2026-02-05|Expansion|Intern|Regular|JP00134|Operations Manager|Operations Manager|Regular|LOC00006
+POS00267|CC00014|2026-02-05|Reclass|Contractor|Contract|JP00132|Business Analyst|Business Analyst|Regular|LOC00060
+POS00268|CC00093|2026-02-05|Reclass|Contractor|Seasonal|JP00170|Data Analyst|Data Analyst|Seasonal|LOC00075
+POS00269|CC00099|2026-02-05|Reclass|Employee|Regular|JP00021|Product Manager|Product Manager|Contract|LOC00023
+POS00270|CC00051|2026-02-05|New Position|Employee|Contract|JP00047|HR Manager|HR Manager|Seasonal|LOC00041
+POS00271|CC00093|2026-02-05|Reorganization|Intern|Contract|JP00151|Data Analyst|Data Analyst|Seasonal|LOC00044
+POS00272|CC00028|2026-02-05|Replacement|Employee|Seasonal|JP00048|Project Manager|Project Manager|Regular|LOC00056
+POS00273|CC00003|2026-02-05|New Position|Contractor|Regular|JP00137|Network Engineer|Network Engineer|Regular|LOC00022
+POS00274|CC00062|2026-02-05|Reorganization|Intern|Contract|JP00168|Operations Manager|Operations Manager|Contract|LOC00039
+POS00275|CC00079|2026-02-05|Expansion|Intern|Contract|JP00159|Network Engineer|Network Engineer|Seasonal|LOC00012
+POS00276|CC00018|2026-02-05|New Position|Employee|Regular|JP00033|Business Analyst|Business Analyst|Regular|LOC00090
+POS00277|CC00004|2026-02-05|Replacement|Contractor|Temporary|JP00049|Marketing Manager|Marketing Manager|Temporary|LOC00056
+POS00278|CC00069|2026-02-05|Replacement|Employee|Seasonal|JP00161|Data Analyst|Data Analyst|Contract|LOC00019
+POS00279|CC00055|2026-02-05|New Position|Employee|Temporary|JP00122|Sales Executive|Sales Executive|Temporary|LOC00095
+POS00280|CC00057|2026-02-05|Reorganization|Contractor|Regular|JP00180|Business Analyst|Business Analyst|Contract|LOC00075
+POS00281|CC00026|2026-02-05|Expansion|Intern|Contract|JP00063|Security Analyst|Security Analyst|Regular|LOC00043
+POS00282|CC00014|2026-02-05|Reorganization|Contractor|Contract|JP00003|Accountant|Accountant|Seasonal|LOC00005
+POS00283|CC00052|2026-02-05|Reorganization|Intern|Contract|JP00125|Data Analyst|Data Analyst|Temporary|LOC00092
+POS00284|CC00068|2026-02-05|New Position|Contractor|Seasonal|JP00016|Sales Executive|Sales Executive|Regular|LOC00035
+POS00285|CC00054|2026-02-05|Reorganization|Employee|Contract|JP00166|Operations Manager|Operations Manager|Seasonal|LOC00058
+POS00286|CC00056|2026-02-05|New Position|Employee|Seasonal|JP00179|Operations Manager|Operations Manager|Temporary|LOC00061
+POS00287|CC00057|2026-02-05|Replacement|Intern|Temporary|JP00089|Security Analyst|Security Analyst|Seasonal|LOC00078
+POS00288|CC00085|2026-02-05|Reorganization|Employee|Seasonal|JP00184|Accountant|Accountant|Contract|LOC00054
+POS00289|CC00084|2026-02-05|Expansion|Contractor|Temporary|JP00173|Finance Manager|Finance Manager|Temporary|LOC00037
+POS00290|CC00096|2026-02-05|New Position|Intern|Contract|JP00177|Product Manager|Product Manager|Temporary|LOC00023
+POS00291|CC00021|2026-02-05|Reclass|Contractor|Regular|JP00052|Network Engineer|Network Engineer|Contract|LOC00064
+POS00292|CC00031|2026-02-05|Replacement|Intern|Regular|JP00078|Project Manager|Project Manager|Regular|LOC00046
+POS00293|CC00046|2026-02-05|Replacement|Employee|Regular|JP00067|Accountant|Accountant|Regular|LOC00044
+POS00294|CC00015|2026-02-05|Reclass|Employee|Regular|JP00111|Software Engineer|Software Engineer|Temporary|LOC00063
+POS00295|CC00044|2026-02-05|Expansion|Employee|Seasonal|JP00067|Accountant|Accountant|Temporary|LOC00089
+POS00296|CC00078|2026-02-05|New Position|Intern|Regular|JP00132|Business Analyst|Business Analyst|Contract|LOC00059
+POS00297|CC00015|2026-02-05|New Position|Intern|Regular|JP00194|Project Manager|Project Manager|Regular|LOC00065
+POS00298|CC00022|2026-02-05|New Position|Employee|Seasonal|JP00027|Data Analyst|Data Analyst|Temporary|LOC00094
+POS00299|CC00091|2026-02-05|Reorganization|Intern|Contract|JP00075|Data Analyst|Data Analyst|Regular|LOC00020
+POS00300|CC00047|2026-02-05|Expansion|Employee|Regular|JP00166|Operations Manager|Operations Manager|Temporary|LOC00057
+POS00301|CC00099|2026-02-05|New Position|Employee|Contract|JP00107|Project Manager|Project Manager|Seasonal|LOC00037
+POS00302|CC00022|2026-02-05|New Position|Contractor|Seasonal|JP00130|Network Engineer|Network Engineer|Contract|LOC00047
+POS00303|CC00086|2026-02-05|Replacement|Employee|Contract|JP00162|System Administrator|System Administrator|Temporary|LOC00018
+POS00304|CC00053|2026-02-05|Reorganization|Contractor|Seasonal|JP00110|Operations Manager|Operations Manager|Regular|LOC00057
+POS00305|CC00099|2026-02-05|New Position|Intern|Regular|JP00038|Marketing Manager|Marketing Manager|Regular|LOC00044
+POS00306|CC00052|2026-02-05|Replacement|Contractor|Regular|JP00081|Software Engineer|Software Engineer|Contract|LOC00098
+POS00307|CC00085|2026-02-05|Replacement|Intern|Regular|JP00010|Marketing Manager|Marketing Manager|Seasonal|LOC00054
+POS00308|CC00088|2026-02-05|Reclass|Contractor|Seasonal|JP00103|HR Manager|HR Manager|Seasonal|LOC00002
+POS00309|CC00068|2026-02-05|Reclass|Employee|Contract|JP00072|Business Analyst|Business Analyst|Contract|LOC00083
+POS00310|CC00070|2026-02-05|Reclass|Intern|Contract|JP00053|HR Manager|HR Manager|Seasonal|LOC00084
+POS00311|CC00100|2026-02-05|Replacement|Contractor|Regular|JP00104|Operations Manager|Operations Manager|Regular|LOC00069
+POS00312|CC00050|2026-02-05|Replacement|Intern|Seasonal|JP00086|Operations Manager|Operations Manager|Temporary|LOC00012
+POS00313|CC00071|2026-02-05|Expansion|Intern|Seasonal|JP00131|HR Manager|HR Manager|Temporary|LOC00003
+POS00314|CC00070|2026-02-05|Reclass|Contractor|Temporary|JP00008|Finance Manager|Finance Manager|Seasonal|LOC00093
+POS00315|CC00065|2026-02-05|New Position|Intern|Regular|JP00109|Data Analyst|Data Analyst|Seasonal|LOC00034
+POS00316|CC00065|2026-02-05|Expansion|Employee|Regular|JP00161|Data Analyst|Data Analyst|Regular|LOC00058
+POS00317|CC00074|2026-02-05|New Position|Contractor|Seasonal|JP00077|Software Engineer|Software Engineer|Temporary|LOC00096
+POS00318|CC00073|2026-02-05|Reclass|Intern|Temporary|JP00149|Sales Executive|Sales Executive|Seasonal|LOC00039
+POS00319|CC00086|2026-02-05|Reclass|Intern|Temporary|JP00073|Network Engineer|Network Engineer|Contract|LOC00067
+POS00320|CC00032|2026-02-05|New Position|Contractor|Temporary|JP00189|Sales Executive|Sales Executive|Seasonal|LOC00059
+POS00321|CC00019|2026-02-05|Reorganization|Contractor|Regular|JP00026|Data Analyst|Data Analyst|Regular|LOC00008
+POS00322|CC00017|2026-02-05|Reorganization|Employee|Contract|JP00109|Data Analyst|Data Analyst|Regular|LOC00048
+POS00323|CC00068|2026-02-05|Reorganization|Intern|Contract|JP00174|Data Analyst|Data Analyst|Seasonal|LOC00075
+POS00324|CC00082|2026-02-05|Reorganization|Contractor|Contract|JP00128|Accountant|Accountant|Contract|LOC00021
+POS00325|CC00065|2026-02-05|Replacement|Contractor|Contract|JP00037|Operations Manager|Operations Manager|Temporary|LOC00091
+POS00326|CC00068|2026-02-05|New Position|Intern|Temporary|JP00132|Business Analyst|Business Analyst|Contract|LOC00061
+POS00327|CC00096|2026-02-05|Replacement|Intern|Seasonal|JP00009|Project Manager|Project Manager|Regular|LOC00078
+POS00328|CC00015|2026-02-05|New Position|Contractor|Seasonal|JP00105|Data Analyst|Data Analyst|Regular|LOC00067
+POS00329|CC00016|2026-02-05|Expansion|Contractor|Seasonal|JP00040|System Administrator|System Administrator|Seasonal|LOC00038
+POS00330|CC00004|2026-02-05|Replacement|Employee|Contract|JP00125|Data Analyst|Data Analyst|Regular|LOC00040
+POS00331|CC00028|2026-02-05|Replacement|Intern|Contract|JP00073|Network Engineer|Network Engineer|Regular|LOC00016
+POS00332|CC00045|2026-02-05|New Position|Employee|Contract|JP00141|Finance Manager|Finance Manager|Contract|LOC00074
+POS00333|CC00073|2026-02-05|Reorganization|Contractor|Contract|JP00080|Product Manager|Product Manager|Contract|LOC00093
+POS00334|CC00017|2026-02-05|Replacement|Intern|Contract|JP00156|Sales Executive|Sales Executive|Contract|LOC00086
+POS00335|CC00020|2026-02-05|Expansion|Employee|Contract|JP00115|Network Engineer|Network Engineer|Contract|LOC00030
+POS00336|CC00044|2026-02-05|Reclass|Employee|Contract|JP00102|Project Manager|Project Manager|Seasonal|LOC00083
+POS00337|CC00022|2026-02-05|New Position|Intern|Seasonal|JP00023|Data Analyst|Data Analyst|Regular|LOC00083
+POS00338|CC00011|2026-02-05|Replacement|Intern|Regular|JP00144|Security Analyst|Security Analyst|Temporary|LOC00097
+POS00339|CC00065|2026-02-05|New Position|Employee|Temporary|JP00122|Sales Executive|Sales Executive|Regular|LOC00036
+POS00340|CC00032|2026-02-05|Reclass|Contractor|Regular|JP00053|HR Manager|HR Manager|Seasonal|LOC00052
+POS00341|CC00006|2026-02-05|Reorganization|Employee|Seasonal|JP00151|Data Analyst|Data Analyst|Contract|LOC00024
+POS00342|CC00004|2026-02-05|Reclass|Contractor|Contract|JP00107|Project Manager|Project Manager|Seasonal|LOC00012
+POS00343|CC00013|2026-02-05|Reclass|Employee|Seasonal|JP00030|Security Analyst|Security Analyst|Temporary|LOC00024
+POS00344|CC00099|2026-02-05|New Position|Employee|Seasonal|JP00066|Software Engineer|Software Engineer|Contract|LOC00087
+POS00345|CC00008|2026-02-05|Reclass|Contractor|Temporary|JP00044|Network Engineer|Network Engineer|Regular|LOC00092
+POS00346|CC00039|2026-02-05|Reorganization|Employee|Seasonal|JP00015|Marketing Manager|Marketing Manager|Temporary|LOC00053
+POS00347|CC00034|2026-02-05|Reorganization|Employee|Regular|JP00083|Project Manager|Project Manager|Temporary|LOC00031
+POS00348|CC00077|2026-02-05|Reclass|Employee|Contract|JP00193|Security Analyst|Security Analyst|Contract|LOC00015
+POS00349|CC00008|2026-02-05|Expansion|Contractor|Contract|JP00069|System Administrator|System Administrator|Regular|LOC00062
+POS00350|CC00053|2026-02-05|Replacement|Employee|Seasonal|JP00008|Finance Manager|Finance Manager|Regular|LOC00032
+POS00351|CC00072|2026-02-05|Replacement|Contractor|Contract|JP00196|Accountant|Accountant|Contract|LOC00011
+POS00352|CC00065|2026-02-05|Replacement|Employee|Seasonal|JP00163|Network Engineer|Network Engineer|Temporary|LOC00032
+POS00353|CC00055|2026-02-05|Reclass|Contractor|Regular|JP00138|Quality Assurance|Quality Assurance|Regular|LOC00060
+POS00354|CC00038|2026-02-05|Replacement|Employee|Regular|JP00159|Network Engineer|Network Engineer|Contract|LOC00035
+POS00355|CC00033|2026-02-05|Reorganization|Contractor|Temporary|JP00154|Marketing Manager|Marketing Manager|Seasonal|LOC00006
+POS00356|CC00095|2026-02-05|Reclass|Intern|Regular|JP00042|Accountant|Accountant|Seasonal|LOC00012
+POS00357|CC00090|2026-02-05|New Position|Employee|Seasonal|JP00102|Project Manager|Project Manager|Contract|LOC00027
+POS00358|CC00065|2026-02-05|Expansion|Intern|Seasonal|JP00157|Security Analyst|Security Analyst|Seasonal|LOC00097
+POS00359|CC00058|2026-02-05|Expansion|Employee|Seasonal|JP00182|Product Manager|Product Manager|Seasonal|LOC00027
+POS00360|CC00077|2026-02-05|Expansion|Employee|Temporary|JP00118|Project Manager|Project Manager|Regular|LOC00078
+POS00361|CC00001|2026-02-05|New Position|Intern|Temporary|JP00122|Sales Executive|Sales Executive|Contract|LOC00072
+POS00362|CC00091|2026-02-05|Reorganization|Contractor|Regular|JP00179|Operations Manager|Operations Manager|Regular|LOC00069
+POS00363|CC00086|2026-02-05|Reorganization|Intern|Regular|JP00008|Finance Manager|Finance Manager|Seasonal|LOC00049
+POS00364|CC00046|2026-02-05|Reorganization|Employee|Regular|JP00154|Marketing Manager|Marketing Manager|Regular|LOC00060
+POS00365|CC00025|2026-02-05|Reorganization|Employee|Temporary|JP00095|Marketing Manager|Marketing Manager|Regular|LOC00098
+POS00366|CC00088|2026-02-05|Expansion|Employee|Regular|JP00072|Business Analyst|Business Analyst|Seasonal|LOC00092
+POS00367|CC00030|2026-02-05|Reorganization|Contractor|Regular|JP00057|System Administrator|System Administrator|Seasonal|LOC00064
+POS00368|CC00091|2026-02-05|Reclass|Employee|Regular|JP00181|Accountant|Accountant|Temporary|LOC00082
+POS00369|CC00015|2026-02-05|Expansion|Intern|Contract|JP00102|Project Manager|Project Manager|Temporary|LOC00071
+POS00370|CC00085|2026-02-05|Reclass|Intern|Temporary|JP00050|System Administrator|System Administrator|Regular|LOC00076
+POS00371|CC00096|2026-02-05|New Position|Employee|Seasonal|JP00033|Business Analyst|Business Analyst|Temporary|LOC00067
+POS00372|CC00036|2026-02-05|Replacement|Intern|Regular|JP00187|HR Manager|HR Manager|Seasonal|LOC00088
+POS00373|CC00059|2026-02-05|New Position|Contractor|Regular|JP00144|Security Analyst|Security Analyst|Seasonal|LOC00056
+POS00374|CC00036|2026-02-05|New Position|Intern|Contract|JP00105|Data Analyst|Data Analyst|Contract|LOC00047
+POS00375|CC00098|2026-02-05|New Position|Intern|Temporary|JP00133|Quality Assurance|Quality Assurance|Regular|LOC00036
+POS00376|CC00069|2026-02-05|Reorganization|Contractor|Regular|JP00108|Network Engineer|Network Engineer|Contract|LOC00025
+POS00377|CC00011|2026-02-05|Reclass|Employee|Temporary|JP00086|Operations Manager|Operations Manager|Contract|LOC00010
+POS00378|CC00026|2026-02-05|Replacement|Contractor|Seasonal|JP00064|System Administrator|System Administrator|Regular|LOC00081
+POS00379|CC00013|2026-02-05|New Position|Contractor|Contract|JP00161|Data Analyst|Data Analyst|Regular|LOC00076
+POS00380|CC00043|2026-02-05|Expansion|Employee|Regular|JP00161|Data Analyst|Data Analyst|Contract|LOC00031
+POS00381|CC00007|2026-02-05|Expansion|Intern|Temporary|JP00088|Finance Manager|Finance Manager|Regular|LOC00100
+POS00382|CC00080|2026-02-05|Reorganization|Employee|Contract|JP00154|Marketing Manager|Marketing Manager|Regular|LOC00011
+POS00383|CC00005|2026-02-05|Reorganization|Contractor|Regular|JP00016|Sales Executive|Sales Executive|Temporary|LOC00008
+POS00384|CC00008|2026-02-05|Expansion|Intern|Contract|JP00114|Finance Manager|Finance Manager|Regular|LOC00014
+POS00385|CC00008|2026-02-05|Reclass|Employee|Seasonal|JP00174|Data Analyst|Data Analyst|Contract|LOC00052
+POS00386|CC00080|2026-02-05|Reorganization|Employee|Regular|JP00025|Security Analyst|Security Analyst|Contract|LOC00050
+POS00387|CC00055|2026-02-05|Reclass|Intern|Regular|JP00119|Sales Executive|Sales Executive|Seasonal|LOC00084
+POS00388|CC00004|2026-02-05|Reorganization|Intern|Seasonal|JP00173|Finance Manager|Finance Manager|Temporary|LOC00014
+POS00389|CC00002|2026-02-05|Reclass|Intern|Regular|JP00027|Data Analyst|Data Analyst|Temporary|LOC00074
+POS00390|CC00082|2026-02-05|Reclass|Contractor|Seasonal|JP00033|Business Analyst|Business Analyst|Contract|LOC00062
+POS00391|CC00080|2026-02-05|Reorganization|Employee|Temporary|JP00186|Marketing Manager|Marketing Manager|Temporary|LOC00006
+POS00392|CC00017|2026-02-05|Expansion|Intern|Contract|JP00016|Sales Executive|Sales Executive|Seasonal|LOC00040
+POS00393|CC00070|2026-02-05|Replacement|Employee|Contract|JP00150|Marketing Manager|Marketing Manager|Seasonal|LOC00078
+POS00394|CC00038|2026-02-05|Expansion|Employee|Temporary|JP00088|Finance Manager|Finance Manager|Regular|LOC00031
+POS00395|CC00072|2026-02-05|New Position|Contractor|Seasonal|JP00130|Network Engineer|Network Engineer|Temporary|LOC00026
+POS00396|CC00026|2026-02-05|New Position|Contractor|Temporary|JP00164|Operations Manager|Operations Manager|Contract|LOC00089
+POS00397|CC00060|2026-02-05|Reclass|Intern|Seasonal|JP00178|Operations Manager|Operations Manager|Seasonal|LOC00079
+POS00398|CC00054|2026-02-05|Expansion|Employee|Regular|JP00077|Software Engineer|Software Engineer|Contract|LOC00006
+POS00399|CC00029|2026-02-05|New Position|Intern|Temporary|JP00127|Quality Assurance|Quality Assurance|Temporary|LOC00060
+POS00400|CC00028|2026-02-05|Replacement|Contractor|Seasonal|JP00160|Product Manager|Product Manager|Contract|LOC00027
+POS00401|CC00024|2026-02-05|New Position|Contractor|Regular|JP00103|HR Manager|HR Manager|Regular|LOC00046
+POS00402|CC00072|2026-02-05|New Position|Employee|Seasonal|JP00008|Finance Manager|Finance Manager|Contract|LOC00025
+POS00403|CC00075|2026-02-05|Expansion|Employee|Regular|JP00162|System Administrator|System Administrator|Temporary|LOC00026
+POS00404|CC00023|2026-02-05|Replacement|Contractor|Temporary|JP00073|Network Engineer|Network Engineer|Seasonal|LOC00071
+POS00405|CC00023|2026-02-05|Replacement|Employee|Temporary|JP00063|Security Analyst|Security Analyst|Seasonal|LOC00013
+POS00406|CC00087|2026-02-05|Replacement|Contractor|Regular|JP00006|Quality Assurance|Quality Assurance|Seasonal|LOC00027
+POS00407|CC00059|2026-02-05|Replacement|Contractor|Seasonal|JP00079|Security Analyst|Security Analyst|Temporary|LOC00068
+POS00408|CC00056|2026-02-05|New Position|Employee|Temporary|JP00160|Product Manager|Product Manager|Temporary|LOC00025
+POS00409|CC00069|2026-02-05|Reorganization|Intern|Seasonal|JP00050|System Administrator|System Administrator|Seasonal|LOC00077
+POS00410|CC00082|2026-02-05|Replacement|Employee|Temporary|JP00110|Operations Manager|Operations Manager|Seasonal|LOC00020
+POS00411|CC00032|2026-02-05|New Position|Intern|Seasonal|JP00084|Project Manager|Project Manager|Temporary|LOC00066
+POS00412|CC00063|2026-02-05|Replacement|Intern|Regular|JP00150|Marketing Manager|Marketing Manager|Contract|LOC00085
+POS00413|CC00009|2026-02-05|Replacement|Intern|Contract|JP00158|System Administrator|System Administrator|Seasonal|LOC00064
+POS00414|CC00060|2026-02-05|Replacement|Contractor|Seasonal|JP00133|Quality Assurance|Quality Assurance|Contract|LOC00092
+POS00415|CC00061|2026-02-05|Expansion|Intern|Contract|JP00127|Quality Assurance|Quality Assurance|Regular|LOC00027
+POS00416|CC00026|2026-02-05|Reorganization|Employee|Contract|JP00057|System Administrator|System Administrator|Temporary|LOC00040
+POS00417|CC00049|2026-02-05|Reclass|Employee|Seasonal|JP00109|Data Analyst|Data Analyst|Seasonal|LOC00071
+POS00418|CC00018|2026-02-05|New Position|Contractor|Contract|JP00022|Sales Executive|Sales Executive|Seasonal|LOC00030
+POS00419|CC00006|2026-02-05|Reorganization|Intern|Seasonal|JP00150|Marketing Manager|Marketing Manager|Contract|LOC00058
+POS00420|CC00056|2026-02-05|Reorganization|Contractor|Contract|JP00120|Network Engineer|Network Engineer|Seasonal|LOC00035
+POS00421|CC00004|2026-02-05|Replacement|Contractor|Temporary|JP00098|Sales Executive|Sales Executive|Seasonal|LOC00083
+POS00422|CC00046|2026-02-05|New Position|Contractor|Regular|JP00020|Product Manager|Product Manager|Seasonal|LOC00030
+POS00423|CC00016|2026-02-05|New Position|Contractor|Regular|JP00026|Data Analyst|Data Analyst|Temporary|LOC00043
+POS00424|CC00087|2026-02-05|Expansion|Contractor|Seasonal|JP00051|Operations Manager|Operations Manager|Seasonal|LOC00025
+POS00425|CC00078|2026-02-05|Replacement|Intern|Seasonal|JP00181|Accountant|Accountant|Regular|LOC00099
+POS00426|CC00037|2026-02-05|Expansion|Contractor|Contract|JP00077|Software Engineer|Software Engineer|Regular|LOC00061
+POS00427|CC00066|2026-02-05|Replacement|Contractor|Temporary|JP00168|Operations Manager|Operations Manager|Temporary|LOC00093
+POS00428|CC00027|2026-02-05|Reorganization|Employee|Contract|JP00192|Data Analyst|Data Analyst|Contract|LOC00044
+POS00429|CC00041|2026-02-05|Replacement|Contractor|Contract|JP00022|Sales Executive|Sales Executive|Temporary|LOC00057
+POS00430|CC00072|2026-02-05|New Position|Contractor|Temporary|JP00116|Operations Manager|Operations Manager|Temporary|LOC00040
+POS00431|CC00002|2026-02-05|Reorganization|Intern|Seasonal|JP00189|Sales Executive|Sales Executive|Seasonal|LOC00029
+POS00432|CC00055|2026-02-05|Reorganization|Intern|Seasonal|JP00108|Network Engineer|Network Engineer|Seasonal|LOC00076
+POS00433|CC00073|2026-02-05|New Position|Employee|Temporary|JP00006|Quality Assurance|Quality Assurance|Seasonal|LOC00073
+POS00434|CC00078|2026-02-05|Reclass|Intern|Contract|JP00162|System Administrator|System Administrator|Contract|LOC00027
+POS00435|CC00009|2026-02-05|Reclass|Contractor|Temporary|JP00101|Network Engineer|Network Engineer|Contract|LOC00014
+POS00436|CC00073|2026-02-05|Reorganization|Intern|Seasonal|JP00085|Accountant|Accountant|Regular|LOC00022
+POS00437|CC00087|2026-02-05|Reclass|Employee|Regular|JP00027|Data Analyst|Data Analyst|Contract|LOC00004
+POS00438|CC00026|2026-02-05|New Position|Contractor|Seasonal|JP00048|Project Manager|Project Manager|Temporary|LOC00030
+POS00439|CC00085|2026-02-05|Reclass|Employee|Contract|JP00075|Data Analyst|Data Analyst|Regular|LOC00048
+POS00440|CC00002|2026-02-05|Replacement|Contractor|Contract|JP00133|Quality Assurance|Quality Assurance|Contract|LOC00021
+POS00441|CC00017|2026-02-05|Reclass|Contractor|Contract|JP00029|Accountant|Accountant|Regular|LOC00050
+POS00442|CC00017|2026-02-05|Replacement|Contractor|Contract|JP00053|HR Manager|HR Manager|Contract|LOC00021
+POS00443|CC00074|2026-02-05|Expansion|Intern|Temporary|JP00155|Software Engineer|Software Engineer|Contract|LOC00036
+POS00444|CC00001|2026-02-05|Replacement|Contractor|Regular|JP00052|Network Engineer|Network Engineer|Contract|LOC00078
+POS00445|CC00068|2026-02-05|Expansion|Intern|Contract|JP00064|System Administrator|System Administrator|Contract|LOC00060
+POS00446|CC00006|2026-02-05|New Position|Contractor|Contract|JP00148|Finance Manager|Finance Manager|Seasonal|LOC00090
+POS00447|CC00039|2026-02-05|Reorganization|Intern|Temporary|JP00183|Security Analyst|Security Analyst|Contract|LOC00032
+POS00448|CC00080|2026-02-05|Reorganization|Contractor|Contract|JP00046|Business Analyst|Business Analyst|Temporary|LOC00090
+POS00449|CC00013|2026-02-05|Reorganization|Intern|Regular|JP00146|Product Manager|Product Manager|Temporary|LOC00021
+POS00450|CC00081|2026-02-05|Reclass|Contractor|Regular|JP00071|HR Manager|HR Manager|Temporary|LOC00064
+POS00451|CC00098|2026-02-05|Reclass|Employee|Seasonal|JP00106|Software Engineer|Software Engineer|Regular|LOC00097
+POS00452|CC00065|2026-02-05|Expansion|Contractor|Contract|JP00027|Data Analyst|Data Analyst|Temporary|LOC00033
+POS00453|CC00065|2026-02-05|New Position|Contractor|Regular|JP00054|HR Manager|HR Manager|Regular|LOC00082
+POS00454|CC00087|2026-02-05|Reorganization|Contractor|Seasonal|JP00178|Operations Manager|Operations Manager|Contract|LOC00025
+POS00455|CC00005|2026-02-05|New Position|Contractor|Regular|JP00102|Project Manager|Project Manager|Temporary|LOC00042
+POS00456|CC00096|2026-02-05|Reorganization|Contractor|Contract|JP00172|Quality Assurance|Quality Assurance|Regular|LOC00011
+POS00457|CC00085|2026-02-05|Replacement|Intern|Contract|JP00141|Finance Manager|Finance Manager|Temporary|LOC00061
+POS00458|CC00021|2026-02-05|Replacement|Employee|Regular|JP00072|Business Analyst|Business Analyst|Temporary|LOC00038
+POS00459|CC00069|2026-02-05|Reorganization|Employee|Regular|JP00032|Accountant|Accountant|Regular|LOC00087
+POS00460|CC00020|2026-02-05|Reorganization|Contractor|Temporary|JP00070|Software Engineer|Software Engineer|Temporary|LOC00092
+POS00461|CC00087|2026-02-05|Reclass|Employee|Contract|JP00009|Project Manager|Project Manager|Regular|LOC00082
+POS00462|CC00083|2026-02-05|New Position|Contractor|Seasonal|JP00134|Operations Manager|Operations Manager|Contract|LOC00007
+POS00463|CC00001|2026-02-05|New Position|Contractor|Temporary|JP00154|Marketing Manager|Marketing Manager|Temporary|LOC00048
+POS00464|CC00026|2026-02-05|New Position|Employee|Contract|JP00062|Data Analyst|Data Analyst|Regular|LOC00002
+POS00465|CC00025|2026-02-05|New Position|Employee|Regular|JP00087|Product Manager|Product Manager|Temporary|LOC00093
+POS00466|CC00006|2026-02-05|Reorganization|Intern|Regular|JP00043|Sales Executive|Sales Executive|Seasonal|LOC00042
+POS00467|CC00081|2026-02-05|Replacement|Intern|Temporary|JP00144|Security Analyst|Security Analyst|Contract|LOC00055
+POS00468|CC00030|2026-02-05|Replacement|Employee|Seasonal|JP00031|Network Engineer|Network Engineer|Seasonal|LOC00023
+POS00469|CC00052|2026-02-05|Expansion|Employee|Contract|JP00004|Sales Executive|Sales Executive|Temporary|LOC00059
+POS00470|CC00009|2026-02-05|Expansion|Intern|Seasonal|JP00057|System Administrator|System Administrator|Regular|LOC00009
+POS00471|CC00053|2026-02-05|Expansion|Intern|Contract|JP00056|Business Analyst|Business Analyst|Regular|LOC00092
+POS00472|CC00073|2026-02-05|Replacement|Contractor|Regular|JP00138|Quality Assurance|Quality Assurance|Seasonal|LOC00081
+POS00473|CC00050|2026-02-05|Replacement|Contractor|Temporary|JP00179|Operations Manager|Operations Manager|Seasonal|LOC00086
+POS00474|CC00009|2026-02-05|Expansion|Employee|Contract|JP00124|Quality Assurance|Quality Assurance|Contract|LOC00066
+POS00475|CC00095|2026-02-05|Replacement|Intern|Regular|JP00164|Operations Manager|Operations Manager|Temporary|LOC00003
+POS00476|CC00098|2026-02-05|New Position|Contractor|Temporary|JP00158|System Administrator|System Administrator|Contract|LOC00097
+POS00477|CC00080|2026-02-05|New Position|Employee|Temporary|JP00063|Security Analyst|Security Analyst|Seasonal|LOC00064
+POS00478|CC00026|2026-02-05|Replacement|Contractor|Temporary|JP00076|Software Engineer|Software Engineer|Regular|LOC00031
+POS00479|CC00077|2026-02-05|Reorganization|Intern|Seasonal|JP00186|Marketing Manager|Marketing Manager|Temporary|LOC00036
+POS00480|CC00083|2026-02-05|New Position|Intern|Contract|JP00082|Security Analyst|Security Analyst|Seasonal|LOC00097
+POS00481|CC00030|2026-02-05|Expansion|Contractor|Temporary|JP00007|Network Engineer|Network Engineer|Temporary|LOC00070
+POS00482|CC00086|2026-02-05|Replacement|Intern|Temporary|JP00014|Finance Manager|Finance Manager|Contract|LOC00067
+POS00483|CC00024|2026-02-05|Reorganization|Intern|Regular|JP00083|Project Manager|Project Manager|Regular|LOC00063
+POS00484|CC00025|2026-02-05|New Position|Intern|Temporary|JP00018|System Administrator|System Administrator|Temporary|LOC00017
+POS00485|CC00023|2026-02-05|Reclass|Intern|Temporary|JP00024|Accountant|Accountant|Temporary|LOC00065
+POS00486|CC00055|2026-02-05|Reorganization|Contractor|Temporary|JP00021|Product Manager|Product Manager|Temporary|LOC00032
+POS00487|CC00023|2026-02-05|Reclass|Employee|Seasonal|JP00109|Data Analyst|Data Analyst|Seasonal|LOC00074
+POS00488|CC00082|2026-02-05|Replacement|Contractor|Contract|JP00115|Network Engineer|Network Engineer|Regular|LOC00047
+POS00489|CC00049|2026-02-05|Replacement|Contractor|Contract|JP00102|Project Manager|Project Manager|Contract|LOC00065
+POS00490|CC00095|2026-02-05|Reorganization|Employee|Contract|JP00157|Security Analyst|Security Analyst|Regular|LOC00098
+POS00491|CC00055|2026-02-05|New Position|Contractor|Temporary|JP00098|Sales Executive|Sales Executive|Temporary|LOC00033
+POS00492|CC00060|2026-02-05|Expansion|Contractor|Seasonal|JP00098|Sales Executive|Sales Executive|Contract|LOC00072
+POS00493|CC00062|2026-02-05|New Position|Contractor|Temporary|JP00156|Sales Executive|Sales Executive|Contract|LOC00026
+POS00494|CC00025|2026-02-05|New Position|Employee|Seasonal|JP00040|System Administrator|System Administrator|Contract|LOC00052
+POS00495|CC00051|2026-02-05|Expansion|Contractor|Contract|JP00107|Project Manager|Project Manager|Seasonal|LOC00083
+POS00496|CC00010|2026-02-05|Reorganization|Employee|Regular|JP00151|Data Analyst|Data Analyst|Contract|LOC00073
+POS00497|CC00025|2026-02-05|Reorganization|Contractor|Seasonal|JP00042|Accountant|Accountant|Contract|LOC00082
+POS00498|CC00048|2026-02-05|New Position|Intern|Contract|JP00177|Product Manager|Product Manager|Contract|LOC00095
+POS00499|CC00032|2026-02-05|Reorganization|Employee|Seasonal|JP00064|System Administrator|System Administrator|Regular|LOC00090
+POS00500|CC00083|2026-02-05|Replacement|Contractor|Contract|JP00171|HR Manager|HR Manager|Temporary|LOC00033
+POS00501|CC00078|2026-02-05|Reclass|Intern|Temporary|JP00064|System Administrator|System Administrator|Regular|LOC00015
+POS00502|CC00012|2026-02-05|Reorganization|Contractor|Regular|JP00198|System Administrator|System Administrator|Temporary|LOC00055
+POS00503|CC00055|2026-02-05|Expansion|Intern|Seasonal|JP00043|Sales Executive|Sales Executive|Contract|LOC00076
+POS00504|CC00094|2026-02-05|Reorganization|Intern|Regular|JP00079|Security Analyst|Security Analyst|Regular|LOC00082
+POS00505|CC00100|2026-02-05|Expansion|Employee|Seasonal|JP00147|Network Engineer|Network Engineer|Temporary|LOC00096
+POS00506|CC00090|2026-02-05|Expansion|Employee|Temporary|JP00102|Project Manager|Project Manager|Contract|LOC00001
+POS00507|CC00009|2026-02-05|Reorganization|Intern|Contract|JP00025|Security Analyst|Security Analyst|Seasonal|LOC00094
+POS00508|CC00022|2026-02-05|Replacement|Contractor|Temporary|JP00111|Software Engineer|Software Engineer|Temporary|LOC00026
+POS00509|CC00024|2026-02-05|Reclass|Employee|Contract|JP00125|Data Analyst|Data Analyst|Temporary|LOC00024
+POS00510|CC00008|2026-02-05|Replacement|Employee|Seasonal|JP00052|Network Engineer|Network Engineer|Contract|LOC00057
+POS00511|CC00080|2026-02-05|New Position|Intern|Temporary|JP00161|Data Analyst|Data Analyst|Regular|LOC00038
+POS00512|CC00049|2026-02-05|New Position|Contractor|Regular|JP00022|Sales Executive|Sales Executive|Seasonal|LOC00004
+POS00513|CC00031|2026-02-05|Reorganization|Contractor|Regular|JP00150|Marketing Manager|Marketing Manager|Regular|LOC00008
+POS00514|CC00097|2026-02-05|New Position|Intern|Regular|JP00069|System Administrator|System Administrator|Regular|LOC00028
+POS00515|CC00001|2026-02-05|Reorganization|Intern|Seasonal|JP00134|Operations Manager|Operations Manager|Contract|LOC00061
+POS00516|CC00044|2026-02-05|Reclass|Contractor|Seasonal|JP00194|Project Manager|Project Manager|Seasonal|LOC00088
+POS00517|CC00041|2026-02-05|Replacement|Contractor|Contract|JP00088|Finance Manager|Finance Manager|Contract|LOC00079
+POS00518|CC00046|2026-02-05|Expansion|Employee|Regular|JP00015|Marketing Manager|Marketing Manager|Contract|LOC00090
+POS00519|CC00093|2026-02-05|Replacement|Employee|Regular|JP00103|HR Manager|HR Manager|Seasonal|LOC00090
+POS00520|CC00032|2026-02-05|Expansion|Contractor|Contract|JP00193|Security Analyst|Security Analyst|Contract|LOC00085
+POS00521|CC00001|2026-02-05|Expansion|Employee|Seasonal|JP00049|Marketing Manager|Marketing Manager|Regular|LOC00095
+POS00522|CC00087|2026-02-05|Reorganization|Employee|Contract|JP00084|Project Manager|Project Manager|Contract|LOC00095
+POS00523|CC00011|2026-02-05|Expansion|Contractor|Contract|JP00157|Security Analyst|Security Analyst|Regular|LOC00094
+POS00524|CC00038|2026-02-05|Reclass|Employee|Temporary|JP00099|Sales Executive|Sales Executive|Regular|LOC00017
+POS00525|CC00012|2026-02-05|Expansion|Intern|Contract|JP00128|Accountant|Accountant|Temporary|LOC00058
+POS00526|CC00062|2026-02-05|Reclass|Employee|Temporary|JP00030|Security Analyst|Security Analyst|Temporary|LOC00022
+POS00527|CC00085|2026-02-05|New Position|Employee|Contract|JP00193|Security Analyst|Security Analyst|Regular|LOC00021
+POS00528|CC00050|2026-02-05|Expansion|Employee|Seasonal|JP00084|Project Manager|Project Manager|Contract|LOC00086
+POS00529|CC00086|2026-02-05|Replacement|Intern|Contract|JP00032|Accountant|Accountant|Regular|LOC00089
+POS00530|CC00029|2026-02-05|Reclass|Intern|Regular|JP00086|Operations Manager|Operations Manager|Seasonal|LOC00049
+POS00531|CC00096|2026-02-05|Reorganization|Intern|Contract|JP00184|Accountant|Accountant|Temporary|LOC00029
+POS00532|CC00015|2026-02-05|Expansion|Employee|Regular|JP00067|Accountant|Accountant|Regular|LOC00044
+POS00533|CC00076|2026-02-05|Replacement|Intern|Regular|JP00190|Marketing Manager|Marketing Manager|Seasonal|LOC00017
+POS00534|CC00049|2026-02-05|Reclass|Intern|Regular|JP00081|Software Engineer|Software Engineer|Seasonal|LOC00008
+POS00535|CC00069|2026-02-05|Replacement|Contractor|Contract|JP00152|Project Manager|Project Manager|Seasonal|LOC00099
+POS00536|CC00087|2026-02-05|Replacement|Intern|Temporary|JP00094|Network Engineer|Network Engineer|Regular|LOC00051
+POS00537|CC00069|2026-02-05|Reorganization|Contractor|Temporary|JP00003|Accountant|Accountant|Seasonal|LOC00029
+POS00538|CC00088|2026-02-05|Reorganization|Employee|Seasonal|JP00128|Accountant|Accountant|Temporary|LOC00096
+POS00539|CC00090|2026-02-05|New Position|Intern|Seasonal|JP00171|HR Manager|HR Manager|Seasonal|LOC00065
+POS00540|CC00016|2026-02-05|Expansion|Intern|Contract|JP00177|Product Manager|Product Manager|Temporary|LOC00064
+POS00541|CC00091|2026-02-05|Reorganization|Employee|Seasonal|JP00075|Data Analyst|Data Analyst|Temporary|LOC00092
+POS00542|CC00094|2026-02-05|Replacement|Intern|Regular|JP00054|HR Manager|HR Manager|Temporary|LOC00063
+POS00543|CC00051|2026-02-05|Expansion|Intern|Temporary|JP00187|HR Manager|HR Manager|Regular|LOC00071
+POS00544|CC00044|2026-02-05|Reorganization|Intern|Contract|JP00101|Network Engineer|Network Engineer|Seasonal|LOC00097
+POS00545|CC00051|2026-02-05|New Position|Intern|Seasonal|JP00101|Network Engineer|Network Engineer|Seasonal|LOC00090
+POS00546|CC00090|2026-02-05|Reclass|Contractor|Regular|JP00050|System Administrator|System Administrator|Temporary|LOC00042
+POS00547|CC00075|2026-02-05|New Position|Intern|Seasonal|JP00193|Security Analyst|Security Analyst|Contract|LOC00084
+POS00548|CC00074|2026-02-05|Replacement|Contractor|Contract|JP00042|Accountant|Accountant|Seasonal|LOC00019
+POS00549|CC00028|2026-02-05|Replacement|Intern|Regular|JP00054|HR Manager|HR Manager|Seasonal|LOC00093
+POS00550|CC00014|2026-02-05|Replacement|Contractor|Contract|JP00148|Finance Manager|Finance Manager|Temporary|LOC00008
+POS00551|CC00046|2026-02-05|Reorganization|Employee|Regular|JP00025|Security Analyst|Security Analyst|Regular|LOC00066
+POS00552|CC00044|2026-02-05|Reclass|Contractor|Temporary|JP00167|Business Analyst|Business Analyst|Contract|LOC00032
+POS00553|CC00016|2026-02-05|Replacement|Contractor|Contract|JP00009|Project Manager|Project Manager|Seasonal|LOC00089
+POS00554|CC00023|2026-02-05|Reorganization|Intern|Regular|JP00153|Marketing Manager|Marketing Manager|Contract|LOC00084
+POS00555|CC00036|2026-02-05|Reorganization|Contractor|Regular|JP00098|Sales Executive|Sales Executive|Regular|LOC00015
+POS00556|CC00016|2026-02-05|Reorganization|Intern|Temporary|JP00022|Sales Executive|Sales Executive|Regular|LOC00076
+POS00557|CC00074|2026-02-05|Reorganization|Contractor|Regular|JP00147|Network Engineer|Network Engineer|Temporary|LOC00050
+POS00558|CC00083|2026-02-05|Reorganization|Contractor|Temporary|JP00124|Quality Assurance|Quality Assurance|Regular|LOC00042
+POS00559|CC00092|2026-02-05|Reclass|Employee|Contract|JP00017|Data Analyst|Data Analyst|Regular|LOC00051
+POS00560|CC00069|2026-02-05|Reclass|Contractor|Regular|JP00143|Operations Manager|Operations Manager|Regular|LOC00097
+POS00561|CC00027|2026-02-05|New Position|Employee|Temporary|JP00193|Security Analyst|Security Analyst|Regular|LOC00072
+POS00562|CC00041|2026-02-05|New Position|Employee|Temporary|JP00115|Network Engineer|Network Engineer|Temporary|LOC00084
+POS00563|CC00012|2026-02-05|Reclass|Contractor|Regular|JP00042|Accountant|Accountant|Regular|LOC00016
+POS00564|CC00039|2026-02-05|Expansion|Intern|Temporary|JP00130|Network Engineer|Network Engineer|Contract|LOC00085
+POS00565|CC00032|2026-02-05|Expansion|Employee|Seasonal|JP00001|Quality Assurance|Quality Assurance|Contract|LOC00018
+POS00566|CC00063|2026-02-05|Expansion|Intern|Seasonal|JP00148|Finance Manager|Finance Manager|Temporary|LOC00089
+POS00567|CC00085|2026-02-05|New Position|Employee|Regular|JP00026|Data Analyst|Data Analyst|Temporary|LOC00019
+POS00568|CC00028|2026-02-05|Replacement|Intern|Temporary|JP00077|Software Engineer|Software Engineer|Seasonal|LOC00036
+POS00569|CC00094|2026-02-05|Reclass|Contractor|Regular|JP00033|Business Analyst|Business Analyst|Seasonal|LOC00034
+POS00570|CC00084|2026-02-05|Replacement|Contractor|Contract|JP00098|Sales Executive|Sales Executive|Regular|LOC00033
+POS00571|CC00055|2026-02-05|Replacement|Intern|Temporary|JP00174|Data Analyst|Data Analyst|Regular|LOC00081
+POS00572|CC00035|2026-02-05|Replacement|Intern|Seasonal|JP00188|Software Engineer|Software Engineer|Temporary|LOC00054
+POS00573|CC00041|2026-02-05|Reorganization|Contractor|Regular|JP00040|System Administrator|System Administrator|Temporary|LOC00010
+POS00574|CC00016|2026-02-05|Reclass|Employee|Contract|JP00070|Software Engineer|Software Engineer|Regular|LOC00043
+POS00575|CC00012|2026-02-05|Expansion|Contractor|Seasonal|JP00164|Operations Manager|Operations Manager|Temporary|LOC00029
+POS00576|CC00002|2026-02-05|New Position|Contractor|Temporary|JP00071|HR Manager|HR Manager|Contract|LOC00014
+POS00577|CC00023|2026-02-05|Reclass|Intern|Seasonal|JP00032|Accountant|Accountant|Contract|LOC00013
+POS00578|CC00045|2026-02-05|Reclass|Contractor|Seasonal|JP00136|Sales Executive|Sales Executive|Regular|LOC00007
+POS00579|CC00041|2026-02-05|Reorganization|Employee|Seasonal|JP00044|Network Engineer|Network Engineer|Contract|LOC00062
+POS00580|CC00017|2026-02-05|Expansion|Employee|Temporary|JP00152|Project Manager|Project Manager|Temporary|LOC00019
+POS00581|CC00073|2026-02-05|Expansion|Employee|Seasonal|JP00097|Project Manager|Project Manager|Temporary|LOC00087
+POS00582|CC00054|2026-02-05|Reorganization|Employee|Contract|JP00156|Sales Executive|Sales Executive|Seasonal|LOC00060
+POS00583|CC00037|2026-02-05|Expansion|Contractor|Temporary|JP00129|System Administrator|System Administrator|Seasonal|LOC00082
+POS00584|CC00040|2026-02-05|Reorganization|Contractor|Regular|JP00023|Data Analyst|Data Analyst|Regular|LOC00010
+POS00585|CC00031|2026-02-05|New Position|Employee|Regular|JP00187|HR Manager|HR Manager|Regular|LOC00096
+POS00586|CC00071|2026-02-05|Reorganization|Employee|Contract|JP00074|HR Manager|HR Manager|Temporary|LOC00062
+POS00587|CC00066|2026-02-05|Reclass|Intern|Regular|JP00128|Accountant|Accountant|Contract|LOC00002
+POS00588|CC00025|2026-02-05|New Position|Intern|Contract|JP00158|System Administrator|System Administrator|Seasonal|LOC00032
+POS00589|CC00085|2026-02-05|Reclass|Intern|Regular|JP00190|Marketing Manager|Marketing Manager|Contract|LOC00022
+POS00590|CC00098|2026-02-05|Reclass|Employee|Temporary|JP00173|Finance Manager|Finance Manager|Regular|LOC00047
+POS00591|CC00066|2026-02-05|Expansion|Employee|Contract|JP00035|Accountant|Accountant|Contract|LOC00049
+POS00592|CC00048|2026-02-05|New Position|Contractor|Temporary|JP00044|Network Engineer|Network Engineer|Regular|LOC00038
+POS00593|CC00062|2026-02-05|Expansion|Contractor|Temporary|JP00077|Software Engineer|Software Engineer|Regular|LOC00095
+POS00594|CC00073|2026-02-05|Reorganization|Employee|Seasonal|JP00162|System Administrator|System Administrator|Regular|LOC00060
+POS00595|CC00063|2026-02-05|New Position|Contractor|Regular|JP00159|Network Engineer|Network Engineer|Contract|LOC00043
+POS00596|CC00046|2026-02-05|New Position|Employee|Seasonal|JP00077|Software Engineer|Software Engineer|Temporary|LOC00052
+POS00597|CC00002|2026-02-05|New Position|Contractor|Contract|JP00091|System Administrator|System Administrator|Temporary|LOC00011
+POS00598|CC00066|2026-02-05|Replacement|Contractor|Regular|JP00136|Sales Executive|Sales Executive|Contract|LOC00001
+POS00599|CC00099|2026-02-05|Expansion|Employee|Contract|JP00040|System Administrator|System Administrator|Contract|LOC00048
+POS00600|CC00047|2026-02-05|Reorganization|Employee|Seasonal|JP00077|Software Engineer|Software Engineer|Regular|LOC00057
