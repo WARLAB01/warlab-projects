@@ -505,6 +505,13 @@
                     </div>
                     <div class="chart-container" id="movements-trend"></div>
                 </div>
+                <div class="card">
+                    <div class="card-title">
+                        Turnover &amp; Promotion Rates (%)
+                        <button class="export-btn" onclick="downloadChart('rates-trend')">Export</button>
+                    </div>
+                    <div class="chart-container" id="rates-trend"></div>
+                </div>
             </div>
         </div>
 
@@ -739,6 +746,16 @@
                 transfers: Math.floor(Math.random() * 6) + 2
             }));
 
+            // Rates trend (turnover & promotion rates)
+            const ratesTrend = months.map(month => ({
+                month,
+                turnoverRate: parseFloat((Math.random() * 5 + 2).toFixed(1)),
+                promotionRate: parseFloat((Math.random() * 3 + 1).toFixed(1)),
+                terminations: Math.floor(Math.random() * 20 + 5),
+                promotions: Math.floor(Math.random() * 15 + 3),
+                headcount: 2200 + Math.floor(Math.random() * 300)
+            }));
+
             // Compensation by Job Family
             const compensationByJobFamily = jobFamilies.map(family => ({
                 family,
@@ -787,6 +804,7 @@
                 headcountTrend,
                 movementsByType,
                 movementTrend,
+                ratesTrend,
                 compensationByJobFamily,
                 compensationByGrade,
                 deptSizes,
@@ -870,6 +888,19 @@
                 };
             }).reverse();
 
+            // --- Rates Trend (Turnover & Promotion rates by month) ---
+            const ratesTrend = (movRaw.rates_trend || []).slice(0, 12).map(r => {
+                const d = new Date(r.month);
+                return {
+                    month: d.toLocaleString('en-US', {month:'short', year:'2-digit'}),
+                    turnoverRate: parseFloat(r.turnover_rate) || 0,
+                    promotionRate: parseFloat(r.promotion_rate) || 0,
+                    terminations: parseInt(r.terminations) || 0,
+                    promotions: parseInt(r.promotions) || 0,
+                    headcount: parseInt(r.headcount) || 0
+                };
+            }).reverse();
+
             // --- Compensation ---
             const compensationByJobFamily = (compRaw.by_job_family || []).map(r => ({
                 family: r.job_family_name || r.job_family || 'Unknown',
@@ -914,6 +945,7 @@
                 headcountTrend: headcountTrend.length > 0 ? headcountTrend : [{month: 'Current', headcount: totalHC}],
                 movementsByType,
                 movementTrend,
+                ratesTrend,
                 compensationByJobFamily,
                 compensationByGrade,
                 deptSizes,
@@ -1022,6 +1054,7 @@
             createMovementsWaterfallChart(data);
             createMovementTypesChart(data.movementsByType);
             createMovementTrendChart(data.movementTrend);
+            createRatesTrendChart(data.ratesTrend || []);
 
             showDataStatus('movements', isUsingDemoData);
         }
@@ -1243,6 +1276,39 @@
                     { name: 'Transfers', data: data.map(d => d.transfers), type: 'line', smooth: true, lineStyle: { color: '#00d9ff', width: 2 }, symbolSize: 4 }
                 ],
                 tooltip: { backgroundColor: '#16213e', borderColor: '#0f3460', textStyle: { color: '#eaeaea' } }
+            };
+
+            myChart.setOption(option);
+            window.addEventListener('resize', () => myChart.resize());
+        }
+
+        function createRatesTrendChart(data) {
+            const chartDom = document.getElementById('rates-trend');
+            if (!chartDom) return;
+            const myChart = echarts.init(chartDom, null, { renderer: 'canvas' });
+            CONFIG.charts['rates-trend'] = myChart;
+
+            const option = {
+                color: ['#e94560', '#00ff88'],
+                grid: { left: 50, right: 30, bottom: 40, top: 30, containLabel: true },
+                legend: { data: ['Turnover Rate', 'Promotion Rate'], textStyle: { color: '#a8a8a8' }, top: 0 },
+                xAxis: { type: 'category', data: data.map(d => d.month), axisLine: { lineStyle: { color: '#2d2d44' } }, axisLabel: { color: '#a8a8a8' } },
+                yAxis: { type: 'value', name: '%', nameTextStyle: { color: '#a8a8a8' }, axisLine: { lineStyle: { color: '#2d2d44' } }, splitLine: { lineStyle: { color: '#2d2d44' } }, axisLabel: { color: '#a8a8a8', formatter: '{value}%' } },
+                series: [
+                    { name: 'Turnover Rate', data: data.map(d => d.turnoverRate), type: 'line', smooth: true, lineStyle: { color: '#e94560', width: 3 }, itemStyle: { color: '#e94560' }, symbolSize: 6, areaStyle: { color: { type: 'linear', x: 0, y: 0, x2: 0, y2: 1, colorStops: [{ offset: 0, color: 'rgba(233,69,96,0.3)' }, { offset: 1, color: 'rgba(233,69,96,0.02)' }] } } },
+                    { name: 'Promotion Rate', data: data.map(d => d.promotionRate), type: 'line', smooth: true, lineStyle: { color: '#00ff88', width: 3 }, itemStyle: { color: '#00ff88' }, symbolSize: 6, areaStyle: { color: { type: 'linear', x: 0, y: 0, x2: 0, y2: 1, colorStops: [{ offset: 0, color: 'rgba(0,255,136,0.3)' }, { offset: 1, color: 'rgba(0,255,136,0.02)' }] } } }
+                ],
+                tooltip: {
+                    trigger: 'axis',
+                    backgroundColor: '#16213e',
+                    borderColor: '#0f3460',
+                    textStyle: { color: '#eaeaea' },
+                    formatter: function(params) {
+                        let tip = params[0].axisValue + '<br/>';
+                        params.forEach(p => { tip += p.marker + ' ' + p.seriesName + ': <b>' + p.value + '%</b><br/>'; });
+                        return tip;
+                    }
+                }
             };
 
             myChart.setOption(option);
