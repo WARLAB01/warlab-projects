@@ -541,6 +541,7 @@ active_workers AS (
         dwj.job_profile_id,
         dwj.location AS location_id,
         dwj.sup_org_id,
+        dwj.supervisory_organization,
         dwj.idp_employee_status,
         dwj.compensation_grade_proposed AS grade_id,
         dwj.position_id,
@@ -593,8 +594,9 @@ with_dimension_fks AS (
     LEFT JOIN l3_workday.dim_location_d dl
         ON aw.location_id = dl.location_id
         AND aw.snapshot_date BETWEEN dl.valid_from AND dl.valid_to
+    -- Bridge CC-format supervisory_organization to DPT-format department_id
     LEFT JOIN l3_workday.dim_department_d dd
-        ON aw.sup_org_id = dd.department_id
+        ON REPLACE(aw.supervisory_organization, 'CC', 'DPT') = dd.department_id
         AND aw.snapshot_date BETWEEN dd.valid_from AND dd.valid_to
     LEFT JOIN l3_workday.dim_position_d dp
         ON aw.position_id = dp.position_id
