@@ -770,98 +770,136 @@ WHERE idp_obsolete_date IS NULL
   AND sequence_number = idp_min_seq_num
   AND organization_type = 'Supervisory';
 
--- Step 6.1.5: Assemble enriched row via as-of joins
-CREATE TEMP TABLE tmp_assembled_rows AS
+-- Step 6.1.5: Find the MAX effective date from each source that is <= each target date
+-- This prevents the cartesian product that occurred when using (effective_date <=) directly
+CREATE TEMP TABLE tmp_as_of_keys AS
 SELECT
     ed.employee_id,
     ed.effective_date,
-    -- Worker Job attributes (as-of join)
-    COALESCE(wj.position_id, NULL) AS position_id,
-    COALESCE(wj.worker_type, NULL) AS worker_type,
-    COALESCE(wj.worker_sub_type, NULL) AS worker_sub_type,
-    COALESCE(wj.business_title, NULL) AS business_title,
-    COALESCE(wj.business_site_id, NULL) AS business_site_id,
-    COALESCE(wj.mailstop_floor, NULL) AS mailstop_floor,
-    COALESCE(wj.worker_status, NULL) AS worker_status,
-    COALESCE(wj.active::INT::VARCHAR, NULL) AS active,
-    COALESCE(wj.first_day_of_work, NULL) AS first_day_of_work,
-    COALESCE(wj.expected_date_of_return, NULL) AS expected_date_of_return,
-    COALESCE(wj.not_returning::INT::VARCHAR, NULL) AS not_returning,
-    COALESCE(wj.return_unknown, NULL) AS return_unknown,
-    COALESCE(wj.probation_start_date, NULL) AS probation_start_date,
-    COALESCE(wj.probation_end_date, NULL) AS probation_end_date,
-    COALESCE(wj.academic_tenure_date, NULL) AS academic_tenure_date,
-    COALESCE(wj.has_international_assignment::INT::VARCHAR, NULL) AS has_international_assignment,
-    COALESCE(wj.home_country, NULL) AS home_country,
-    COALESCE(wj.host_country, NULL) AS host_country,
-    COALESCE(wj.international_assignment_type, NULL) AS international_assignment_type,
-    COALESCE(wj.start_date_of_international_assignment, NULL) AS start_date_of_international_assignment,
-    COALESCE(wj.end_date_of_international_assignment, NULL) AS end_date_of_international_assignment,
-    COALESCE(wj.action, NULL) AS action,
-    COALESCE(wj.action_code, NULL) AS action_code,
-    COALESCE(wj.action_reason, NULL) AS action_reason,
-    COALESCE(wj.action_reason_code, NULL) AS action_reason_code,
-    COALESCE(wj.manager_id, NULL) AS manager_id,
-    COALESCE(wj.soft_retirement_indicator::INT::VARCHAR, NULL) AS soft_retirement_indicator,
-    COALESCE(wj.job_profile_id, NULL) AS job_profile_id,
-    COALESCE(wj.sequence_number, NULL) AS sequence_number,
-    COALESCE(wj.planned_end_contract_date, NULL) AS planned_end_contract_date,
-    COALESCE(wj.job_entry_dt, NULL) AS job_entry_dt,
-    COALESCE(wj.stock_grants, NULL) AS stock_grants,
-    COALESCE(wj.time_type, NULL) AS time_type,
-    COALESCE(wj.supervisory_organization, NULL) AS supervisory_organization,
-    COALESCE(wj.location, NULL) AS location,
-    COALESCE(wj.job_title, NULL) AS job_title,
-    COALESCE(wj.french_job_title, NULL) AS french_job_title,
-    COALESCE(wj.shift_number, NULL) AS shift_number,
-    COALESCE(wj.scheduled_weekly_hours, NULL) AS scheduled_weekly_hours,
-    COALESCE(wj.default_weekly_hours, NULL) AS default_weekly_hours,
-    COALESCE(wj.scheduled_fte, NULL) AS scheduled_fte,
-    COALESCE(wj.work_model_start_date, NULL) AS work_model_start_date,
-    COALESCE(wj.work_model_type, NULL) AS work_model_type,
-    COALESCE(wj.worker_workday_id, NULL) AS worker_workday_id,
-    COALESCE(wj.idp_employee_status, NULL) AS idp_employee_status,
-    -- Worker Compensation attributes (as-of join)
-    COALESCE(wc.compensation_package_proposed, NULL) AS compensation_package_proposed,
-    COALESCE(wc.compensation_grade_proposed, NULL) AS compensation_grade_proposed,
-    COALESCE(wc.comp_grade_profile_proposed, NULL) AS comp_grade_profile_proposed,
-    COALESCE(wc.compensation_step_proposed, NULL) AS compensation_step_proposed,
-    COALESCE(wc.pay_range_minimum, NULL) AS pay_range_minimum,
-    COALESCE(wc.pay_range_midpoint, NULL) AS pay_range_midpoint,
-    COALESCE(wc.pay_range_maximum, NULL) AS pay_range_maximum,
-    COALESCE(wc.base_pay_proposed_amount, NULL) AS base_pay_proposed_amount,
-    COALESCE(wc.base_pay_proposed_currency, NULL) AS base_pay_proposed_currency,
-    COALESCE(wc.base_pay_proposed_frequency, NULL) AS base_pay_proposed_frequency,
-    COALESCE(wc.benefits_annual_rate_abbr, NULL) AS benefits_annual_rate_abbr,
-    COALESCE(wc.pay_rate_type, NULL) AS pay_rate_type,
-    COALESCE(wc.compensation, NULL) AS compensation,
-    -- Worker Organization attributes (resolved)
-    COALESCE(cc.cost_center_id, NULL) AS cost_center_id,
-    COALESCE(co.company_id, NULL) AS company_id,
-    COALESCE(so.sup_org_id, NULL) AS sup_org_id
-FROM tmp_effective_dates ed
+    -- Most recent worker_job row on or before this effective_date
+    (SELECT MAX(wj2.transaction_effective_date)
+     FROM tmp_worker_job wj2
+     WHERE wj2.employee_id = ed.employee_id
+       AND wj2.transaction_effective_date <= ed.effective_date
+       AND wj2.rn = 1) AS wj_as_of_date,
+    -- Most recent worker_comp row on or before this effective_date
+    (SELECT MAX(wc2.transaction_effective_date)
+     FROM tmp_worker_comp wc2
+     WHERE wc2.employee_id = ed.employee_id
+       AND wc2.transaction_effective_date <= ed.effective_date
+       AND wc2.rn = 1) AS wc_as_of_date,
+    -- Most recent cost_centre row on or before this effective_date
+    (SELECT MAX(cc2.transaction_effective_date)
+     FROM tmp_worker_org_cost_centre cc2
+     WHERE cc2.employee_id = ed.employee_id
+       AND cc2.transaction_effective_date <= ed.effective_date
+       AND cc2.rn = 1) AS cc_as_of_date,
+    -- Most recent company row on or before this effective_date
+    (SELECT MAX(co2.transaction_effective_date)
+     FROM tmp_worker_org_company co2
+     WHERE co2.employee_id = ed.employee_id
+       AND co2.transaction_effective_date <= ed.effective_date
+       AND co2.rn = 1) AS co_as_of_date,
+    -- Most recent supervisory row on or before this effective_date
+    (SELECT MAX(so2.transaction_effective_date)
+     FROM tmp_worker_org_supervisory so2
+     WHERE so2.employee_id = ed.employee_id
+       AND so2.transaction_effective_date <= ed.effective_date
+       AND so2.rn = 1) AS so_as_of_date
+FROM tmp_effective_dates ed;
+
+-- Step 6.1.6: Assemble enriched row via exact as-of joins (no cartesian product)
+CREATE TEMP TABLE tmp_assembled_rows AS
+SELECT
+    aok.employee_id,
+    aok.effective_date,
+    -- Worker Job attributes (exact as-of join)
+    wj.position_id,
+    wj.worker_type,
+    wj.worker_sub_type,
+    wj.business_title,
+    wj.business_site_id,
+    wj.mailstop_floor,
+    wj.worker_status,
+    wj.active,
+    wj.first_day_of_work,
+    wj.expected_date_of_return,
+    wj.not_returning,
+    wj.return_unknown,
+    wj.probation_start_date,
+    wj.probation_end_date,
+    wj.academic_tenure_date,
+    wj.has_international_assignment,
+    wj.home_country,
+    wj.host_country,
+    wj.international_assignment_type,
+    wj.start_date_of_international_assignment,
+    wj.end_date_of_international_assignment,
+    wj.action,
+    wj.action_code,
+    wj.action_reason,
+    wj.action_reason_code,
+    wj.manager_id,
+    wj.soft_retirement_indicator,
+    wj.job_profile_id,
+    wj.sequence_number,
+    wj.planned_end_contract_date,
+    wj.job_entry_dt,
+    wj.stock_grants,
+    wj.time_type,
+    wj.supervisory_organization,
+    wj.location,
+    wj.job_title,
+    wj.french_job_title,
+    wj.shift_number,
+    wj.scheduled_weekly_hours,
+    wj.default_weekly_hours,
+    wj.scheduled_fte,
+    wj.work_model_start_date,
+    wj.work_model_type,
+    wj.worker_workday_id,
+    wj.idp_employee_status,
+    -- Worker Compensation attributes (exact as-of join)
+    wc.compensation_package_proposed,
+    wc.compensation_grade_proposed,
+    wc.comp_grade_profile_proposed,
+    wc.compensation_step_proposed,
+    wc.pay_range_minimum,
+    wc.pay_range_midpoint,
+    wc.pay_range_maximum,
+    wc.base_pay_proposed_amount,
+    wc.base_pay_proposed_currency,
+    wc.base_pay_proposed_frequency,
+    wc.benefits_annual_rate_abbr,
+    wc.pay_rate_type,
+    wc.compensation,
+    -- Worker Organization attributes (exact as-of join)
+    cc.cost_center_id,
+    co.company_id,
+    so.sup_org_id
+FROM tmp_as_of_keys aok
 LEFT JOIN tmp_worker_job wj
-    ON ed.employee_id = wj.employee_id
-    AND wj.transaction_effective_date <= ed.effective_date
+    ON aok.employee_id = wj.employee_id
+    AND wj.transaction_effective_date = aok.wj_as_of_date
     AND wj.rn = 1
 LEFT JOIN tmp_worker_comp wc
-    ON ed.employee_id = wc.employee_id
-    AND wc.transaction_effective_date <= ed.effective_date
+    ON aok.employee_id = wc.employee_id
+    AND wc.transaction_effective_date = aok.wc_as_of_date
     AND wc.rn = 1
 LEFT JOIN tmp_worker_org_cost_centre cc
-    ON ed.employee_id = cc.employee_id
-    AND cc.transaction_effective_date <= ed.effective_date
+    ON aok.employee_id = cc.employee_id
+    AND cc.transaction_effective_date = aok.cc_as_of_date
     AND cc.rn = 1
 LEFT JOIN tmp_worker_org_company co
-    ON ed.employee_id = co.employee_id
-    AND co.transaction_effective_date <= ed.effective_date
+    ON aok.employee_id = co.employee_id
+    AND co.transaction_effective_date = aok.co_as_of_date
     AND co.rn = 1
 LEFT JOIN tmp_worker_org_supervisory so
-    ON ed.employee_id = so.employee_id
-    AND so.transaction_effective_date <= ed.effective_date
+    ON aok.employee_id = so.employee_id
+    AND so.transaction_effective_date = aok.so_as_of_date
     AND so.rn = 1;
 
--- Step 6.1.6: Frame SCD2 windows and compute hash_diff
+-- Step 6.1.7: Frame SCD2 windows and compute hash_diff
 CREATE TEMP TABLE stg_dim_worker_job AS
 WITH windowed_rows AS (
     SELECT
@@ -894,7 +932,7 @@ SELECT
     MD5(COALESCE(position_id::VARCHAR, '') || COALESCE(worker_type::VARCHAR, '') || COALESCE(worker_sub_type::VARCHAR, '') || COALESCE(business_title::VARCHAR, '') || COALESCE(business_site_id::VARCHAR, '') || COALESCE(mailstop_floor::VARCHAR, '') || COALESCE(worker_status::VARCHAR, '') || COALESCE(active::INT::VARCHAR, '') || COALESCE(first_day_of_work::VARCHAR, '') || COALESCE(expected_date_of_return::VARCHAR, '') || COALESCE(not_returning::INT::VARCHAR, '') || COALESCE(return_unknown::VARCHAR, '') || COALESCE(probation_start_date::VARCHAR, '') || COALESCE(probation_end_date::VARCHAR, '') || COALESCE(academic_tenure_date::VARCHAR, '') || COALESCE(has_international_assignment::INT::VARCHAR, '') || COALESCE(home_country::VARCHAR, '') || COALESCE(host_country::VARCHAR, '') || COALESCE(international_assignment_type::VARCHAR, '') || COALESCE(start_date_of_international_assignment::VARCHAR, '') || COALESCE(end_date_of_international_assignment::VARCHAR, '') || COALESCE(action::VARCHAR, '') || COALESCE(action_code::VARCHAR, '') || COALESCE(action_reason::VARCHAR, '') || COALESCE(action_reason_code::VARCHAR, '') || COALESCE(manager_id::VARCHAR, '') || COALESCE(soft_retirement_indicator::INT::VARCHAR, '') || COALESCE(job_profile_id::VARCHAR, '') || COALESCE(sequence_number::VARCHAR, '') || COALESCE(planned_end_contract_date::VARCHAR, '') || COALESCE(job_entry_dt::VARCHAR, '') || COALESCE(stock_grants::VARCHAR, '') || COALESCE(time_type::VARCHAR, '') || COALESCE(supervisory_organization::VARCHAR, '') || COALESCE(location::VARCHAR, '') || COALESCE(job_title::VARCHAR, '') || COALESCE(french_job_title::VARCHAR, '') || COALESCE(shift_number::VARCHAR, '') || COALESCE(scheduled_weekly_hours::VARCHAR, '') || COALESCE(default_weekly_hours::VARCHAR, '') || COALESCE(scheduled_fte::VARCHAR, '') || COALESCE(work_model_start_date::VARCHAR, '') || COALESCE(work_model_type::VARCHAR, '') || COALESCE(worker_workday_id::VARCHAR, '') || COALESCE(idp_employee_status::VARCHAR, '') || COALESCE(compensation_package_proposed::VARCHAR, '') || COALESCE(compensation_grade_proposed::VARCHAR, '') || COALESCE(comp_grade_profile_proposed::VARCHAR, '') || COALESCE(compensation_step_proposed::VARCHAR, '') || COALESCE(pay_range_minimum::VARCHAR, '') || COALESCE(pay_range_midpoint::VARCHAR, '') || COALESCE(pay_range_maximum::VARCHAR, '') || COALESCE(base_pay_proposed_amount::VARCHAR, '') || COALESCE(base_pay_proposed_currency::VARCHAR, '') || COALESCE(base_pay_proposed_frequency::VARCHAR, '') || COALESCE(benefits_annual_rate_abbr::VARCHAR, '') || COALESCE(pay_rate_type::VARCHAR, '') || COALESCE(compensation::VARCHAR, '') || COALESCE(cost_center_id::VARCHAR, '') || COALESCE(company_id::VARCHAR, '') || COALESCE(sup_org_id::VARCHAR, '')) AS hash_diff
 FROM windowed_rows;
 
--- Step 6.1.7: Mark is_current_job_row (most recent per employee)
+-- Step 6.1.8: Mark is_current_job_row (most recent per employee)
 CREATE TEMP TABLE stg_dim_worker_job_final AS
 SELECT
     *,
@@ -904,7 +942,7 @@ SELECT
     END AS is_current_job_row
 FROM stg_dim_worker_job;
 
--- Step 6.1.8: SCD2 merge logic
+-- Step 6.1.9: SCD2 merge logic
 -- Close changed records in target
 UPDATE l3_workday.dim_worker_job_d tgt
 SET valid_to = stg.valid_from - 1,
@@ -979,6 +1017,7 @@ DROP TABLE tmp_worker_comp;
 DROP TABLE tmp_worker_org_cost_centre;
 DROP TABLE tmp_worker_org_company;
 DROP TABLE tmp_worker_org_supervisory;
+DROP TABLE tmp_as_of_keys;
 DROP TABLE tmp_assembled_rows;
 DROP TABLE stg_dim_worker_job;
 DROP TABLE stg_dim_worker_job_final;
@@ -1031,38 +1070,51 @@ WHERE idp_obsolete_date IS NULL
   AND transaction_entry_date = idp_max_entry_ts
   AND sequence_number = idp_min_seq_num;
 
--- Step 3: Assemble status rows via as-of join
-CREATE TEMP TABLE tmp_assembled_status_rows AS
+-- Step 3: Compute as-of keys for status (fixed: separate temp table to avoid unsupported correlated subquery in JOIN ON)
+CREATE TEMP TABLE tmp_status_as_of_keys AS
 SELECT
     ed.employee_id,
     ed.effective_date,
-    COALESCE(wj.active_status_date, NULL) AS active_status_date,
-    COALESCE(wj.benefits_service_date, NULL) AS benefits_service_date,
-    COALESCE(wj.continuous_service_date, NULL) AS continuous_service_date,
-    COALESCE(wj.planned_end_contract_date, NULL) AS planned_end_contract_date,
-    COALESCE(wj.hire_date, NULL) AS hire_date,
-    COALESCE(wj.eligible_for_rehire, NULL) AS eligible_for_rehire,
-    COALESCE(wj.not_eligible_for_hire::INT::VARCHAR, NULL) AS not_eligible_for_hire,
-    COALESCE(wj.active::INT::VARCHAR, NULL) AS active,
-    COALESCE(wj.worker_status, NULL) AS worker_status,
-    COALESCE(wj.employment_end_date, NULL) AS employment_end_date,
-    COALESCE(wj.hire_reason, NULL) AS hire_reason,
-    COALESCE(wj.hire_rescinded::INT::VARCHAR, NULL) AS hire_rescinded,
-    COALESCE(wj.original_hire_date, NULL) AS original_hire_date,
-    COALESCE(wj.primary_termination_category, NULL) AS primary_termination_category,
-    COALESCE(wj.primary_termination_reason, NULL) AS primary_termination_reason,
-    COALESCE(wj.retired::INT::VARCHAR, NULL) AS retired,
-    COALESCE(wj.retirement_eligibility_date, NULL) AS retirement_eligibility_date,
-    COALESCE(wj.expected_retirement_date, NULL) AS expected_retirement_date,
-    COALESCE(wj.seniority_date, NULL) AS seniority_date,
-    COALESCE(wj.termination_date, NULL) AS termination_date
-FROM tmp_status_effective_dates ed
+    (SELECT MAX(wj2.transaction_effective_date)
+     FROM tmp_worker_status_job wj2
+     WHERE wj2.employee_id = ed.employee_id
+       AND wj2.transaction_effective_date <= ed.effective_date
+       AND wj2.rn = 1
+    ) AS wj_as_of_date
+FROM tmp_status_effective_dates ed;
+
+-- Step 4: Assemble status rows via EXACT equality join (fixed: prevents cartesian product)
+CREATE TEMP TABLE tmp_assembled_status_rows AS
+SELECT
+    aok.employee_id,
+    aok.effective_date,
+    wj.active_status_date,
+    wj.benefits_service_date,
+    wj.continuous_service_date,
+    wj.planned_end_contract_date,
+    wj.hire_date,
+    wj.eligible_for_rehire,
+    wj.not_eligible_for_hire,
+    wj.active,
+    wj.worker_status,
+    wj.employment_end_date,
+    wj.hire_reason,
+    wj.hire_rescinded,
+    wj.original_hire_date,
+    wj.primary_termination_category,
+    wj.primary_termination_reason,
+    wj.retired,
+    wj.retirement_eligibility_date,
+    wj.expected_retirement_date,
+    wj.seniority_date,
+    wj.termination_date
+FROM tmp_status_as_of_keys aok
 LEFT JOIN tmp_worker_status_job wj
-    ON ed.employee_id = wj.employee_id
-    AND wj.transaction_effective_date <= ed.effective_date
+    ON aok.employee_id = wj.employee_id
+    AND wj.transaction_effective_date = aok.wj_as_of_date
     AND wj.rn = 1;
 
--- Step 4: Frame SCD2 windows and compute hash_diff
+-- Step 5: Frame SCD2 windows and compute hash_diff
 CREATE TEMP TABLE stg_dim_worker_status AS
 WITH windowed_rows AS (
     SELECT
@@ -1086,7 +1138,7 @@ SELECT
     MD5(COALESCE(active_status_date::VARCHAR, '') || COALESCE(benefits_service_date::VARCHAR, '') || COALESCE(continuous_service_date::VARCHAR, '') || COALESCE(planned_end_contract_date::VARCHAR, '') || COALESCE(hire_date::VARCHAR, '') || COALESCE(eligible_for_rehire::VARCHAR, '') || COALESCE(not_eligible_for_hire::INT::VARCHAR, '') || COALESCE(active::INT::VARCHAR, '') || COALESCE(worker_status::VARCHAR, '') || COALESCE(employment_end_date::VARCHAR, '') || COALESCE(hire_reason::VARCHAR, '') || COALESCE(hire_rescinded::INT::VARCHAR, '') || COALESCE(original_hire_date::VARCHAR, '') || COALESCE(primary_termination_category::VARCHAR, '') || COALESCE(primary_termination_reason::VARCHAR, '') || COALESCE(retired::INT::VARCHAR, '') || COALESCE(retirement_eligibility_date::VARCHAR, '') || COALESCE(expected_retirement_date::VARCHAR, '') || COALESCE(seniority_date::VARCHAR, '') || COALESCE(termination_date::VARCHAR, '')) AS hash_diff
 FROM windowed_rows;
 
--- Step 5: SCD2 merge logic
+-- Step 6: SCD2 merge logic
 -- Close changed records in target
 UPDATE l3_workday.dim_worker_status_d tgt
 SET valid_to = stg.valid_from - 1,
@@ -1141,6 +1193,7 @@ WHERE is_current = TRUE
 -- Cleanup temp tables
 DROP TABLE tmp_status_effective_dates;
 DROP TABLE tmp_worker_status_job;
+DROP TABLE tmp_status_as_of_keys;
 DROP TABLE tmp_assembled_status_rows;
 DROP TABLE stg_dim_worker_status;
 

@@ -1,0 +1,239 @@
+{
+  "workflow_name": "warlab-hr-l1-load",
+  "workflow_description": "Orchestrated ETL pipeline for loading HR Datamart source tables from S3 to Redshift L1 staging layer",
+  "created_date": "2026-02-06",
+  "author": "Data Engineering Team",
+  "version": "1.0",
+  "documentation": {
+    "purpose": "This workflow orchestrates the loading of 12 HR Datamart source tables from S3 into Redshift L1 staging tables",
+    "source_format": "Pipe-delimited CSV files with headers",
+    "source_location": "s3://warlab-hr-datamart-dev/workday/hrdp/",
+    "target_location": "Redshift dev database, l1_workday schema",
+    "frequency": "Daily or on-demand",
+    "dependencies": [
+      "Redshift Glue connection: warlab-redshift-connection",
+      "S3 bucket: warlab-hr-datamart-dev",
+      "IAM role with S3 and Redshift access"
+    ]
+  },
+  "shared_etl_script": {
+    "name": "glue_s3_to_l1_etl.py",
+    "location": "s3://warlab-hr-datamart-dev/glue-scripts/glue_s3_to_l1_etl.py",
+    "description": "Parameterized ETL script that loads pipe-delimited CSV from S3 to Redshift L1 tables"
+  },
+  "glue_jobs": [
+    {
+      "job_name": "warlab-hr-int0095e-worker-job",
+      "source_table": "int0095e_worker_job",
+      "s3_path": "s3://warlab-hr-datamart-dev/workday/hrdp/int0095e_worker_job/",
+      "redshift_schema": "l1_workday",
+      "redshift_table": "int0095e_worker_job",
+      "redshift_connection": "warlab-redshift-connection",
+      "redshift_database": "dev",
+      "description": "Load Worker Job dimension data from Workday",
+      "max_capacity": 10.0,
+      "timeout_minutes": 30,
+      "glue_version": "4.0",
+      "python_version": "3"
+    },
+    {
+      "job_name": "warlab-hr-int0096-worker-organization",
+      "source_table": "int0096_worker_organization",
+      "s3_path": "s3://warlab-hr-datamart-dev/workday/hrdp/int0096_worker_organization/",
+      "redshift_schema": "l1_workday",
+      "redshift_table": "int0096_worker_organization",
+      "redshift_connection": "warlab-redshift-connection",
+      "redshift_database": "dev",
+      "description": "Load Worker Organization dimension data from Workday",
+      "max_capacity": 10.0,
+      "timeout_minutes": 30,
+      "glue_version": "4.0",
+      "python_version": "3"
+    },
+    {
+      "job_name": "warlab-hr-int0098-worker-compensation",
+      "source_table": "int0098_worker_compensation",
+      "s3_path": "s3://warlab-hr-datamart-dev/workday/hrdp/int0098_worker_compensation/",
+      "redshift_schema": "l1_workday",
+      "redshift_table": "int0098_worker_compensation",
+      "redshift_connection": "warlab-redshift-connection",
+      "redshift_database": "dev",
+      "description": "Load Worker Compensation data from Workday",
+      "max_capacity": 10.0,
+      "timeout_minutes": 30,
+      "glue_version": "4.0",
+      "python_version": "3"
+    },
+    {
+      "job_name": "warlab-hr-int270-rescinded",
+      "source_table": "int270_rescinded",
+      "s3_path": "s3://warlab-hr-datamart-dev/workday/hrdp/int270_rescinded/",
+      "redshift_schema": "l1_workday",
+      "redshift_table": "int270_rescinded",
+      "redshift_connection": "warlab-redshift-connection",
+      "redshift_database": "dev",
+      "description": "Load Rescinded records data from Workday",
+      "max_capacity": 10.0,
+      "timeout_minutes": 30,
+      "glue_version": "4.0",
+      "python_version": "3"
+    },
+    {
+      "job_name": "warlab-hr-int6020-grade-profile",
+      "source_table": "int6020_grade_profile",
+      "s3_path": "s3://warlab-hr-datamart-dev/workday/hrdp/int6020_grade_profile/",
+      "redshift_schema": "l1_workday",
+      "redshift_table": "int6020_grade_profile",
+      "redshift_connection": "warlab-redshift-connection",
+      "redshift_database": "dev",
+      "description": "Load Grade Profile dimension data from Workday",
+      "max_capacity": 10.0,
+      "timeout_minutes": 30,
+      "glue_version": "4.0",
+      "python_version": "3"
+    },
+    {
+      "job_name": "warlab-hr-int6021-job-profile",
+      "source_table": "int6021_job_profile",
+      "s3_path": "s3://warlab-hr-datamart-dev/workday/hrdp/int6021_job_profile/",
+      "redshift_schema": "l1_workday",
+      "redshift_table": "int6021_job_profile",
+      "redshift_connection": "warlab-redshift-connection",
+      "redshift_database": "dev",
+      "description": "Load Job Profile dimension data from Workday",
+      "max_capacity": 10.0,
+      "timeout_minutes": 30,
+      "glue_version": "4.0",
+      "python_version": "3"
+    },
+    {
+      "job_name": "warlab-hr-int6022-job-classification",
+      "source_table": "int6022_job_classification",
+      "s3_path": "s3://warlab-hr-datamart-dev/workday/hrdp/int6022_job_classification/",
+      "redshift_schema": "l1_workday",
+      "redshift_table": "int6022_job_classification",
+      "redshift_connection": "warlab-redshift-connection",
+      "redshift_database": "dev",
+      "description": "Load Job Classification dimension data from Workday",
+      "max_capacity": 10.0,
+      "timeout_minutes": 30,
+      "glue_version": "4.0",
+      "python_version": "3"
+    },
+    {
+      "job_name": "warlab-hr-int6023-location",
+      "source_table": "int6023_location",
+      "s3_path": "s3://warlab-hr-datamart-dev/workday/hrdp/int6023_location/",
+      "redshift_schema": "l1_workday",
+      "redshift_table": "int6023_location",
+      "redshift_connection": "warlab-redshift-connection",
+      "redshift_database": "dev",
+      "description": "Load Location dimension data from Workday",
+      "max_capacity": 10.0,
+      "timeout_minutes": 30,
+      "glue_version": "4.0",
+      "python_version": "3"
+    },
+    {
+      "job_name": "warlab-hr-int6024-company",
+      "source_table": "int6024_company",
+      "s3_path": "s3://warlab-hr-datamart-dev/workday/hrdp/int6024_company/",
+      "redshift_schema": "l1_workday",
+      "redshift_table": "int6024_company",
+      "redshift_connection": "warlab-redshift-connection",
+      "redshift_database": "dev",
+      "description": "Load Company dimension data from Workday",
+      "max_capacity": 10.0,
+      "timeout_minutes": 30,
+      "glue_version": "4.0",
+      "python_version": "3"
+    },
+    {
+      "job_name": "warlab-hr-int6025-cost-center",
+      "source_table": "int6025_cost_center",
+      "s3_path": "s3://warlab-hr-datamart-dev/workday/hrdp/int6025_cost_center/",
+      "redshift_schema": "l1_workday",
+      "redshift_table": "int6025_cost_center",
+      "redshift_connection": "warlab-redshift-connection",
+      "redshift_database": "dev",
+      "description": "Load Cost Center dimension data from Workday",
+      "max_capacity": 10.0,
+      "timeout_minutes": 30,
+      "glue_version": "4.0",
+      "python_version": "3"
+    },
+    {
+      "job_name": "warlab-hr-int6028-department-hierarchy",
+      "source_table": "int6028_department_hierarchy",
+      "s3_path": "s3://warlab-hr-datamart-dev/workday/hrdp/int6028_department_hierarchy/",
+      "redshift_schema": "l1_workday",
+      "redshift_table": "int6028_department_hierarchy",
+      "redshift_connection": "warlab-redshift-connection",
+      "redshift_database": "dev",
+      "description": "Load Department Hierarchy data from Workday",
+      "max_capacity": 10.0,
+      "timeout_minutes": 30,
+      "glue_version": "4.0",
+      "python_version": "3"
+    },
+    {
+      "job_name": "warlab-hr-int6032-positions",
+      "source_table": "int6032_positions",
+      "s3_path": "s3://warlab-hr-datamart-dev/workday/hrdp/int6032_positions/",
+      "redshift_schema": "l1_workday",
+      "redshift_table": "int6032_positions",
+      "redshift_connection": "warlab-redshift-connection",
+      "redshift_database": "dev",
+      "description": "Load Positions dimension data from Workday",
+      "max_capacity": 10.0,
+      "timeout_minutes": 30,
+      "glue_version": "4.0",
+      "python_version": "3"
+    }
+  ],
+  "workflow_triggers": {
+    "schedule": {
+      "enabled": true,
+      "cron_expression": "cron(0 6 * * ? *)",
+      "description": "Trigger workflow daily at 6:00 AM UTC (1:00 AM EST)"
+    },
+    "on_demand": {
+      "enabled": true,
+      "description": "Workflow can be triggered manually on-demand via AWS Console or API"
+    }
+  },
+  "job_execution_order": {
+    "parallelization": "All 12 jobs can run in parallel after workflow is triggered",
+    "dependencies": "No inter-job dependencies; each job is independent",
+    "recommended_pattern": "Run all jobs simultaneously for faster overall execution",
+    "fallback_pattern": "If resource-constrained, jobs can be grouped and run in waves of 3-4 jobs per wave"
+  },
+  "monitoring_and_alerting": {
+    "cloudwatch_metrics": [
+      "Glue job execution duration",
+      "Glue job failure rate",
+      "Number of records processed per job",
+      "S3 read throughput",
+      "Redshift write throughput"
+    ],
+    "failure_handling": "Failed jobs should trigger SNS notification to data engineering team",
+    "success_criteria": "All 12 jobs must complete successfully before marking workflow as complete"
+  },
+  "deployment_notes": {
+    "prerequisites": [
+      "Redshift cluster must be running and accessible",
+      "Glue connection 'warlab-redshift-connection' must be configured",
+      "IAM role must have S3:GetObject permissions on warlab-hr-datamart-dev bucket",
+      "IAM role must have S3:PutObject permissions for temporary Glue files",
+      "Source CSV files must exist in S3 with pipe delimiter and headers"
+    ],
+    "deployment_steps": [
+      "1. Upload glue_s3_to_l1_etl.py to s3://warlab-hr-datamart-dev/glue-scripts/",
+      "2. Run deploy_glue_jobs.sh to create all 12 Glue jobs",
+      "3. Create Glue workflow in AWS Console or via CLI",
+      "4. Configure CloudWatch alarms for job failures",
+      "5. Test workflow with on-demand trigger before scheduling"
+    ],
+    "rollback_procedure": "If deployment fails, manually delete created Glue jobs and restore previous script version from S3"
+  }
+}

@@ -237,6 +237,79 @@ REGION 'us-east-1';
 
 ---
 
+### Issue 12: Cartesian Product in SCD2 As-Of JOINs (dim_worker_job_d, dim_worker_status_d)
+
+**Date:** 2026-02-06
+
+**Symptom:** `dim_worker_job_d` had 14,353 rows (expected ~2,751) with every `(employee_id, effective_date)` pair duplicated exactly 18 times. `fct_worker_movement_f` was inflated to 8,459,202 rows (expected ~2,751). Dashboard showed millions of movements for 429 employees.
+
+**Root cause:** The as-of JOIN pattern used `<=` inequality to find the most recent source row as-of each effective date:
+
+```sql
+-- BROKEN: Multiple rows from each source match, creating cartesian product
+LEFT JOIN tmp_worker_job wj
+    ON ed.employee_id = wj.employee_id
+    AND wj.transaction_effective_date <= ed.effective_date
+    AND wj.rn = 1
+```
+
+With 5 LEFT JOINs using this pattern (worker_job, worker_comp, cost_centre, company, supervisory), the fanout multiplied to ~18x per row.
+
+**Fix:** Two-step as-of join pattern — first compute the single best matching date per source in a separate temp table using correlated `MAX()` subqueries, then join with exact `=` equality:
+
+```sql
+-- Step 1: Find the single best matching date per source
+CREATE TEMP TABLE tmp_as_of_keys AS
+SELECT ed.employee_id, ed.effective_date,
+    (SELECT MAX(wj2.transaction_effective_date)
+     FROM tmp_worker_job wj2
+     WHERE wj2.employee_id = ed.employee_id
+       AND wj2.transaction_effective_date <= ed.effective_date
+       AND wj2.rn = 1) AS wj_as_of_date
+FROM tmp_effective_dates ed;
+
+-- Step 2: Join with EXACT equality (no fanout)
+CREATE TEMP TABLE tmp_assembled_rows AS
+SELECT aok.*, wj.*
+FROM tmp_as_of_keys aok
+LEFT JOIN tmp_worker_job wj
+    ON aok.employee_id = wj.employee_id
+    AND wj.transaction_effective_date = aok.wj_as_of_date
+    AND wj.rn = 1;
+```
+
+**Redshift limitation:** Correlated subqueries work inside `CREATE TEMP TABLE ... AS SELECT` but NOT inside `JOIN ON` clauses. The fix must use a separate temp table for the as-of key resolution.
+
+**Additional fix:** `dim_grade_profile_d` had 5 duplicate rows per grade_id (50 rows instead of 10), causing a 2x fanout in fact table JOINs. Deduped by keeping lowest surrogate key per `(grade_id, valid_from, valid_to)`.
+
+**Verification results after fix:**
+
+| Table | Before | After |
+|-------|--------|-------|
+| dim_worker_job_d | 14,353 (18x dupes) | 2,751 (0 dupes) |
+| dim_worker_status_d | 5,540 | 2,011 (0 dupes) |
+| fct_worker_movement_f | 8,459,202 | 2,751 (0 dupes) |
+| fct_worker_headcount_restat_f | 9,084 | 9,084 |
+| Avg base pay | $177,994 | $175,344 (CSV: $175,741) |
+
+**Lesson:** Never use `<=` inequality JOINs for as-of lookups when multiple rows can match. Always resolve the single best match in a prior step, then join on exact equality. This is a general SCD2 assembly anti-pattern, not Redshift-specific.
+
+---
+
+### Issue 13: dim_grade_profile_d Duplicate Rows Causing Fact Table Fanout
+
+**Date:** 2026-02-06
+
+**Symptom:** `fct_worker_movement_f` had exactly 2x the expected row count (5,395 vs 2,751).
+
+**Root cause:** `dim_grade_profile_d` contained 5 duplicate rows per grade_id, all with `is_current = true` and identical `valid_from`/`valid_to` ranges. The fact table's `BETWEEN valid_from AND valid_to` join matched multiple rows.
+
+**Fix:** Deduped the dimension by keeping the row with the lowest `grade_profile_sk` per `(grade_id, valid_from, valid_to, is_current)`. Root cause in the dim load needs investigation to prevent recurrence.
+
+**Lesson:** Always verify reference dimension uniqueness constraints before loading fact tables. A single dimension with duplicate rows can silently inflate all downstream facts.
+
+---
+
 ## Quick Reference: Redshift SQL Gotchas
 
 | Pattern | Works on PostgreSQL/SQL Server | Redshift Replacement |
@@ -249,3 +322,5 @@ REGION 'us-east-1';
 | `INTERVAL '1 day' * n` | Yes (PostgreSQL) | `DATEADD(day, n, start_date)` |
 | Temp tables across API calls | N/A | Must send as single block |
 | `BOOLEAN` DDL + VARCHAR DML | Silent coercion | Match DDL type to DML output |
+| `<= date` as-of JOIN | Works but creates cartesian product | Use separate temp table with `MAX()` + exact `=` JOIN |
+| Correlated subquery in `JOIN ON` | Yes (PostgreSQL) | Not supported — use in `CREATE TEMP TABLE AS SELECT` instead |

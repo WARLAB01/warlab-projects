@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | WAR Lab Analytics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #1a1a2e;
+            --color-secondary: #16213e;
+            --color-accent: #0f3460;
+            --color-highlight: #e94560;
+            --color-success: #00d9ff;
+            --color-text: #eaeaea;
+            --color-text-muted: #a8a8a8;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            color: var(--color-text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .error-container {
+            text-align: center;
+            max-width: 600px;
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .error-code {
+            font-size: 5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--color-highlight), var(--color-success));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 30px rgba(233, 69, 96, 0.3);
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .error-message {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .error-details {
+            background: rgba(15, 52, 96, 0.5);
+            border: 1px solid var(--color-accent);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: left;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: var(--color-success);
+            overflow-x: auto;
+        }
+
+        .error-details code {
+            display: block;
+            word-break: break-all;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.875rem 1.75rem;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-highlight), var(--color-success));
+            color: var(--color-primary);
+            border-color: transparent;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(233, 69, 96, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-text);
+            border-color: var(--color-accent);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--color-accent);
+            box-shadow: 0 8px 24px rgba(15, 52, 96, 0.4);
+        }
+
+        .footer-text {
+            color: var(--color-text-muted);
+            font-size: 0.85rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(168, 168, 168, 0.1);
+        }
+
+        .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .breadcrumb {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .breadcrumb a {
+            color: var(--color-success);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--color-highlight);
+        }
+
+        @media (max-width: 768px) {
+            .error-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .error-code {
+                font-size: 3.5rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .error-message {
+                font-size: 1rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="icon">⚠️</div>
+
+        <div class="error-code">404</div>
+
+        <h1>Page Not Found</h1>
+
+        <p class="error-message">
+            The page you're looking for doesn't exist or has been moved. This could happen if the resource was deleted or if the URL is incorrect.
+        </p>
+
+        <div class="breadcrumb">
+            <a href="/">← Back to Dashboard</a>
+        </div>
+
+        <div class="error-details">
+            <code>ErrorType: NotFound<br>
+Status: 404<br>
+RequestPath: <span id="request-path">unknown</span><br>
+Timestamp: <span id="timestamp">--:--:--</span></code>
+        </div>
+
+        <div class="action-buttons">
+            <a href="/" class="btn btn-primary">Go to Dashboard</a>
+            <a href="javascript:history.back()" class="btn btn-secondary">Go Back</a>
+        </div>
+
+        <div class="footer-text">
+            <p>If you believe this is an error, please contact the WAR Lab team.</p>
+            <p style="margin-top: 0.5rem;">WAR Lab People Analytics Dashboard</p>
+        </div>
+    </div>
+
+    <script>
+        // Update requested path from referrer
+        const urlParams = new URLSearchParams(window.location.search);
+        const requestPath = urlParams.get('path') || window.location.pathname;
+        document.getElementById('request-path').textContent = requestPath;
+
+        // Update timestamp
+        const now = new Date();
+        document.getElementById('timestamp').textContent = now.toLocaleTimeString('en-US', {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: true
+        });
+
+        // Go back functionality
+        document.querySelector('a[href="javascript:history.back()"]').addEventListener('click', (e) => {
+            if (history.length > 1) {
+                history.back();
+            } else {
+                window.location.href = '/';
+            }
+        });
+    </script>
+</body>
+</html>

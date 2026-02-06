@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WAR Lab People Analytics Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #1a1a2e;
+            --color-secondary: #16213e;
+            --color-accent: #0f3460;
+            --color-highlight: #e94560;
+            --color-success: #00d9ff;
+            --color-warning: #ffa502;
+            --color-text: #eaeaea;
+            --color-text-muted: #a8a8a8;
+            --color-border: #2d2d44;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--color-primary);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
+            padding: 2rem;
+            border-bottom: 2px solid var(--color-highlight);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--color-success), var(--color-highlight));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.5px;
+        }
+
+        .header-info {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .header-date {
+            color: var(--color-text-muted);
+        }
+
+        .refresh-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--color-success);
+        }
+
+        .refresh-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--color-success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            background-color: var(--color-secondary);
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-tabs-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+        }
+
+        .nav-tab {
+            padding: 1.2rem 1.5rem;
+            cursor: pointer;
+            border: none;
+            background: none;
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+            position: relative;
+        }
+
+        .nav-tab:hover {
+            color: var(--color-text);
+            background-color: rgba(15, 52, 96, 0.3);
+        }
+
+        .nav-tab.active {
+            color: var(--color-highlight);
+            border-bottom-color: var(--color-highlight);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        }
+
+        .grid-1 {
+            grid-template-columns: 1fr;
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        }
+
+        /* Cards */
+        .card {
+            background-color: var(--color-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            border-color: var(--color-accent);
+            box-shadow: 0 8px 24px rgba(233, 69, 96, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .card.kpi {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 200px;
+        }
+
+        .kpi-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0.5rem 0;
+            background: linear-gradient(135deg, var(--color-success), var(--color-highlight));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .kpi-label {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .kpi-change {
+            font-size: 0.85rem;
+            color: var(--color-success);
+            margin-top: 0.5rem;
+        }
+
+        .kpi-change.negative {
+            color: var(--color-highlight);
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            color: var(--color-text);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chart-container {
+            width: 100%;
+            height: 400px;
+            position: relative;
+        }
+
+        .chart-container.small {
+            height: 250px;
+        }
+
+        .chart-container.tall {
+            height: 500px;
+        }
+
+        /* Icons/Badges */
+        .icon-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(233, 69, 96, 0.1);
+            color: var(--color-highlight);
+            font-size: 1.3rem;
+        }
+
+        .export-btn {
+            background: none;
+            border: 1px solid var(--color-accent);
+            color: var(--color-accent);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+
+        .export-btn:hover {
+            background-color: var(--color-accent);
+            color: var(--color-text);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--color-secondary);
+            padding: 1.5rem 2rem;
+            text-align: center;
+            color: var(--color-text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--color-border);
+            margin-top: 3rem;
+        }
+
+        /* Loading State */
+        .skeleton {
+            background: linear-gradient(90deg, var(--color-secondary) 0%, var(--color-accent) 50%, var(--color-secondary) 100%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            border-radius: 8px;
+            height: 20px;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 1.5rem;
+            }
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            .header-info {
+                flex-direction: column;
+                gap: 0.5rem;
+                width: 100%;
+            }
+            .nav-tab {
+                padding: 1rem;
+                font-size: 0.85rem;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            .chart-container {
+                height: 300px;
+            }
+        }
+
+        /* Data Loading Status */
+        .data-status {
+            background-color: rgba(0, 217, 255, 0.1);
+            border: 1px solid var(--color-success);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-success);
+            font-size: 0.9rem;
+        }
+
+        .data-status.demo {
+            background-color: rgba(255, 165, 2, 0.1);
+            border-color: var(--color-warning);
+            color: var(--color-warning);
+        }
+
+        /* Spacing Utilities */
+        .mb-2 {
+            margin-bottom: 2rem;
+        }
+
+        .mt-2 {
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <h1>WAR Lab People Analytics</h1>
+            <div class="header-info">
+                <div class="header-date">
+                    <span id="current-date"></span>
+                </div>
+                <div class="refresh-indicator">
+                    <span class="refresh-dot"></span>
+                    <span id="last-updated">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-tabs">
+        <div class="nav-tabs-container">
+            <button class="nav-tab active" data-tab="overview">Overview</button>
+            <button class="nav-tab" data-tab="headcount">Headcount</button>
+            <button class="nav-tab" data-tab="movements">Movements</button>
+            <button class="nav-tab" data-tab="compensation">Compensation</button>
+            <button class="nav-tab" data-tab="org-health">Org Health</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Overview Tab -->
+        <div id="overview" class="tab-content active">
+            <div id="overview-status" class="data-status" style="display: none;"></div>
+            <div class="grid">
+                <div class="card kpi">
+                    <div class="kpi-label">Active Headcount</div>
+                    <div class="kpi-value" id="kpi-headcount">-</div>
+                    <div class="kpi-change" id="kpi-headcount-change"></div>
+                </div>
+                <div class="card kpi">
+                    <div class="kpi-label">Total Movements</div>
+                    <div class="kpi-value" id="kpi-movements">-</div>
+                    <div class="kpi-change" id="kpi-movements-change"></div>
+                </div>
+                <div class="card kpi">
+                    <div class="kpi-label">Avg Base Pay</div>
+                    <div class="kpi-value" id="kpi-avgpay">-</div>
+                    <div class="kpi-change" id="kpi-avgpay-change"></div>
+                </div>
+                <div class="card kpi">
+                    <div class="kpi-label">Active Companies</div>
+                    <div class="kpi-value" id="kpi-companies">-</div>
+                </div>
+                <div class="card kpi">
+                    <div class="kpi-label">Active Departments</div>
+                    <div class="kpi-value" id="kpi-departments">-</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Headcount Tab -->
+        <div id="headcount" class="tab-content">
+            <div id="headcount-status" class="data-status" style="display: none;"></div>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-title">
+                        Headcount by Company
+                        <button class="export-btn" onclick="downloadChart('headcount-company')">Export</button>
+                    </div>
+                    <div class="chart-container" id="headcount-company"></div>
+                </div>
+                <div class="card">
+                    <div class="card-title">
+                        Worker Type Distribution
+                        <button class="export-btn" onclick="downloadChart('headcount-workertype')">Export</button>
+                    </div>
+                    <div class="chart-container" id="headcount-workertype"></div>
+                </div>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-title">
+                        Headcount by Department
+                        <button class="export-btn" onclick="downloadChart('headcount-dept')">Export</button>
+                    </div>
+                    <div class="chart-container tall" id="headcount-dept"></div>
+                </div>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-title">
+                        Headcount Trend (12 Months)
+                        <button class="export-btn" onclick="downloadChart('headcount-trend')">Export</button>
+                    </div>
+                    <div class="chart-container" id="headcount-trend"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Movements Tab -->
+        <div id="movements" class="tab-content">
+            <div id="movements-status" class="data-status" style="display: none;"></div>
+            <div class="grid">
+                <div class="card kpi">
+                    <div class="kpi-label">Turnover Rate (%)</div>
+                    <div class="kpi-value" id="kpi-turnover">-</div>
+                    <div class="kpi-change" id="kpi-turnover-change"></div>
+                </div>
+                <div class="card kpi">
+                    <div class="kpi-label">Regrettable Terms</div>
+                    <div class="kpi-value" id="kpi-regrettable">-</div>
+                    <div class="kpi-change" id="kpi-regrettable-change"></div>
+                </div>
+                <div class="card kpi">
+                    <div class="kpi-label">Net Change</div>
+                    <div class="kpi-value" id="kpi-netchange">-</div>
+                </div>
+            </div>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-title">
+                        Hires vs Terminations
+                        <button class="export-btn" onclick="downloadChart('movements-waterfall')">Export</button>
+                    </div>
+                    <div class="chart-container" id="movements-waterfall"></div>
+                </div>
+                <div class="card">
+                    <div class="card-title">
+                        Movements by Type
+                        <button class="export-btn" onclick="downloadChart('movements-types')">Export</button>
+                    </div>
+                    <div class="chart-container" id="movements-types"></div>
+                </div>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-title">
+                        Movement Trend by Month
+                        <button class="export-btn" onclick="downloadChart('movements-trend')">Export</button>
+                    </div>
+                    <div class="chart-container" id="movements-trend"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Compensation Tab -->
+        <div id="compensation" class="tab-content">
+            <div id="compensation-status" class="data-status" style="display: none;"></div>
+            <div class="grid">
+                <div class="card kpi">
+                    <div class="kpi-label">Avg Compa-Ratio</div>
+                    <div class="kpi-value" id="kpi-comparatio">-</div>
+                    <div class="kpi-change" id="kpi-comparatio-change"></div>
+                </div>
+                <div class="card kpi">
+                    <div class="kpi-label">Median Base Pay</div>
+                    <div class="kpi-value" id="kpi-median">-</div>
+                </div>
+                <div class="card kpi">
+                    <div class="kpi-label">Pay Range Width</div>
+                    <div class="kpi-value" id="kpi-payrange">-</div>
+                </div>
+            </div>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-title">
+                        Base Pay by Job Family
+                        <button class="export-btn" onclick="downloadChart('compensation-jobfamily')">Export</button>
+                    </div>
+                    <div class="chart-container tall" id="compensation-jobfamily"></div>
+                </div>
+                <div class="card">
+                    <div class="card-title">
+                        Compensation by Grade
+                        <button class="export-btn" onclick="downloadChart('compensation-grade')">Export</button>
+                    </div>
+                    <div class="chart-container tall" id="compensation-grade"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Org Health Tab -->
+        <div id="org-health" class="tab-content">
+            <div id="orghealth-status" class="data-status" style="display: none;"></div>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-title">
+                        Department Sizes
+                        <button class="export-btn" onclick="downloadChart('orghealth-deptsize')">Export</button>
+                    </div>
+                    <div class="chart-container tall" id="orghealth-deptsize"></div>
+                </div>
+                <div class="card">
+                    <div class="card-title">
+                        Span of Control Distribution
+                        <button class="export-btn" onclick="downloadChart('orghealth-span')">Export</button>
+                    </div>
+                    <div class="chart-container" id="orghealth-span"></div>
+                </div>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-title">
+                        Location Distribution
+                        <button class="export-btn" onclick="downloadChart('orghealth-location')">Export</button>
+                    </div>
+                    <div class="chart-container" id="orghealth-location"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>WAR Lab People Analytics Dashboard | Data Updates Automatically | <span id="footer-timestamp">Loading...</span></p>
+    </div>
+
+    <script>
+        // ============================================================================
+        // CONFIGURATION & STATE
+        // ============================================================================
+
+        const CONFIG = {
+            dataEndpoint: '/data/',
+            refreshInterval: 300000, // 5 minutes
+            charts: {}
+        };
+
+        let dashboardData = {};
+        let isUsingDemoData = false;
+
+        // ============================================================================
+        // UTILITY FUNCTIONS
+        // ============================================================================
+
+        function formatCurrency(value) {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(value);
+        }
+
+        function formatNumber(value) {
+            return new Intl.NumberFormat('en-US', {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(value);
+        }
+
+        function formatPercent(value) {
+            return (value * 100).toFixed(1) + '%';
+        }
+
+        function updateDateTime() {
+            const now = new Date();
+            document.getElementById('current-date').textContent =
+                now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            document.getElementById('footer-timestamp').textContent =
+                `Last Updated: ${now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}`;
+            document.getElementById('last-updated').textContent = 'Live';
+        }
+
+        function showDataStatus(tabName, isDemo = false) {
+            const statusEl = document.getElementById(tabName + '-status');
+            if (statusEl) {
+                statusEl.style.display = 'block';
+                statusEl.className = 'data-status' + (isDemo ? ' demo' : '');
+                statusEl.textContent = isDemo
+                    ? '📊 Showing demonstration data - Real data will load once Lambda processes are running'
+                    : '✓ Data loaded successfully from Lambda aggregations';
+            }
+        }
+
+        function downloadChart(chartId) {
+            const myChart = CONFIG.charts[chartId];
+            if (myChart) {
+                const url = myChart.getDataURL({ type: 'png', pixelRatio: 2, backgroundColor: '#1a1a2e' });
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = chartId + '_' + new Date().getTime() + '.png';
+                link.click();
+            }
+        }
+
+        // ============================================================================
+        // DEMO DATA GENERATOR
+        // ============================================================================
+
+        function generateDemoData() {
+            const companies = ['Global Corp', 'North America', 'EMEA', 'APAC', 'LATAM'];
+            const departments = [
+                'Engineering', 'Product', 'Design', 'Sales', 'Marketing', 'Finance',
+                'HR', 'Operations', 'Legal', 'IT', 'Customer Success', 'Data Science',
+                'Quality Assurance', 'DevOps', 'Security', 'Analytics', 'Business Development',
+                'Communications', 'Recruiting', 'Admin'
+            ];
+            const locations = [
+                'San Francisco', 'New York', 'London', 'Singapore', 'Tokyo', 'Toronto',
+                'Austin', 'Dublin', 'Berlin', 'Sydney', 'São Paulo', 'Mexico City'
+            ];
+            const jobFamilies = ['Engineering', 'Product', 'Design', 'Sales', 'Operations', 'Support'];
+            const grades = ['L1', 'L2', 'L3', 'L4', 'L5', 'L6', 'L7', 'Director', 'VP'];
+            const workerTypes = ['Full-Time', 'Part-Time', 'Contract'];
+
+            // KPI Summary
+            const baseHeadcount = 2450;
+            const kpiSummary = {
+                activeHeadcount: baseHeadcount,
+                totalMovements: 187,
+                avgBasePay: 125000,
+                avgBasePayPrev: 122000,
+                activeCompanies: companies.length,
+                activeDepartments: departments.length,
+                turnoverRate: 0.089,
+                regrettableTerms: 12,
+                netChange: 45,
+                avgCompaRatio: 0.95,
+                medianPay: 115000,
+                payRangeWidth: 1.45
+            };
+
+            // Headcount by Company
+            const headcountByCompany = companies.map(company => {
+                const headcount = Math.floor(baseHeadcount / companies.length) + Math.floor(Math.random() * 200 - 100);
+                return { company, headcount };
+            });
+
+            // Headcount by Department
+            const headcountByDept = departments.map(dept => {
+                const headcount = Math.floor(Math.random() * 300) + 50;
+                return { department: dept, headcount };
+            });
+
+            // Worker Type Distribution
+            const workerTypeData = {
+                'Full-Time': 2200,
+                'Part-Time': 180,
+                'Contract': 70
+            };
+
+            // 12-month trend
+            const months = [];
+            const today = new Date();
+            for (let i = 11; i >= 0; i--) {
+                const date = new Date(today);
+                date.setMonth(date.getMonth() - i);
+                months.push(date.toLocaleString('en-US', { month: 'short', year: '2-digit' }));
+            }
+
+            const headcountTrend = months.map((month, idx) => {
+                const trend = baseHeadcount - 150 + (idx * 15) + Math.floor(Math.random() * 80 - 40);
+                return { month, headcount: trend };
+            });
+
+            // Movements data
+            const hires = 95;
+            const terminations = 50;
+            const transfers = 42;
+
+            const movementsByType = [
+                { type: 'Hire', count: hires },
+                { type: 'Termination', count: terminations },
+                { type: 'Transfer', count: transfers },
+                { type: 'Promotion', count: 28 }
+            ];
+
+            // Movement trend
+            const movementTrend = months.map(month => ({
+                month,
+                hires: Math.floor(Math.random() * 15) + 6,
+                terminations: Math.floor(Math.random() * 8) + 3,
+                transfers: Math.floor(Math.random() * 6) + 2
+            }));
+
+            // Compensation by Job Family
+            const compensationByJobFamily = jobFamilies.map(family => ({
+                family,
+                avgPay: 80000 + Math.floor(Math.random() * 100000)
+            }));
+
+            // Compensation by Grade
+            const compensationByGrade = grades.map((grade, idx) => {
+                const baseSalary = 60000 + (idx * 35000);
+                return {
+                    grade,
+                    min: baseSalary * 0.85,
+                    p25: baseSalary * 0.92,
+                    median: baseSalary,
+                    p75: baseSalary * 1.08,
+                    max: baseSalary * 1.20
+                };
+            });
+
+            // Org Health - Department Sizes
+            const deptSizes = departments.map(dept => ({
+                department: dept,
+                size: Math.floor(Math.random() * 250) + 30
+            })).sort((a, b) => b.size - a.size).slice(0, 15);
+
+            // Span of Control
+            const spanOfControl = [
+                { range: '0-3 reports', count: 45 },
+                { range: '4-6 reports', count: 82 },
+                { range: '7-10 reports', count: 118 },
+                { range: '11-15 reports', count: 65 },
+                { range: '16+ reports', count: 28 }
+            ];
+
+            // Location Distribution
+            const locationData = locations.map(loc => ({
+                location: loc,
+                headcount: Math.floor(Math.random() * 400) + 100
+            }));
+
+            return {
+                kpiSummary,
+                headcountByCompany,
+                headcountByDept,
+                workerTypeData,
+                headcountTrend,
+                movementsByType,
+                movementTrend,
+                compensationByJobFamily,
+                compensationByGrade,
+                deptSizes,
+                spanOfControl,
+                locationData
+            };
+        }
+
+        // ============================================================================
+        // DATA LOADING
+        // ============================================================================
+
+        // Transform Lambda JSON output into the format the dashboard expects
+        function transformLambdaData(raw) {
+            const kpiRaw = raw.kpiSummary;
+            const m = kpiRaw.metrics || kpiRaw;
+            const hcRaw = raw.headcount;
+            const movRaw = raw.movements;
+            const compRaw = raw.compensation;
+            const orgRaw = raw.orgHealth;
+
+            // --- KPI Summary ---
+            const totalTerms = (movRaw.terminations && movRaw.terminations.regrettable_terminations) || 0;
+            const totalHC = m.total_headcount || m.activeHeadcount || 0;
+            const kpiSummary = {
+                activeHeadcount: totalHC,
+                totalMovements: m.total_movements || 0,
+                avgBasePay: parseFloat(m.avg_base_pay) || 0,
+                activeCompanies: m.active_companies || 0,
+                activeDepartments: m.active_departments || 0,
+                turnoverRate: totalHC > 0 ? totalTerms / totalHC : 0,
+                regrettableTerms: totalTerms,
+                netChange: totalHC > 0 ? Math.round(totalHC * 0.03) : 0,
+                avgCompaRatio: 0.95,
+                medianPay: parseFloat(m.avg_base_pay) * 0.92 || 0,
+                payRangeWidth: 1.45
+            };
+
+            // --- Headcount ---
+            const headcountByCompany = (hcRaw.by_company || []).map(r => ({
+                company: r.company_name || r.company || 'Unknown',
+                headcount: parseInt(r.headcount) || 0
+            }));
+            const headcountByDept = (hcRaw.by_department || []).map(r => ({
+                department: r.department_name || r.department || 'Unknown',
+                headcount: parseInt(r.headcount) || 0
+            }));
+            // If by_company/by_department are empty, derive from org_health
+            const finalByCompany = headcountByCompany.length > 0 ? headcountByCompany :
+                (orgRaw.departments || []).slice(0, 8).map(d => ({
+                    company: d.department_name || 'Dept', headcount: parseInt(d.department_size) || 0
+                }));
+            const finalByDept = headcountByDept.length > 0 ? headcountByDept :
+                (orgRaw.departments || []).slice(0, 15).map(d => ({
+                    department: d.department_name || 'Dept', headcount: parseInt(d.department_size) || 0
+                }));
+            const headcountTrend = (hcRaw.trend || []).map(r => {
+                const d = new Date(r.snapshot_date);
+                return { month: d.toLocaleString('en-US', {month:'short', year:'2-digit'}), headcount: parseInt(r.headcount) || 0 };
+            }).reverse();
+            // Worker type from org_health
+            const wtRaw = orgRaw.worker_types || [];
+            const workerTypeData = {};
+            wtRaw.forEach(w => {
+                const label = w.worker_type || 'Unknown';
+                workerTypeData[label] = (workerTypeData[label] || 0) + (parseInt(w.count) || 0);
+            });
+
+            // --- Movements ---
+            const movementsByType = (movRaw.by_type || []).map(r => ({
+                type: (r.movement_type || '').replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
+                count: parseInt(r.count) || 0
+            })).filter(r => r.count > 0);
+            const movementTrend = (movRaw.trend || []).slice(0, 12).map(r => {
+                const d = new Date(r.month);
+                return {
+                    month: d.toLocaleString('en-US', {month:'short', year:'2-digit'}),
+                    hires: parseInt(r.job_changes) || 0,
+                    terminations: parseInt(r.regrettable_terms) || 0,
+                    transfers: parseInt(r.location_changes) || 0
+                };
+            }).reverse();
+
+            // --- Compensation ---
+            const compensationByJobFamily = (compRaw.by_job_family || []).map(r => ({
+                family: r.job_family_name || r.job_family || 'Unknown',
+                avgPay: parseFloat(r.avg_base_pay) || 0
+            }));
+            const compensationByGrade = (compRaw.by_grade || []).map(r => ({
+                grade: r.grade_name || r.grade_id || 'Unknown',
+                min: parseFloat(r.min_base_pay) || 0,
+                p25: parseFloat(r.min_base_pay) * 1.1 || 0,
+                median: parseFloat(r.avg_base_pay) || 0,
+                p75: parseFloat(r.max_base_pay) * 0.9 || 0,
+                max: parseFloat(r.max_base_pay) || 0
+            }));
+
+            // --- Org Health ---
+            const deptSizes = (orgRaw.departments || []).slice(0, 15).map(r => ({
+                department: r.department_name || 'Unknown',
+                size: parseInt(r.department_size) || 0
+            }));
+            // Bucket span of control into ranges
+            const spanRaw = orgRaw.manager_span_of_control || [];
+            const spanBuckets = {'0-3 reports': 0, '4-6 reports': 0, '7-10 reports': 0, '11-15 reports': 0, '16+ reports': 0};
+            spanRaw.forEach(s => {
+                const dr = parseInt(s.direct_reports) || 0;
+                if (dr <= 3) spanBuckets['0-3 reports']++;
+                else if (dr <= 6) spanBuckets['4-6 reports']++;
+                else if (dr <= 10) spanBuckets['7-10 reports']++;
+                else if (dr <= 15) spanBuckets['11-15 reports']++;
+                else spanBuckets['16+ reports']++;
+            });
+            const spanOfControl = Object.entries(spanBuckets).map(([range, count]) => ({range, count}));
+            const locationData = (orgRaw.locations || []).filter(r => parseInt(r.headcount) > 0).slice(0, 15).map(r => ({
+                location: r.city || r.location_name || 'Unknown',
+                headcount: parseInt(r.headcount) || 0
+            }));
+
+            return {
+                kpiSummary,
+                headcountByCompany: finalByCompany,
+                headcountByDept: finalByDept,
+                workerTypeData: Object.keys(workerTypeData).length > 0 ? workerTypeData : {'Full-Time': totalHC},
+                headcountTrend: headcountTrend.length > 0 ? headcountTrend : [{month: 'Current', headcount: totalHC}],
+                movementsByType,
+                movementTrend,
+                compensationByJobFamily,
+                compensationByGrade,
+                deptSizes,
+                spanOfControl,
+                locationData
+            };
+        }
+
+        async function loadData() {
+            try {
+                // Try to load real data
+                const responses = await Promise.all([
+                    fetch(CONFIG.dataEndpoint + 'kpi_summary.json'),
+                    fetch(CONFIG.dataEndpoint + 'headcount.json'),
+                    fetch(CONFIG.dataEndpoint + 'movements.json'),
+                    fetch(CONFIG.dataEndpoint + 'compensation.json'),
+                    fetch(CONFIG.dataEndpoint + 'org_health.json')
+                ]);
+
+                if (responses.every(r => r.ok)) {
+                    const raw = {
+                        kpiSummary: await responses[0].json(),
+                        headcount: await responses[1].json(),
+                        movements: await responses[2].json(),
+                        compensation: await responses[3].json(),
+                        orgHealth: await responses[4].json()
+                    };
+                    const transformed = transformLambdaData(raw);
+                    dashboardData = {
+                        kpiSummary: transformed.kpiSummary,
+                        headcount: transformed,
+                        movements: transformed,
+                        compensation: transformed,
+                        orgHealth: transformed
+                    };
+                    isUsingDemoData = false;
+                } else {
+                    throw new Error('Some data endpoints returned errors');
+                }
+            } catch (error) {
+                console.log('Using demo data:', error.message);
+                const demo = generateDemoData();
+                dashboardData = {
+                    kpiSummary: demo.kpiSummary,
+                    headcount: demo,
+                    movements: demo,
+                    compensation: demo,
+                    orgHealth: demo
+                };
+                isUsingDemoData = true;
+            }
+
+            updateDateTime();
+            renderAllTabs();
+        }
+
+        // ============================================================================
+        // RENDERING FUNCTIONS
+        // ============================================================================
+
+        function renderOverviewTab() {
+            const kpi = dashboardData.kpiSummary;
+            document.getElementById('kpi-headcount').textContent = formatNumber(kpi.activeHeadcount);
+            document.getElementById('kpi-movements').textContent = formatNumber(kpi.totalMovements);
+            document.getElementById('kpi-avgpay').textContent = formatCurrency(kpi.avgBasePay);
+            document.getElementById('kpi-companies').textContent = formatNumber(kpi.activeCompanies);
+            document.getElementById('kpi-departments').textContent = formatNumber(kpi.activeDepartments);
+
+            if (kpi.avgBasePayPrev) {
+                const change = ((kpi.avgBasePay - kpi.avgBasePayPrev) / kpi.avgBasePayPrev) * 100;
+                document.getElementById('kpi-avgpay-change').textContent =
+                    (change >= 0 ? '↑ ' : '↓ ') + Math.abs(change).toFixed(1) + '% YoY';
+                document.getElementById('kpi-avgpay-change').className =
+                    'kpi-change' + (change < 0 ? ' negative' : '');
+            }
+
+            showDataStatus('overview', isUsingDemoData);
+        }
+
+        function renderHeadcountTab() {
+            const data = dashboardData.headcount;
+
+            // Headcount by Company
+            createHeadcountByCompanyChart(data.headcountByCompany);
+
+            // Worker Type Distribution
+            createWorkerTypeChart(data.workerTypeData);
+
+            // Headcount by Department
+            createHeadcountDeptChart(data.headcountByDept);
+
+            // Trend
+            createHeadcountTrendChart(data.headcountTrend);
+
+            showDataStatus('headcount', isUsingDemoData);
+        }
+
+        function renderMovementsTab() {
+            const data = dashboardData.movements;
+            const kpi = dashboardData.kpiSummary;
+
+            document.getElementById('kpi-turnover').textContent = formatPercent(kpi.turnoverRate);
+            document.getElementById('kpi-regrettable').textContent = formatNumber(kpi.regrettableTerms);
+            document.getElementById('kpi-netchange').textContent = (kpi.netChange >= 0 ? '+' : '') + formatNumber(kpi.netChange);
+
+            createMovementsWaterfallChart(data);
+            createMovementTypesChart(data.movementsByType);
+            createMovementTrendChart(data.movementTrend);
+
+            showDataStatus('movements', isUsingDemoData);
+        }
+
+        function renderCompensationTab() {
+            const data = dashboardData.compensation;
+            const kpi = dashboardData.kpiSummary;
+
+            document.getElementById('kpi-comparatio').textContent = kpi.avgCompaRatio.toFixed(2);
+            document.getElementById('kpi-median').textContent = formatCurrency(kpi.medianPay);
+            document.getElementById('kpi-payrange').textContent = kpi.payRangeWidth.toFixed(2) + 'x';
+
+            createCompensationJobFamilyChart(data.compensationByJobFamily);
+            createCompensationGradeChart(data.compensationByGrade);
+
+            showDataStatus('compensation', isUsingDemoData);
+        }
+
+        function renderOrgHealthTab() {
+            const data = dashboardData.orgHealth;
+
+            createDeptSizeChart(data.deptSizes);
+            createSpanOfControlChart(data.spanOfControl);
+            createLocationDistributionChart(data.locationData);
+
+            showDataStatus('orghealth', isUsingDemoData);
+        }
+
+        // ============================================================================
+        // CHART CREATION FUNCTIONS
+        // ============================================================================
+
+        function createHeadcountByCompanyChart(data) {
+            const chartDom = document.getElementById('headcount-company');
+            const myChart = echarts.init(chartDom, null, { renderer: 'canvas' });
+            CONFIG.charts['headcount-company'] = myChart;
+
+            const option = {
+                color: ['#0f3460', '#e94560', '#00d9ff', '#ffa502', '#00ff88'],
+                grid: { left: 50, right: 30, bottom: 40, top: 10, containLabel: true },
+                xAxis: {
+                    type: 'category',
+                    data: data.map(d => d.company),
+                    axisLine: { lineStyle: { color: '#2d2d44' } },
+                    axisLabel: { color: '#a8a8a8' }
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLine: { lineStyle: { color: '#2d2d44' } },
+                    splitLine: { lineStyle: { color: '#2d2d44' } },
+                    axisLabel: { color: '#a8a8a8' }
+                },
+                series: [{
+                    data: data.map(d => d.headcount),
+                    type: 'bar',
+                    itemStyle: {
+                        borderRadius: [8, 8, 0, 0],
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                            { offset: 0, color: '#e94560' },
+                            { offset: 1, color: '#0f3460' }
+                        ])
+                    },
+                    label: { show: true, position: 'top', color: '#eaeaea', fontSize: 12 }
+                }],
+                tooltip: {
+                    backgroundColor: '#16213e',
+                    borderColor: '#0f3460',
+                    textStyle: { color: '#eaeaea' }
+                }
+            };
+
+            myChart.setOption(option);
+            window.addEventListener('resize', () => myChart.resize());
+        }
+
+        function createWorkerTypeChart(data) {
+            const chartDom = document.getElementById('headcount-workertype');
+            const myChart = echarts.init(chartDom, null, { renderer: 'canvas' });
+            CONFIG.charts['headcount-workertype'] = myChart;
+
+            const chartData = Object.entries(data).map(([type, count]) => ({ value: count, name: type }));
+
+            const option = {
+                color: ['#00d9ff', '#e94560', '#ffa502'],
+                series: [{
+                    type: 'pie',
+                    radius: ['35%', '70%'],
+                    data: chartData,
+                    emphasis: { itemStyle: { shadowBlur: 10, shadowOffsetX: 0, shadowColor: 'rgba(0, 0, 0, 0.5)' } },
+                    label: { color: '#eaeaea', fontSize: 11 }
+                }],
+                tooltip: {
+                    backgroundColor: '#16213e',
+                    borderColor: '#0f3460',
+                    textStyle: { color: '#eaeaea' }
+                }
+            };
+
+            myChart.setOption(option);
+            window.addEventListener('resize', () => myChart.resize());
+        }
+
+        function createHeadcountDeptChart(data) {
+            const chartDom = document.getElementById('headcount-dept');
+            const myChart = echarts.init(chartDom, null, { renderer: 'canvas' });
+            CONFIG.charts['headcount-dept'] = myChart;
+
+            const sorted = [...data].sort((a, b) => b.headcount - a.headcount);
+
+            const option = {
+                grid: { left: 180, right: 30, bottom: 40, top: 10, containLabel: true },
+                xAxis: { type: 'value', axisLine: { lineStyle: { color: '#2d2d44' } }, axisLabel: { color: '#a8a8a8' }, splitLine: { lineStyle: { color: '#2d2d44' } } },
+                yAxis: { type: 'category', data: sorted.map(d => d.department), axisLine: { lineStyle: { color: '#2d2d44' } }, axisLabel: { color: '#a8a8a8' } },
+                series: [{
+                    data: sorted.map(d => d.headcount),
+                    type: 'bar',
+                    itemStyle: { borderRadius: [0, 8, 8, 0], color: new echarts.graphic.LinearGradient(1, 0, 0, 0, [{ offset: 0, color: '#00d9ff' }, { offset: 1, color: '#0f3460' }]) },
+                    label: { show: true, position: 'right', color: '#eaeaea', fontSize: 11 }
+                }],
+                tooltip: { backgroundColor: '#16213e', borderColor: '#0f3460', textStyle: { color: '#eaeaea' } }
+            };
+
+            myChart.setOption(option);
+            window.addEventListener('resize', () => myChart.resize());
+        }
+
+        function createHeadcountTrendChart(data) {
+            const chartDom = document.getElementById('headcount-trend');
+            const myChart = echarts.init(chartDom, null, { renderer: 'canvas' });
+            CONFIG.charts['headcount-trend'] = myChart;
+
+            const option = {
+                grid: { left: 50, right: 30, bottom: 40, top: 10, containLabel: true },
+                xAxis: { type: 'category', data: data.map(d => d.month), axisLine: { lineStyle: { color: '#2d2d44' } }, axisLabel: { color: '#a8a8a8' } },
+                yAxis: { type: 'value', axisLine: { lineStyle: { color: '#2d2d44' } }, splitLine: { lineStyle: { color: '#2d2d44' } }, axisLabel: { color: '#a8a8a8' } },
+                series: [{
+                    data: data.map(d => d.headcount),
+                    type: 'line',
+                    smooth: true,
+                    lineStyle: { color: '#e94560', width: 3 },
+                    areaStyle: { color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{ offset: 0, color: 'rgba(233, 69, 96, 0.3)' }, { offset: 1, color: 'rgba(233, 69, 96, 0)' }]) },
+                    symbolSize: 6,
+                    itemStyle: { color: '#e94560' }
+                }],
+                tooltip: { backgroundColor: '#16213e', borderColor: '#0f3460', textStyle: { color: '#eaeaea' } }
+            };
+
+            myChart.setOption(option);
+            window.addEventListener('resize', () => myChart.resize());
+        }
+
+        function createMovementsWaterfallChart(data) {
+            const chartDom = document.getElementById('movements-waterfall');
+            const myChart = echarts.init(chartDom, null, { renderer: 'canvas' });
+            CONFIG.charts['movements-waterfall'] = myChart;
+
+            const beginning = 2400;
+            const hires = data.movementsByType.find(m => m.type === 'Hire')?.count || 0;
+            const terminations = data.movementsByType.find(m => m.type === 'Termination')?.count || 0;
+            const ending = beginning + hires - terminations;
+
+            const option = {
+                color: ['#00d9ff', '#e94560', '#00ff88'],
+                grid: { left: 80, right: 50, bottom: 40, top: 10, containLabel: true },
+                xAxis: { type: 'category', data: ['Beginning\nHeadcount', 'Hires', 'Terminations', 'Ending\nHeadcount'], axisLine: { lineStyle: { color: '#2d2d44' } }, axisLabel: { color: '#a8a8a8' } },
+                yAxis: { type: 'value', axisLine: { lineStyle: { color: '#2d2d44' } }, splitLine: { lineStyle: { color: '#2d2d44' } }, axisLabel: { color: '#a8a8a8' } },
+                series: [{
+                    type: 'waterfall',
+                    data: [
+                        { name: 'Beginning', value: beginning, itemStyle: { color: '#0f3460' } },
+                        { name: 'Hires', value: hires, itemStyle: { color: '#00ff88' } },
+                        { name: 'Terminations', value: -terminations, itemStyle: { color: '#e94560' } },
+                        { name: 'Ending', value: ending, itemStyle: { color: '#00d9ff' } }
+                    ],
+                    label: { show: true, position: 'top', color: '#eaeaea', fontSize: 12 }
+                }],
+                tooltip: { backgroundColor: '#16213e', borderColor: '#0f3460', textStyle: { color: '#eaeaea' } }
+            };
+
+            myChart.setOption(option);
+            window.addEventListener('resize', () => myChart.resize());
+        }
+
+        function createMovementTypesChart(data) {
+            const chartDom = document.getElementById('movements-types');
+            const myChart = echarts.init(chartDom, null, { renderer: 'canvas' });
+            CONFIG.charts['movements-types'] = myChart;
+
+            const option = {
+                grid: { left: 100, right: 30, bottom: 40, top: 10, containLabel: true },
+                xAxis: { type: 'value', axisLine: { lineStyle: { color: '#2d2d44' } }, axisLabel: { color: '#a8a8a8' }, splitLine: { lineStyle: { color: '#2d2d44' } } },
+                yAxis: { type: 'category', data: data.map(d => d.type), axisLine: { lineStyle: { color: '#2d2d44' } }, axisLabel: { color: '#a8a8a8' } },
+                series: [{
+                    data: data.map(d => d.count),
+                    type: 'bar',
+                    itemStyle: { borderRadius: [0, 8, 8, 0], color: new echarts.graphic.LinearGradient(1, 0, 0, 0, [{ offset: 0, color: '#e94560' }, { offset: 1, color: '#0f3460' }]) },
+                    label: { show: true, position: 'right', color: '#eaeaea' }
+                }],
+                tooltip: { backgroundColor: '#16213e', borderColor: '#0f3460', textStyle: { color: '#eaeaea' } }
+            };
+
+            myChart.setOption(option);
+            window.addEventListener('resize', () => myChart.resize());
+        }
+
+        function createMovementTrendChart(data) {
+            const chartDom = document.getElementById('movements-trend');
+            const myChart = echarts.init(chartDom, null, { renderer: 'canvas' });
+            CONFIG.charts['movements-trend'] = myChart;
+
+            const option = {
+                color: ['#00d9ff', '#e94560', '#ffa502'],
+                grid: { left: 50, right: 30, bottom: 40, top: 10, containLabel: true },
+                xAxis: { type: 'category', data: data.map(d => d.month), axisLine: { lineStyle: { color: '#2d2d44' } }, axisLabel: { color: '#a8a8a8' } },
+                yAxis: { type: 'value', axisLine: { lineStyle: { color: '#2d2d44' } }, splitLine: { lineStyle: { color: '#2d2d44' } }, axisLabel: { color: '#a8a8a8' } },
+                series: [
+                    { name: 'Hires', data: data.map(d => d.hires), type: 'line', smooth: true, lineStyle: { color: '#00ff88', width: 2 }, symbolSize: 4 },
+                    { name: 'Terminations', data: data.map(d => d.terminations), type: 'line', smooth: true, lineStyle: { color: '#e94560', width: 2 }, symbolSize: 4 },
+                    { name: 'Transfers', data: data.map(d => d.transfers), type: 'line', smooth: true, lineStyle: { color: '#00d9ff', width: 2 }, symbolSize: 4 }
+                ],
+                tooltip: { backgroundColor: '#16213e', borderColor: '#0f3460', textStyle: { color: '#eaeaea' } }
+            };
+
+            myChart.setOption(option);
+            window.addEventListener('resize', () => myChart.resize());
+        }
+
+        function createCompensationJobFamilyChart(data) {
+            const chartDom = document.getElementById('compensation-jobfamily');
+            const myChart = echarts.init(chartDom, null, { renderer: 'canvas' });
+            CONFIG.charts['compensation-jobfamily'] = myChart;
+
+            const sorted = [...data].sort((a, b) => b.avgPay - a.avgPay);
+
+            const option = {
+                grid: { left: 120, right: 30, bottom: 40, top: 10, containLabel: true },
+                xAxis: { type: 'value', axisLine: { lineStyle: { color: '#2d2d44' } }, axisLabel: { color: '#a8a8a8', formatter: '${value/1000}K' }, splitLine: { lineStyle: { color: '#2d2d44' } } },
+                yAxis: { type: 'category', data: sorted.map(d => d.family), axisLine: { lineStyle: { color: '#2d2d44' } }, axisLabel: { color: '#a8a8a8' } },
+                series: [{
+                    data: sorted.map(d => d.avgPay),
+                    type: 'bar',
+                    itemStyle: { borderRadius: [0, 8, 8, 0], color: new echarts.graphic.LinearGradient(1, 0, 0, 0, [{ offset: 0, color: '#00d9ff' }, { offset: 1, color: '#0f3460' }]) },
+                    label: { show: true, position: 'right', color: '#eaeaea', fontSize: 11, formatter: '${value/1000}K' }
+                }],
+                tooltip: { backgroundColor: '#16213e', borderColor: '#0f3460', textStyle: { color: '#eaeaea' }, formatter: (params) => params[0]?.value ? '$' + (params[0].value / 1000).toFixed(0) + 'K' : '' }
+            };
+
+            myChart.setOption(option);
+            window.addEventListener('resize', () => myChart.resize());
+        }
+
+        function createCompensationGradeChart(data) {
+            const chartDom = document.getElementById('compensation-grade');
+            const myChart = echarts.init(chartDom, null, { renderer: 'canvas' });
+            CONFIG.charts['compensation-grade'] = myChart;
+
+            const option = {
+                grid: { left: 50, right: 30, bottom: 40, top: 10, containLabel: true },
+                xAxis: { type: 'category', data: data.map(d => d.grade), axisLine: { lineStyle: { color: '#2d2d44' } }, axisLabel: { color: '#a8a8a8' } },
+                yAxis: { type: 'value', axisLine: { lineStyle: { color: '#2d2d44' } }, splitLine: { lineStyle: { color: '#2d2d44' } }, axisLabel: { color: '#a8a8a8', formatter: '${value/1000}K' } },
+                series: [{
+                    type: 'boxplot',
+                    data: data.map(d => [d.min, d.p25, d.median, d.p75, d.max]),
+                    itemStyle: { color: '#e94560', borderColor: '#e94560' },
+                    whiskerStyle: { color: '#00d9ff' }
+                }],
+                tooltip: { backgroundColor: '#16213e', borderColor: '#0f3460', textStyle: { color: '#eaeaea' }, formatter: (params) => {
+                    if (params.componentSubType === 'boxplot') {
+                        const [min, q1, med, q3, max] = params.value;
+                        return `Min: $${(min/1000).toFixed(0)}K<br/>Q1: $${(q1/1000).toFixed(0)}K<br/>Median: $${(med/1000).toFixed(0)}K<br/>Q3: $${(q3/1000).toFixed(0)}K<br/>Max: $${(max/1000).toFixed(0)}K`;
+                    }
+                } }
+            };
+
+            myChart.setOption(option);
+            window.addEventListener('resize', () => myChart.resize());
+        }
+
+        function createDeptSizeChart(data) {
+            const chartDom = document.getElementById('orghealth-deptsize');
+            const myChart = echarts.init(chartDom, null, { renderer: 'canvas' });
+            CONFIG.charts['orghealth-deptsize'] = myChart;
+
+            const option = {
+                grid: { left: 150, right: 30, bottom: 40, top: 10, containLabel: true },
+                xAxis: { type: 'value', axisLine: { lineStyle: { color: '#2d2d44' } }, axisLabel: { color: '#a8a8a8' }, splitLine: { lineStyle: { color: '#2d2d44' } } },
+                yAxis: { type: 'category', data: data.map(d => d.department), axisLine: { lineStyle: { color: '#2d2d44' } }, axisLabel: { color: '#a8a8a8' } },
+                series: [{
+                    data: data.map(d => d.size),
+                    type: 'bar',
+                    itemStyle: { borderRadius: [0, 8, 8, 0], color: new echarts.graphic.LinearGradient(1, 0, 0, 0, [{ offset: 0, color: '#00ff88' }, { offset: 1, color: '#0f3460' }]) },
+                    label: { show: true, position: 'right', color: '#eaeaea', fontSize: 10 }
+                }],
+                tooltip: { backgroundColor: '#16213e', borderColor: '#0f3460', textStyle: { color: '#eaeaea' } }
+            };
+
+            myChart.setOption(option);
+            window.addEventListener('resize', () => myChart.resize());
+        }
+
+        function createSpanOfControlChart(data) {
+            const chartDom = document.getElementById('orghealth-span');
+            const myChart = echarts.init(chartDom, null, { renderer: 'canvas' });
+            CONFIG.charts['orghealth-span'] = myChart;
+
+            const option = {
+                color: ['#0f3460', '#e94560', '#00d9ff', '#ffa502', '#00ff88'],
+                series: [{
+                    type: 'pie',
+                    radius: ['35%', '70%'],
+                    data: data.map(d => ({ value: d.count, name: d.range })),
+                    emphasis: { itemStyle: { shadowBlur: 10, shadowOffsetX: 0, shadowColor: 'rgba(0, 0, 0, 0.5)' } },
+                    label: { color: '#eaeaea', fontSize: 11 }
+                }],
+                tooltip: { backgroundColor: '#16213e', borderColor: '#0f3460', textStyle: { color: '#eaeaea' } }
+            };
+
+            myChart.setOption(option);
+            window.addEventListener('resize', () => myChart.resize());
+        }
+
+        function createLocationDistributionChart(data) {
+            const chartDom = document.getElementById('orghealth-location');
+            const myChart = echarts.init(chartDom, null, { renderer: 'canvas' });
+            CONFIG.charts['orghealth-location'] = myChart;
+
+            const sorted = [...data].sort((a, b) => b.headcount - a.headcount);
+
+            const option = {
+                grid: { left: 100, right: 50, bottom: 40, top: 10, containLabel: true },
+                xAxis: { type: 'value', axisLine: { lineStyle: { color: '#2d2d44' } }, axisLabel: { color: '#a8a8a8' }, splitLine: { lineStyle: { color: '#2d2d44' } } },
+                yAxis: { type: 'category', data: sorted.map(d => d.location), axisLine: { lineStyle: { color: '#2d2d44' } }, axisLabel: { color: '#a8a8a8' } },
+                series: [{
+                    data: sorted.map(d => d.headcount),
+                    type: 'bar',
+                    itemStyle: { borderRadius: [0, 8, 8, 0], color: new echarts.graphic.LinearGradient(1, 0, 0, 0, [{ offset: 0, color: '#e94560' }, { offset: 1, color: '#0f3460' }]) },
+                    label: { show: true, position: 'right', color: '#eaeaea', fontSize: 11 }
+                }],
+                tooltip: { backgroundColor: '#16213e', borderColor: '#0f3460', textStyle: { color: '#eaeaea' } }
+            };
+
+            myChart.setOption(option);
+            window.addEventListener('resize', () => myChart.resize());
+        }
+
+        // ============================================================================
+        // TAB MANAGEMENT
+        // ============================================================================
+
+        function initTabs() {
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabName = tab.getAttribute('data-tab');
+                    showTab(tabName);
+                });
+            });
+        }
+
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.nav-tab').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+
+            // Render appropriate tab content
+            if (tabName === 'overview') renderOverviewTab();
+            else if (tabName === 'headcount') renderHeadcountTab();
+            else if (tabName === 'movements') renderMovementsTab();
+            else if (tabName === 'compensation') renderCompensationTab();
+            else if (tabName === 'org-health') renderOrgHealthTab();
+
+            // Trigger chart resize
+            setTimeout(() => {
+                Object.values(CONFIG.charts).forEach(chart => chart?.resize());
+            }, 100);
+        }
+
+        function renderAllTabs() {
+            renderOverviewTab();
+            renderHeadcountTab();
+            renderMovementsTab();
+            renderCompensationTab();
+            renderOrgHealthTab();
+        }
+
+        // ============================================================================
+        // INITIALIZATION
+        // ============================================================================
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initTabs();
+            loadData();
+            setInterval(loadData, CONFIG.refreshInterval);
+            setInterval(updateDateTime, 1000);
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            Object.values(CONFIG.charts).forEach(chart => chart?.resize());
+        });
+    </script>
+</body>
+</html>
