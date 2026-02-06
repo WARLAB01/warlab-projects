@@ -344,6 +344,40 @@ LEFT JOIN tmp_worker_job wj
 
 ---
 
+### Issue 16: Movement Fact Metrics Expansion — 28 Metrics with LAG() Architecture
+
+**Date:** 2026-02-06
+
+**Context:** Expanded `fct_worker_movement_f` from 15 to 28 metric columns, requiring a complete rewrite of the fact load SQL.
+
+**Architecture chosen:** 3-CTE pipeline:
+1. `source_data` — joins dim_worker_job_d + dim_job_profile_d + dim_worker_status_d, applies `LAG()` window functions partitioned by employee_id for 13 prior-row columns
+2. `with_current_fks` — resolves 8 current dimension FK lookups using `BETWEEN valid_from AND valid_to`
+3. `with_prior_fks` — resolves 9 prior dimension FK lookups using prior_effective_date
+4. Final SELECT computes all 28 metrics inline
+
+**Key design decisions:**
+- Change-detection metrics (e.g., `cost_center_change_count`) gate on both current and prior `idp_employee_status IN ('A','L')` to avoid counting changes during termination/hire events
+- Grade comparison uses `grade_id` string comparison (not numeric) since Workday grade IDs are alphanumeric
+- Business-process metrics (hire, termination, promotion_bp) derive from `action`/`action_reason` fields, which are NULL in synthetic data — metrics are 0 but logic is correct for production
+- `regrettable_termination_count` = `voluntary_termination_count` by design (all voluntary terms are regrettable until HR flags otherwise)
+
+**Lesson:** When building a large metric fact table, use the LAG() window pattern in a dedicated CTE before FK resolution. This avoids recomputing LAG() across multiple JOINs and keeps the metric calculation logic cleanly separated from the dimension lookups.
+
+---
+
+### Issue 17: dim_day_d Date Range Too Narrow for Historical Data
+
+**Date:** 2026-02-06
+
+**Symptom:** Movement fact data includes effective dates as early as 2016-02-12, but dim_day_d only covered 2020-01-01 to 2030-12-31. Any `day_sk` lookup for pre-2020 dates would fail.
+
+**Fix:** Extended dim_day_d to 2015-01-01 through 2030-12-31 (5,844 rows). Required expanding the cross-join date spine generator from 10×10×10×4 = 4,000 capacity to 10×10×10×6 = 6,000 capacity.
+
+**Lesson:** Always verify dimension date ranges cover the full extent of fact table data, including historical records. Date spine generators need capacity headroom beyond the target date range.
+
+---
+
 ## Quick Reference: Redshift SQL Gotchas
 
 | Pattern | Works on PostgreSQL/SQL Server | Redshift Replacement |

@@ -10,10 +10,14 @@
 -- FACT TABLE 1: fct_worker_movement_f
 -- ============================================================================
 -- Load Logic:
---   1. Source entirely from dim_worker_job_d (no direct L1 joins)
---   2. Use LAG() to get prior row attributes by employee and effective_date
---   3. Resolve all current and prior row dimension FKs as-of their dates
---   4. Compute change metrics (only when both rows are active: status in ('A','L'))
+--   1. Source from dim_worker_job_d (current SCD2 rows)
+--   2. Join dim_job_profile_d for management_level_code, job_matrix
+--   3. Join dim_worker_status_d for termination attributes
+--   4. Use LAG() to get prior row attributes by employee and effective_date
+--   5. Resolve all current and prior row dimension FKs as-of their dates
+--   6. Compute change metrics (28 total):
+--        - 15 change-detection metrics (both rows must be active: status in ('A','L'))
+--        - 13 business-process metrics (hire, termination, promotion, demotion, etc.)
 -- ============================================================================
 
 BEGIN;
@@ -54,6 +58,10 @@ INSERT INTO l3_workday.fct_worker_movement_f (
     work_model_type,
     base_pay_proposed_amount,
     idp_employee_status,
+    action,
+    action_reason,
+    primary_termination_category,
+    primary_termination_reason,
     prior_company_id,
     prior_cost_center_id,
     prior_grade_id,
@@ -69,24 +77,41 @@ INSERT INTO l3_workday.fct_worker_movement_f (
     base_pay_change_count,
     company_change_count,
     cost_center_change_count,
+    demotion_count,
+    external_hire_count,
     grade_change_count,
     grade_decrease_count,
     grade_increase_count,
+    hire_count,
+    internal_hire_count,
+    involuntary_termination_count,
     job_change_count,
+    lateral_move_count,
     location_change_count,
     management_level_change_count,
     management_level_decrease_count,
     management_level_increase_count,
     matrix_organization_change_count,
+    promotion_count,
+    promotion_count_business_process,
     regrettable_termination_count,
+    rehire_count,
+    structured_termination_count,
     supervisory_organization_change_count,
+    termination_count,
+    unstructured_termination_count,
+    voluntary_termination_count,
     worker_model_change_count,
     insert_datetime,
     update_datetime,
     etl_batch_id
 )
 WITH source_data AS (
-    -- Extract all worker job records with prior row info using LAG()
+    -- ================================================================
+    -- CTE 1: Extract all worker job records with prior row via LAG()
+    -- Also pulls action, action_reason from dim_worker_job_d and
+    -- termination attributes from dim_worker_status_d
+    -- ================================================================
     SELECT
         dwj.employee_id,
         dwj.effective_date,
@@ -103,66 +128,65 @@ WITH source_data AS (
         dwj.base_pay_proposed_amount,
         dwj.idp_employee_status,
         dwj.position_id,
+        -- Business process attributes
+        dwj.action,
+        dwj.action_reason,
+        -- Termination attributes (from dim_worker_status_d)
+        dws_src.primary_termination_category,
+        dws_src.primary_termination_reason,
         -- Prior row values using LAG() window function
         LAG(dwj.effective_date) OVER (
-            PARTITION BY dwj.employee_id
-            ORDER BY dwj.effective_date ASC
+            PARTITION BY dwj.employee_id ORDER BY dwj.effective_date ASC
         ) AS prior_effective_date,
         LAG(dwj.company_id) OVER (
-            PARTITION BY dwj.employee_id
-            ORDER BY dwj.effective_date ASC
+            PARTITION BY dwj.employee_id ORDER BY dwj.effective_date ASC
         ) AS prior_company_id,
         LAG(dwj.cost_center_id) OVER (
-            PARTITION BY dwj.employee_id
-            ORDER BY dwj.effective_date ASC
+            PARTITION BY dwj.employee_id ORDER BY dwj.effective_date ASC
         ) AS prior_cost_center_id,
         LAG(dwj.compensation_grade_proposed) OVER (
-            PARTITION BY dwj.employee_id
-            ORDER BY dwj.effective_date ASC
+            PARTITION BY dwj.employee_id ORDER BY dwj.effective_date ASC
         ) AS prior_grade_id,
         LAG(dwj.job_profile_id) OVER (
-            PARTITION BY dwj.employee_id
-            ORDER BY dwj.effective_date ASC
+            PARTITION BY dwj.employee_id ORDER BY dwj.effective_date ASC
         ) AS prior_job_profile_id,
         LAG(dwj.location) OVER (
-            PARTITION BY dwj.employee_id
-            ORDER BY dwj.effective_date ASC
+            PARTITION BY dwj.employee_id ORDER BY dwj.effective_date ASC
         ) AS prior_location_id,
         LAG(djp.management_level_code) OVER (
-            PARTITION BY dwj.employee_id
-            ORDER BY dwj.effective_date ASC
+            PARTITION BY dwj.employee_id ORDER BY dwj.effective_date ASC
         ) AS prior_management_level_code,
         LAG(djp.job_matrix) OVER (
-            PARTITION BY dwj.employee_id
-            ORDER BY dwj.effective_date ASC
+            PARTITION BY dwj.employee_id ORDER BY dwj.effective_date ASC
         ) AS prior_matrix_org_id,
         LAG(dwj.sup_org_id) OVER (
-            PARTITION BY dwj.employee_id
-            ORDER BY dwj.effective_date ASC
+            PARTITION BY dwj.employee_id ORDER BY dwj.effective_date ASC
         ) AS prior_sup_org_id,
         LAG(dwj.work_model_type) OVER (
-            PARTITION BY dwj.employee_id
-            ORDER BY dwj.effective_date ASC
+            PARTITION BY dwj.employee_id ORDER BY dwj.effective_date ASC
         ) AS prior_work_model_type,
         LAG(dwj.base_pay_proposed_amount) OVER (
-            PARTITION BY dwj.employee_id
-            ORDER BY dwj.effective_date ASC
+            PARTITION BY dwj.employee_id ORDER BY dwj.effective_date ASC
         ) AS prior_base_pay_proposed_amount,
         LAG(dwj.idp_employee_status) OVER (
-            PARTITION BY dwj.employee_id
-            ORDER BY dwj.effective_date ASC
+            PARTITION BY dwj.employee_id ORDER BY dwj.effective_date ASC
         ) AS prior_idp_employee_status,
         LAG(dwj.position_id) OVER (
-            PARTITION BY dwj.employee_id
-            ORDER BY dwj.effective_date ASC
+            PARTITION BY dwj.employee_id ORDER BY dwj.effective_date ASC
         ) AS prior_position_id
     FROM l3_workday.dim_worker_job_d dwj
     LEFT JOIN l3_workday.dim_job_profile_d djp
         ON dwj.job_profile_id = djp.job_profile_id
         AND djp.is_current = true
+    LEFT JOIN l3_workday.dim_worker_status_d dws_src
+        ON dwj.employee_id = dws_src.employee_id
+        AND dwj.effective_date = dws_src.effective_date
+        AND dws_src.is_current = true
     WHERE dwj.is_current = true
 ),
--- Resolve current row dimension foreign keys as-of effective_date
+-- ================================================================
+-- CTE 2: Resolve current row dimension foreign keys as-of effective_date
+-- ================================================================
 with_current_fks AS (
     SELECT
         sd.employee_id,
@@ -180,6 +204,10 @@ with_current_fks AS (
         sd.base_pay_proposed_amount,
         sd.idp_employee_status,
         sd.position_id,
+        sd.action,
+        sd.action_reason,
+        sd.primary_termination_category,
+        sd.primary_termination_reason,
         sd.prior_effective_date,
         sd.prior_company_id,
         sd.prior_cost_center_id,
@@ -231,7 +259,9 @@ with_current_fks AS (
         AND sd.effective_date = dws.effective_date
         AND dws.is_current = true
 ),
--- Resolve prior row dimension foreign keys as-of prior_effective_date
+-- ================================================================
+-- CTE 3: Resolve prior row dimension foreign keys as-of prior_effective_date
+-- ================================================================
 with_prior_fks AS (
     SELECT
         wcf.employee_id,
@@ -249,6 +279,10 @@ with_prior_fks AS (
         wcf.base_pay_proposed_amount,
         wcf.idp_employee_status,
         wcf.position_id,
+        wcf.action,
+        wcf.action_reason,
+        wcf.primary_termination_category,
+        wcf.primary_termination_reason,
         wcf.prior_effective_date,
         wcf.prior_company_id,
         wcf.prior_cost_center_id,
@@ -314,7 +348,9 @@ with_prior_fks AS (
         AND wcf.prior_effective_date = dws2.effective_date
         AND dws2.is_current = true
 )
--- Final SELECT: output all columns with computed change metrics
+-- ============================================================================
+-- Final SELECT: output all columns with 28 computed change/event metrics
+-- ============================================================================
 SELECT
     wpf.employee_id,
     wpf.effective_date,
@@ -349,6 +385,10 @@ SELECT
     wpf.work_model_type,
     wpf.base_pay_proposed_amount,
     wpf.idp_employee_status,
+    wpf.action,
+    wpf.action_reason,
+    wpf.primary_termination_category,
+    wpf.primary_termination_reason,
     wpf.prior_company_id,
     wpf.prior_cost_center_id,
     wpf.prior_grade_id,
@@ -361,106 +401,238 @@ SELECT
     wpf.prior_base_pay_proposed_amount,
     wpf.prior_idp_employee_status,
     wpf.prior_effective_date,
-    -- CHANGE METRICS: Computed only when both current and prior rows are active (status in ('A','L'))
+
+    -- ====================================================================
+    -- CHANGE-DETECTION METRICS (both current and prior rows must be active)
+    -- ====================================================================
+
+    -- Base Pay Change Count: current base pay <> prior base pay, both active
     CASE
         WHEN wpf.idp_employee_status IN ('A', 'L')
          AND wpf.prior_idp_employee_status IN ('A', 'L')
          AND COALESCE(wpf.base_pay_proposed_amount, 0) <> COALESCE(wpf.prior_base_pay_proposed_amount, 0)
-        THEN 1
-        ELSE 0
+        THEN 1 ELSE 0
     END AS base_pay_change_count,
+
+    -- Company Change Count: company_id changed, both active
     CASE
         WHEN wpf.idp_employee_status IN ('A', 'L')
          AND wpf.prior_idp_employee_status IN ('A', 'L')
          AND COALESCE(wpf.company_id, '') <> COALESCE(wpf.prior_company_id, '')
-        THEN 1
-        ELSE 0
+        THEN 1 ELSE 0
     END AS company_change_count,
+
+    -- Cost Center Change Count: cost_center_id changed, both active
     CASE
         WHEN wpf.idp_employee_status IN ('A', 'L')
          AND wpf.prior_idp_employee_status IN ('A', 'L')
          AND COALESCE(wpf.cost_center_id, '') <> COALESCE(wpf.prior_cost_center_id, '')
-        THEN 1
-        ELSE 0
+        THEN 1 ELSE 0
     END AS cost_center_change_count,
-    CASE
-        WHEN wpf.idp_employee_status IN ('A', 'L')
-         AND wpf.prior_idp_employee_status IN ('A', 'L')
-         AND COALESCE(wpf.grade_id, '') <> COALESCE(wpf.prior_grade_id, '')
-        THEN 1
-        ELSE 0
-    END AS grade_change_count,
-    CASE
-        WHEN wpf.idp_employee_status IN ('A', 'L')
-         AND wpf.prior_idp_employee_status IN ('A', 'L')
-         AND wpf.grade_id < wpf.prior_grade_id
-        THEN 1
-        ELSE 0
-    END AS grade_decrease_count,
-    CASE
-        WHEN wpf.idp_employee_status IN ('A', 'L')
-         AND wpf.prior_idp_employee_status IN ('A', 'L')
-         AND wpf.grade_id > wpf.prior_grade_id
-        THEN 1
-        ELSE 0
-    END AS grade_increase_count,
+
+    -- Demotion Count: job changed AND grade decreased, both active
     CASE
         WHEN wpf.idp_employee_status IN ('A', 'L')
          AND wpf.prior_idp_employee_status IN ('A', 'L')
          AND COALESCE(wpf.job_profile_id, '') <> COALESCE(wpf.prior_job_profile_id, '')
-        THEN 1
-        ELSE 0
+         AND wpf.grade_id < wpf.prior_grade_id
+        THEN 1 ELSE 0
+    END AS demotion_count,
+
+    -- External Hire Count: action_reason = 'Hire'
+    CASE
+        WHEN UPPER(COALESCE(wpf.action_reason, '')) = 'HIRE'
+        THEN 1 ELSE 0
+    END AS external_hire_count,
+
+    -- Grade Change Count: grade_id changed, both active
+    CASE
+        WHEN wpf.idp_employee_status IN ('A', 'L')
+         AND wpf.prior_idp_employee_status IN ('A', 'L')
+         AND COALESCE(wpf.grade_id, '') <> COALESCE(wpf.prior_grade_id, '')
+        THEN 1 ELSE 0
+    END AS grade_change_count,
+
+    -- Grade Decrease Count: grade_id decreased, both active
+    CASE
+        WHEN wpf.idp_employee_status IN ('A', 'L')
+         AND wpf.prior_idp_employee_status IN ('A', 'L')
+         AND wpf.grade_id < wpf.prior_grade_id
+        THEN 1 ELSE 0
+    END AS grade_decrease_count,
+
+    -- Grade Increase Count: grade_id increased, both active
+    CASE
+        WHEN wpf.idp_employee_status IN ('A', 'L')
+         AND wpf.prior_idp_employee_status IN ('A', 'L')
+         AND wpf.grade_id > wpf.prior_grade_id
+        THEN 1 ELSE 0
+    END AS grade_increase_count,
+
+    -- Hire Count: External Hire + Internal Hire (computed below, expressed inline)
+    CASE
+        WHEN UPPER(COALESCE(wpf.action_reason, '')) = 'HIRE'
+        THEN 1 ELSE 0
+    END +
+    CASE
+        WHEN UPPER(COALESCE(wpf.action_reason, '')) = 'CHANGE JOB'
+         AND UPPER(COALESCE(wpf.action, '')) LIKE '%JOB APPLICATION%'
+        THEN 1 ELSE 0
+    END AS hire_count,
+
+    -- Internal Hire Count: action_reason = 'Change Job' initiated from job application
+    CASE
+        WHEN UPPER(COALESCE(wpf.action_reason, '')) = 'CHANGE JOB'
+         AND UPPER(COALESCE(wpf.action, '')) LIKE '%JOB APPLICATION%'
+        THEN 1 ELSE 0
+    END AS internal_hire_count,
+
+    -- Involuntary Termination Count: primary_termination_category = 'Involuntary'
+    CASE
+        WHEN UPPER(COALESCE(wpf.primary_termination_category, '')) = 'INVOLUNTARY'
+        THEN 1 ELSE 0
+    END AS involuntary_termination_count,
+
+    -- Job Change Count: job_profile_id changed, both active
+    CASE
+        WHEN wpf.idp_employee_status IN ('A', 'L')
+         AND wpf.prior_idp_employee_status IN ('A', 'L')
+         AND COALESCE(wpf.job_profile_id, '') <> COALESCE(wpf.prior_job_profile_id, '')
+        THEN 1 ELSE 0
     END AS job_change_count,
+
+    -- Lateral Move Count: job changed AND grade stayed same, both active
+    CASE
+        WHEN wpf.idp_employee_status IN ('A', 'L')
+         AND wpf.prior_idp_employee_status IN ('A', 'L')
+         AND COALESCE(wpf.job_profile_id, '') <> COALESCE(wpf.prior_job_profile_id, '')
+         AND COALESCE(wpf.grade_id, '') = COALESCE(wpf.prior_grade_id, '')
+        THEN 1 ELSE 0
+    END AS lateral_move_count,
+
+    -- Location Change Count: location_id changed, both active
     CASE
         WHEN wpf.idp_employee_status IN ('A', 'L')
          AND wpf.prior_idp_employee_status IN ('A', 'L')
          AND COALESCE(wpf.location_id, '') <> COALESCE(wpf.prior_location_id, '')
-        THEN 1
-        ELSE 0
+        THEN 1 ELSE 0
     END AS location_change_count,
+
+    -- Management Level Change Count: mgmt level changed, both active
     CASE
         WHEN wpf.idp_employee_status IN ('A', 'L')
          AND wpf.prior_idp_employee_status IN ('A', 'L')
          AND COALESCE(wpf.management_level_code, '') <> COALESCE(wpf.prior_management_level_code, '')
-        THEN 1
-        ELSE 0
+        THEN 1 ELSE 0
     END AS management_level_change_count,
+
+    -- Management Level Decrease Count: mgmt level decreased, both active
     CASE
         WHEN wpf.idp_employee_status IN ('A', 'L')
          AND wpf.prior_idp_employee_status IN ('A', 'L')
          AND wpf.management_level_code < wpf.prior_management_level_code
-        THEN 1
-        ELSE 0
+        THEN 1 ELSE 0
     END AS management_level_decrease_count,
+
+    -- Management Level Increase Count: mgmt level increased, both active
     CASE
         WHEN wpf.idp_employee_status IN ('A', 'L')
          AND wpf.prior_idp_employee_status IN ('A', 'L')
          AND wpf.management_level_code > wpf.prior_management_level_code
-        THEN 1
-        ELSE 0
+        THEN 1 ELSE 0
     END AS management_level_increase_count,
+
+    -- Matrix Organization Change Count: matrix_org changed, both active
     CASE
         WHEN wpf.idp_employee_status IN ('A', 'L')
          AND wpf.prior_idp_employee_status IN ('A', 'L')
          AND COALESCE(wpf.matrix_org_id, '') <> COALESCE(wpf.prior_matrix_org_id, '')
-        THEN 1
-        ELSE 0
+        THEN 1 ELSE 0
     END AS matrix_organization_change_count,
-    NULL::INTEGER AS regrettable_termination_count,
+
+    -- ====================================================================
+    -- BUSINESS-PROCESS METRICS (derived from action/status attributes)
+    -- ====================================================================
+
+    -- Promotion Count: job changed AND grade increased, both active
+    CASE
+        WHEN wpf.idp_employee_status IN ('A', 'L')
+         AND wpf.prior_idp_employee_status IN ('A', 'L')
+         AND COALESCE(wpf.job_profile_id, '') <> COALESCE(wpf.prior_job_profile_id, '')
+         AND wpf.grade_id > wpf.prior_grade_id
+        THEN 1 ELSE 0
+    END AS promotion_count,
+
+    -- Promotion Count Business Process: action_reason like '%Promotion%'
+    CASE
+        WHEN UPPER(COALESCE(wpf.action_reason, '')) LIKE '%PROMOTION%'
+        THEN 1 ELSE 0
+    END AS promotion_count_business_process,
+
+    -- Regrettable Termination Count: voluntary termination (regrettable by default)
+    -- In production Workday, this is a dedicated flag. For this dataset,
+    -- voluntary terminations are treated as regrettable.
+    CASE
+        WHEN UPPER(COALESCE(wpf.primary_termination_category, '')) = 'VOLUNTARY'
+        THEN 1 ELSE 0
+    END AS regrettable_termination_count,
+
+    -- Rehire Count: action_reason indicates rehire
+    CASE
+        WHEN UPPER(COALESCE(wpf.action_reason, '')) LIKE '%REHIRE%'
+        THEN 1 ELSE 0
+    END AS rehire_count,
+
+    -- Structured Termination Count: involuntary + layoff/restructuring reason
+    CASE
+        WHEN UPPER(COALESCE(wpf.primary_termination_category, '')) = 'INVOLUNTARY'
+         AND (UPPER(COALESCE(wpf.primary_termination_reason, '')) LIKE '%LAYOFF%'
+              OR UPPER(COALESCE(wpf.primary_termination_reason, '')) LIKE '%RESTRUCTUR%'
+              OR UPPER(COALESCE(wpf.primary_termination_reason, '')) LIKE '%REDUCTION%'
+              OR UPPER(COALESCE(wpf.primary_termination_reason, '')) LIKE '%REDUNDAN%')
+        THEN 1 ELSE 0
+    END AS structured_termination_count,
+
+    -- Supervisory Organization Change Count: sup_org changed, both active
     CASE
         WHEN wpf.idp_employee_status IN ('A', 'L')
          AND wpf.prior_idp_employee_status IN ('A', 'L')
          AND COALESCE(wpf.sup_org_id, '') <> COALESCE(wpf.prior_sup_org_id, '')
-        THEN 1
-        ELSE 0
+        THEN 1 ELSE 0
     END AS supervisory_organization_change_count,
+
+    -- Termination Count: action is a termination event
+    CASE
+        WHEN UPPER(COALESCE(wpf.action, '')) LIKE '%TERMINAT%'
+          OR wpf.idp_employee_status = 'T'
+             AND COALESCE(wpf.prior_idp_employee_status, '') IN ('A', 'L')
+        THEN 1 ELSE 0
+    END AS termination_count,
+
+    -- Unstructured Termination Count: involuntary but NOT structured (layoff/etc)
+    CASE
+        WHEN UPPER(COALESCE(wpf.primary_termination_category, '')) = 'INVOLUNTARY'
+         AND NOT (UPPER(COALESCE(wpf.primary_termination_reason, '')) LIKE '%LAYOFF%'
+              OR UPPER(COALESCE(wpf.primary_termination_reason, '')) LIKE '%RESTRUCTUR%'
+              OR UPPER(COALESCE(wpf.primary_termination_reason, '')) LIKE '%REDUCTION%'
+              OR UPPER(COALESCE(wpf.primary_termination_reason, '')) LIKE '%REDUNDAN%')
+        THEN 1 ELSE 0
+    END AS unstructured_termination_count,
+
+    -- Voluntary Termination Count: primary_termination_category = 'Voluntary'
+    CASE
+        WHEN UPPER(COALESCE(wpf.primary_termination_category, '')) = 'VOLUNTARY'
+        THEN 1 ELSE 0
+    END AS voluntary_termination_count,
+
+    -- Worker Model Change Count: work_model changed, both active
     CASE
         WHEN wpf.idp_employee_status IN ('A', 'L')
          AND wpf.prior_idp_employee_status IN ('A', 'L')
          AND COALESCE(wpf.work_model_type, '') <> COALESCE(wpf.prior_work_model_type, '')
-        THEN 1
-        ELSE 0
+        THEN 1 ELSE 0
     END AS worker_model_change_count,
+
     GETDATE() AS insert_datetime,
     GETDATE() AS update_datetime,
     '${ETL_BATCH_ID}' AS etl_batch_id

@@ -58,6 +58,11 @@ CREATE TABLE l3_workday.fct_worker_movement_f (
     work_model_type VARCHAR(15),
     base_pay_proposed_amount DECIMAL(19,4),
     idp_employee_status VARCHAR(5),
+    -- Business process attributes (for hire/term/promotion metrics)
+    action VARCHAR(256),
+    action_reason VARCHAR(256),
+    primary_termination_category VARCHAR(256),
+    primary_termination_reason VARCHAR(256),
 
     -- Prior row natural keys / attributes
     prior_company_id VARCHAR(15),
@@ -73,21 +78,36 @@ CREATE TABLE l3_workday.fct_worker_movement_f (
     prior_idp_employee_status VARCHAR(5),
     prior_effective_date DATE,
 
-    -- Metrics
+    -- ====================================================================
+    -- Metrics (28 total - alphabetical)
+    -- ====================================================================
     base_pay_change_count INTEGER,
     company_change_count INTEGER,
     cost_center_change_count INTEGER,
+    demotion_count INTEGER,
+    external_hire_count INTEGER,
     grade_change_count INTEGER,
     grade_decrease_count INTEGER,
     grade_increase_count INTEGER,
+    hire_count INTEGER,
+    internal_hire_count INTEGER,
+    involuntary_termination_count INTEGER,
     job_change_count INTEGER,
+    lateral_move_count INTEGER,
     location_change_count INTEGER,
     management_level_change_count INTEGER,
     management_level_decrease_count INTEGER,
     management_level_increase_count INTEGER,
     matrix_organization_change_count INTEGER,
+    promotion_count INTEGER,
+    promotion_count_business_process INTEGER,
     regrettable_termination_count INTEGER,
+    rehire_count INTEGER,
+    structured_termination_count INTEGER,
     supervisory_organization_change_count INTEGER,
+    termination_count INTEGER,
+    unstructured_termination_count INTEGER,
+    voluntary_termination_count INTEGER,
     worker_model_change_count INTEGER,
 
     -- Audit columns

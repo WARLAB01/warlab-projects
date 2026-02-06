@@ -7,7 +7,7 @@
 
 -- ============================================================================
 -- 1. LOAD DIM_DAY_D - Date Spine (SCD1, idempotent)
--- Generates calendar from 2020-01-01 to 2030-12-31
+-- Generates calendar from 2015-01-01 to 2030-12-31
 -- ============================================================================
 BEGIN;
 
@@ -20,10 +20,11 @@ INSERT INTO l3_workday.dim_day_d (
     insert_datetime
 )
 WITH date_spine AS (
-    -- Generate all dates from 2020-01-01 to 2030-12-31
+    -- Generate all dates from 2015-01-01 to 2030-12-31
+    -- Need 5844 dates for 16 years; cross join yields 10x10x10x6 = 6000 rows
     SELECT CAST(date_col AS DATE) AS calendar_date
     FROM (
-        SELECT dateadd(day, row_number() OVER (ORDER BY 1) - 1, '2020-01-01'::DATE) AS date_col
+        SELECT dateadd(day, row_number() OVER (ORDER BY 1) - 1, '2015-01-01'::DATE) AS date_col
         FROM (
             SELECT 1 AS n
             UNION ALL
@@ -46,6 +47,7 @@ WITH date_spine AS (
             SELECT 1 AS n
             UNION ALL
             SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4
+            UNION ALL SELECT 5 UNION ALL SELECT 6
         ) s4
     ) all_dates
     WHERE calendar_date <= '2030-12-31'::DATE
