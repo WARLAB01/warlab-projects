@@ -460,32 +460,41 @@ class DashboardDataExtractor:
         trend_data = self._execute_and_fetch(trend_query)
 
         # Query 4: Turnover rate and promotion rate trend by month
-        # Turnover = employees who became terminated / headcount at that snapshot
-        # Promotion = grade increases / headcount at that snapshot
+        # Promotion = grade increases + management level increases / headcount
+        # Turnover  = terminated-employee movements / headcount
         rates_trend_query = f"""
+        WITH latest_hc AS (
+            SELECT COUNT(DISTINCT employee_id) as headcount
+            FROM {SCHEMA}.fct_worker_headcount_restat_f
+            WHERE headcount = 1
+              AND snapshot_date = (
+                  SELECT MAX(snapshot_date)
+                  FROM {SCHEMA}.fct_worker_headcount_restat_f
+                  WHERE headcount = 1
+              )
+        )
         SELECT
             m.month,
             m.distinct_employees as movement_employees,
-            COALESCE(SUM(m.grade_increase_count), 0) as promotions,
-            COALESCE(SUM(m.management_level_increase_count), 0) as mgmt_promotions,
-            COALESCE(h.headcount, m.distinct_employees) as headcount,
-            CASE WHEN COALESCE(h.headcount, m.distinct_employees) > 0
-                THEN ROUND(COALESCE(SUM(m.grade_increase_count), 0)::DECIMAL /
-                     COALESCE(h.headcount, m.distinct_employees) * 100, 2)
+            m.combined_promos as promotions,
+            m.mgmt_promos as mgmt_promotions,
+            COALESCE(h.headcount, lhc.headcount, m.distinct_employees) as headcount,
+            CASE WHEN COALESCE(h.headcount, lhc.headcount, m.distinct_employees) > 0
+                THEN ROUND(m.combined_promos::DECIMAL /
+                     COALESCE(h.headcount, lhc.headcount, m.distinct_employees) * 100, 2)
                 ELSE 0 END as promotion_rate,
-            COALESCE(m.terms, 0) as terminations,
-            CASE WHEN COALESCE(h.headcount, m.distinct_employees) > 0
-                THEN ROUND(COALESCE(m.terms, 0)::DECIMAL /
-                     COALESCE(h.headcount, m.distinct_employees) * 100, 2)
+            m.terms as terminations,
+            CASE WHEN COALESCE(h.headcount, lhc.headcount, m.distinct_employees) > 0
+                THEN ROUND(m.terms::DECIMAL /
+                     COALESCE(h.headcount, lhc.headcount, m.distinct_employees) * 100, 2)
                 ELSE 0 END as turnover_rate
         FROM (
             SELECT
                 DATE_TRUNC('month', effective_date)::DATE as month,
                 COUNT(DISTINCT employee_id) as distinct_employees,
-                SUM(grade_increase_count) as grade_increase_count,
-                SUM(management_level_increase_count) as management_level_increase_count,
-                SUM(CASE WHEN idp_employee_status = 'T' AND prior_idp_employee_status IN ('A','L')
-                    THEN 1 ELSE 0 END) as terms
+                SUM(grade_increase_count + management_level_increase_count) as combined_promos,
+                SUM(management_level_increase_count) as mgmt_promos,
+                SUM(CASE WHEN idp_employee_status = 'T' THEN 1 ELSE 0 END) as terms
             FROM {SCHEMA}.fct_worker_movement_f
             GROUP BY DATE_TRUNC('month', effective_date)
         ) m
@@ -495,7 +504,7 @@ class DashboardDataExtractor:
             WHERE headcount = 1
             GROUP BY snapshot_date
         ) h ON h.snapshot_date = LAST_DAY(m.month)
-        GROUP BY m.month, m.distinct_employees, m.terms, h.headcount
+        CROSS JOIN latest_hc lhc
         ORDER BY m.month DESC
         LIMIT 12
         """
