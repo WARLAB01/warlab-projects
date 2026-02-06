@@ -311,37 +311,36 @@ class DashboardDataExtractor:
         """
         logger.info("Extracting headcount data")
 
-        # Query 1: Headcount by company (using surrogate key join)
+        # Query 1: Headcount by company (using natural key join for robustness)
         company_query = f"""
         SELECT
             c.company_id,
             c.company_name,
             COUNT(DISTINCT h.employee_id) as headcount
         FROM {SCHEMA}.fct_worker_headcount_restat_f h
-        JOIN {SCHEMA}.dim_company_d c ON h.company_sk = c.company_sk
+        JOIN {SCHEMA}.dim_company_d c ON h.company_id = c.company_id AND c.is_current = true
         WHERE h.snapshot_date = (SELECT MAX(snapshot_date) FROM {SCHEMA}.fct_worker_headcount_restat_f)
-            AND c.is_current = true
         GROUP BY c.company_id, c.company_name
         ORDER BY headcount DESC
         """
         company_data = self._execute_and_fetch(company_query)
 
-        # Query 2: Headcount by department (using surrogate key join)
+        # Query 2: Headcount by department (derive from dim_worker_job_d supervisory_organization)
         department_query = f"""
         SELECT
-            d.department_id,
-            d.department_name,
-            COUNT(DISTINCT h.employee_id) as headcount
-        FROM {SCHEMA}.fct_worker_headcount_restat_f h
-        JOIN {SCHEMA}.dim_department_d d ON h.department_sk = d.department_sk
-        WHERE h.snapshot_date = (SELECT MAX(snapshot_date) FROM {SCHEMA}.fct_worker_headcount_restat_f)
-            AND d.is_current = true
-        GROUP BY d.department_id, d.department_name
+            j.supervisory_organization as department_id,
+            j.supervisory_organization as department_name,
+            COUNT(DISTINCT j.employee_id) as headcount
+        FROM {SCHEMA}.dim_worker_job_d j
+        WHERE j.is_current_job_row = true
+            AND j.active = '1'
+            AND j.supervisory_organization IS NOT NULL
+        GROUP BY j.supervisory_organization
         ORDER BY headcount DESC
         """
         department_data = self._execute_and_fetch(department_query)
 
-        # Query 3: Headcount by location (using surrogate key join)
+        # Query 3: Headcount by location (using natural key join for robustness)
         location_query = f"""
         SELECT
             l.location_id,
@@ -350,9 +349,8 @@ class DashboardDataExtractor:
             l.country_name,
             COUNT(DISTINCT h.employee_id) as headcount
         FROM {SCHEMA}.fct_worker_headcount_restat_f h
-        JOIN {SCHEMA}.dim_location_d l ON h.location_sk = l.location_sk
+        JOIN {SCHEMA}.dim_location_d l ON h.location_id = l.location_id AND l.is_current = true
         WHERE h.snapshot_date = (SELECT MAX(snapshot_date) FROM {SCHEMA}.fct_worker_headcount_restat_f)
-            AND l.is_current = true
         GROUP BY l.location_id, l.location_name, l.city, l.country_name
         ORDER BY headcount DESC
         """
@@ -549,17 +547,20 @@ class DashboardDataExtractor:
         logger.info("Extracting organizational health data")
 
         # Query 1: Department counts and sizes
+        # Note: supervisory_organization (CC format) is populated in dim_worker_job_d
+        # while department_id (DPT format) in dim_department_d does not match.
+        # Query dim_worker_job_d directly, grouping by supervisory_organization.
         departments_query = f"""
         SELECT
-            d.department_id,
-            d.department_name,
+            j.supervisory_organization as department_id,
+            j.supervisory_organization as department_name,
             COUNT(DISTINCT j.employee_id) as department_size,
             COUNT(DISTINCT j.manager_id) as manager_count
-        FROM {SCHEMA}.dim_department_d d
-        LEFT JOIN {SCHEMA}.dim_worker_job_d j ON d.department_id = j.supervisory_organization AND j.is_current_job_row = true
-        WHERE d.is_current = true
-            AND d.active = '1'
-        GROUP BY d.department_id, d.department_name
+        FROM {SCHEMA}.dim_worker_job_d j
+        WHERE j.is_current_job_row = true
+            AND j.active = '1'
+            AND j.supervisory_organization IS NOT NULL
+        GROUP BY j.supervisory_organization
         ORDER BY department_size DESC
         """
         departments_data = self._execute_and_fetch(departments_query)
