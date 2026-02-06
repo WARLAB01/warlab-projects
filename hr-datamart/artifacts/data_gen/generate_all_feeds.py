@@ -11,11 +11,11 @@ from decimal import Decimal
 import json
 import os
 
-# Configuration
-SEED = 42
-DATA_DATE = datetime.strptime("2026-02-05", "%Y-%m-%d")
-TIMESTAMP = "20260205060000"
-OUTPUT_DIR = "/sessions/pensive-epic-lamport/mnt/WesBarlow/hr-datamart/output/csv/"
+# Configuration (override via environment variables or command-line)
+SEED = int(os.environ.get("SEED", "42"))
+DATA_DATE = datetime.strptime(os.environ.get("DATA_DATE", "2026-02-05"), "%Y-%m-%d")
+TIMESTAMP = DATA_DATE.strftime("%Y%m%d") + "060000"
+OUTPUT_DIR = os.environ.get("OUTPUT_DIR", os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "output", "csv"))
 DELIMITER = "|"
 
 # Set random seed for reproducibility
