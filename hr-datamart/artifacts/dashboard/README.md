@@ -144,29 +144,68 @@ Expected JSON structure from Lambda:
 
 ## Deployment
 
-### S3 + CloudFront Setup
+### S3 + CloudFront Setup (Current Deployment)
 
-1. Upload files to S3:
-   ```
-   aws s3 cp index.html s3://your-bucket/
-   aws s3 cp error.html s3://your-bucket/
-   ```
+**Infrastructure IDs:**
+- S3 Bucket: `warlab-hr-dashboard`
+- CloudFront Distribution: `E3RGFB9ROIS4KH`
+- CloudFront Domain: `d142tokwl5q6ig.cloudfront.net`
+- Lambda Extractor: `warlab-dashboard-extractor`
+- Redshift Cluster: `warlab-hr-datamart` (database: `dev`, schema: `l3_workday`)
 
-2. CloudFront Distribution:
-   - Origin: S3 bucket
-   - Default root object: `index.html`
-   - Error handling: Route 404s to `error.html`
-   - Cache behavior: 5 minutes for HTML, 1 hour for assets
-   - Enable compression
+**Deploy dashboard HTML:**
+```bash
+aws s3 cp index.html s3://warlab-hr-dashboard/index.html --content-type "text/html"
+aws s3 cp error.html s3://warlab-hr-dashboard/error.html --content-type "text/html"
+aws cloudfront create-invalidation --distribution-id E3RGFB9ROIS4KH --paths "/*"
+```
 
-3. Serve data from Lambda:
-   ```
-   /data/kpi_summary.json
-   /data/headcount.json
-   /data/movements.json
-   /data/compensation.json
-   /data/org_health.json
-   ```
+**Deploy Lambda function:**
+```bash
+# Package from artifacts/lambda/dashboard_extractor/
+cd artifacts/lambda/dashboard_extractor
+pip install redshift_connector -t .
+zip -r lambda-package.zip .
+aws s3 cp lambda-package.zip s3://warlab-hr-datamart-dev/lambda/lambda-package.zip
+aws lambda update-function-code --function-name warlab-dashboard-extractor \
+    --s3-bucket warlab-hr-datamart-dev --s3-key lambda/lambda-package.zip
+```
+
+**Run data extractions (all 5):**
+```bash
+for ext in kpi_summary headcount movements compensation org_health; do
+    printf '{"extraction":"%s"}' "$ext" > /tmp/payload.json
+    aws lambda invoke --function-name warlab-dashboard-extractor \
+        --payload fileb:///tmp/payload.json \
+        --cli-binary-format raw-in-base64-out /tmp/response.json
+done
+```
+
+**Data endpoints** (served from S3 via CloudFront):
+```
+/data/kpi_summary.json
+/data/headcount.json
+/data/movements.json
+/data/compensation.json
+/data/org_health.json
+```
+
+### Data Flow
+
+```
+Redshift (l3_workday schema)
+  └─→ Lambda (warlab-dashboard-extractor)
+       └─→ S3 (warlab-hr-dashboard/data/*.json)
+            └─→ CloudFront (d142tokwl5q6ig.cloudfront.net)
+                 └─→ Dashboard (index.html fetches /data/*.json)
+```
+
+The Lambda outputs snake_case JSON. The dashboard's `transformLambdaData()` function maps these to camelCase for internal use.
+
+**Key Lambda query notes (Issues 14-15):**
+- Headcount by_company and by_location use **natural key JOINs** (company_id, location_id), not surrogate keys
+- Headcount by_department and org_health departments query **dim_worker_job_d directly**, grouping by `supervisory_organization` (CC format)
+- This avoids NULL surrogate key issues and DPT-vs-CC ID format mismatches
 
 ### Environment Requirements
 
@@ -256,6 +295,6 @@ For issues or questions:
 
 ---
 
-**Version**: 1.0.0
-**Last Updated**: February 2025
+**Version**: 1.1.0
+**Last Updated**: February 2026
 **Maintained By**: WAR Lab Analytics Team

@@ -1,0 +1,32 @@
+# Credentials - never commit these
+.credentials/
+*.env
+.aws/
+service_keys*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Lambda packaging artifacts
+lambda-package/
+lambda-package.zip
+
+# Temporary upload bridge files
+Desktop/aws-upload/lambda-package.zip
+Desktop/aws-upload/reload_*.sql
