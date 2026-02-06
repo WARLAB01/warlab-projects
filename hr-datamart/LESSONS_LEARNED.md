@@ -2,7 +2,7 @@
 
 **Date:** February 5, 2026
 **Environment:** DEV (Amazon Redshift, us-east-1)
-**Outcome:** Fully deployed after resolving 11 distinct issues across 6 SQL artifacts
+**Outcome:** Fully deployed after resolving 15 distinct issues across SQL artifacts, Lambda, and dashboard
 
 ---
 
@@ -310,6 +310,40 @@ LEFT JOIN tmp_worker_job wj
 
 ---
 
+### Issue 14: Reference Dimension valid_from = CURRENT_DATE Breaks Historical Snapshot JOINs
+
+**Date:** 2026-02-06
+
+**Symptom:** All 9,084 rows in `fct_worker_headcount_restat_f` had NULL `company_sk`, `department_sk`, and `location_sk`. The Lambda headcount extraction returned empty arrays for `by_company`, `by_department`, and `by_location`.
+
+**Root cause:** Seven reference dimensions (`dim_company_d`, `dim_department_d`, `dim_location_d`, `dim_cost_center_d`, `dim_grade_profile_d`, `dim_job_profile_d`, `dim_position_d`) were loaded with `valid_from = 2026-02-06` (the load date). Headcount snapshots span 2024-03-31 to 2026-01-31. The fact load's `BETWEEN valid_from AND valid_to` join never matched because all snapshot dates were earlier than the earliest valid_from.
+
+**Fix:** Updated all seven reference dimensions: `SET valid_from = '2000-01-01' WHERE valid_from = '2026-02-06'`. Reloaded both fact tables.
+
+**Lesson:** Reference dimensions that represent slowly changing data should use an early anchor date (e.g., `2000-01-01`) for their initial `valid_from`, not `CURRENT_DATE`. Using the load date as valid_from means historical fact snapshots will never match any dimension row.
+
+---
+
+### Issue 15: Lambda Queries Using Incompatible ID Formats (DPT vs CC) and NULL Surrogate Keys
+
+**Date:** 2026-02-06
+
+**Symptom:** Dashboard Headcount tab showed empty `by_company`, `by_department`, and `by_location` breakdowns. Org Health tab showed all departments with `department_size = 0`.
+
+**Root cause (Headcount):** Lambda queries used surrogate key JOINs (`h.company_sk = c.company_sk`) but all surrogate keys were NULL in the fact table (see Issue 14). Even after fixing Issue 14, the department surrogate key remained NULL because the fact table's `sup_org_id` column was unpopulated.
+
+**Root cause (Org Health):** The departments query joined `d.department_id = j.supervisory_organization`, but `department_id` uses the `DPT` prefix format (e.g., `DPT00013`) while `supervisory_organization` uses the `CC` prefix format (e.g., `CC00059`). These never match.
+
+**Fix:** Rewrote all four Lambda queries:
+- Headcount `by_company`: surrogate key JOIN → natural key JOIN (`h.company_id = c.company_id`)
+- Headcount `by_department`: broken `department_sk` JOIN → direct `dim_worker_job_d` grouping by `supervisory_organization`
+- Headcount `by_location`: surrogate key JOIN → natural key JOIN (`h.location_id = l.location_id`)
+- Org Health `departments`: broken `department_id = supervisory_organization` JOIN → direct `dim_worker_job_d` grouping by `supervisory_organization`
+
+**Lesson:** When surrogate keys may be NULL or unreliable (due to SCD2 date range issues, unmapped natural keys, etc.), Lambda/reporting queries should prefer natural key JOINs for robustness. Also verify that JOINs between tables use columns with compatible ID formats — different ID namespaces (DPT vs CC) will silently produce zero matches.
+
+---
+
 ## Quick Reference: Redshift SQL Gotchas
 
 | Pattern | Works on PostgreSQL/SQL Server | Redshift Replacement |
@@ -324,3 +358,5 @@ LEFT JOIN tmp_worker_job wj
 | `BOOLEAN` DDL + VARCHAR DML | Silent coercion | Match DDL type to DML output |
 | `<= date` as-of JOIN | Works but creates cartesian product | Use separate temp table with `MAX()` + exact `=` JOIN |
 | Correlated subquery in `JOIN ON` | Yes (PostgreSQL) | Not supported — use in `CREATE TEMP TABLE AS SELECT` instead |
+| Ref dim `valid_from = CURRENT_DATE` | Works if facts are current | Use anchor date like `2000-01-01` for historical snapshots |
+| Surrogate key JOINs in reports | Works if SKs populated | Prefer natural key JOINs for robustness in reporting/Lambda queries |
