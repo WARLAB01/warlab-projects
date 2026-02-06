@@ -96,8 +96,8 @@ WITH source_data AS (
         dwj.compensation_grade_proposed AS grade_id,
         dwj.job_profile_id,
         dwj.location AS location_id,
-        dwj.management_level_code,
-        dwj.job_matrix AS matrix_org_id,
+        djp.management_level_code,
+        djp.job_matrix AS matrix_org_id,
         dwj.sup_org_id,
         dwj.work_model_type,
         dwj.base_pay_proposed_amount,
@@ -128,11 +128,11 @@ WITH source_data AS (
             PARTITION BY dwj.employee_id
             ORDER BY dwj.effective_date ASC
         ) AS prior_location_id,
-        LAG(dwj.management_level_code) OVER (
+        LAG(djp.management_level_code) OVER (
             PARTITION BY dwj.employee_id
             ORDER BY dwj.effective_date ASC
         ) AS prior_management_level_code,
-        LAG(dwj.job_matrix) OVER (
+        LAG(djp.job_matrix) OVER (
             PARTITION BY dwj.employee_id
             ORDER BY dwj.effective_date ASC
         ) AS prior_matrix_org_id,
@@ -157,6 +157,9 @@ WITH source_data AS (
             ORDER BY dwj.effective_date ASC
         ) AS prior_position_id
     FROM l3_workday.dim_worker_job_d dwj
+    LEFT JOIN l3_workday.dim_job_profile_d djp
+        ON dwj.job_profile_id = djp.job_profile_id
+        AND djp.is_current = true
     WHERE dwj.is_current = true
 ),
 -- Resolve current row dimension foreign keys as-of effective_date
@@ -513,7 +516,7 @@ INSERT INTO l3_workday.fct_worker_headcount_restat_f (
 WITH month_ends AS (
     -- Generate 24 month-end dates going backward from current date
     SELECT
-        LAST_DAY(DATE_TRUNC('month', CURRENT_DATE) - (INTERVAL '1 month' * month_offset)) AS snapshot_date
+        LAST_DAY(DATEADD(month, -month_offset, DATE_TRUNC('month', CURRENT_DATE))) AS snapshot_date
     FROM (
         SELECT
             ROW_NUMBER() OVER (ORDER BY 1) - 1 AS month_offset
@@ -525,7 +528,7 @@ WITH month_ends AS (
             UNION ALL SELECT 21 UNION ALL SELECT 22 UNION ALL SELECT 23 UNION ALL SELECT 24
         ) months
     ) month_generator
-    WHERE LAST_DAY(DATE_TRUNC('month', CURRENT_DATE) - (INTERVAL '1 month' * month_offset)) < CURRENT_DATE
+    WHERE LAST_DAY(DATEADD(month, -month_offset, DATE_TRUNC('month', CURRENT_DATE))) < CURRENT_DATE
 ),
 -- For each month-end, find all active workers from dim_worker_job_d
 -- A worker is active if they have a valid current row as-of that date

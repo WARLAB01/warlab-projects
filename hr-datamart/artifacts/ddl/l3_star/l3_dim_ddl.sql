@@ -13,12 +13,12 @@ CREATE TABLE l3_workday.dim_day_d (
     day_sk INTEGER PRIMARY KEY,
     calendar_date DATE NOT NULL,
     day_of_week INTEGER,
-    day_name VARCHAR(10),
+    day_name VARCHAR(256),
     day_of_month INTEGER,
     day_of_year INTEGER,
     week_of_year INTEGER,
     month_number INTEGER,
-    month_name VARCHAR(10),
+    month_name VARCHAR(256),
     quarter_number INTEGER,
     quarter_name VARCHAR(5),
     year_number INTEGER,
@@ -33,7 +33,6 @@ CREATE TABLE l3_workday.dim_day_d (
 )
 DISTSTYLE AUTO;
 
-ALTER TABLE l3_workday.dim_day_d ADD PRIMARY KEY (day_sk);
 
 
 -- ============================================================================
@@ -60,11 +59,6 @@ CREATE TABLE l3_workday.dim_company_d (
 )
 DISTSTYLE AUTO;
 
-ALTER TABLE l3_workday.dim_company_d ADD PRIMARY KEY (company_sk);
-CREATE UNIQUE INDEX uidx_dim_company_bk_date
-    ON l3_workday.dim_company_d (company_id, valid_from);
-CREATE INDEX idx_dim_company_is_current
-    ON l3_workday.dim_company_d (is_current, company_id);
 
 
 -- ============================================================================
@@ -90,11 +84,6 @@ CREATE TABLE l3_workday.dim_cost_center_d (
 )
 DISTSTYLE AUTO;
 
-ALTER TABLE l3_workday.dim_cost_center_d ADD PRIMARY KEY (cost_center_sk);
-CREATE UNIQUE INDEX uidx_dim_cost_center_bk_date
-    ON l3_workday.dim_cost_center_d (cost_center_id, valid_from);
-CREATE INDEX idx_dim_cost_center_is_current
-    ON l3_workday.dim_cost_center_d (is_current, cost_center_id);
 
 
 -- ============================================================================
@@ -129,11 +118,6 @@ CREATE TABLE l3_workday.dim_grade_profile_d (
 )
 DISTSTYLE AUTO;
 
-ALTER TABLE l3_workday.dim_grade_profile_d ADD PRIMARY KEY (grade_profile_sk);
-CREATE UNIQUE INDEX uidx_dim_grade_profile_bk_date
-    ON l3_workday.dim_grade_profile_d (grade_profile_id, valid_from);
-CREATE INDEX idx_dim_grade_profile_is_current
-    ON l3_workday.dim_grade_profile_d (is_current, grade_profile_id);
 
 
 -- ============================================================================
@@ -146,9 +130,9 @@ CREATE TABLE l3_workday.dim_job_profile_d (
     job_profile_id VARCHAR(30) NOT NULL,
     -- From INT6021
     compensation_grade VARCHAR(30),
-    critical_job_flag CHAR(1),
-    difficult_to_fill_flag CHAR(1),
-    inactive_flag CHAR(1),
+    critical_job_flag VARCHAR(256),
+    difficult_to_fill_flag VARCHAR(256),
+    inactive_flag VARCHAR(256),
     job_category_code VARCHAR(30),
     job_category_name VARCHAR(200),
     job_exempt_canada VARCHAR(30),
@@ -168,16 +152,16 @@ CREATE TABLE l3_workday.dim_job_profile_d (
     management_level_code VARCHAR(30),
     management_level_name VARCHAR(100),
     pay_rate_type VARCHAR(30),
-    public_job CHAR(1),
-    work_shift_required CHAR(1),
+    public_job VARCHAR(256),
+    work_shift_required VARCHAR(256),
     job_matrix VARCHAR(100),
-    is_people_manager CHAR(1),
-    is_manager CHAR(1),
+    is_people_manager VARCHAR(256),
+    is_manager VARCHAR(256),
     frequency VARCHAR(30),
     -- From INT6022
     aap_job_group VARCHAR(100),
-    bonus_eligibility CHAR(1),
-    customer_facing CHAR(1),
+    bonus_eligibility VARCHAR(256),
+    customer_facing VARCHAR(256),
     eeo1_code VARCHAR(30),
     job_collection VARCHAR(100),
     loan_originator_code VARCHAR(30),
@@ -197,11 +181,6 @@ CREATE TABLE l3_workday.dim_job_profile_d (
 )
 DISTSTYLE AUTO;
 
-ALTER TABLE l3_workday.dim_job_profile_d ADD PRIMARY KEY (job_profile_sk);
-CREATE UNIQUE INDEX uidx_dim_job_profile_bk_date
-    ON l3_workday.dim_job_profile_d (job_profile_id, valid_from);
-CREATE INDEX idx_dim_job_profile_is_current
-    ON l3_workday.dim_job_profile_d (is_current, job_profile_id);
 
 
 -- ============================================================================
@@ -214,7 +193,7 @@ CREATE TABLE l3_workday.dim_location_d (
     location_id VARCHAR(30) NOT NULL,
     location_wid VARCHAR(32),
     location_name VARCHAR(200),
-    inactive CHAR(1),
+    inactive VARCHAR(256),
     address_line_1 VARCHAR(256),
     address_line_2 VARCHAR(256),
     city VARCHAR(100),
@@ -240,11 +219,6 @@ CREATE TABLE l3_workday.dim_location_d (
 )
 DISTSTYLE AUTO;
 
-ALTER TABLE l3_workday.dim_location_d ADD PRIMARY KEY (location_sk);
-CREATE UNIQUE INDEX uidx_dim_location_bk_date
-    ON l3_workday.dim_location_d (location_id, valid_from);
-CREATE INDEX idx_dim_location_is_current
-    ON l3_workday.dim_location_d (is_current, location_id);
 
 
 -- ============================================================================
@@ -258,7 +232,7 @@ CREATE TABLE l3_workday.dim_department_d (
     department_wid VARCHAR(32),
     department_name VARCHAR(200),
     dept_name_with_manager_name VARCHAR(400),
-    active CHAR(1),
+    active VARCHAR(256),
     parent_dept_id VARCHAR(15),
     owner_ein VARCHAR(30),
     department_level VARCHAR(30),
@@ -275,11 +249,6 @@ CREATE TABLE l3_workday.dim_department_d (
 )
 DISTSTYLE AUTO;
 
-ALTER TABLE l3_workday.dim_department_d ADD PRIMARY KEY (department_sk);
-CREATE UNIQUE INDEX uidx_dim_department_bk_date
-    ON l3_workday.dim_department_d (department_id, valid_from);
-CREATE INDEX idx_dim_department_is_current
-    ON l3_workday.dim_department_d (is_current, department_id);
 
 
 -- ============================================================================
@@ -310,11 +279,6 @@ CREATE TABLE l3_workday.dim_position_d (
 )
 DISTSTYLE AUTO;
 
-ALTER TABLE l3_workday.dim_position_d ADD PRIMARY KEY (position_sk);
-CREATE UNIQUE INDEX uidx_dim_position_bk_date
-    ON l3_workday.dim_position_d (position_id, valid_from);
-CREATE INDEX idx_dim_position_is_current
-    ON l3_workday.dim_position_d (is_current, position_id);
 
 
 -- ============================================================================
@@ -335,15 +299,15 @@ CREATE TABLE l3_workday.dim_worker_job_d (
     business_site_id VARCHAR(30),
     mailstop_floor VARCHAR(30),
     worker_status VARCHAR(30),
-    active BOOLEAN,
+    active VARCHAR(256),
     first_day_of_work DATE,
     expected_date_of_return DATE,
-    not_returning BOOLEAN,
-    return_unknown VARCHAR(10),
+    not_returning VARCHAR(256),
+    return_unknown VARCHAR(256),
     probation_start_date DATE,
     probation_end_date DATE,
     academic_tenure_date DATE,
-    has_international_assignment BOOLEAN,
+    has_international_assignment VARCHAR(256),
     home_country VARCHAR(50),
     host_country VARCHAR(50),
     international_assignment_type VARCHAR(30),
@@ -354,7 +318,7 @@ CREATE TABLE l3_workday.dim_worker_job_d (
     action_reason VARCHAR(256),
     action_reason_code VARCHAR(256),
     manager_id VARCHAR(15),
-    soft_retirement_indicator BOOLEAN,
+    soft_retirement_indicator VARCHAR(256),
     job_profile_id VARCHAR(30),
     sequence_number INTEGER,
     planned_end_contract_date DATE,
@@ -405,15 +369,6 @@ CREATE TABLE l3_workday.dim_worker_job_d (
 )
 DISTSTYLE AUTO;
 
-ALTER TABLE l3_workday.dim_worker_job_d ADD PRIMARY KEY (worker_job_sk);
-CREATE UNIQUE INDEX uidx_dim_worker_job_bk_date
-    ON l3_workday.dim_worker_job_d (employee_id, effective_date, valid_from);
-CREATE INDEX idx_dim_worker_job_is_current
-    ON l3_workday.dim_worker_job_d (is_current, employee_id);
-CREATE INDEX idx_dim_worker_job_employee
-    ON l3_workday.dim_worker_job_d (employee_id, effective_date);
-CREATE INDEX idx_dim_worker_job_current_row
-    ON l3_workday.dim_worker_job_d (employee_id, is_current_job_row);
 
 
 -- ============================================================================
@@ -432,17 +387,17 @@ CREATE TABLE l3_workday.dim_worker_status_d (
     continuous_service_date DATE,
     planned_end_contract_date DATE,
     hire_date DATE,
-    eligible_for_rehire CHAR(1),
-    not_eligible_for_hire BOOLEAN,
-    active BOOLEAN,
+    eligible_for_rehire VARCHAR(256),
+    not_eligible_for_hire VARCHAR(256),
+    active VARCHAR(256),
     worker_status VARCHAR(30),
     employment_end_date DATE,
     hire_reason VARCHAR(256),
-    hire_rescinded BOOLEAN,
+    hire_rescinded VARCHAR(256),
     original_hire_date DATE,
     primary_termination_category VARCHAR(256),
     primary_termination_reason VARCHAR(256),
-    retired BOOLEAN,
+    retired VARCHAR(256),
     retirement_eligibility_date DATE,
     expected_retirement_date DATE,
     seniority_date DATE,
@@ -460,13 +415,6 @@ CREATE TABLE l3_workday.dim_worker_status_d (
 )
 DISTSTYLE AUTO;
 
-ALTER TABLE l3_workday.dim_worker_status_d ADD PRIMARY KEY (worker_status_sk);
-CREATE UNIQUE INDEX uidx_dim_worker_status_bk_date
-    ON l3_workday.dim_worker_status_d (employee_id, effective_date, valid_from);
-CREATE INDEX idx_dim_worker_status_is_current
-    ON l3_workday.dim_worker_status_d (is_current, employee_id);
-CREATE INDEX idx_dim_worker_status_employee
-    ON l3_workday.dim_worker_status_d (employee_id, effective_date);
 
 -- ============================================================================
 -- END OF DDL

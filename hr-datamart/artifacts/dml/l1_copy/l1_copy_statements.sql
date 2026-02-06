@@ -6,16 +6,12 @@
 -- Pattern: TRUNCATE + COPY with parameterized S3 paths
 -- All statements use transactional wrapping for consistency
 -- ============================================================================
-
-
 -- ============================================================================
 -- INT6020_GRADE_PROFILE: Grade Profile Master Data
 -- Feed: workday/hrdp/int6020_grade_profile/
 -- ============================================================================
 BEGIN;
-
 TRUNCATE TABLE l1_workday.int6020_grade_profile;
-
 COPY l1_workday.int6020_grade_profile (
     grade_id,
     grade_name,
@@ -31,9 +27,7 @@ COPY l1_workday.int6020_grade_profile (
     grade_profile_segement_2_top,
     grade_profile_segement_3_top,
     grade_profile_segement_4_top,
-    grade_profile_segement_5_top,
-    etl_batch_id,
-    source_file_name
+    grade_profile_segement_5_top
 )
 FROM 's3://${S3_BUCKET}/workday/hrdp/int6020_grade_profile/dt=YYYY-MM-DD/'
 IAM_ROLE '${REDSHIFT_IAM_ROLE_ARN}'
@@ -44,18 +38,13 @@ DATEFORMAT 'auto'
 ACCEPTINVCHARS
 MAXERROR 0
 TRUNCATECOLUMNS;
-
 COMMIT;
-
-
 -- ============================================================================
 -- INT6021_JOB_PROFILE: Job Profile Master Data
 -- Feed: workday/hrdp/int6021_job_profile/
 -- ============================================================================
 BEGIN;
-
 TRUNCATE TABLE l1_workday.int6021_job_profile;
-
 COPY l1_workday.int6021_job_profile (
     compensation_grade,
     critical_job_flag,
@@ -86,9 +75,7 @@ COPY l1_workday.int6021_job_profile (
     job_matrix,
     is_people_manager,
     is_manager,
-    frequency,
-    etl_batch_id,
-    source_file_name
+    frequency
 )
 FROM 's3://${S3_BUCKET}/workday/hrdp/int6021_job_profile/dt=YYYY-MM-DD/'
 IAM_ROLE '${REDSHIFT_IAM_ROLE_ARN}'
@@ -99,18 +86,13 @@ DATEFORMAT 'auto'
 ACCEPTINVCHARS
 MAXERROR 0
 TRUNCATECOLUMNS;
-
 COMMIT;
-
-
 -- ============================================================================
 -- INT6022_JOB_CLASSIFICATION: Job Classification Data
 -- Feed: workday/hrdp/int6022_job_classification/
 -- ============================================================================
 BEGIN;
-
 TRUNCATE TABLE l1_workday.int6022_job_classification;
-
 COPY l1_workday.int6022_job_classification (
     job_profile_id,
     job_profile_wid,
@@ -124,9 +106,7 @@ COPY l1_workday.int6022_job_classification (
     occupation_code,
     recruitment_channel,
     standard_occupation_code,
-    stock,
-    etl_batch_id,
-    source_file_name
+    stock
 )
 FROM 's3://${S3_BUCKET}/workday/hrdp/int6022_job_classification/dt=YYYY-MM-DD/'
 IAM_ROLE '${REDSHIFT_IAM_ROLE_ARN}'
@@ -137,18 +117,13 @@ DATEFORMAT 'auto'
 ACCEPTINVCHARS
 MAXERROR 0
 TRUNCATECOLUMNS;
-
 COMMIT;
-
-
 -- ============================================================================
 -- INT6023_LOCATION: Location Master Data
 -- Feed: workday/hrdp/int6023_location/
 -- ============================================================================
 BEGIN;
-
 TRUNCATE TABLE l1_workday.int6023_location;
-
 COPY l1_workday.int6023_location (
     location_id,
     location_wid,
@@ -168,9 +143,7 @@ COPY l1_workday.int6023_location (
     location_type,
     location_usage_type,
     trade_name,
-    worksite_id_code,
-    etl_batch_id,
-    source_file_name
+    worksite_id_code
 )
 FROM 's3://${S3_BUCKET}/workday/hrdp/int6023_location/dt=YYYY-MM-DD/'
 IAM_ROLE '${REDSHIFT_IAM_ROLE_ARN}'
@@ -181,18 +154,13 @@ DATEFORMAT 'auto'
 ACCEPTINVCHARS
 MAXERROR 0
 TRUNCATECOLUMNS;
-
 COMMIT;
-
-
 -- ============================================================================
 -- INT6024_COMPANY: Company Master Data
 -- Feed: workday/hrdp/int6024_company/
 -- ============================================================================
 BEGIN;
-
 TRUNCATE TABLE l1_workday.int6024_company;
-
 COPY l1_workday.int6024_company (
     company_id,
     company_wid,
@@ -200,9 +168,7 @@ COPY l1_workday.int6024_company (
     company_code,
     business_unit,
     company_subtype,
-    company_currency,
-    etl_batch_id,
-    source_file_name
+    company_currency
 )
 FROM 's3://${S3_BUCKET}/workday/hrdp/int6024_company/dt=YYYY-MM-DD/'
 IAM_ROLE '${REDSHIFT_IAM_ROLE_ARN}'
@@ -213,27 +179,20 @@ DATEFORMAT 'auto'
 ACCEPTINVCHARS
 MAXERROR 0
 TRUNCATECOLUMNS;
-
 COMMIT;
-
-
 -- ============================================================================
 -- INT6025_COST_CENTER: Cost Center Master Data
 -- Feed: workday/hrdp/int6025_cost_center/
 -- ============================================================================
 BEGIN;
-
 TRUNCATE TABLE l1_workday.int6025_cost_center;
-
 COPY l1_workday.int6025_cost_center (
     cost_center_id,
     cost_center_wid,
     cost_center_code,
     cost_center_name,
     hierarchy,
-    subtype,
-    etl_batch_id,
-    source_file_name
+    subtype
 )
 FROM 's3://${S3_BUCKET}/workday/hrdp/int6025_cost_center/dt=YYYY-MM-DD/'
 IAM_ROLE '${REDSHIFT_IAM_ROLE_ARN}'
@@ -244,18 +203,13 @@ DATEFORMAT 'auto'
 ACCEPTINVCHARS
 MAXERROR 0
 TRUNCATECOLUMNS;
-
 COMMIT;
-
-
 -- ============================================================================
 -- INT0095E_WORKER_JOB: Worker Job Information
 -- Feed: workday/hrdp/int0095e_worker_job/
 -- ============================================================================
 BEGIN;
-
 TRUNCATE TABLE l1_workday.int0095e_worker_job;
-
 COPY l1_workday.int0095e_worker_job (
     employee_id,
     transaction_wid,
@@ -337,9 +291,7 @@ COPY l1_workday.int0095e_worker_job (
     scheduled_fte,
     work_model_start_date,
     work_model_type,
-    worker_workday_id,
-    etl_batch_id,
-    source_file_name
+    worker_workday_id
 )
 FROM 's3://${S3_BUCKET}/workday/hrdp/int0095e_worker_job/dt=YYYY-MM-DD/'
 IAM_ROLE '${REDSHIFT_IAM_ROLE_ARN}'
@@ -350,18 +302,13 @@ DATEFORMAT 'auto'
 ACCEPTINVCHARS
 MAXERROR 0
 TRUNCATECOLUMNS;
-
 COMMIT;
-
-
 -- ============================================================================
 -- INT0096_WORKER_ORGANIZATION: Worker Organization Assignment
 -- Feed: workday/hrdp/int0096_worker_organization/
 -- ============================================================================
 BEGIN;
-
 TRUNCATE TABLE l1_workday.int0096_worker_organization;
-
 COPY l1_workday.int0096_worker_organization (
     employee_id,
     transaction_wid,
@@ -371,9 +318,7 @@ COPY l1_workday.int0096_worker_organization (
     organization_id,
     organization_type,
     sequence_number,
-    worker_workday_id,
-    etl_batch_id,
-    source_file_name
+    worker_workday_id
 )
 FROM 's3://${S3_BUCKET}/workday/hrdp/int0096_worker_organization/dt=YYYY-MM-DD/'
 IAM_ROLE '${REDSHIFT_IAM_ROLE_ARN}'
@@ -384,18 +329,13 @@ DATEFORMAT 'auto'
 ACCEPTINVCHARS
 MAXERROR 0
 TRUNCATECOLUMNS;
-
 COMMIT;
-
-
 -- ============================================================================
 -- INT0098_WORKER_COMPENSATION: Worker Compensation Data
 -- Feed: workday/hrdp/int0098_worker_compensation/
 -- ============================================================================
 BEGIN;
-
 TRUNCATE TABLE l1_workday.int0098_worker_compensation;
-
 COPY l1_workday.int0098_worker_compensation (
     employee_id,
     transaction_wid,
@@ -415,9 +355,7 @@ COPY l1_workday.int0098_worker_compensation (
     benefits_annual_rate_abbr,
     pay_rate_type,
     compensation,
-    worker_workday_id,
-    etl_batch_id,
-    source_file_name
+    worker_workday_id
 )
 FROM 's3://${S3_BUCKET}/workday/hrdp/int0098_worker_compensation/dt=YYYY-MM-DD/'
 IAM_ROLE '${REDSHIFT_IAM_ROLE_ARN}'
@@ -428,18 +366,13 @@ DATEFORMAT 'auto'
 ACCEPTINVCHARS
 MAXERROR 0
 TRUNCATECOLUMNS;
-
 COMMIT;
-
-
 -- ============================================================================
 -- INT6032_POSITIONS: Position Master Data
 -- Feed: workday/hrdp/int6032_positions/
 -- ============================================================================
 BEGIN;
-
 TRUNCATE TABLE l1_workday.int6032_positions;
-
 COPY l1_workday.int6032_positions (
     position_id,
     supervisory_organization,
@@ -451,9 +384,7 @@ COPY l1_workday.int6032_positions (
     job_title,
     business_title,
     time_type,
-    location,
-    etl_batch_id,
-    source_file_name
+    location
 )
 FROM 's3://${S3_BUCKET}/workday/hrdp/int6032_positions/dt=YYYY-MM-DD/'
 IAM_ROLE '${REDSHIFT_IAM_ROLE_ARN}'
@@ -464,18 +395,13 @@ DATEFORMAT 'auto'
 ACCEPTINVCHARS
 MAXERROR 0
 TRUNCATECOLUMNS;
-
 COMMIT;
-
-
 -- ============================================================================
 -- INT6028_DEPARTMENT_HIERARCHY: Department Hierarchy Data
 -- Feed: workday/hrdp/int6028_department_hierarchy/
 -- ============================================================================
 BEGIN;
-
 TRUNCATE TABLE l1_workday.int6028_department_hierarchy;
-
 COPY l1_workday.int6028_department_hierarchy (
     department_id,
     department_wid,
@@ -487,9 +413,7 @@ COPY l1_workday.int6028_department_hierarchy (
     department_level,
     primary_location_code,
     type,
-    subtype,
-    etl_batch_id,
-    source_file_name
+    subtype
 )
 FROM 's3://${S3_BUCKET}/workday/hrdp/int6028_department_hierarchy/dt=YYYY-MM-DD/'
 IAM_ROLE '${REDSHIFT_IAM_ROLE_ARN}'
@@ -500,24 +424,17 @@ DATEFORMAT 'auto'
 ACCEPTINVCHARS
 MAXERROR 0
 TRUNCATECOLUMNS;
-
 COMMIT;
-
-
 -- ============================================================================
 -- INT270_RESCINDED: Rescinded Records
 -- Feed: workday/hrdp/int270_rescinded/
 -- ============================================================================
 BEGIN;
-
 TRUNCATE TABLE l1_workday.int270_rescinded;
-
 COPY l1_workday.int270_rescinded (
     workday_id,
     idp_table,
-    rescinded_moment,
-    etl_batch_id,
-    source_file_name
+    rescinded_moment
 )
 FROM 's3://${S3_BUCKET}/workday/hrdp/int270_rescinded/dt=YYYY-MM-DD/'
 IAM_ROLE '${REDSHIFT_IAM_ROLE_ARN}'
@@ -528,9 +445,7 @@ DATEFORMAT 'auto'
 ACCEPTINVCHARS
 MAXERROR 0
 TRUNCATECOLUMNS;
-
 COMMIT;
-
 -- ============================================================================
 -- End of L1_WORKDAY COPY Statements
 -- ============================================================================

@@ -13,31 +13,37 @@ BEGIN;
 
 TRUNCATE TABLE l3_workday.dim_day_d;
 
+INSERT INTO l3_workday.dim_day_d (
+    day_sk, calendar_date, day_of_week, day_name, day_of_month, day_of_year, week_of_year,
+    month_number, month_name, quarter_number, quarter_name, year_number, fiscal_year,
+    fiscal_quarter, fiscal_quarter_name, is_weekend, is_month_end, is_quarter_end, is_year_end,
+    insert_datetime
+)
 WITH date_spine AS (
     -- Generate all dates from 2020-01-01 to 2030-12-31
     SELECT CAST(date_col AS DATE) AS calendar_date
     FROM (
         SELECT dateadd(day, row_number() OVER (ORDER BY 1) - 1, '2020-01-01'::DATE) AS date_col
         FROM (
-            SELECT 1 AS n FROM (VALUES (1)) t(n)
+            SELECT 1 AS n
             UNION ALL
             SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5
             UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9 UNION ALL SELECT 10
         ) s1
         CROSS JOIN (
-            SELECT 1 AS n FROM (VALUES (1)) t(n)
+            SELECT 1 AS n
             UNION ALL
             SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5
             UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9 UNION ALL SELECT 10
         ) s2
         CROSS JOIN (
-            SELECT 1 AS n FROM (VALUES (1)) t(n)
+            SELECT 1 AS n
             UNION ALL
             SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5
             UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9 UNION ALL SELECT 10
         ) s3
         CROSS JOIN (
-            SELECT 1 AS n FROM (VALUES (1)) t(n)
+            SELECT 1 AS n
             UNION ALL
             SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4
         ) s4
@@ -82,14 +88,14 @@ calendar_data AS (
         END AS is_weekend,
         -- Month end
         CASE
-            WHEN calendar_date = dateadd(day, -1, dateadd(month, 1, dateadd(day, -day(calendar_date) + 1, calendar_date)))
+            WHEN calendar_date = dateadd(day, -1, dateadd(month, 1, dateadd(day, -EXTRACT(DAY FROM calendar_date) + 1, calendar_date)))
             THEN TRUE
             ELSE FALSE
         END AS is_month_end,
         -- Quarter end
         CASE
             WHEN CAST(to_char(calendar_date, 'MM') AS INTEGER) IN (3, 6, 9, 12) AND
-                 calendar_date = dateadd(day, -1, dateadd(month, 1, dateadd(day, -day(calendar_date) + 1, calendar_date)))
+                 calendar_date = dateadd(day, -1, dateadd(month, 1, dateadd(day, -EXTRACT(DAY FROM calendar_date) + 1, calendar_date)))
             THEN TRUE
             ELSE FALSE
         END AS is_quarter_end,
@@ -101,12 +107,6 @@ calendar_data AS (
             ELSE FALSE
         END AS is_year_end
     FROM date_spine
-)
-INSERT INTO l3_workday.dim_day_d (
-    day_sk, calendar_date, day_of_week, day_name, day_of_month, day_of_year, week_of_year,
-    month_number, month_name, quarter_number, quarter_name, year_number, fiscal_year,
-    fiscal_quarter, fiscal_quarter_name, is_weekend, is_month_end, is_quarter_end, is_year_end,
-    insert_datetime
 )
 SELECT
     day_sk, calendar_date, day_of_week, day_name, day_of_month, day_of_year, week_of_year,
@@ -132,14 +132,7 @@ SELECT
     company_subtype,
     company_currency,
     business_unit,
-    MD5(CONCAT(
-        COALESCE(company_wid, ''),
-        COALESCE(company_code, ''),
-        COALESCE(company_name, ''),
-        COALESCE(company_subtype, ''),
-        COALESCE(company_currency, ''),
-        COALESCE(business_unit, '')
-    )) AS hash_diff,
+    MD5(COALESCE(company_wid::VARCHAR, '') || COALESCE(company_code::VARCHAR, '') || COALESCE(company_name::VARCHAR, '') || COALESCE(company_subtype::VARCHAR, '') || COALESCE(company_currency::VARCHAR, '') || COALESCE(business_unit::VARCHAR, '')) AS hash_diff,
     CURRENT_DATE AS valid_from
 FROM l1_workday.int6024_company
 WHERE company_id IS NOT NULL;
@@ -207,13 +200,7 @@ SELECT
     cost_center_name,
     hierarchy,
     subtype,
-    MD5(CONCAT(
-        COALESCE(cost_center_wid, ''),
-        COALESCE(cost_center_code, ''),
-        COALESCE(cost_center_name, ''),
-        COALESCE(hierarchy, ''),
-        COALESCE(subtype, '')
-    )) AS hash_diff,
+    MD5(COALESCE(cost_center_wid::VARCHAR, '') || COALESCE(cost_center_code::VARCHAR, '') || COALESCE(cost_center_name::VARCHAR, '') || COALESCE(hierarchy::VARCHAR, '') || COALESCE(subtype::VARCHAR, '')) AS hash_diff,
     CURRENT_DATE AS valid_from
 FROM l1_workday.int6025_cost_center
 WHERE cost_center_id IS NOT NULL;
@@ -289,22 +276,7 @@ SELECT
     grade_profile_segement_3_top,
     grade_profile_segement_4_top,
     grade_profile_segement_5_top,
-    MD5(CONCAT(
-        COALESCE(grade_id, ''),
-        COALESCE(grade_name, ''),
-        COALESCE(grade_profile_currency_code, ''),
-        COALESCE(effective_date::VARCHAR, ''),
-        COALESCE(grade_profile_name, ''),
-        COALESCE(grade_profile_number_of_segements::VARCHAR, ''),
-        COALESCE(grade_profile_salary_range_maximum::VARCHAR, ''),
-        COALESCE(grade_profile_salary_range_midpoint::VARCHAR, ''),
-        COALESCE(grade_profile_salary_range_minimjum::VARCHAR, ''),
-        COALESCE(grade_profile_segement_1_top::VARCHAR, ''),
-        COALESCE(grade_profile_segement_2_top::VARCHAR, ''),
-        COALESCE(grade_profile_segement_3_top::VARCHAR, ''),
-        COALESCE(grade_profile_segement_4_top::VARCHAR, ''),
-        COALESCE(grade_profile_segement_5_top::VARCHAR, '')
-    )) AS hash_diff,
+    MD5(COALESCE(grade_id::VARCHAR, '') || COALESCE(grade_name::VARCHAR, '') || COALESCE(grade_profile_currency_code::VARCHAR, '') || COALESCE(effective_date::VARCHAR, '') || COALESCE(grade_profile_name::VARCHAR, '') || COALESCE(grade_profile_number_of_segements::VARCHAR, '') || COALESCE(grade_profile_salary_range_maximum::VARCHAR, '') || COALESCE(grade_profile_salary_range_midpoint::VARCHAR, '') || COALESCE(grade_profile_salary_range_minimjum::VARCHAR, '') || COALESCE(grade_profile_segement_1_top::VARCHAR, '') || COALESCE(grade_profile_segement_2_top::VARCHAR, '') || COALESCE(grade_profile_segement_3_top::VARCHAR, '') || COALESCE(grade_profile_segement_4_top::VARCHAR, '') || COALESCE(grade_profile_segement_5_top::VARCHAR, '')) AS hash_diff,
     CURRENT_DATE AS valid_from
 FROM l1_workday.int6020_grade_profile
 WHERE grade_profile_id IS NOT NULL;
@@ -365,7 +337,7 @@ SELECT
     jp21.compensation_grade,
     jp21.critical_job_flag,
     jp21.difficult_to_fill_flag,
-    jp21.inactive_flag,
+    jp21.inactive_flag::INT::VARCHAR,
     jp21.job_category_code,
     jp21.job_category_name,
     jp21.job_exempt_canada,
@@ -385,11 +357,11 @@ SELECT
     jp21.management_level_code,
     jp21.management_level_name,
     jp21.pay_rate_type,
-    jp21.public_job,
-    jp21.work_shift_required,
+    jp21.public_job::INT::VARCHAR,
+    jp21.work_shift_required::INT::VARCHAR,
     jp21.job_matrix,
-    jp21.is_people_manager,
-    jp21.is_manager,
+    jp21.is_people_manager::INT::VARCHAR,
+    jp21.is_manager::INT::VARCHAR,
     jp21.frequency,
     jp22.aap_job_group,
     jp22.bonus_eligibility,
@@ -402,51 +374,10 @@ SELECT
     jp22.recruitment_channel,
     jp22.standard_occupation_code,
     jp22.stock,
-    MD5(CONCAT(
-        COALESCE(jp21.compensation_grade, ''),
-        COALESCE(jp21.critical_job_flag, ''),
-        COALESCE(jp21.difficult_to_fill_flag, ''),
-        COALESCE(jp21.inactive_flag, ''),
-        COALESCE(jp21.job_category_code, ''),
-        COALESCE(jp21.job_category_name, ''),
-        COALESCE(jp21.job_exempt_canada, ''),
-        COALESCE(jp21.job_exempt_us, ''),
-        COALESCE(jp21.job_family, ''),
-        COALESCE(jp21.job_family_group, ''),
-        COALESCE(jp21.job_family_group_name, ''),
-        COALESCE(jp21.job_family_name, ''),
-        COALESCE(jp21.job_level_code, ''),
-        COALESCE(jp21.job_level_name, ''),
-        COALESCE(jp21.job_profile_code, ''),
-        COALESCE(jp21.job_profile_description, ''),
-        COALESCE(jp21.job_profile_name, ''),
-        COALESCE(jp21.job_profile_summary, ''),
-        COALESCE(jp21.job_profile_wid, ''),
-        COALESCE(jp21.job_title, ''),
-        COALESCE(jp21.management_level_code, ''),
-        COALESCE(jp21.management_level_name, ''),
-        COALESCE(jp21.pay_rate_type, ''),
-        COALESCE(jp21.public_job, ''),
-        COALESCE(jp21.work_shift_required, ''),
-        COALESCE(jp21.job_matrix, ''),
-        COALESCE(jp21.is_people_manager, ''),
-        COALESCE(jp21.is_manager, ''),
-        COALESCE(jp21.frequency, ''),
-        COALESCE(jp22.aap_job_group, ''),
-        COALESCE(jp22.bonus_eligibility, ''),
-        COALESCE(jp22.customer_facing, ''),
-        COALESCE(jp22.eeo1_code, ''),
-        COALESCE(jp22.job_collection, ''),
-        COALESCE(jp22.loan_originator_code, ''),
-        COALESCE(jp22.national_occupation_code, ''),
-        COALESCE(jp22.occupation_code, ''),
-        COALESCE(jp22.recruitment_channel, ''),
-        COALESCE(jp22.standard_occupation_code, ''),
-        COALESCE(jp22.stock, '')
-    )) AS hash_diff,
+    MD5(COALESCE(jp21.compensation_grade::VARCHAR, '') || COALESCE(jp21.critical_job_flag::VARCHAR, '') || COALESCE(jp21.difficult_to_fill_flag::VARCHAR, '') || COALESCE(jp21.inactive_flag::INT::VARCHAR, '') || COALESCE(jp21.job_category_code::VARCHAR, '') || COALESCE(jp21.job_category_name::VARCHAR, '') || COALESCE(jp21.job_exempt_canada::VARCHAR, '') || COALESCE(jp21.job_exempt_us::VARCHAR, '') || COALESCE(jp21.job_family::VARCHAR, '') || COALESCE(jp21.job_family_group::VARCHAR, '') || COALESCE(jp21.job_family_group_name::VARCHAR, '') || COALESCE(jp21.job_family_name::VARCHAR, '') || COALESCE(jp21.job_level_code::VARCHAR, '') || COALESCE(jp21.job_level_name::VARCHAR, '') || COALESCE(jp21.job_profile_code::VARCHAR, '') || COALESCE(jp21.job_profile_description::VARCHAR, '') || COALESCE(jp21.job_profile_name::VARCHAR, '') || COALESCE(jp21.job_profile_summary::VARCHAR, '') || COALESCE(jp21.job_profile_wid::VARCHAR, '') || COALESCE(jp21.job_title::VARCHAR, '') || COALESCE(jp21.management_level_code::VARCHAR, '') || COALESCE(jp21.management_level_name::VARCHAR, '') || COALESCE(jp21.pay_rate_type::VARCHAR, '') || COALESCE(jp21.public_job::INT::VARCHAR, '') || COALESCE(jp21.work_shift_required::INT::VARCHAR, '') || COALESCE(jp21.job_matrix::VARCHAR, '') || COALESCE(jp21.is_people_manager::INT::VARCHAR, '') || COALESCE(jp21.is_manager::INT::VARCHAR, '') || COALESCE(jp21.frequency::VARCHAR, '') || COALESCE(jp22.aap_job_group::VARCHAR, '') || COALESCE(jp22.bonus_eligibility::VARCHAR, '') || COALESCE(jp22.customer_facing::VARCHAR, '') || COALESCE(jp22.eeo1_code::VARCHAR, '') || COALESCE(jp22.job_collection::VARCHAR, '') || COALESCE(jp22.loan_originator_code::VARCHAR, '') || COALESCE(jp22.national_occupation_code::VARCHAR, '') || COALESCE(jp22.occupation_code::VARCHAR, '') || COALESCE(jp22.recruitment_channel::VARCHAR, '') || COALESCE(jp22.standard_occupation_code::VARCHAR, '') || COALESCE(jp22.stock::VARCHAR, '')) AS hash_diff,
     CURRENT_DATE AS valid_from
 FROM l1_workday.int6021_job_profile jp21
-LEFT JOIN l1_workday.int6022_job_profile_details jp22
+LEFT JOIN l1_workday.int6022_job_classification jp22
     ON jp21.job_profile_id = jp22.job_profile_id
 WHERE jp21.job_profile_id IS NOT NULL;
 
@@ -529,26 +460,7 @@ SELECT
     location_usage_type,
     trade_name,
     worksite_id_code,
-    MD5(CONCAT(
-        COALESCE(location_wid, ''),
-        COALESCE(location_name, ''),
-        COALESCE(inactive, ''),
-        COALESCE(address_line_1, ''),
-        COALESCE(address_line_2, ''),
-        COALESCE(city, ''),
-        COALESCE(region, ''),
-        COALESCE(region_name, ''),
-        COALESCE(country, ''),
-        COALESCE(country_name, ''),
-        COALESCE(location_postal_code, ''),
-        COALESCE(location_identifier, ''),
-        COALESCE(latitude::VARCHAR, ''),
-        COALESCE(longitude::VARCHAR, ''),
-        COALESCE(location_type, ''),
-        COALESCE(location_usage_type, ''),
-        COALESCE(trade_name, ''),
-        COALESCE(worksite_id_code, '')
-    )) AS hash_diff,
+    MD5(COALESCE(location_wid::VARCHAR, '') || COALESCE(location_name::VARCHAR, '') || COALESCE(inactive::VARCHAR, '') || COALESCE(address_line_1::VARCHAR, '') || COALESCE(address_line_2::VARCHAR, '') || COALESCE(city::VARCHAR, '') || COALESCE(region::VARCHAR, '') || COALESCE(region_name::VARCHAR, '') || COALESCE(country::VARCHAR, '') || COALESCE(country_name::VARCHAR, '') || COALESCE(location_postal_code::VARCHAR, '') || COALESCE(location_identifier::VARCHAR, '') || COALESCE(latitude::VARCHAR, '') || COALESCE(longitude::VARCHAR, '') || COALESCE(location_type::VARCHAR, '') || COALESCE(location_usage_type::VARCHAR, '') || COALESCE(trade_name::VARCHAR, '') || COALESCE(worksite_id_code::VARCHAR, '')) AS hash_diff,
     CURRENT_DATE AS valid_from
 FROM l1_workday.int6023_location
 WHERE location_id IS NOT NULL;
@@ -605,27 +517,16 @@ SELECT
     department_wid,
     department_name,
     dept_name_with_manager_name,
-    active,
+    active::INT::VARCHAR,
     parent_dept_id,
     owner_ein,
     department_level,
     primary_location_code,
     type,
     subtype,
-    MD5(CONCAT(
-        COALESCE(department_wid, ''),
-        COALESCE(department_name, ''),
-        COALESCE(dept_name_with_manager_name, ''),
-        COALESCE(active, ''),
-        COALESCE(parent_dept_id, ''),
-        COALESCE(owner_ein, ''),
-        COALESCE(department_level, ''),
-        COALESCE(primary_location_code, ''),
-        COALESCE(type, ''),
-        COALESCE(subtype, '')
-    )) AS hash_diff,
+    MD5(COALESCE(department_wid::VARCHAR, '') || COALESCE(department_name::VARCHAR, '') || COALESCE(dept_name_with_manager_name::VARCHAR, '') || COALESCE(active::INT::VARCHAR, '') || COALESCE(parent_dept_id::VARCHAR, '') || COALESCE(owner_ein::VARCHAR, '') || COALESCE(department_level::VARCHAR, '') || COALESCE(primary_location_code::VARCHAR, '') || COALESCE(type::VARCHAR, '') || COALESCE(subtype::VARCHAR, '')) AS hash_diff,
     CURRENT_DATE AS valid_from
-FROM l1_workday.int6028_supervisory_organization
+FROM l1_workday.int6028_department_hierarchy
 WHERE department_id IS NOT NULL;
 
 -- Step 1: Close changed records
@@ -685,20 +586,9 @@ SELECT
     business_title,
     time_type,
     location,
-    MD5(CONCAT(
-        COALESCE(supervisory_organization, ''),
-        COALESCE(effective_date::VARCHAR, ''),
-        COALESCE(reason, ''),
-        COALESCE(worker_type, ''),
-        COALESCE(worker_sub_type, ''),
-        COALESCE(job_profile, ''),
-        COALESCE(job_title, ''),
-        COALESCE(business_title, ''),
-        COALESCE(time_type, ''),
-        COALESCE(location, '')
-    )) AS hash_diff,
+    MD5(COALESCE(supervisory_organization::VARCHAR, '') || COALESCE(effective_date::VARCHAR, '') || COALESCE(reason::VARCHAR, '') || COALESCE(worker_type::VARCHAR, '') || COALESCE(worker_sub_type::VARCHAR, '') || COALESCE(job_profile::VARCHAR, '') || COALESCE(job_title::VARCHAR, '') || COALESCE(business_title::VARCHAR, '') || COALESCE(time_type::VARCHAR, '') || COALESCE(location::VARCHAR, '')) AS hash_diff,
     CURRENT_DATE AS valid_from
-FROM l1_workday.int6032_position
+FROM l1_workday.int6032_positions
 WHERE position_id IS NOT NULL;
 
 -- Step 1: Close changed records
@@ -749,17 +639,17 @@ BEGIN;
 -- Step 6.1.1: Collect all effective dates from all three sources
 CREATE TEMP TABLE tmp_effective_dates AS
 SELECT DISTINCT employee_id, transaction_effective_date AS effective_date
-FROM l1_workday.l1_workday_worker_job_dly_vw
+FROM l3_workday.l3_workday_worker_job_dly_vw
 WHERE idp_obsolete_date IS NULL
   AND transaction_entry_date = idp_max_entry_ts
   AND sequence_number = idp_min_seq_num
 UNION
 SELECT DISTINCT employee_id, transaction_effective_date AS effective_date
-FROM l1_workday.l1_workday_worker_comp_dly_vw
+FROM l3_workday.l3_workday_worker_comp_dly_vw
 WHERE idp_obsolete_date IS NULL
 UNION
 SELECT DISTINCT employee_id, transaction_effective_date AS effective_date
-FROM l1_workday.l1_workday_worker_organization_dly_vw
+FROM l3_workday.l3_workday_worker_organization_dly_vw
 WHERE idp_obsolete_date IS NULL
   AND transaction_entry_date = idp_max_entry_ts
   AND sequence_number = idp_min_seq_num
@@ -777,15 +667,15 @@ SELECT
     business_site_id,
     mailstop_floor,
     worker_status,
-    active,
+    active::INT::VARCHAR,
     first_day_of_work,
     expected_date_of_return,
-    not_returning,
+    not_returning::INT::VARCHAR,
     return_unknown,
     probation_start_date,
     probation_end_date,
     academic_tenure_date,
-    has_international_assignment,
+    has_international_assignment::INT::VARCHAR,
     home_country,
     host_country,
     international_assignment_type,
@@ -796,7 +686,7 @@ SELECT
     action_reason,
     action_reason_code,
     manager_id,
-    soft_retirement_indicator,
+    soft_retirement_indicator::INT::VARCHAR,
     job_profile_id,
     sequence_number,
     planned_end_contract_date,
@@ -816,7 +706,7 @@ SELECT
     worker_workday_id,
     idp_employee_status,
     ROW_NUMBER() OVER (PARTITION BY employee_id, transaction_effective_date ORDER BY transaction_entry_date DESC) AS rn
-FROM l1_workday.l1_workday_worker_job_dly_vw
+FROM l3_workday.l3_workday_worker_job_dly_vw
 WHERE idp_obsolete_date IS NULL
   AND transaction_entry_date = idp_max_entry_ts
   AND sequence_number = idp_min_seq_num;
@@ -839,8 +729,8 @@ SELECT
     benefits_annual_rate_abbr,
     pay_rate_type,
     compensation,
-    ROW_NUMBER() OVER (PARTITION BY employee_id, transaction_effective_date ORDER BY transaction_entry_date DESC) AS rn
-FROM l1_workday.l1_workday_worker_comp_dly_vw
+    ROW_NUMBER() OVER (PARTITION BY employee_id, transaction_effective_date ORDER BY transaction_entry_moment DESC) AS rn
+FROM l3_workday.l3_workday_worker_comp_dly_vw
 WHERE idp_obsolete_date IS NULL;
 
 -- Step 6.1.4: Prepare filtered Worker Organization data (3 pivots: Cost Centre, Company, Supervisory)
@@ -850,7 +740,7 @@ SELECT
     transaction_effective_date,
     organization_id AS cost_center_id,
     ROW_NUMBER() OVER (PARTITION BY employee_id, transaction_effective_date ORDER BY transaction_entry_date DESC) AS rn
-FROM l1_workday.l1_workday_worker_organization_dly_vw
+FROM l3_workday.l3_workday_worker_organization_dly_vw
 WHERE idp_obsolete_date IS NULL
   AND transaction_entry_date = idp_max_entry_ts
   AND sequence_number = idp_min_seq_num
@@ -862,7 +752,7 @@ SELECT
     transaction_effective_date,
     organization_id AS company_id,
     ROW_NUMBER() OVER (PARTITION BY employee_id, transaction_effective_date ORDER BY transaction_entry_date DESC) AS rn
-FROM l1_workday.l1_workday_worker_organization_dly_vw
+FROM l3_workday.l3_workday_worker_organization_dly_vw
 WHERE idp_obsolete_date IS NULL
   AND transaction_entry_date = idp_max_entry_ts
   AND sequence_number = idp_min_seq_num
@@ -874,7 +764,7 @@ SELECT
     transaction_effective_date,
     organization_id AS sup_org_id,
     ROW_NUMBER() OVER (PARTITION BY employee_id, transaction_effective_date ORDER BY transaction_entry_date DESC) AS rn
-FROM l1_workday.l1_workday_worker_organization_dly_vw
+FROM l3_workday.l3_workday_worker_organization_dly_vw
 WHERE idp_obsolete_date IS NULL
   AND transaction_entry_date = idp_max_entry_ts
   AND sequence_number = idp_min_seq_num
@@ -893,15 +783,15 @@ SELECT
     COALESCE(wj.business_site_id, NULL) AS business_site_id,
     COALESCE(wj.mailstop_floor, NULL) AS mailstop_floor,
     COALESCE(wj.worker_status, NULL) AS worker_status,
-    COALESCE(wj.active, NULL) AS active,
+    COALESCE(wj.active::INT::VARCHAR, NULL) AS active,
     COALESCE(wj.first_day_of_work, NULL) AS first_day_of_work,
     COALESCE(wj.expected_date_of_return, NULL) AS expected_date_of_return,
-    COALESCE(wj.not_returning, NULL) AS not_returning,
+    COALESCE(wj.not_returning::INT::VARCHAR, NULL) AS not_returning,
     COALESCE(wj.return_unknown, NULL) AS return_unknown,
     COALESCE(wj.probation_start_date, NULL) AS probation_start_date,
     COALESCE(wj.probation_end_date, NULL) AS probation_end_date,
     COALESCE(wj.academic_tenure_date, NULL) AS academic_tenure_date,
-    COALESCE(wj.has_international_assignment, NULL) AS has_international_assignment,
+    COALESCE(wj.has_international_assignment::INT::VARCHAR, NULL) AS has_international_assignment,
     COALESCE(wj.home_country, NULL) AS home_country,
     COALESCE(wj.host_country, NULL) AS host_country,
     COALESCE(wj.international_assignment_type, NULL) AS international_assignment_type,
@@ -912,7 +802,7 @@ SELECT
     COALESCE(wj.action_reason, NULL) AS action_reason,
     COALESCE(wj.action_reason_code, NULL) AS action_reason_code,
     COALESCE(wj.manager_id, NULL) AS manager_id,
-    COALESCE(wj.soft_retirement_indicator, NULL) AS soft_retirement_indicator,
+    COALESCE(wj.soft_retirement_indicator::INT::VARCHAR, NULL) AS soft_retirement_indicator,
     COALESCE(wj.job_profile_id, NULL) AS job_profile_id,
     COALESCE(wj.sequence_number, NULL) AS sequence_number,
     COALESCE(wj.planned_end_contract_date, NULL) AS planned_end_contract_date,
@@ -1001,69 +891,7 @@ SELECT
     effective_date_from,
     effective_date_to,
     effective_date_from AS valid_from,
-    MD5(CONCAT(
-        COALESCE(position_id, ''),
-        COALESCE(worker_type, ''),
-        COALESCE(worker_sub_type, ''),
-        COALESCE(business_title, ''),
-        COALESCE(business_site_id, ''),
-        COALESCE(mailstop_floor, ''),
-        COALESCE(worker_status, ''),
-        COALESCE(active::VARCHAR, ''),
-        COALESCE(first_day_of_work::VARCHAR, ''),
-        COALESCE(expected_date_of_return::VARCHAR, ''),
-        COALESCE(not_returning::VARCHAR, ''),
-        COALESCE(return_unknown, ''),
-        COALESCE(probation_start_date::VARCHAR, ''),
-        COALESCE(probation_end_date::VARCHAR, ''),
-        COALESCE(academic_tenure_date::VARCHAR, ''),
-        COALESCE(has_international_assignment::VARCHAR, ''),
-        COALESCE(home_country, ''),
-        COALESCE(host_country, ''),
-        COALESCE(international_assignment_type, ''),
-        COALESCE(start_date_of_international_assignment::VARCHAR, ''),
-        COALESCE(end_date_of_international_assignment::VARCHAR, ''),
-        COALESCE(action, ''),
-        COALESCE(action_code, ''),
-        COALESCE(action_reason, ''),
-        COALESCE(action_reason_code, ''),
-        COALESCE(manager_id, ''),
-        COALESCE(soft_retirement_indicator::VARCHAR, ''),
-        COALESCE(job_profile_id, ''),
-        COALESCE(sequence_number::VARCHAR, ''),
-        COALESCE(planned_end_contract_date::VARCHAR, ''),
-        COALESCE(job_entry_dt::VARCHAR, ''),
-        COALESCE(stock_grants, ''),
-        COALESCE(time_type, ''),
-        COALESCE(supervisory_organization, ''),
-        COALESCE(location, ''),
-        COALESCE(job_title, ''),
-        COALESCE(french_job_title, ''),
-        COALESCE(shift_number::VARCHAR, ''),
-        COALESCE(scheduled_weekly_hours::VARCHAR, ''),
-        COALESCE(default_weekly_hours::VARCHAR, ''),
-        COALESCE(scheduled_fte::VARCHAR, ''),
-        COALESCE(work_model_start_date::VARCHAR, ''),
-        COALESCE(work_model_type, ''),
-        COALESCE(worker_workday_id, ''),
-        COALESCE(idp_employee_status, ''),
-        COALESCE(compensation_package_proposed, ''),
-        COALESCE(compensation_grade_proposed, ''),
-        COALESCE(comp_grade_profile_proposed, ''),
-        COALESCE(compensation_step_proposed, ''),
-        COALESCE(pay_range_minimum::VARCHAR, ''),
-        COALESCE(pay_range_midpoint::VARCHAR, ''),
-        COALESCE(pay_range_maximum::VARCHAR, ''),
-        COALESCE(base_pay_proposed_amount::VARCHAR, ''),
-        COALESCE(base_pay_proposed_currency, ''),
-        COALESCE(base_pay_proposed_frequency, ''),
-        COALESCE(benefits_annual_rate_abbr::VARCHAR, ''),
-        COALESCE(pay_rate_type, ''),
-        COALESCE(compensation::VARCHAR, ''),
-        COALESCE(cost_center_id, ''),
-        COALESCE(company_id, ''),
-        COALESCE(sup_org_id, '')
-    )) AS hash_diff
+    MD5(COALESCE(position_id::VARCHAR, '') || COALESCE(worker_type::VARCHAR, '') || COALESCE(worker_sub_type::VARCHAR, '') || COALESCE(business_title::VARCHAR, '') || COALESCE(business_site_id::VARCHAR, '') || COALESCE(mailstop_floor::VARCHAR, '') || COALESCE(worker_status::VARCHAR, '') || COALESCE(active::INT::VARCHAR, '') || COALESCE(first_day_of_work::VARCHAR, '') || COALESCE(expected_date_of_return::VARCHAR, '') || COALESCE(not_returning::INT::VARCHAR, '') || COALESCE(return_unknown::VARCHAR, '') || COALESCE(probation_start_date::VARCHAR, '') || COALESCE(probation_end_date::VARCHAR, '') || COALESCE(academic_tenure_date::VARCHAR, '') || COALESCE(has_international_assignment::INT::VARCHAR, '') || COALESCE(home_country::VARCHAR, '') || COALESCE(host_country::VARCHAR, '') || COALESCE(international_assignment_type::VARCHAR, '') || COALESCE(start_date_of_international_assignment::VARCHAR, '') || COALESCE(end_date_of_international_assignment::VARCHAR, '') || COALESCE(action::VARCHAR, '') || COALESCE(action_code::VARCHAR, '') || COALESCE(action_reason::VARCHAR, '') || COALESCE(action_reason_code::VARCHAR, '') || COALESCE(manager_id::VARCHAR, '') || COALESCE(soft_retirement_indicator::INT::VARCHAR, '') || COALESCE(job_profile_id::VARCHAR, '') || COALESCE(sequence_number::VARCHAR, '') || COALESCE(planned_end_contract_date::VARCHAR, '') || COALESCE(job_entry_dt::VARCHAR, '') || COALESCE(stock_grants::VARCHAR, '') || COALESCE(time_type::VARCHAR, '') || COALESCE(supervisory_organization::VARCHAR, '') || COALESCE(location::VARCHAR, '') || COALESCE(job_title::VARCHAR, '') || COALESCE(french_job_title::VARCHAR, '') || COALESCE(shift_number::VARCHAR, '') || COALESCE(scheduled_weekly_hours::VARCHAR, '') || COALESCE(default_weekly_hours::VARCHAR, '') || COALESCE(scheduled_fte::VARCHAR, '') || COALESCE(work_model_start_date::VARCHAR, '') || COALESCE(work_model_type::VARCHAR, '') || COALESCE(worker_workday_id::VARCHAR, '') || COALESCE(idp_employee_status::VARCHAR, '') || COALESCE(compensation_package_proposed::VARCHAR, '') || COALESCE(compensation_grade_proposed::VARCHAR, '') || COALESCE(comp_grade_profile_proposed::VARCHAR, '') || COALESCE(compensation_step_proposed::VARCHAR, '') || COALESCE(pay_range_minimum::VARCHAR, '') || COALESCE(pay_range_midpoint::VARCHAR, '') || COALESCE(pay_range_maximum::VARCHAR, '') || COALESCE(base_pay_proposed_amount::VARCHAR, '') || COALESCE(base_pay_proposed_currency::VARCHAR, '') || COALESCE(base_pay_proposed_frequency::VARCHAR, '') || COALESCE(benefits_annual_rate_abbr::VARCHAR, '') || COALESCE(pay_rate_type::VARCHAR, '') || COALESCE(compensation::VARCHAR, '') || COALESCE(cost_center_id::VARCHAR, '') || COALESCE(company_id::VARCHAR, '') || COALESCE(sup_org_id::VARCHAR, '')) AS hash_diff
 FROM windowed_rows;
 
 -- Step 6.1.7: Mark is_current_job_row (most recent per employee)
@@ -1167,7 +995,7 @@ BEGIN;
 -- Step 1: Collect all effective dates for status changes
 CREATE TEMP TABLE tmp_status_effective_dates AS
 SELECT DISTINCT employee_id, transaction_effective_date AS effective_date
-FROM l1_workday.l1_workday_worker_job_dly_vw
+FROM l3_workday.l3_workday_worker_job_dly_vw
 WHERE idp_obsolete_date IS NULL
   AND transaction_entry_date = idp_max_entry_ts
   AND sequence_number = idp_min_seq_num;
@@ -1183,22 +1011,22 @@ SELECT
     planned_end_contract_date,
     hire_date,
     eligible_for_rehire,
-    not_eligible_for_hire,
-    active,
+    not_eligible_for_hire::INT::VARCHAR,
+    active::INT::VARCHAR,
     worker_status,
     employment_end_date,
     hire_reason,
-    hire_rescinded,
+    hire_rescinded::INT::VARCHAR,
     original_hire_date,
     primary_termination_category,
     primary_termination_reason,
-    retired,
+    retired::INT::VARCHAR,
     retirement_eligibility_date,
     expected_retirement_date,
     seniority_date,
     termination_date,
     ROW_NUMBER() OVER (PARTITION BY employee_id, transaction_effective_date ORDER BY transaction_entry_date DESC) AS rn
-FROM l1_workday.l1_workday_worker_job_dly_vw
+FROM l3_workday.l3_workday_worker_job_dly_vw
 WHERE idp_obsolete_date IS NULL
   AND transaction_entry_date = idp_max_entry_ts
   AND sequence_number = idp_min_seq_num;
@@ -1214,16 +1042,16 @@ SELECT
     COALESCE(wj.planned_end_contract_date, NULL) AS planned_end_contract_date,
     COALESCE(wj.hire_date, NULL) AS hire_date,
     COALESCE(wj.eligible_for_rehire, NULL) AS eligible_for_rehire,
-    COALESCE(wj.not_eligible_for_hire, NULL) AS not_eligible_for_hire,
-    COALESCE(wj.active, NULL) AS active,
+    COALESCE(wj.not_eligible_for_hire::INT::VARCHAR, NULL) AS not_eligible_for_hire,
+    COALESCE(wj.active::INT::VARCHAR, NULL) AS active,
     COALESCE(wj.worker_status, NULL) AS worker_status,
     COALESCE(wj.employment_end_date, NULL) AS employment_end_date,
     COALESCE(wj.hire_reason, NULL) AS hire_reason,
-    COALESCE(wj.hire_rescinded, NULL) AS hire_rescinded,
+    COALESCE(wj.hire_rescinded::INT::VARCHAR, NULL) AS hire_rescinded,
     COALESCE(wj.original_hire_date, NULL) AS original_hire_date,
     COALESCE(wj.primary_termination_category, NULL) AS primary_termination_category,
     COALESCE(wj.primary_termination_reason, NULL) AS primary_termination_reason,
-    COALESCE(wj.retired, NULL) AS retired,
+    COALESCE(wj.retired::INT::VARCHAR, NULL) AS retired,
     COALESCE(wj.retirement_eligibility_date, NULL) AS retirement_eligibility_date,
     COALESCE(wj.expected_retirement_date, NULL) AS expected_retirement_date,
     COALESCE(wj.seniority_date, NULL) AS seniority_date,
@@ -1248,35 +1076,14 @@ SELECT
     effective_date,
     active_status_date, benefits_service_date, continuous_service_date,
     planned_end_contract_date, hire_date, eligible_for_rehire, not_eligible_for_hire,
-    active, worker_status, employment_end_date, hire_reason, hire_rescinded,
+    active::INT::VARCHAR, worker_status, employment_end_date, hire_reason, hire_rescinded,
     original_hire_date, primary_termination_category, primary_termination_reason,
-    retired, retirement_eligibility_date, expected_retirement_date,
+    retired::INT::VARCHAR, retirement_eligibility_date, expected_retirement_date,
     seniority_date, termination_date,
     effective_date_from,
     effective_date_to,
     effective_date_from AS valid_from,
-    MD5(CONCAT(
-        COALESCE(active_status_date::VARCHAR, ''),
-        COALESCE(benefits_service_date::VARCHAR, ''),
-        COALESCE(continuous_service_date::VARCHAR, ''),
-        COALESCE(planned_end_contract_date::VARCHAR, ''),
-        COALESCE(hire_date::VARCHAR, ''),
-        COALESCE(eligible_for_rehire, ''),
-        COALESCE(not_eligible_for_hire::VARCHAR, ''),
-        COALESCE(active::VARCHAR, ''),
-        COALESCE(worker_status, ''),
-        COALESCE(employment_end_date::VARCHAR, ''),
-        COALESCE(hire_reason, ''),
-        COALESCE(hire_rescinded::VARCHAR, ''),
-        COALESCE(original_hire_date::VARCHAR, ''),
-        COALESCE(primary_termination_category, ''),
-        COALESCE(primary_termination_reason, ''),
-        COALESCE(retired::VARCHAR, ''),
-        COALESCE(retirement_eligibility_date::VARCHAR, ''),
-        COALESCE(expected_retirement_date::VARCHAR, ''),
-        COALESCE(seniority_date::VARCHAR, ''),
-        COALESCE(termination_date::VARCHAR, '')
-    )) AS hash_diff
+    MD5(COALESCE(active_status_date::VARCHAR, '') || COALESCE(benefits_service_date::VARCHAR, '') || COALESCE(continuous_service_date::VARCHAR, '') || COALESCE(planned_end_contract_date::VARCHAR, '') || COALESCE(hire_date::VARCHAR, '') || COALESCE(eligible_for_rehire::VARCHAR, '') || COALESCE(not_eligible_for_hire::INT::VARCHAR, '') || COALESCE(active::INT::VARCHAR, '') || COALESCE(worker_status::VARCHAR, '') || COALESCE(employment_end_date::VARCHAR, '') || COALESCE(hire_reason::VARCHAR, '') || COALESCE(hire_rescinded::INT::VARCHAR, '') || COALESCE(original_hire_date::VARCHAR, '') || COALESCE(primary_termination_category::VARCHAR, '') || COALESCE(primary_termination_reason::VARCHAR, '') || COALESCE(retired::INT::VARCHAR, '') || COALESCE(retirement_eligibility_date::VARCHAR, '') || COALESCE(expected_retirement_date::VARCHAR, '') || COALESCE(seniority_date::VARCHAR, '') || COALESCE(termination_date::VARCHAR, '')) AS hash_diff
 FROM windowed_rows;
 
 -- Step 5: SCD2 merge logic
