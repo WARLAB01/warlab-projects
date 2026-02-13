@@ -1,0 +1,14 @@
+HR DATAMART V2 — QA EVIDENCE SUMMARY
+============================================================
+Date: 2026-02-13 22:38:01 UTC
+
+  row_counts                         : PASS
+  pk_uniqueness                      : PASS
+  fk_integrity                       : PASS
+  scd2_overlap                       : PASS
+  headcount_restatement              : PASS
+  movement_metrics                   : PASS
+  l1_feeds                           : PASS
+
+============================================================
+OVERALL: ALL TESTS PASSED

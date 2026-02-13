@@ -1,0 +1,52 @@
+FK REFERENTIAL INTEGRITY
+============================================================
+
+A. SK POPULATION RATES (fct_worker_movement_f)
+--------------------------------------------------
+  sup_org_sk_pop           :    117,094 / 117,094 (100.0%) [POPULATED]
+  wj_sk_pop                :    117,094 / 117,094 (100.0%) [POPULATED]
+  ws_sk_pop                :    117,094 / 117,094 (100.0%) [POPULATED]
+  jp_sk_pop                :    117,094 / 117,094 (100.0%) [POPULATED]
+  gp_sk_pop                :    116,489 / 117,094 (99.5%) [POPULATED]
+  co_sk_pop                :          0 / 117,094 (0.0%) [NULL]
+  cc_sk_pop                :          0 / 117,094 (0.0%) [NULL]
+  loc_sk_pop               :          0 / 117,094 (0.0%) [NULL]
+  wp_sk_pop                :          0 / 117,094 (0.0%) [NULL]
+
+B. SK-BASED FK JOINS (populated SKs only)
+--------------------------------------------------
+  fct_worker_movement_f.supervisory_org_sk → dim_supervisory_org_d
+    matched=117,094/117,094 (100.00%) orphaned=0 [PASS]
+  fct_worker_movement_f.worker_job_sk → dim_worker_job_d
+    matched=117,094/117,094 (100.00%) orphaned=0 [PASS]
+  fct_worker_movement_f.worker_status_sk → dim_worker_status_d
+    matched=117,094/117,094 (100.00%) orphaned=0 [PASS]
+  fct_worker_movement_f.job_profile_sk → dim_job_profile_d
+    matched=117,094/117,094 (100.00%) orphaned=0 [PASS]
+  fct_worker_movement_f.grade_profile_sk → dim_grade_profile_d
+    matched=116,489/117,094 (99.48%) orphaned=0 [PASS]
+  fct_worker_headcount_restat_f.supervisory_org_sk → dim_supervisory_org_d
+    matched=470,294/470,294 (100.00%) orphaned=0 [PASS]
+  fct_worker_headcount_restat_f.worker_job_sk → dim_worker_job_d
+    matched=470,294/470,294 (100.00%) orphaned=0 [PASS]
+
+C. NK-BASED FK JOINS
+--------------------------------------------------
+  fct_worker_movement_f.sup_org_id → dim_supervisory_org_d.department_id
+    matched=117,094/117,094 (100.00%) orphaned=0 [PASS]
+  fct_worker_movement_f.employee_id → dim_worker_profile_d.worker_id
+    matched=234,188/234,188 (100.00%) orphaned=0 [PASS]
+  fct_worker_headcount_restat_f.sup_org_id → dim_supervisory_org_d.department_id
+    matched=470,294/470,294 (100.00%) orphaned=0 [PASS]
+  fct_worker_headcount_restat_f.employee_id → dim_worker_profile_d.worker_id
+    matched=940,588/940,588 (100.00%) orphaned=0 [PASS]
+
+D. LOCATION CROSS-REFERENCE (fact location_id = dim location_name)
+--------------------------------------------------
+  fct_worker_movement_f.location_id → dim_location_d.location_name
+    matched=117,094/117,094 (100.00%)
+  Note: Fact stores location NAMES, dim uses location CODES as location_id.
+  Cross-reference via location_name resolves PASS.
+
+SUMMARY: 11/11 FK relationships verified
+Overall: PASS

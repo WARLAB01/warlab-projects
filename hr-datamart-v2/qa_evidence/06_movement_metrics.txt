@@ -1,0 +1,18 @@
+MOVEMENT FACT METRICS
+==================================================
+  hires                              : 20804
+  terms                              : 10697
+  vol_terms                          : 6265
+  invol_terms                        : 2625
+  promos                             : 7062
+  laterals                           : 3477
+  job_changes                        : 10615
+  comp_changes                       : 45393
+  rehires                            : 0
+  total                              : 117094
+
+  hires>0: PASS
+  terms>0: PASS
+  vol+invol<=terms: PASS
+
+Overall: PASS

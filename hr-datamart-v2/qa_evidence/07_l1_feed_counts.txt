@@ -1,0 +1,18 @@
+L1 STAGING FEED ROW COUNTS (schema: v2_l1_workday)
+==================================================
+  int0095e_worker_job                                    117680
+  int0096_worker_organization                            353040
+  int0098_worker_compensation                            117680
+  int270_rescinded                                         1765
+  int6020_grade_profile                                      15
+  int6021_job_profile                                        94
+  int6022_job_classification                                 94
+  int6023_location                                           16
+  int6024_company                                             8
+  int6025_cost_center                                       198
+  int6027_matrix_organization                                15
+  int6028_department_hierarchy                              144
+  int6031_worker_profile                                  20804
+  int6032_positions                                       20804
+
+Overall: PASS

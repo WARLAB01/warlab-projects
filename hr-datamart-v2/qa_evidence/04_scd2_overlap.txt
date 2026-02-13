@@ -1,0 +1,11 @@
+SCD2 OVERLAP CHECKS (post-dedup: rows should equal distinct NKs)
+============================================================
+  dim_company_d                                 rows=     8  NKs=     8  [PASS]
+  dim_grade_profile_d                           rows=    15  NKs=    15  [PASS]
+  dim_location_d                                rows=    16  NKs=    16  [PASS]
+  dim_matrix_org_d                              rows=    15  NKs=    15  [PASS]
+  dim_cost_center_d                             rows=   198  NKs=   198  [PASS]
+  dim_job_profile_d                             rows=    94  NKs=    94  [PASS]
+  dim_supervisory_org_d                         rows=   144  NKs=   144  [PASS]
+
+Overall: PASS

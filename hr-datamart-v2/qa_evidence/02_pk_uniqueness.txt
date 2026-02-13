@@ -1,0 +1,20 @@
+PRIMARY KEY UNIQUENESS
+==================================================
+  dim_company_d                                 PK=dim_sk                    total=         8 distinct=         8 [PASS]
+  dim_cost_center_d                             PK=dim_sk                    total=       198 distinct=       198 [PASS]
+  dim_day_d                                     PK=day_sk                    total=     4,018 distinct=     4,018 [PASS]
+  dim_grade_profile_d                           PK=dim_sk                    total=        15 distinct=        15 [PASS]
+  dim_job_profile_d                             PK=dim_sk                    total=        94 distinct=        94 [PASS]
+  dim_location_d                                PK=dim_sk                    total=        16 distinct=        16 [PASS]
+  dim_matrix_org_d                              PK=dim_sk                    total=        15 distinct=        15 [PASS]
+  dim_report_to_d                               PK=dim_sk                    total=    20,804 distinct=    20,804 [PASS]
+  dim_report_to_layers_d                        PK=dim_sk                    total=    54,109 distinct=    54,109 [PASS]
+  dim_supervisory_org_d                         PK=dim_sk                    total=       144 distinct=       144 [PASS]
+  dim_supervisory_org_layers_d                  PK=dim_sk                    total=       144 distinct=       144 [PASS]
+  dim_worker_job_d                              PK=dim_sk                    total=   117,094 distinct=   117,094 [PASS]
+  dim_worker_profile_d                          PK=dim_sk                    total=    41,608 distinct=    41,608 [PASS]
+  dim_worker_status_d                           PK=dim_sk                    total=   117,094 distinct=   117,094 [PASS]
+  fct_worker_headcount_restat_f                 PK=headcount_restat_sk       total=   470,294 distinct=   470,294 [PASS]
+  fct_worker_movement_f                         PK=worker_movement_sk        total=   117,094 distinct=   117,094 [PASS]
+
+Overall: PASS

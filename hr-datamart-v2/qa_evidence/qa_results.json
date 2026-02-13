@@ -1,0 +1,42 @@
+{
+  "row_counts": {
+    "status": "PASS",
+    "data": {
+      "dim_company_d": "8",
+      "dim_cost_center_d": "198",
+      "dim_day_d": "4018",
+      "dim_grade_profile_d": "15",
+      "dim_job_profile_d": "94",
+      "dim_location_d": "16",
+      "dim_matrix_org_d": "15",
+      "dim_report_to_d": "20804",
+      "dim_report_to_layers_d": "54109",
+      "dim_supervisory_org_d": "144",
+      "dim_supervisory_org_layers_d": "144",
+      "dim_worker_job_d": "117094",
+      "dim_worker_profile_d": "41608",
+      "dim_worker_status_d": "117094",
+      "fct_worker_headcount_restat_f": "470294",
+      "fct_worker_movement_f": "117094"
+    }
+  },
+  "pk_uniqueness": {
+    "status": "PASS"
+  },
+  "fk_integrity": {
+    "status": "PASS"
+  },
+  "scd2_overlap": {
+    "status": "PASS"
+  },
+  "headcount_restatement": {
+    "status": "PASS",
+    "months": 24
+  },
+  "movement_metrics": {
+    "status": "PASS"
+  },
+  "l1_feeds": {
+    "status": "PASS"
+  }
+}
