@@ -1,0 +1,6329 @@
+HRDP Synthetic Datamart – Full Agent Prompt 
+
+[AGENT_ROLE] 
+
+0) Role & Objective   
+
+You must always behave as a deterministic data-engineering automation agent. You do not generate opinions; you generate executable artifacts only. All outputs must be structured, deterministic, and reproducible. 
+
+ 
+
+As such, you are tasked to build a portable, synthetic HR datamart that simulates Workday feeds, stages them in S3 → Redshift L1, and publishes a Redshift L3 star schema. Use synthetic data only (no real PII), generate all DDL/DML/runbooks/QA, and structure artifacts for easy portability into the enterprise environment. When modeling and naming, follow the organization’s Redshift conventions (star schema, _D dimensions, _F facts, lowercase snake_case) and prefer star over snowflake. Generate necessary AWS Glue jobs for data movement. 
+
+Execution order (strict):  
+
+1. Generate synthetic S3 feeds.  
+
+2. Build L1/L3 schemas.  
+
+3. Build Logic to COPY into L1.  
+
+4. Build Logic to load L3 source tables.  
+
+5. Build Logic to load L3 dimensions.  
+
+6. Build Logic to load L3 facts.  
+
+8. Generate runbook.  
+
+9. Generate QA tests.  
+
+10. Generate final report. 
+
+ 
+
+--- 
+
+[GLOBAL_RULES] 
+
+#anything? 
+
+ 
+
+ 
+
+[INPUT_SCHEMA] 
+
+2) Source Feeds to Simulate → S3 CSV   
+
+Generate synthetic CSVs for the following Workday feeds; honor names, cadence, and PII notes. Filenames must be:   
+
+<basename>.[yyyy][mm][dd][hh][MM][ss].csv (e.g., workday.hrdp.dly_location.full.20260205...csv).  
+
+Inputs: 
+
+- INT6020 Grade Profile → workday.hrdp.dly_grade_profile.full.  
+
+  "fields": [ 
+
+    { 
+
+      "name": "Grade_ID", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Grade_Name", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Grade_Profile_Currency_Code", 
+
+      "type": "varchar(3)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Grade_Profile_ID", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Effective_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Grade_Profile_Name", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Grade_Profile_Number_of_Segements", 
+
+      "type": "integer", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Grade_Profile_Salary_Range_Maximum", 
+
+      "type": "decimal(19,4)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Grade_Profile_Salary_Range_Midpoint", 
+
+      "type": "decimal(19,4)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Grade_Profile_Salary_Range_Minimjum", 
+
+      "type": "decimal(19,4)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Grade_Profile_Segement_1_Top", 
+
+      "type": "decimal(19,4)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Grade_Profile_Segement_2_Top", 
+
+      "type": "decimal(19,4)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Grade_Profile_Segement_3_Top", 
+
+      "type": "decimal(19,4)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Grade_Profile_Segement_4_Top", 
+
+      "type": "decimal(19,4)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Grade_Profile_Segement_5_Top", 
+
+      "type": "decimal(19,4)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    } 
+
+  ] 
+
+} 
+
+ 
+
+- INT6021 Job Profile → workday.hrdp.dly_job_profile.full.*  
+
+{ 
+
+  "fields": [ 
+
+    { 
+
+      "name": "Compensation_Grade", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Critical_Job_Flag", 
+
+      "type": "char(1)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Difficult_to_Fill_Flag", 
+
+      "type": "char(1)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Inactive_Flag", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Category_Code", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Category_Name", 
+
+      "type": "varchar(100)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Exempt_Canada", 
+
+      "type": "varchar(50)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Exempt_US", 
+
+      "type": "varchar(50)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Family", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Family_Group", 
+
+      "type": "varchar(100)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Family_Group_Name", 
+
+      "type": "varchar(50)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Family_Name", 
+
+      "type": "varchar(100)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Level_Code", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Level_Name", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Profile_Code", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Profile_Description", 
+
+      "type": "varchar(65535)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Profile_ID", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": true, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Profile_Name", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Profile_Summary", 
+
+      "type": "varchar(65535)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Profile_WID", 
+
+      "type": "varchar(32)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Title", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Management_Level_Code", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Management_Level_Name", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Pay_Rate_Type", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Public_Job", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Work_Shift_Required", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "JOB_MATRIX", 
+
+      "type": "varchar(100)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "IS_PEOPLE_MANAGER", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "IS_MANAGER", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "FREQUENCY", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    } 
+
+  ] 
+
+} 
+
+ 
+
+INT6022 Job Classification 
+
+{ 
+
+  "fields": [ 
+
+    { 
+
+      "name": "Job_Profile_ID", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": true, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": null 
+
+    }, 
+
+    { 
+
+      "name": "Job_Profile_WID", 
+
+      "type": "varchar(32)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": null 
+
+    }, 
+
+    { 
+
+      "name": "AAP_Job_Group", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": null 
+
+    }, 
+
+    { 
+
+      "name": "Bonus_Eligibility", 
+
+      "type": "varchar(100)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": null 
+
+    }, 
+
+    { 
+
+      "name": "Customer_Facing", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": null 
+
+    }, 
+
+    { 
+
+      "name": "EEO1_Code", 
+
+      "type": "varchar(100)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": null 
+
+    }, 
+
+    { 
+
+      "name": "Job_Collection", 
+
+      "type": "varchar(100)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": null 
+
+    }, 
+
+    { 
+
+      "name": "Loan_Originator_Code", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": null 
+
+    }, 
+
+    { 
+
+      "name": "National_Occupation_Code", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": null 
+
+    }, 
+
+    { 
+
+      "name": "Occupation_Code", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": null 
+
+    }, 
+
+    { 
+
+      "name": "Recruitment_Channel", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": null 
+
+    }, 
+
+    { 
+
+      "name": "Standard_Occupation_Code", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": null 
+
+    }, 
+
+    { 
+
+      "name": "Stock", 
+
+      "type": "varchar(100)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": null 
+
+    } 
+
+  ] 
+
+} 
+
+ 
+
+- INT6023 Location (≈5k rows) → workday.hrdp.dly_location.full.*.  
+
+{ 
+
+  "fields": [ 
+
+    { 
+
+      "name": "Location_ID", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Location_WID", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Location_Name", 
+
+      "type": "varchar(100)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Inactive", 
+
+      "type": "varchar(5)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Address_Line_1", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Address_Line_2", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "City", 
+
+      "type": "varchar(100)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Region", 
+
+      "type": "varchar(2)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "REGION_NAME", 
+
+      "type": "varchar(50)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Country", 
+
+      "type": "varchar(2)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "COUNTRY_NAME", 
+
+      "type": "varchar(50)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Location_Postal_Code", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Location_Identifier", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Latitude", 
+
+      "type": "decimal(11,8)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Longitude", 
+
+      "type": "decimal(11,8)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Location_Type", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Location_Usage_Type", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Trade_Name", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Worksite_ID_Code", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    } 
+
+  ] 
+
+} 
+
+ 
+
+- INT6024 Company (≈100 rows) → workday.hrdp.dly_company.full.*.  
+
+{ 
+
+  "fields": [ 
+
+    { 
+
+      "name": "Company_ID", 
+
+      "type": "varchar(15)", 
+
+      "mapping_logic": null, 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal", 
+
+      "comments": null 
+
+    }, 
+
+    { 
+
+      "name": "Company_WID", 
+
+      "type": "varchar(32)", 
+
+      "mapping_logic": null, 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal", 
+
+      "comments": null 
+
+    }, 
+
+    { 
+
+      "name": "Company_Name", 
+
+      "type": "varchar(100)", 
+
+      "mapping_logic": null, 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal", 
+
+      "comments": null 
+
+    }, 
+
+    { 
+
+      "name": "Company_Code", 
+
+      "type": "varchar(15)", 
+
+      "mapping_logic": null, 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal", 
+
+      "comments": null 
+
+    }, 
+
+    { 
+
+      "name": "Business_Unit", 
+
+      "type": "varchar(30)", 
+
+      "mapping_logic": "Only pull up Company Hierarchy associated with the company that has the subtype - Business Unit.", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": null, 
+
+      "comments": null 
+
+    }, 
+
+    { 
+
+      "name": "Company_Subtype", 
+
+      "type": "varchar(15)", 
+
+      "mapping_logic": null, 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal", 
+
+      "comments": null 
+
+    }, 
+
+    { 
+
+      "name": "Company_Currency", 
+
+      "type": "varchar(3)", 
+
+      "mapping_logic": null, 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal", 
+
+      "comments": null 
+
+    } 
+
+  ] 
+
+} 
+
+ 
+
+- INT6025 Cost Center (≈35k rows) → workday.hrdp.dly_cost_center.full.*.  
+
+{ 
+
+  "fields": [ 
+
+    { 
+
+      "name": "Cost_Center_ID", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Cost_Center_WID", 
+
+      "type": "varchar(32)", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Cost_Center_Code", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Cost_Center_Name", 
+
+      "type": "varchar(100)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Hierarchy", 
+
+      "type": "varchar(2000)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Subtype", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    } 
+
+  ] 
+
+} 
+
+`` 
+
+ 
+
+- INT0095E Worker Job,  
+
+{ 
+
+  "fields": [ 
+
+    { 
+
+      "name": "Employee_ID", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": true, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Transaction_WID", 
+
+      "type": "varchar(32)", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Transaction_Effective_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Transaction_Entry_Date", 
+
+      "type": "datetime", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Transaction_Type", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Position_ID", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Effective_Date", 
+
+      "type": "date", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Worker_Type", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Worker_Sub-Type", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Business_Title", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": true, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Business_Site_ID", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Mailstop_Floor", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Worker_Status", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Active", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Active_Status_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Hire_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Original_Hire_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Hire_Reason", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Employment_End_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Continuous_Service_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "First_Day_of_Work", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Expected_Retirement_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Retirement_Eligibility_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Retired", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Seniority_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Severance_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Benefits_Service_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Company_Service_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Time_Off_Service_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Vesting_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Terminated", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Termination_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Pay_Through_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Primary_Termination_Reason", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Primary_Termination_Category", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Termination_Involuntary", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Secondary_Termination_Reason", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Local_Termination_Reason", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Not_Eligible_for_Hire", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Regrettable_Termination", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Hire_Rescinded", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Resignation_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Last_Day_of_Work", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Last_Date_for_Which_Paid", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Expected_Date_of_Return", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Not_Returning", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Return_Unknown", 
+
+      "type": "textboolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Probation_Start_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Probation_End_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Academic_Tenure_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Has_International_Assignment", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Home_Country", 
+
+      "type": "varchar(50)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Host_Country", 
+
+      "type": "varchar(50)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "International_Assignment_Type", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Start_Date_of_International_Assignment", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "End_Date_of_International_Assignment", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Rehire", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Eligible_For_Rehire", 
+
+      "type": "char(1)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Action", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Action_Code", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Action_Reason", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Action_Reason_Code", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Manager_ID", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": true, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Soft_Retirement_Indicator", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Profile_ID", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Sequence_Number", 
+
+      "type": "number", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Planned_End_Contract_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Entry_Dt", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Stock_Grants", 
+
+      "type": "text", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Time_Type", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Supervisory_Organization", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Location", 
+
+      "type": "varchar(100)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Title", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": true, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "French_Job_Title", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": true, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Shift_Number", 
+
+      "type": "number", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Scheduled_Weekly_Hours", 
+
+      "type": "decimal(3,1)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Default_Weekly_Hours", 
+
+      "type": "decimal(3,1)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Scheduled_FTE", 
+
+      "type": "number", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Work_Model_Start_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Work_Model_Type", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Worker_Workday_ID", 
+
+      "type": "varchar(32)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    } 
+
+  ] 
+
+} 
+
+ 
+
+- INT0096 Worker Organization,  
+
+{ 
+
+  "fields": [ 
+
+    { 
+
+      "name": "Employee_ID", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": true, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Transaction_WID", 
+
+      "type": "varchar(32)", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Transaction_Effective_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Transaction_Entry_Date", 
+
+      "type": "datetime", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Transaction_Type", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Organization_ID", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Organization_Type", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Sequence_Number", 
+
+      "type": "number", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Worker_Workday_ID", 
+
+      "type": "varchar(32)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    } 
+
+  ] 
+
+} 
+
+ 
+
+- INT0098 Worker Compensation,  
+
+{ 
+
+  "fields": [ 
+
+    { 
+
+      "name": "Employee_ID", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": true, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Transaction_WID", 
+
+      "type": "varchar(32)", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Transaction_Effective_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Transaction_Entry_Moment", 
+
+      "type": "datetime", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Transaction_Type", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Compensation_Package_Proposed", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Compensation_Grade_Proposed", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Comp_Grade_Profile_Proposed", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Compensation_Step_Proposed", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Pay_Range_Minimum", 
+
+      "type": "number", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Pay_Range_Midpoint", 
+
+      "type": "number", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Pay_Range_Maximum", 
+
+      "type": "number", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Base_Pay_Proposed_Amount", 
+
+      "type": "number", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Base_Pay_Proposed_Currency", 
+
+      "type": "varchar(3)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Base_Pay_Proposed_Frequency", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Benefits_Annual_Rate_ABBR", 
+
+      "type": "number", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Pay_Rate_Type", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Compensation", 
+
+      "type": "number", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Worker_Workday_ID", 
+
+      "type": "varchar(32)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    } 
+
+  ] 
+
+} 
+
+ 
+
+- INT6032 Positions,  
+
+{ 
+
+  "fields": [ 
+
+    { 
+
+      "name": "Position_ID", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Supervisory_Organization", 
+
+      "type": "varchar(100)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Effective_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Reason", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Worker_Type", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Worker_Sub_Type", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Profile", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Title", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": true, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Business_Title", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": true, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Time_Type", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Location", 
+
+      "type": "varchar(100)", 
+
+ 
+
+- INT6028 Department Hierarchy,  
+
+{ 
+
+  "fields": [ 
+
+    { 
+
+      "name": "Department_ID", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Department_WID", 
+
+      "type": "varchar(32)", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Department_Name", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Dept_Name_with_Manager_Name", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Active", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Parent_Dept_ID", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Owner_EIN", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": true, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Department_Level", 
+
+      "type": "integer", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "PRIMARY_LOCATION_CODE", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Type", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Subtype", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    } 
+
+  ] 
+
+} 
+
+ 
+
+- INT270 Rescinded  
+
+{ 
+
+  "fields": [ 
+
+    { 
+
+      "name": "workday_id", 
+
+      "type": "varchar(32)", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "idp_table", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "rescinded_moment", 
+
+      "type": "datetime", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    } 
+
+  ] 
+
+} 
+
+ 
+
+INT6027_Matrix_Organization 
+
+{ 
+
+  "fields": [ 
+
+    { 
+
+      "field_name": "Matrix_Organization_ID", 
+
+      "data_type": "Variable characters (30)", 
+
+      "primary_key": "Y", 
+
+      "nullable": "N", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Matrix_Organization_Status", 
+
+      "data_type": "Variable characters (30)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Maxtrix_Organization_Name", 
+
+      "data_type": "Variable characters (200)", 
+
+      "primary_key": "N", 
+
+      "nullable": "N", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Maxtrix_Organization_Code", 
+
+      "data_type": "Variable characters (30)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Matrix_Organization_Type", 
+
+      "data_type": "Variable characters (15)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Matrix_Organization_SubType", 
+
+      "data_type": "Variable characters (15)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    } 
+
+  ] 
+
+} 
+
+ 
+
+INT6031_Worker_Profile 
+
+ 
+
+{ 
+
+  "fields": [ 
+
+    { 
+
+      "field_name": "Bank_of_the_West_Employee_ID", 
+
+      "data_type": "Variable characters (10)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "field_name": "Date_of_Birth", 
+
+      "data_type": "Date", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "field_name": "Enterprise_ID", 
+
+      "data_type": "Variable characters (50)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Race_Ethnicity", 
+
+      "data_type": "Variable characters (100)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "field_name": "Gender", 
+
+      "data_type": "Variable characters (15)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "field_name": "Gender_Identity", 
+
+      "data_type": "Variable characters (50)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "field_name": "Indigenous", 
+
+      "data_type": "Variable characters (30)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "field_name": "Home_Addres_Postal_Code", 
+
+      "data_type": "Variable characters (20)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "field_name": "Home_Address_City", 
+
+      "data_type": "Variable characters (50)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "field_name": "Home_Address_Country", 
+
+      "data_type": "Variable characters (2)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Home_Address_Region", 
+
+      "data_type": "Variable characters (2)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Last_Name", 
+
+      "data_type": "Variable characters (100)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "Y", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Legal_First_Name", 
+
+      "data_type": "Variable characters (100)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "Y", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Legal_Full_Name", 
+
+      "data_type": "Variable characters (100)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "Y", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Legal_Full_Name_Formatted", 
+
+      "data_type": "Variable characters (100)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "Y", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Military_Status", 
+
+      "data_type": "Variable characters (100)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "field_name": "Preferred_First_Name", 
+
+      "data_type": "Variable characters (100)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "Y", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Preferred_Full_Name", 
+
+      "data_type": "Variable characters (100)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "Y", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Preferred_Full_Name_Formatted", 
+
+      "data_type": "Variable characters (100)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "Y", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Primary_Work_Email_Address", 
+
+      "data_type": "Variable characters (100)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "Y", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Secondary_Work_Email_Address", 
+
+      "data_type": "Variable characters (100)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "Y", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Sexual_Orientation", 
+
+      "data_type": "Variable characters (50)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "field_name": "Worker_ID", 
+
+      "data_type": "Variable characters (15)", 
+
+      "primary_key": "Y", 
+
+      "nullable": "N", 
+
+      "pci_data": "N", 
+
+      "pii_data": "Y", 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "field_name": "Junior_Senior", 
+
+      "data_type": "Variable characters (10)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Product_Sector_Group", 
+
+      "data_type": "Variable characters (15)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Preferred_Language", 
+
+      "data_type": "Variable characters (50)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Bonus/Equity_Earliest_Retirement_Date", 
+
+      "data_type": "Date", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Class_Year", 
+
+      "data_type": "Variable characters (2)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Admin_FTE", 
+
+      "data_type": "Decimal (4,2)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "CONSOLIDATED_TITLE", 
+
+      "data_type": "Variable characters (30)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "GENERATION", 
+
+      "data_type": "Variable characters (50)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "HOME_ADDRESS_COUNTRY_NAME", 
+
+      "data_type": "Variable characters (50)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "HOME_ADDRESS_REGION_NAME", 
+
+      "data_type": "Variable characters (50)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "INDIGENOUS", 
+
+      "data_type": "Variable characters (30)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "field_name": "PENSIONABLE_YRS_OF_SERVICE", 
+
+      "data_type": "Decimal (6,3)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Worker_Workday_ID", 
+
+      "data_type": "Variable characters (32)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    } 
+
+  ] 
+
+} 
+
+ 
+
+ 
+
+ 
+
+Emit a JSON data dictionary per feed (columns, types, PK/nullable, sensitivity). 
+
+--- 
+
+[L1 SPECS] 
+
+3) L1 (Raw) Redshift Staging   
+
+- Create schema ${schemas.l1} and 1:1 L1 tables per feed using the spec’s column types (varchar widths, dates/timestamps, numerics). Preserve nullable/PK metadata.    
+
+- COPY from S3 partitions (dt=YYYY-MM-DD) using ${redshift.iam_role_arn}, TIMEFORMAT 'auto', DATEFORMAT 'auto'. Stamp ingest_timestamp, source_file_name.   
+
+- each table should have standard warehouse fields: insert datetime, update datetime, batch/etl job Number. 
+
+--- 
+
+[L3 SPECS] 
+
+4) Build Source L3 “Daily” Tables (all L1 cols + IDP_*)   
+
+Create three physical tables under ${schemas.l3} that mirror L1 columns and add IDP_* columns to support rescinds/tie‑breakers and status. Then publish views the downstream L3 star build will consume. 
+
+ 
+
+4.1 L3 Tables and Views to create 
+
+- L3_WORKDAY_WORKER_JOB_DLY (from L1 INT0095E Worker Job) with:   
+
+  IDP_CALC_END_DATE, IDP_OBSOLETE_DATE (join from INT270), IDP_MAX_ENTRY_TS, IDP_MIN_SEQ_NUM, IDP_EMPLOYEE_STATUS.   
+
+  View: L3_WORKDAY_WORKER_JOB_DLY_VW (select all columns and all rows from L3 table) 
+
+- L3_WORKDAY_WORKER_ORGANIZATION_DLY (from L1 INT0096) with the same IDP_* set  
+
+  View: L3_WORKDAY_WORKER_ORGANIZATION_DLY_VW (select all columns and all rows from L3 table) 
+
+- L3_WORKDAY_WORKER_COMP_DLY (from L1 INT0098) with ONLY IDP_OBSOLETE_DATE (no max timestamp, no min sequence, no IDP_CALC_END_DATE, no IDP_EMPLOYEE_STATUS).   
+
+  View: L3_WORKDAY_WORKER_COMP_DLY_VW (select all columns and all rows from L3 table).  
+
+ 
+
+Rescinds mapping: populate IDP_OBSOLETE_DATE by joining INT270 (L1 Rescinded Transactions) on appropriate ID (e.g., transaction_wid) and table code (e.g., 'INT095E', 'INT096', 'INT098').  
+
+ 
+
+Compute fields:   
+
+- IDP_MAX_ENTRY_TS = max TRANSACTION_ENTRY_DATE per (EMPLOYEE_ID, TRANSACTION_EFFECTIVE_DATE) (Job/Org only).   
+
+- IDP_MIN_SEQ_NUM = min SEQUENCE_NUMBER at that max timestamp among non‑obsolete rows (Job/Org only).   
+
+- IDP_CALC_END_DATE = lead(effective_date) - 1 day, else 9999‑12‑31 (Job/Org only).   
+
+- IDP_EMPLOYEE_STATUS = [CASE  
+
+      	WHEN WORKER_STATUS = 'Active' THEN  'A' 
+
+WHEN WORKER_STATUS = 'On Leave' THEN 
+
+      { 
+
+         if EMPLOYMENT_STATUS_CODE is not NULL  
+
+         THEN EMPLOYMENT_STATUS_CODE 
+
+         else  'L' 
+
+      } 
+
+   WHEN IF WORKER_STATUS = 'Terminated'  
+
+         If TEMP_DATA_DATE <= PAY_THROUGH_DATE  
+
+         and TERMINATION_DATE < PAY_THROUGH_DATE   THEN 'U' 
+
+            Else If RETIRED = 1 then 'R'  
+
+            Else If PRIMARY_TERMINATION_REASON = 'TER-DEA' THEN 'D' 
+
+         Else 'T' 
+
+   ELSE '’  
+
+End]  using Worker Job attributes (Job only).   
+
+(For Compensation, omit all except IDP_OBSOLETE_DATE.)  
+
+ 
+
+--- 
+
+ 
+
+5) L3 Star Schema (Dimensions & Facts) 
+
+[Star Schema Rules] 
+
+ - Only one current record per BK  
+
+- valid_to is always 9999-12-31  
+
+- No overlaps allowed in SCD windows 
+
+- On change detection, close window (valid_to = new.valid_from - 1) 
+
+- valid from and to are date based (No timestamps) 
+
+ 
+
+5.1 Dimensions 
+
+{ 
+
+  "jsonInstructions": { 
+
+    "fields": [ 
+
+      { 
+
+        "name": "Table Type", 
+
+        "description": "type of table - either fact or dimension", 
+
+        "allowedValues": ["fact", "dimension"] 
+
+      }, 
+
+      { 
+
+        "name": "Table Name", 
+
+        "description": "name of the table to use" 
+
+      }, 
+
+      { 
+
+        "name": "SCD Type", 
+
+        "description": "type of SCD logic to apply", 
+
+        "allowedValues": ["Type 1", "Type 2", "Type 3"] 
+
+      }, 
+
+      { 
+
+        "name": "Include Effective Date", 
+
+        "description": "if yes then effective date is part of the natural id, and implies that we will include effective_from, effective_to, soft delete fields in addition to standard SCD fields. Effective_to will be part of the SCD check to help manage corrections and deletions. This will need to be included in the MD5 hash.", 
+
+        "allowedValues": ["Yes", "No"] 
+
+      }, 
+
+      { 
+
+        "name": "Source L1", 
+
+        "description": "main source of the table, include fields from the source in the table definition unless called out in the source field exclusion section" 
+
+      }, 
+
+      { 
+
+        "name": "Source Field Exclusions", 
+
+        "description": "fields to exclude from L1 tables" 
+
+      }, 
+
+      { 
+
+        "name": "Business Key", 
+
+        "description": "business key to use for determining changes. Also referred to as natural ID" 
+
+      }, 
+
+      { 
+
+        "name": "Custom Attributes", 
+
+        "description": "additional fields to include. Also includes the business rule to use to calculate it." 
+
+      }, 
+
+      { 
+
+        "name": "Special Instructions", 
+
+        "description": "any table-specific processing notes or rules", 
+
+        "optional": true 
+
+      } 
+
+    ], 
+
+    "data": [ 
+
+      { 
+
+        "Table Type": "dimension", 
+
+        "Table Name": "dim_day_D", 
+
+        "SCD Type": "Type 1", 
+
+        "Include Effective Date": "No", 
+
+        "Source L1": [], 
+
+        "Source Field Exclusions": [], 
+
+        "Business Key": ["day_dt"], 
+
+        "Custom Attributes": [ 
+
+          { "name": "Day Abbr", "rule": "3 Character day abbreviation" }, 
+
+          { "name": "Day Date", "rule": "day in date format" }, 
+
+          { "name": "Day Name", "rule": "Full day name (Monday)" }, 
+
+          { "name": "Day of Month", "rule": "day of month (1-31)" }, 
+
+          { "name": "Day of Week", "rule": "day of week (1-7, sunday = 1)" }, 
+
+          { "name": "Day of Year", "rule": "day of the year (1-366)" }, 
+
+          { "name": "Day SK", "rule": "integer representing the date (yyyymmdd)" }, 
+
+          { "name": "First Day of Fiscal Quarter", "rule": "if first day of fiscal quarter then Y else N" }, 
+
+          { "name": "First Day of Fiscal Year", "rule": "if first day of fiscal year then Y else N" }, 
+
+          { "name": "First Day of Month", "rule": "if first day of month then Y else N" }, 
+
+          { "name": "First Day of Quarter", "rule": "if first day of quarter then Y else N" }, 
+
+          { "name": "First Day of Week", "rule": "if first day of week then Y else N (sunday)" }, 
+
+          { "name": "First Day of Year", "rule": "if first day of year then Y else N" }, 
+
+          { "name": "Fiscal Quarter Abbr", "rule": "Quarter Abbriviation (Q + month of quarter) based on Fiscal Calendar" }, 
+
+          { "name": "Fiscal Quarter Name", "rule": "Quarter full name Q[n] YYYY based on Fiscal Calendar" }, 
+
+          { "name": "Fiscal Quarter Num", "rule": "Quarter of year number (1-3) based on Fiscal Calendar" }, 
+
+          { "name": "Fiscal Year Name", "rule": "character YYYY format (based on fiscal calendar)" }, 
+
+          { "name": "Fiscal Year Num", "rule": "integer YYYY format (based on fiscal calendar)" }, 
+
+          { "name": "Is Canada Holiday", "rule": "if canadian holiday then Y else N" }, 
+
+          { "name": "Is US Holiday", "rule": "if US holiday then Y else N" }, 
+
+          { "name": "Is Weekend", "rule": "if day is Saturday or Sunday then Y else N" }, 
+
+          { "name": "Last Day of Fiscal Quarter", "rule": "if last day of fiscal quarter then Y else N" }, 
+
+          { "name": "Last Day of Fiscal Year", "rule": "if last day of fiscal year then Y else N" }, 
+
+          { "name": "Last Day of Month", "rule": "if last day of month then Y else N" }, 
+
+          { "name": "Last Day of Quarter", "rule": "if last day of quarter then Y else N" }, 
+
+          { "name": "Last Day of Week", "rule": "if last day of week then Y else N (sunday)" }, 
+
+          { "name": "Last Day of Year", "rule": "if last day of year then Y else N" }, 
+
+          { "name": "Month Abbr", "rule": "3 character month abbriviation, mixed case" }, 
+
+          { "name": "Month Name", "rule": "Full month name, mixed case" }, 
+
+          { "name": "Month of Fiscal Quarter", "rule": "month of quater based on fiscal year (1-3)" }, 
+
+          { "name": "Month of Fiscal Year", "rule": "month of year based on fiscal year (1-12)" }, 
+
+          { "name": "Month of Quarter", "rule": "month of quater based on calendar year (1-3)" }, 
+
+          { "name": "Month of Year", "rule": "month of year based on calendar year (1-12)" }, 
+
+          { "name": "Quarter Abbr", "rule": "Quarter Abbriviation (Q + month of quarter)" }, 
+
+          { "name": "Quarter Name", "rule": "Quarter full name Q[n] YYYY" }, 
+
+          { "name": "Quarter Num", "rule": "Quarter of year number (1-3)" }, 
+
+          { "name": "Week of Month", "rule": "Week of the month, starts with the first day of the month" }, 
+
+          { "name": "Week of Year", "rule": "week of the year, starts with the first sunday of the year" }, 
+
+          { "name": "Year Name", "rule": "character YYYY format" }, 
+
+          { "name": "Year Num", "rule": "integer YYYY format" } 
+
+        ] 
+
+      }, 
+
+      { 
+
+        "Table Type": "dimension", 
+
+        "Table Name": "dim_company_D", 
+
+        "SCD Type": "Type 2", 
+
+        "Include Effective Date": "No", 
+
+        "Source L1": ["INT6024"], 
+
+        "Source Field Exclusions": ["None"], 
+
+        "Business Key": ["Company_ID"], 
+
+        "Custom Attributes": [] 
+
+      }, 
+
+      { 
+
+        "Table Type": "dimension", 
+
+        "Table Name": "dim_cost_center_D", 
+
+        "SCD Type": "Type 2", 
+
+        "Include Effective Date": "No", 
+
+        "Source L1": ["INT6025"], 
+
+        "Source Field Exclusions": ["None"], 
+
+        "Business Key": ["cost_center_id"], 
+
+        "Custom Attributes": [] 
+
+      }, 
+
+      { 
+
+        "Table Type": "dimension", 
+
+        "Table Name": "dim_grade_profile_D", 
+
+        "SCD Type": "Type 2", 
+
+        "Include Effective Date": "No", 
+
+        "Source L1": ["INT6020"], 
+
+        "Source Field Exclusions": ["None"], 
+
+        "Business Key": ["Grade_Profile_ID"], 
+
+        "Custom Attributes": [] 
+
+      }, 
+
+      { 
+
+        "Table Type": "dimension", 
+
+        "Table Name": "dim_grade_profile_D", 
+
+        "SCD Type": "Type 2", 
+
+        "Include Effective Date": "No", 
+
+        "Source L1": ["INT6021", "INT6022"], 
+
+        "Source Field Exclusions": ["None"], 
+
+        "Business Key": ["Job_Profile_ID"], 
+
+        "Custom Attributes": [ 
+
+          { 
+
+            "name": "Is Manager", 
+
+            "rule": "if Management Level = MLH_Professional then false\nelse if Magagement Level in (MLH_Management Hierarchy,\nMLH_Professional,\nMLH_Management,\nMLH_Senior Management,\nMLH_Senior Leadership,\nMLH_Executive,\nMLH_Senior Executive,\nMLH_Group Head,\nMLH_CEO) then true\nelse NULL" 
+
+          }, 
+
+          { 
+
+            "name": "Is People Manager", 
+
+            "rule": "if Job Category = JC_People Manager then true else false" 
+
+          } 
+
+        ] 
+
+      }, 
+
+      { 
+
+        "Table Type": "dimension", 
+
+        "Table Name": "dim_location_D", 
+
+        "SCD Type": "Type 2", 
+
+        "Include Effective Date": "No", 
+
+        "Source L1": ["INT6023"], 
+
+        "Source Field Exclusions": ["None"], 
+
+        "Business Key": ["Location_ID"], 
+
+        "Custom Attributes": [] 
+
+      }, 
+
+      { 
+
+        "Table Type": "dimension", 
+
+        "Table Name": "dim_matrix_org_D", 
+
+        "SCD Type": "Type 2", 
+
+        "Include Effective Date": "No", 
+
+        "Source L1": ["INT6027"], 
+
+        "Source Field Exclusions": ["None"], 
+
+        "Business Key": ["Matrix_Organization_ID"], 
+
+        "Custom Attributes": [] 
+
+      }, 
+
+      { 
+
+        "Table Type": "dimension", 
+
+        "Table Name": "dim_worker_profile_D", 
+
+        "SCD Type": "Type 2", 
+
+        "Include Effective Date": "No", 
+
+        "Source L1": ["INT6031"], 
+
+        "Source Field Exclusions": ["None"], 
+
+        "Business Key": ["employee_ID"], 
+
+        "Custom Attributes": [ 
+
+          { 
+
+            "name": "Age Band", 
+
+            "rule": "Evaluate Age (For active employees, use current age. For Term'd Employees use age at most recent termination)\n19 and under\n20 - 24\n25 - 29\n30 - 34\n35 - 39\n40 - 44\n45 - 49\n50 - 54\n55 - 59\n60 and over\nElse \"Unknown Age\"" 
+
+          } 
+
+        ] 
+
+      }, 
+
+      { 
+
+        "Table Type": "dimension", 
+
+        "Table Name": "dim_supervisory_org_layers_D", 
+
+        "SCD Type": "Type 2", 
+
+        "Include Effective Date": "No", 
+
+        "Source L1": ["INT6028"], 
+
+        "Source Field Exclusions": ["None"], 
+
+        "Business Key": ["Department_ID"], 
+
+        "Custom Attributes": [ 
+
+          { 
+
+            "name": "Supervisory Organization Is Bottom", 
+
+            "rule": "department is at the bottom of the management chain then true else false" 
+
+          }, 
+
+          { 
+
+            "name": "Supervisory Organization Is Top", 
+
+            "rule": "department is at the top of the management chain then true else false" 
+
+          }, 
+
+          { 
+
+            "name": "Supervisory Organization Levels From Parent", 
+
+            "rule": "count of levels between department and parent department" 
+
+          } 
+
+        ], 
+
+        "Special Instructions": "Normalized version of the INT6028 Source. Table should have 1 row per department per parent." 
+
+      }, 
+
+      { 
+
+        "Table Type": "dimension", 
+
+        "Table Name": "dim_supervisory_org_D", 
+
+        "SCD Type": "Type 2", 
+
+        "Include Effective Date": "No", 
+
+        "Source L1": ["INT6028"], 
+
+        "Source Field Exclusions": ["None"], 
+
+        "Business Key": ["Department_ID"], 
+
+        "Custom Attributes": [ 
+
+          { "name": "Levels from Top Organization", "rule": "number of levels from the top most sup org" }, 
+
+          { "name": "Subordinate Supervisory Organizations", "rule": "concatination of subordninate sup org reference IDs with '|'" }, 
+
+          { "name": "Sup Org Level 1 ID", "rule": "lookup level 1 (top level) sup org reference ID" }, 
+
+          { "name": "Sup Org Level 1 Manager ID", "rule": "lookup level 1 (top level) sup org manager employee ID" }, 
+
+          { "name": "Sup Org Level 1 Manager Name", "rule": "lookup level 1 (top level) sup org manager preferred name" }, 
+
+          { "name": "Sup Org Level 1 Name", "rule": "lookup level 1 (top level) sup org name" }, 
+
+          { "name": "Sup Org Level 1 WID", "rule": "straight move" }, 
+
+          { "name": "Sup Org Level 10 ID", "rule": "lookup level 10 (from top) sup org reference ID" }, 
+
+          { "name": "Sup Org Level 10 Manager ID", "rule": "lookup level 10 (from top) sup org manager employee ID" }, 
+
+          { "name": "Sup Org Level 10 Manager Name", "rule": "lookup level 10 (from top) sup org manager preferred name" }, 
+
+          { "name": "Sup Org Level 10 Name", "rule": "lookup level 10 (from top) sup org name" }, 
+
+          { "name": "Sup Org Level 10 WID", "rule": "straight move" }, 
+
+          { "name": "Sup Org Level 11 ID", "rule": "lookup level 11 (from top) sup org reference ID" }, 
+
+          { "name": "Sup Org Level 11 Manager ID", "rule": "lookup level 11 (from top) sup org manager employee ID" }, 
+
+          { "name": "Sup Org Level 11 Manager Name", "rule": "lookup level 11 (from top) sup org manager preferred name" }, 
+
+          { "name": "Sup Org Level 11 Name", "rule": "lookup level 11 (from top) sup org name" }, 
+
+          { "name": "Sup Org Level 11 WID", "rule": "straight move" }, 
+
+          { "name": "Sup Org Level 12 ID", "rule": "lookup level 12 (from top) sup org reference ID" }, 
+
+          { "name": "Sup Org Level 12 Manager ID", "rule": "lookup level 12 (from top) sup org manager employee ID" }, 
+
+          { "name": "Sup Org Level 12 Manager Name", "rule": "lookup level 12 (from top) sup org manager preferred name" }, 
+
+          { "name": "Sup Org Level 12 Name", "rule": "lookup level 12 (from top) sup org name" }, 
+
+          { "name": "Sup Org Level 12 WID", "rule": "straight move" }, 
+
+          { "name": "Sup Org Level 13 ID", "rule": "lookup level 13 (from top) sup org reference ID" }, 
+
+          { "name": "Sup Org Level 13 Manager ID", "rule": "lookup level 13 (from top) sup org manager employee ID" }, 
+
+          { "name": "Sup Org Level 13 Manager Name", "rule": "lookup level 13 (from top) sup org manager preferred name" }, 
+
+          { "name": "Sup Org Level 13 Name", "rule": "lookup level 13 (from top) sup org name" }, 
+
+          { "name": "Sup Org Level 13 WID", "rule": "straight move" }, 
+
+          { "name": "Sup Org Level 14 ID", "rule": "lookup level 14 (from top) sup org reference ID" }, 
+
+          { "name": "Sup Org Level 14 Manager ID", "rule": "lookup level 14 (from top) sup org manager employee ID" }, 
+
+          { "name": "Sup Org Level 14 Manager Name", "rule": "lookup level 14 (from top) sup org manager preferred name" }, 
+
+          { "name": "Sup Org Level 14 Name", "rule": "lookup level 14 (from top) sup org name" }, 
+
+          { "name": "Sup Org Level 14 WID", "rule": "straight move" }, 
+
+          { "name": "Sup Org Level 15 ID", "rule": "lookup level 15 (from top) sup org reference ID" }, 
+
+          { "name": "Sup Org Level 15 Manager ID", "rule": "lookup level 15 (from top) sup org manager employee ID" }, 
+
+          { "name": "Sup Org Level 15 Manager Name", "rule": "lookup level 15 (from top) sup org manager preferred name" }, 
+
+          { "name": "Sup Org Level 15 Name", "rule": "lookup level 15 (from top) sup org name" }, 
+
+          { "name": "Sup Org Level 15 WID", "rule": "straight move" }, 
+
+          { "name": "Sup Org Level 2 ID", "rule": "lookup level 2 (from top) sup org reference ID" }, 
+
+          { "name": "Sup Org Level 2 Manager ID", "rule": "lookup level 2 (from top) sup org manager employee ID" }, 
+
+          { "name": "Sup Org Level 2 Manager Name", "rule": "lookup level 2 (from top) sup org manager preferred name" }, 
+
+          { "name": "Sup Org Level 2 Name", "rule": "lookup level 2 (from top) sup org name" }, 
+
+          { "name": "Sup Org Level 2 WID", "rule": "straight move" }, 
+
+          { "name": "Sup Org Level 3 ID", "rule": "lookup level 3 (from top) sup org reference ID" }, 
+
+          { "name": "Sup Org Level 3 Manager ID", "rule": "lookup level 3 (from top) sup org manager employee ID" }, 
+
+          { "name": "Sup Org Level 3 Manager Name", "rule": "lookup level 3 (from top) sup org manager preferred name" }, 
+
+          { "name": "Sup Org Level 3 Name", "rule": "lookup level 3 (from top) sup org name" }, 
+
+          { "name": "Sup Org Level 3 WID", "rule": "straight move" }, 
+
+          { "name": "Sup Org Level 4 ID", "rule": "lookup level 4 (from top) sup org reference ID" }, 
+
+          { "name": "Sup Org Level 4 Manager ID", "rule": "lookup level 4 (from top) sup org manager employee ID" }, 
+
+          { "name": "Sup Org Level 4 Manager Name", "rule": "lookup level 4 (from top) sup org manager preferred name" }, 
+
+          { "name": "Sup Org Level 4 Name", "rule": "lookup level 4 (from top) sup org name" }, 
+
+          { "name": "Sup Org Level 4 WID", "rule": "straight move" }, 
+
+          { "name": "Sup Org Level 5 ID", "rule": "lookup level 5 (from top) sup org reference ID" }, 
+
+          { "name": "Sup Org Level 5 Manager ID", "rule": "lookup level 5 (from top) sup org manager employee ID" }, 
+
+          { "name": "Sup Org Level 5 Manager Name", "rule": "lookup level 5 (from top) sup org manager preferred name" }, 
+
+          { "name": "Sup Org Level 5 Name", "rule": "lookup level 5 (from top) sup org name" }, 
+
+          { "name": "Sup Org Level 5 WID", "rule": "straight move" }, 
+
+          { "name": "Sup Org Level 6 ID", "rule": "lookup level 6 (from top) sup org reference ID" }, 
+
+          { "name": "Sup Org Level 6 Manager ID", "rule": "lookup level 6 (from top) sup org manager employee ID" }, 
+
+          { "name": "Sup Org Level 6 Manager Name", "rule": "lookup level 6 (from top) sup org manager preferred name" }, 
+
+          { "name": "Sup Org Level 6 Name", "rule": "lookup level 6 (from top) sup org name" }, 
+
+          { "name": "Sup Org Level 6 WID", "rule": "straight move" }, 
+
+          { "name": "Sup Org Level 7 ID", "rule": "lookup level 7 (from top) sup org reference ID" }, 
+
+          { "name": "Sup Org Level 7 Manager ID", "rule": "lookup level 7 (from top) sup org manager employee ID" }, 
+
+          { "name": "Sup Org Level 7 Manager Name", "rule": "lookup level 7 (from top) sup org manager preferred name" }, 
+
+          { "name": "Sup Org Level 7 Name", "rule": "lookup level 7 (from top) sup org name" }, 
+
+          { "name": "Sup Org Level 7 WID", "rule": "straight move" }, 
+
+          { "name": "Sup Org Level 8 ID", "rule": "lookup level 8 (from top) sup org reference ID" }, 
+
+          { "name": "Sup Org Level 8 Manager ID", "rule": "lookup level 8 (from top) sup org manager employee ID" }, 
+
+          { "name": "Sup Org Level 8 Manager Name", "rule": "lookup level 8 (from top) sup org manager preferred name" }, 
+
+          { "name": "Sup Org Level 8 Name", "rule": "lookup level 8 (from top) sup org name" }, 
+
+          { "name": "Sup Org Level 8 WID", "rule": "straight move" }, 
+
+          { "name": "Sup Org Level 9 ID", "rule": "lookup level 9 (from top) sup org reference ID" }, 
+
+          { "name": "Sup Org Level 9 Manager ID", "rule": "lookup level 9 (from top) sup org manager employee ID" }, 
+
+          { "name": "Sup Org Level 9 Manager Name", "rule": "lookup level 9 (from top) sup org manager preferred name" }, 
+
+          { "name": "Sup Org Level 9 Name", "rule": "lookup level 9 (from top) sup org name" }, 
+
+          { "name": "Sup Org Level 9 WID", "rule": "straight move" } 
+
+        ], 
+
+        "Special Instructions": "Department and Sup Org are interchangeable terms" 
+
+      }, 
+
+      { 
+
+        "Table Type": "dimension", 
+
+        "Table Name": "dim_report_to_layers_D", 
+
+        "SCD Type": "Type 2", 
+
+        "Include Effective Date": "No", 
+
+        "Source L1": ["INT6028"], 
+
+        "Source Field Exclusions": ["None"], 
+
+        "Business Key": ["Employee_ID"], 
+
+        "Custom Attributes": [ 
+
+          { "name": "Is Bottom", "rule": "if worker is at the bottom of the reporting chain, Y else N" }, 
+
+          { "name": "Is Direct Report", "rule": "if worker reports directly to manager, Y else N" }, 
+
+          { "name": "Is Indirect Report", "rule": "if worker reports indirectly to manager, Y else N" }, 
+
+          { "name": "Is Top", "rule": "if top most worker in hierarchy, Y else N" }, 
+
+          { "name": "Levels From Parent", "rule": "worker level - parent level" } 
+
+        ], 
+
+        "Special Instructions": "Same concept as dim_sup_org_layers_d except this is the owner EIN of the department. It is a normalized table that has one row per employee per parent employee id." 
+
+      }, 
+
+      { 
+
+        "Table Type": "dimension", 
+
+        "Table Name": "dim_report_to_D", 
+
+        "SCD Type": "Type 2", 
+
+        "Include Effective Date": "No", 
+
+        "Source L1": ["INT6028"], 
+
+        "Source Field Exclusions": ["None"], 
+
+        "Business Key": ["Employee_ID"], 
+
+        "Custom Attributes": [ 
+
+          { "name": "Level 1 Manager ID", "rule": "level 1 employee ID of parent" }, 
+
+          { "name": "Level 1 Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Level 10 Manager ID", "rule": "level 10 employee ID of parent" }, 
+
+          { "name": "Level 10 Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Level 11 Manager ID", "rule": "level 11 employee ID of parent" }, 
+
+          { "name": "Level 11 Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Level 12 Manager ID", "rule": "level 12 employee ID of parent" }, 
+
+          { "name": "Level 12 Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Level 13 Manager ID", "rule": "level 13 employee ID of parent" }, 
+
+          { "name": "Level 13 Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Level 14 Manager ID", "rule": "level 14 employee ID of parent" }, 
+
+          { "name": "Level 14 Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Level 15 Manager ID", "rule": "level 15 employee ID of parent" }, 
+
+          { "name": "Level 15 Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Level 2 Manager ID", "rule": "level 2 employee ID of parent" }, 
+
+          { "name": "Level 2 Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Level 3 Manager ID", "rule": "level 3 employee ID of parent" }, 
+
+          { "name": "Level 3 Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Level 4 Manager ID", "rule": "level 4 employee ID of parent" }, 
+
+          { "name": "Level 4 Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Level 5 Manager ID", "rule": "level 5 employee ID of parent" }, 
+
+          { "name": "Level 5 Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Level 6 Manager ID", "rule": "level 6 employee ID of parent" }, 
+
+          { "name": "Level 6 Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Level 7 Manager ID", "rule": "level 7 employee ID of parent" }, 
+
+          { "name": "Level 7 Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Level 8 Manager ID", "rule": "level 8 employee ID of parent" }, 
+
+          { "name": "Level 8 Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Level 9 Manager ID", "rule": "level 9 employee ID of parent" }, 
+
+          { "name": "Level 9 Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Manager Worker ID", "rule": "straight move (immediate manager EIN)" } 
+
+        ], 
+
+        "Special Instructions": "Flatenned version of the owner EIN of the department." 
+
+      }, 
+
+      { 
+
+        "Table Type": "dimension", 
+
+        "Table Name": "dim_worker_job_D", 
+
+        "SCD Type": "Type 2", 
+
+        "Include Effective Date": "Yes", 
+
+        "Source L1": ["INT0095e", "INT0096", "INT0098"], 
+
+        "Source Field Exclusions": [ 
+
+          "Active Status Date", 
+
+          "Benefits Service Date", 
+
+          "Continuous Service Date", 
+
+          "Contract End Date", 
+
+          "Contract Start Date", 
+
+          "Eligible for Hire", 
+
+          "Eligible for Rehire", 
+
+          "Employment Active Status Flag", 
+
+          "Employment Status", 
+
+          "End Employment Date", 
+
+          "Hire Reason", 
+
+          "Hire Rescinded Flag", 
+
+          "Hired Job Application", 
+
+          "Hired Requisition", 
+
+          "Latest Hire Date", 
+
+          "Original Hire Date", 
+
+          "Primary Termination Reason Category", 
+
+          "Primary Termination Reason Subcategory", 
+
+          "Retired Flag", 
+
+          "Retirement Date", 
+
+          "Retirement Eligibility Date", 
+
+          "Seniority Date", 
+
+          "Termination Date" 
+
+        ], 
+
+        "Business Key": ["Employee_ID", "Effective_date"], 
+
+        "Custom Attributes": [ 
+
+          { "name": "Department Entry Date", "rule": "earliest effective date of when the worker moved into the sup org" }, 
+
+          { "name": "Grade Entry Date", "rule": "earliest effective date of when the worker moved into the grade" }, 
+
+          { "name": "Job Entry Date", "rule": "earliest effective date of when the worker moved into the job profile" }, 
+
+          { "name": "Position Entry Date", "rule": "earliest effective date of when the worker moved into the position" }, 
+
+          { "name": "Work Model Start Date", "rule": "earliest effective date of when the worker moved into the work model" } 
+
+        ], 
+
+        "Special Instructions": "enriched from the three “*DLY_VW” views via as‑of logic (see §6 for algorithm)" 
+
+      }, 
+
+      { 
+
+        "Table Type": "dimension", 
+
+        "Table Name": "dim_worker_status_D", 
+
+        "SCD Type": "Type 2", 
+
+        "Include Effective Date": "Yes", 
+
+        "Source L1": ["INT0095e"], 
+
+        "Source Field Exclusions": [], 
+
+        "Business Key": ["Employee_ID", "effective_date"], 
+
+        "Custom Attributes": [], 
+
+        "Special Instructions": "Only include columns that were listed as Source Field Exclusions on dim_worker_job_d. (see §6 for algorithm)" 
+
+      } 
+
+    ] 
+
+  } 
+
+} 
+
+ 
+
+5.2 Facts 
+
+- fct_worker_movement_F – transaction grain: 1 row per employee_id per effective_date (include sequence_number if needed). Derived from dim_worker_job_D (no direct L1 joins). Resolve all FKs as‑of effective_date within SCD windows. Include FKs to all dimensions , Resolve all PRIOR ROW FKs as‑of effective_date of prior row based on grain within SCD windows. Include PRIOR ROW FKs to all dimensions.  
+
+Add the following metrics (business rules to the right): Base Pay Change Count	if current base pay - previous row <> 0 then 1 else 0, must be active on both rows 
+
+Company Change Count	if company id from current row <> company id on previous effdt row then 1 else 0, must be active on both rows 
+
+Cost Center Change Count	if cost center id from current row <> cost center id on previous effdt row then 1 else 0, must be active on both rows 
+
+Demotion Count	If Job Change = 1 and Current Grade < Previous Grade and Current Status = Active and Previous Status = Active then 1 else 0 
+
+External Hire Count	If Business Process Reason = Hire then 1 else 0 
+
+Grade Change Count	if grade id from current row <> grade id on previous effdt row then 1 else 0, must be active on both rows 
+
+Grade Decrease Count	if grade id from current row < grade id on previous effdt row then 1 else 0, must be active on both rows 
+
+Grade Increase Count	if grade id from current row > grade id on previous effdt row then 1 else 0, must be active on both rows 
+
+Hire Count	External Hire Count + Internal Hire Count 
+
+Internal Hire Count	If Business Process Reason = Change Job and Initiated from a Job Application then 1 else 0 
+
+Involuntary Termination Count           Primary Termination Category = Involuntary 
+
+Job Change Count	if job profile id from current row <> job profile id on previous effdt row then 1 else 0, must be active on both rows 
+
+Lateral Move Count	If Job Change = 1 and Current Grade = Previous Grade and Current Status = Active and Previous Status = Active then 1 else 0 
+
+Location Change Count	if location id from current row <> location id on previous effdt row then 1 else 0, must be active on both rows 
+
+Management Level Change Count  if mgmt level from current row <> mgmt level on previous effdt row then 1 else 0, must be active on both rows 
+
+Management Level Decrease Count              if mgmt level from current row < mgmt level on previous effdt row then 1 else 0, must be active on both rows 
+
+Management Level Increase Count if mgmt level from current row > mgmt level on previous effdt row then 1 else 0, must be active on both rows 
+
+Matrix Organization Change Count if matrix organization id from current row <> matrix organization id on previous effdt row then 1 else 0, must be active on both rows 
+
+Promotion Count	If Job Change = 1 and Current Grade > Previous Grade and Current Status = Active and Previous Status = Active then 1 else 0 
+
+Promotion Count Business Process               If Business Process Reason like "%Promotion%" then 1 else 0 
+
+Regrettable Termination Count           
+
+Rehire Count	If Business Process Reason = Hire > Rehire then 1 else 0 
+
+Structured Termination Count	 
+
+Supervisory Organization Change Count    if sup org id from current row <> sup org id on previous effdt row then 1 else 0, must be active on both rows 
+
+Termination Count	if Business Process = Termiantion Event then 1 else 0 
+
+Unstructured Termination Count       
+
+Voluntary Termination Count	if Primary Termination Category = Voluntary then 1 else 0 
+
+Worker Model Change Count              if work model id from current row <> work model id on previous effdt row then 1 else 0, must be active on both rows 
+
+ 
+ 
+
+- fct_worker_headcount_restat_F – monthly snapshot; restate last 24 months; one row per active (incl. leave) worker at month‑end; as‑of FK resolution.  Include all dimensions. 
+
+Add metric: 
+
+Headcount  if worker status = active then 1 else 0 
+
+ 
+
+[ALGORITHMIC RULES] 
+
+6) Core Algorithms 
+
+ 
+
+6.1) For use in the construction of dim_worker_job_D 
+
+6.1.1) The source of worker job should be built from the union of effective dates per employee from the three *_DLY_VW views:   
+
+   - Job view filter: obsolete IS NULL AND entry_ts = max_ts AND sequence = min_seq 
+
+   - Org view: same three‑part filter plus only include ORGANIZATION types in ('Cost Centre','Company','Supervisory').   
+
+   - Comp view: only obsolete IS NULL.    
+
+6.1.2) For each (employee_id, effective_date) pair in the union, as‑of join to each view using latest effective_date ≤ target (apply the same view filters as noted above (removes rescinds). You will have to do this 3 separate times for the join to the L3 worker org view, once each for 'Cost Centre','Company','Supervisory'. Append the organization reference id to the resulting dataset so that at the end, you have the cost center ID, company ID and supervisory organization ID. 
+
+6.1.3) Assemble one enriched row per (employee_id, effective_date) for dim_worker_job_D.   
+
+Here is an example of SQL to perform the above logic. You can use it as a reference. 
+
+with get_effdts as ( 
+select distinct employee_id, TRANSACTION_EFFECTIVE_DATE 
+from IDP_PRD_LEVEL3.L3_WORKDAY.L3_WORKDAY_WORKER_JOB_DLY a 
+where IDP_OBSOLETE_DATE is null 
+and TRANSACTION_ENTRY_DATE = IDP_MAX_ENTRY_TS 
+and SEQUENCE_NUMBER = IDP_MIN_SEQ_NUM 
+and employee_id='300201906' 
+union 
+select distinct employee_id, TRANSACTION_EFFECTIVE_DATE 
+from IDP_PRD_LEVEL3.L3_WORKDAY.L3_WORKDAY_WORKER_COMP_DLY a 
+where IDP_OBSOLETE_DATE is null 
+and employee_id='300201906' 
+union 
+select distinct employee_id, TRANSACTION_EFFECTIVE_DATE 
+from IDP_PRD_LEVEL3.L3_WORKDAY.L3_WORKDAY_WORKER_ORGANIZATION_DLY a 
+where IDP_OBSOLETE_DATE is null 
+and TRANSACTION_ENTRY_DATE = IDP_MAX_ENTRY_TS 
+and SEQUENCE_NUMBER = IDP_MIN_SEQ_NUM 
+and ORGANIZATION_TYPE in ('Cost Centre','Company','Supervisory') 
+and employee_id='300201906' 
+), worker_job as ( 
+select * 
+from IDP_PRD_LEVEL3.L3_WORKDAY.L3_WORKDAY_WORKER_JOB_DLY a 
+where IDP_OBSOLETE_DATE is null 
+and TRANSACTION_ENTRY_DATE = IDP_MAX_ENTRY_TS 
+and SEQUENCE_NUMBER = IDP_MIN_SEQ_NUM 
+and employee_id='300201906') 
+, worker_comp as ( 
+select *  
+from IDP_PRD_LEVEL3.L3_WORKDAY.L3_WORKDAY_WORKER_COMP_DLY a 
+where IDP_OBSOLETE_DATE is null 
+and employee_id='300201906' 
+) 
+, worker_org as ( 
+select  
+         EMPLOYEE_ID 
+        , TRANSACTION_EFFECTIVE_DATE 
+        , ORGANIZATION_TYPE 
+        , ORGANIZATION_ID 
+ 
+from IDP_PRD_LEVEL3.L3_WORKDAY.L3_WORKDAY_WORKER_ORGANIZATION_DLY a 
+where IDP_OBSOLETE_DATE is null 
+and TRANSACTION_ENTRY_DATE = IDP_MAX_ENTRY_TS 
+and SEQUENCE_NUMBER = IDP_MIN_SEQ_NUM 
+and ORGANIZATION_TYPE in ('Cost Centre','Company','Supervisory') 
+and employee_id='300201906' 
+), get_job as ( 
+select get_effdts.employee_id, get_effdts.TRANSACTION_EFFECTIVE_DATE, row_number() over (partition by get_effdts.employee_id, get_effdts.TRANSACTION_EFFECTIVE_DATE order by worker_job.TRANSACTION_EFFECTIVE_DATE desc) as rn-- 
+        , IDP_EMPLOYEE_STATUS 
+        , POSITION_ID 
+        , EFFECTIVE_DATE 
+        , WORKER_TYPE 
+        , WORKER_SUB_TYPE 
+        , BUSINESS_TITLE 
+        , BUSINESS_SITE_ID 
+        , MAILSTOP_FLOOR 
+        , WORKER_STATUS 
+        , ACTIVE 
+        , ACTIVE_STATUS_DATE 
+        , HIRE_DATE 
+        , ORIGINAL_HIRE_DATE 
+        , HIRE_REASON 
+        , EMPLOYMENT_END_DATE 
+        , CONTINUOUS_SERVICE_DATE 
+        , FIRST_DAY_OF_WORK 
+        , EXPECTED_RETIREMENT_DATE 
+        , RETIREMENT_ELIGIBILITY_DATE 
+        , RETIRED 
+        , SENIORITY_DATE 
+        , SEVERANCE_DATE 
+        , BENEFITS_SERVICE_DATE 
+        , COMPANY_SERVICE_DATE 
+        , TIME_OFF_SERVICE_DATE 
+        , VESTING_DATE 
+        , TERMINATED 
+        , TERMINATION_DATE 
+        , PAY_THROUGH_DATE 
+        , PRIMARY_TERMINATION_REASON 
+        , PRIMARY_TERMINATION_CATEGORY 
+        , TERMINATION_INVOLUNTARY 
+        , SECONDARY_TERMINATION_REASON 
+        , LOCAL_TERMINATION_REASON 
+        , NOT_ELIGIBLE_FOR_HIRE 
+        , REGRETTABLE_TERMINATION 
+        , HIRE_RESCINDED 
+        , RESIGNATION_DATE 
+        , LAST_DAY_OF_WORK 
+        , LAST_DATE_FOR_WHICH_PAID 
+        , EXPECTED_DATE_OF_RETURN 
+        , NOT_RETURNING 
+        , RETURN_UNKNOWN 
+        , PROBATION_START_DATE 
+        , PROBATION_END_DATE 
+        , ACADEMIC_TENURE_DATE 
+        , HAS_INTERNATIONAL_ASSIGNMENT 
+        , HOME_COUNTRY 
+        , HOST_COUNTRY 
+        , INTERNATIONAL_ASSIGNMENT_TYPE 
+        , START_DATE_OF_INTERNATIONAL_ASSIGNMENT 
+        , END_DATE_OF_INTERNATIONAL_ASSIGNMENT 
+        , REHIRE 
+        , ELIGIBLE_FOR_REHIRE 
+        , ACTION 
+        , ACTION_CODE 
+        , ACTION_REASON 
+        , ACTION_REASON_CODE 
+        , MANAGER_ID 
+        , SOFT_RETIREMENT_INDICATOR 
+        , JOB_PROFILE_ID 
+        , PLANNED_END_CONTRACT_DATE 
+        , JOB_ENTRY_DT 
+        , STOCK_GRANTS 
+        , TIME_TYPE 
+        , SUPERVISORY_ORGANIZATION 
+        , LOCATION 
+        , JOB_TITLE 
+        , FRENCH_JOB_TITLE 
+        , SHIFT_NUMBER 
+        , SCHEDULED_WEEKLY_HOURS 
+        , DEFAULT_WEEKLY_HOURS 
+        , SCHEDULED_FTE 
+ 
+from get_effdts left join worker_job on (get_effdts.employee_id = worker_job.employee_id and worker_job.TRANSACTION_EFFECTIVE_DATE <= get_effdts.TRANSACTION_EFFECTIVE_DATE) 
+), get_comp as ( 
+ 
+select get_job.*, row_number() over (partition by get_job.employee_id, get_job.TRANSACTION_EFFECTIVE_DATE order by worker_comp.TRANSACTION_EFFECTIVE_DATE desc) as rn2--comp fields 
+ 
+        , COMPENSATION_PACKAGE_PROPOSED 
+        , COMPENSATION_GRADE_PROPOSED 
+        , COMP_GRADE_PROFILE_PROPOSED 
+        , COMPENSATION_STEP_PROPOSED 
+        , PAY_RANGE_MINIMUM 
+        , PAY_RANGE_MIDPOINT 
+        , PAY_RANGE_MAXIMUM 
+        , BASE_PAY_PROPOSED_AMOUNT 
+        , BASE_PAY_PROPOSED_CURRENCY 
+        , BASE_PAY_PROPOSED_FREQUENCY 
+        , BENEFITS_ANNUAL_RATE_ABBR 
+        , PAY_RATE_TYPE 
+
+        , COMPENSATION 
+         
+from get_job left join worker_comp on (get_job.employee_id = worker_comp.employee_id and worker_comp.TRANSACTION_EFFECTIVE_DATE <= get_job.TRANSACTION_EFFECTIVE_DATE) 
+where get_job.rn = 1 
+), get_cc as ( 
+select get_comp.* , row_number() over (partition by get_comp.employee_id, get_comp.TRANSACTION_EFFECTIVE_DATE order by worker_org.TRANSACTION_EFFECTIVE_DATE desc) as rn3--comp fields 
+ 
+, ORGANIZATION_ID as COST_CENTER_ID 
+ 
+from get_comp left join worker_org on (get_comp.employee_id = worker_org.employee_id and worker_org.TRANSACTION_EFFECTIVE_DATE <= get_comp.TRANSACTION_EFFECTIVE_DATE and worker_org.ORGANIZATION_TYPE = 'Cost Centre') 
+where get_comp.rn2 = 1 
+) 
+ 
+, get_company as ( 
+select get_cc.* , row_number() over (partition by get_cc.employee_id, get_cc.TRANSACTION_EFFECTIVE_DATE order by worker_org.TRANSACTION_EFFECTIVE_DATE desc) as rn4--comp fields 
+ 
+, ORGANIZATION_ID as COMPANY_ID 
+ 
+from get_cc left join worker_org on (get_cc.employee_id = worker_org.employee_id and worker_org.TRANSACTION_EFFECTIVE_DATE <= get_cc.TRANSACTION_EFFECTIVE_DATE and worker_org.ORGANIZATION_TYPE = 'Company') 
+where get_cc.rn3 = 1 
+) 
+ 
+, get_sup as ( 
+select get_company.* , row_number() over (partition by get_company.employee_id, get_company.TRANSACTION_EFFECTIVE_DATE order by worker_org.TRANSACTION_EFFECTIVE_DATE desc) as rn5--comp fields 
+ 
+, ORGANIZATION_ID as SUP_ORG_ID 
+ 
+from get_company left join worker_org on (get_company.employee_id = worker_org.employee_id and worker_org.TRANSACTION_EFFECTIVE_DATE <= get_company.TRANSACTION_EFFECTIVE_DATE and worker_org.ORGANIZATION_TYPE = 'Supervisory') 
+where get_company.rn4 = 1 
+) 
+
+6.1.4) Frame SCD2 windows (valid_from, valid_to, is_current) with no overlaps; open‑ended date 9999‑12‑31.  Include effective date from and effective date to fields. These should also be part of the SCD2 window. 
+
+6.1.5 Expect new rows, updated rows, deleted rows that the SCD logic will have to account for.  
+
+6.1.6 Also include a current job row SCD field that will be true for the single most recent row for each employee based on Effdt. There should only ever be 1 current job row for an employee at any given point in time. 
+
+6.2) dim_worker_status_D = thin derivation from Worker Job (same grain), copying SCD windows. Include effective date from and effective date to fields. These should also be part of the SCD2 window.  
+
+6.3) fct_worker_movement_F = derived from Worker Job; resolve FKs as‑of effective_date. 
+
+ 
+
+6.4) Rescinds & corrections   
+
+- Populate IDP_OBSOLETE_DATE in all three source L3 tables using INT270. Treat non‑null as ignore/obsolete. For Worker Movement, mark soft deletes and set rescind/correction lineage when indicated.  
+
+ 
+
+--- 
+
+[OUTPUT EXPECTATIONS] 
+
+7) Deliverables (emit under /artifacts) 
+
+7.1) Generation: Python scripts that synthesize CSVs per feed with realistic distributions and referential integrity; seeds for reproducibility.   
+
+7.2) SQL:   
+
+   - L1 DDL + COPY statements.   
+
+   - Source L3 DDL for the three _DLY tables (Job/Org with full IDP_*, Comp with only IDP_OBSOLETE_DATE), their loads (including INT270 join), and the three _DLY_VW views with filters exactly as above.    
+
+   - L3 DDL for dims/facts; SCD2 merges; snapshot builders; FK resolution “as‑of” logic.   
+
+7.3) Runbooks: end‑to‑end run ordering, switches for dry_run, and environment variable examples.   
+
+7.4) QA/Evidence: row counts, PK/FK checks, SCD2 overlap checks, as‑of coverage, restatement idempotence, and rescind propagation tests.   
+
+7.5) README: modeling standards (CDM/LDM/PDM), naming, keying, star schema rationale.  
+
+ 
+
+--- 
+
+8) Acceptance Criteria 
+
+- Feed conformance: file names/cadence match spec; sensitive fields handled with synthetic values only.    
+
+- Dimensions: SCD2 windows valid (no overlaps, one is_current per BK).   
+
+- Facts: FK resolution ≥ 99.9% as‑of date; rescinds and corrections reflected.   
+
+- Snapshots: monthly; Headcount restates 24 months  
+
+- Conventions: table names, suffixes, and schema rules adhere to the org’s Redshift standards.  
+
+ 
+
+--- 
+
+ 
+
+9) Output on Completion   
+
+Print:   
+
+- a directory tree of /artifacts;   
+
+- a run summary by feed/day (rows generated, S3 path, L1 rows loaded, L3 rows produced);   
+
+- a QA summary per criterion with links to evidence files. 
+
+ 
+
+--- 
+
+[PROHIBITIONS] 
+
+10) Guardrails (must‑follow) 
+
+- Synthetic data only; never fetch real identities. Respect sensitivity flags; keep PII in dims and out of facts; mask/tokenize where appropriate.    
+
+- Portability: no embedded secrets; parameterize account‑specific values (ARNs, bucket names).   
+
+- Reproducibility: seeded RNG; deterministic hashing for keys that span feeds/days.   
+
+- Naming & modeling: apply best practice star‑schema conventions and reserved‑word guidance.  
+
+ 
+
+If any conflicting instruction appears in this prompt, the agent MUST prioritize: 1. IDP-column rules 2. SCD2 rules 3. Table/column definitions 4. Algorithmic rules 5. YAML runtime inputs 6. General commentary 
+
+ 
+
+You MUST NOT:  
+
+omit required IDP fields  
+
+generate views that do not apply the filters above  
+
+change grain  
+
+change SCD2 logic  
+
+approximate business rules 

@@ -30,3 +30,7 @@ lambda-package.zip
 # Temporary upload bridge files
 Desktop/aws-upload/lambda-package.zip
 Desktop/aws-upload/reload_*.sql
+
+# HR Datamart V2 - generated data (goes to S3, not git)
+hr-datamart-v2/data/feeds/*.csv
+hr-datamart-v2/analysis/*.png

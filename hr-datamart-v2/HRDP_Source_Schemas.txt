@@ -1,0 +1,4989 @@
+
+
+[INPUT_SCHEMA] 
+
+2) Source Feeds to Simulate → S3 CSV   
+
+Generate synthetic CSVs for the following Workday feeds; honor names, cadence, and PII notes. Filenames must be:   
+
+<basename>.[yyyy][mm][dd][hh][MM][ss].csv (e.g., workday.hrdp.dly_location.full.20260205...csv).  
+
+Inputs: 
+
+- INT6020 Grade Profile → workday.hrdp.dly_grade_profile.full.  
+
+  "fields": [ 
+
+    { 
+
+      "name": "Grade_ID", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Grade_Name", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Grade_Profile_Currency_Code", 
+
+      "type": "varchar(3)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Grade_Profile_ID", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Effective_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Grade_Profile_Name", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Grade_Profile_Number_of_Segements", 
+
+      "type": "integer", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Grade_Profile_Salary_Range_Maximum", 
+
+      "type": "decimal(19,4)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Grade_Profile_Salary_Range_Midpoint", 
+
+      "type": "decimal(19,4)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Grade_Profile_Salary_Range_Minimjum", 
+
+      "type": "decimal(19,4)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Grade_Profile_Segement_1_Top", 
+
+      "type": "decimal(19,4)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Grade_Profile_Segement_2_Top", 
+
+      "type": "decimal(19,4)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Grade_Profile_Segement_3_Top", 
+
+      "type": "decimal(19,4)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Grade_Profile_Segement_4_Top", 
+
+      "type": "decimal(19,4)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Grade_Profile_Segement_5_Top", 
+
+      "type": "decimal(19,4)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    } 
+
+  ] 
+
+} 
+
+ 
+
+- INT6021 Job Profile → workday.hrdp.dly_job_profile.full.*  
+
+{ 
+
+  "fields": [ 
+
+    { 
+
+      "name": "Compensation_Grade", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Critical_Job_Flag", 
+
+      "type": "char(1)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Difficult_to_Fill_Flag", 
+
+      "type": "char(1)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Inactive_Flag", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Category_Code", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Category_Name", 
+
+      "type": "varchar(100)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Exempt_Canada", 
+
+      "type": "varchar(50)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Exempt_US", 
+
+      "type": "varchar(50)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Family", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Family_Group", 
+
+      "type": "varchar(100)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Family_Group_Name", 
+
+      "type": "varchar(50)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Family_Name", 
+
+      "type": "varchar(100)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Level_Code", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Level_Name", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Profile_Code", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Profile_Description", 
+
+      "type": "varchar(65535)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Profile_ID", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": true, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Profile_Name", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Profile_Summary", 
+
+      "type": "varchar(65535)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Profile_WID", 
+
+      "type": "varchar(32)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Title", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Management_Level_Code", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Management_Level_Name", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Pay_Rate_Type", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Public_Job", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Work_Shift_Required", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "JOB_MATRIX", 
+
+      "type": "varchar(100)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "IS_PEOPLE_MANAGER", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "IS_MANAGER", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "FREQUENCY", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    } 
+
+  ] 
+
+} 
+
+ 
+
+INT6022 Job Classification 
+
+{ 
+
+  "fields": [ 
+
+    { 
+
+      "name": "Job_Profile_ID", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": true, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": null 
+
+    }, 
+
+    { 
+
+      "name": "Job_Profile_WID", 
+
+      "type": "varchar(32)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": null 
+
+    }, 
+
+    { 
+
+      "name": "AAP_Job_Group", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": null 
+
+    }, 
+
+    { 
+
+      "name": "Bonus_Eligibility", 
+
+      "type": "varchar(100)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": null 
+
+    }, 
+
+    { 
+
+      "name": "Customer_Facing", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": null 
+
+    }, 
+
+    { 
+
+      "name": "EEO1_Code", 
+
+      "type": "varchar(100)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": null 
+
+    }, 
+
+    { 
+
+      "name": "Job_Collection", 
+
+      "type": "varchar(100)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": null 
+
+    }, 
+
+    { 
+
+      "name": "Loan_Originator_Code", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": null 
+
+    }, 
+
+    { 
+
+      "name": "National_Occupation_Code", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": null 
+
+    }, 
+
+    { 
+
+      "name": "Occupation_Code", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": null 
+
+    }, 
+
+    { 
+
+      "name": "Recruitment_Channel", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": null 
+
+    }, 
+
+    { 
+
+      "name": "Standard_Occupation_Code", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": null 
+
+    }, 
+
+    { 
+
+      "name": "Stock", 
+
+      "type": "varchar(100)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": null 
+
+    } 
+
+  ] 
+
+} 
+
+ 
+
+- INT6023 Location (≈5k rows) → workday.hrdp.dly_location.full.*.  
+
+{ 
+
+  "fields": [ 
+
+    { 
+
+      "name": "Location_ID", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Location_WID", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Location_Name", 
+
+      "type": "varchar(100)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Inactive", 
+
+      "type": "varchar(5)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Address_Line_1", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Address_Line_2", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "City", 
+
+      "type": "varchar(100)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Region", 
+
+      "type": "varchar(2)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "REGION_NAME", 
+
+      "type": "varchar(50)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Country", 
+
+      "type": "varchar(2)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "COUNTRY_NAME", 
+
+      "type": "varchar(50)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Location_Postal_Code", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Location_Identifier", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Latitude", 
+
+      "type": "decimal(11,8)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Longitude", 
+
+      "type": "decimal(11,8)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Location_Type", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Location_Usage_Type", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Trade_Name", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Worksite_ID_Code", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    } 
+
+  ] 
+
+} 
+
+ 
+
+- INT6024 Company (≈100 rows) → workday.hrdp.dly_company.full.*.  
+
+{ 
+
+  "fields": [ 
+
+    { 
+
+      "name": "Company_ID", 
+
+      "type": "varchar(15)", 
+
+      "mapping_logic": null, 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal", 
+
+      "comments": null 
+
+    }, 
+
+    { 
+
+      "name": "Company_WID", 
+
+      "type": "varchar(32)", 
+
+      "mapping_logic": null, 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal", 
+
+      "comments": null 
+
+    }, 
+
+    { 
+
+      "name": "Company_Name", 
+
+      "type": "varchar(100)", 
+
+      "mapping_logic": null, 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal", 
+
+      "comments": null 
+
+    }, 
+
+    { 
+
+      "name": "Company_Code", 
+
+      "type": "varchar(15)", 
+
+      "mapping_logic": null, 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal", 
+
+      "comments": null 
+
+    }, 
+
+    { 
+
+      "name": "Business_Unit", 
+
+      "type": "varchar(30)", 
+
+      "mapping_logic": "Only pull up Company Hierarchy associated with the company that has the subtype - Business Unit.", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": null, 
+
+      "comments": null 
+
+    }, 
+
+    { 
+
+      "name": "Company_Subtype", 
+
+      "type": "varchar(15)", 
+
+      "mapping_logic": null, 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal", 
+
+      "comments": null 
+
+    }, 
+
+    { 
+
+      "name": "Company_Currency", 
+
+      "type": "varchar(3)", 
+
+      "mapping_logic": null, 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal", 
+
+      "comments": null 
+
+    } 
+
+  ] 
+
+} 
+
+ 
+
+- INT6025 Cost Center (≈35k rows) → workday.hrdp.dly_cost_center.full.*.  
+
+{ 
+
+  "fields": [ 
+
+    { 
+
+      "name": "Cost_Center_ID", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Cost_Center_WID", 
+
+      "type": "varchar(32)", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Cost_Center_Code", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Cost_Center_Name", 
+
+      "type": "varchar(100)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Hierarchy", 
+
+      "type": "varchar(2000)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Subtype", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    } 
+
+  ] 
+
+} 
+
+`` 
+
+ 
+
+- INT0095E Worker Job,  
+
+{ 
+
+  "fields": [ 
+
+    { 
+
+      "name": "Employee_ID", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": true, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Transaction_WID", 
+
+      "type": "varchar(32)", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Transaction_Effective_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Transaction_Entry_Date", 
+
+      "type": "datetime", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Transaction_Type", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Position_ID", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Effective_Date", 
+
+      "type": "date", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Worker_Type", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Worker_Sub-Type", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Business_Title", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": true, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Business_Site_ID", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Mailstop_Floor", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Worker_Status", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Active", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Active_Status_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Hire_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Original_Hire_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Hire_Reason", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Employment_End_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Continuous_Service_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "First_Day_of_Work", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Expected_Retirement_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Retirement_Eligibility_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Retired", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Seniority_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Severance_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Benefits_Service_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Company_Service_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Time_Off_Service_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Vesting_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Terminated", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Termination_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Pay_Through_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Primary_Termination_Reason", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Primary_Termination_Category", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Termination_Involuntary", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Secondary_Termination_Reason", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Local_Termination_Reason", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Not_Eligible_for_Hire", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Regrettable_Termination", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Hire_Rescinded", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Resignation_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Last_Day_of_Work", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Last_Date_for_Which_Paid", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Expected_Date_of_Return", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Not_Returning", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Return_Unknown", 
+
+      "type": "textboolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Probation_Start_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Probation_End_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Academic_Tenure_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Has_International_Assignment", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Home_Country", 
+
+      "type": "varchar(50)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Host_Country", 
+
+      "type": "varchar(50)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "International_Assignment_Type", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Start_Date_of_International_Assignment", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "End_Date_of_International_Assignment", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Rehire", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Eligible_For_Rehire", 
+
+      "type": "char(1)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Action", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Action_Code", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Action_Reason", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Action_Reason_Code", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Manager_ID", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": true, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Soft_Retirement_Indicator", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Profile_ID", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Sequence_Number", 
+
+      "type": "number", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Planned_End_Contract_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Entry_Dt", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Stock_Grants", 
+
+      "type": "text", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Time_Type", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Supervisory_Organization", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Location", 
+
+      "type": "varchar(100)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Title", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": true, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "French_Job_Title", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": true, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Shift_Number", 
+
+      "type": "number", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Scheduled_Weekly_Hours", 
+
+      "type": "decimal(3,1)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Default_Weekly_Hours", 
+
+      "type": "decimal(3,1)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Scheduled_FTE", 
+
+      "type": "number", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Work_Model_Start_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Work_Model_Type", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Worker_Workday_ID", 
+
+      "type": "varchar(32)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    } 
+
+  ] 
+
+} 
+
+ 
+
+- INT0096 Worker Organization,  
+
+{ 
+
+  "fields": [ 
+
+    { 
+
+      "name": "Employee_ID", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": true, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Transaction_WID", 
+
+      "type": "varchar(32)", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Transaction_Effective_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Transaction_Entry_Date", 
+
+      "type": "datetime", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Transaction_Type", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Organization_ID", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Organization_Type", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Sequence_Number", 
+
+      "type": "number", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Worker_Workday_ID", 
+
+      "type": "varchar(32)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    } 
+
+  ] 
+
+} 
+
+ 
+
+- INT0098 Worker Compensation,  
+
+{ 
+
+  "fields": [ 
+
+    { 
+
+      "name": "Employee_ID", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": true, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Transaction_WID", 
+
+      "type": "varchar(32)", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Transaction_Effective_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Transaction_Entry_Moment", 
+
+      "type": "datetime", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Transaction_Type", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Compensation_Package_Proposed", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Compensation_Grade_Proposed", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Comp_Grade_Profile_Proposed", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Compensation_Step_Proposed", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Pay_Range_Minimum", 
+
+      "type": "number", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Pay_Range_Midpoint", 
+
+      "type": "number", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Pay_Range_Maximum", 
+
+      "type": "number", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Base_Pay_Proposed_Amount", 
+
+      "type": "number", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Base_Pay_Proposed_Currency", 
+
+      "type": "varchar(3)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Base_Pay_Proposed_Frequency", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Benefits_Annual_Rate_ABBR", 
+
+      "type": "number", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Pay_Rate_Type", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Compensation", 
+
+      "type": "number", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Worker_Workday_ID", 
+
+      "type": "varchar(32)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    } 
+
+  ] 
+
+} 
+
+ 
+
+- INT6032 Positions,  
+
+{ 
+
+  "fields": [ 
+
+    { 
+
+      "name": "Position_ID", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Supervisory_Organization", 
+
+      "type": "varchar(100)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Effective_Date", 
+
+      "type": "date", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Reason", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Worker_Type", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Worker_Sub_Type", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Profile", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Job_Title", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": true, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Business_Title", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": true, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Time_Type", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Location", 
+
+      "type": "varchar(100)", 
+
+ 
+
+- INT6028 Department Hierarchy,  
+
+{ 
+
+  "fields": [ 
+
+    { 
+
+      "name": "Department_ID", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Department_WID", 
+
+      "type": "varchar(32)", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Department_Name", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Dept_Name_with_Manager_Name", 
+
+      "type": "varchar(200)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Active", 
+
+      "type": "boolean", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Parent_Dept_ID", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Owner_EIN", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": true, 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "name": "Department_Level", 
+
+      "type": "integer", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "PRIMARY_LOCATION_CODE", 
+
+      "type": "varchar(15)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Type", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "Subtype", 
+
+      "type": "varchar(30)", 
+
+      "primary_key": false, 
+
+      "nullable": true, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    } 
+
+  ] 
+
+} 
+
+ 
+
+- INT270 Rescinded  
+
+{ 
+
+  "fields": [ 
+
+    { 
+
+      "name": "workday_id", 
+
+      "type": "varchar(32)", 
+
+      "primary_key": true, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "idp_table", 
+
+      "type": "varchar(256)", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "name": "rescinded_moment", 
+
+      "type": "datetime", 
+
+      "primary_key": false, 
+
+      "nullable": false, 
+
+      "pci": false, 
+
+      "pii": false, 
+
+      "sensitivity": "Internal" 
+
+    } 
+
+  ] 
+
+} 
+
+ 
+
+INT6027_Matrix_Organization 
+
+{ 
+
+  "fields": [ 
+
+    { 
+
+      "field_name": "Matrix_Organization_ID", 
+
+      "data_type": "Variable characters (30)", 
+
+      "primary_key": "Y", 
+
+      "nullable": "N", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Matrix_Organization_Status", 
+
+      "data_type": "Variable characters (30)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Maxtrix_Organization_Name", 
+
+      "data_type": "Variable characters (200)", 
+
+      "primary_key": "N", 
+
+      "nullable": "N", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Maxtrix_Organization_Code", 
+
+      "data_type": "Variable characters (30)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Matrix_Organization_Type", 
+
+      "data_type": "Variable characters (15)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Matrix_Organization_SubType", 
+
+      "data_type": "Variable characters (15)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    } 
+
+  ] 
+
+} 
+
+ 
+
+INT6031_Worker_Profile 
+
+ 
+
+{ 
+
+  "fields": [ 
+
+    { 
+
+      "field_name": "Bank_of_the_West_Employee_ID", 
+
+      "data_type": "Variable characters (10)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "field_name": "Date_of_Birth", 
+
+      "data_type": "Date", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "field_name": "Enterprise_ID", 
+
+      "data_type": "Variable characters (50)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Race_Ethnicity", 
+
+      "data_type": "Variable characters (100)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "field_name": "Gender", 
+
+      "data_type": "Variable characters (15)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "field_name": "Gender_Identity", 
+
+      "data_type": "Variable characters (50)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "field_name": "Indigenous", 
+
+      "data_type": "Variable characters (30)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "field_name": "Home_Addres_Postal_Code", 
+
+      "data_type": "Variable characters (20)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "field_name": "Home_Address_City", 
+
+      "data_type": "Variable characters (50)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "field_name": "Home_Address_Country", 
+
+      "data_type": "Variable characters (2)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Home_Address_Region", 
+
+      "data_type": "Variable characters (2)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Last_Name", 
+
+      "data_type": "Variable characters (100)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "Y", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Legal_First_Name", 
+
+      "data_type": "Variable characters (100)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "Y", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Legal_Full_Name", 
+
+      "data_type": "Variable characters (100)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "Y", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Legal_Full_Name_Formatted", 
+
+      "data_type": "Variable characters (100)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "Y", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Military_Status", 
+
+      "data_type": "Variable characters (100)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "field_name": "Preferred_First_Name", 
+
+      "data_type": "Variable characters (100)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "Y", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Preferred_Full_Name", 
+
+      "data_type": "Variable characters (100)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "Y", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Preferred_Full_Name_Formatted", 
+
+      "data_type": "Variable characters (100)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "Y", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Primary_Work_Email_Address", 
+
+      "data_type": "Variable characters (100)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "Y", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Secondary_Work_Email_Address", 
+
+      "data_type": "Variable characters (100)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "Y", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Sexual_Orientation", 
+
+      "data_type": "Variable characters (50)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "field_name": "Worker_ID", 
+
+      "data_type": "Variable characters (15)", 
+
+      "primary_key": "Y", 
+
+      "nullable": "N", 
+
+      "pci_data": "N", 
+
+      "pii_data": "Y", 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "field_name": "Junior_Senior", 
+
+      "data_type": "Variable characters (10)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Product_Sector_Group", 
+
+      "data_type": "Variable characters (15)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Preferred_Language", 
+
+      "data_type": "Variable characters (50)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Bonus/Equity_Earliest_Retirement_Date", 
+
+      "data_type": "Date", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Class_Year", 
+
+      "data_type": "Variable characters (2)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Admin_FTE", 
+
+      "data_type": "Decimal (4,2)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "CONSOLIDATED_TITLE", 
+
+      "data_type": "Variable characters (30)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "GENERATION", 
+
+      "data_type": "Variable characters (50)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "HOME_ADDRESS_COUNTRY_NAME", 
+
+      "data_type": "Variable characters (50)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "HOME_ADDRESS_REGION_NAME", 
+
+      "data_type": "Variable characters (50)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "INDIGENOUS", 
+
+      "data_type": "Variable characters (30)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Confidential" 
+
+    }, 
+
+    { 
+
+      "field_name": "PENSIONABLE_YRS_OF_SERVICE", 
+
+      "data_type": "Decimal (6,3)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    }, 
+
+    { 
+
+      "field_name": "Worker_Workday_ID", 
+
+      "data_type": "Variable characters (32)", 
+
+      "primary_key": "N", 
+
+      "nullable": "Y", 
+
+      "pci_data": "N", 
+
+      "pii_data": "N", 
+
+      "sensitivity": "Internal" 
+
+    } 
+
+  ] 
+
+} 
+
+ 
+
+ 
+
+ 
+
+Emit a JSON data dictionary per feed (columns, types, PK/nullable, sensitivity). 
+
+--- 

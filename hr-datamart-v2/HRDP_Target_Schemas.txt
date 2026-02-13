@@ -1,0 +1,895 @@
+
+ 
+
+
+5.1 Dimensions 
+
+{ 
+
+  "jsonInstructions": { 
+
+    "fields": [ 
+
+      { 
+
+        "name": "Table Type", 
+
+        "description": "type of table - either fact or dimension", 
+
+        "allowedValues": ["fact", "dimension"] 
+
+      }, 
+
+      { 
+
+        "name": "Table Name", 
+
+        "description": "name of the table to use" 
+
+      }, 
+
+      { 
+
+        "name": "SCD Type", 
+
+        "description": "type of SCD logic to apply", 
+
+        "allowedValues": ["Type 1", "Type 2", "Type 3"] 
+
+      }, 
+
+      { 
+
+        "name": "Include Effective Date", 
+
+        "description": "if yes then effective date is part of the natural id, and implies that we will include effective_from, effective_to, soft delete fields in addition to standard SCD fields. Effective_to will be part of the SCD check to help manage corrections and deletions. This will need to be included in the MD5 hash.", 
+
+        "allowedValues": ["Yes", "No"] 
+
+      }, 
+
+      { 
+
+        "name": "Source L1", 
+
+        "description": "main source of the table, include fields from the source in the table definition unless called out in the source field exclusion section" 
+
+      }, 
+
+      { 
+
+        "name": "Source Field Exclusions", 
+
+        "description": "fields to exclude from L1 tables" 
+
+      }, 
+
+      { 
+
+        "name": "Business Key", 
+
+        "description": "business key to use for determining changes. Also referred to as natural ID" 
+
+      }, 
+
+      { 
+
+        "name": "Custom Attributes", 
+
+        "description": "additional fields to include. Also includes the business rule to use to calculate it." 
+
+      }, 
+
+      { 
+
+        "name": "Special Instructions", 
+
+        "description": "any table-specific processing notes or rules", 
+
+        "optional": true 
+
+      } 
+
+    ], 
+
+
+    "data": [ 
+
+      { 
+
+        "Table Type": "dimension", 
+
+        "Table Name": "dim_day_D", 
+
+        "SCD Type": "Type 1", 
+
+        "Include Effective Date": "No", 
+
+        "Source L1": [], 
+
+        "Source Field Exclusions": [], 
+
+        "Business Key": ["day_dt"], 
+
+        "Custom Attributes": [ 
+
+          { "name": "Day Abbr", "rule": "3 Character day abbreviation" }, 
+
+          { "name": "Day Date", "rule": "day in date format" }, 
+
+          { "name": "Day Name", "rule": "Full day name (Monday)" }, 
+
+          { "name": "Day of Month", "rule": "day of month (1-31)" }, 
+
+          { "name": "Day of Week", "rule": "day of week (1-7, sunday = 1)" }, 
+
+          { "name": "Day of Year", "rule": "day of the year (1-366)" }, 
+
+          { "name": "Day SK", "rule": "integer representing the date (yyyymmdd)" }, 
+
+          { "name": "First Day of Fiscal Quarter", "rule": "if first day of fiscal quarter then Y else N" }, 
+
+          { "name": "First Day of Fiscal Year", "rule": "if first day of fiscal year then Y else N" }, 
+
+          { "name": "First Day of Month", "rule": "if first day of month then Y else N" }, 
+
+          { "name": "First Day of Quarter", "rule": "if first day of quarter then Y else N" }, 
+
+          { "name": "First Day of Week", "rule": "if first day of week then Y else N (sunday)" }, 
+
+          { "name": "First Day of Year", "rule": "if first day of year then Y else N" }, 
+
+          { "name": "Fiscal Quarter Abbr", "rule": "Quarter Abbriviation (Q + month of quarter) based on Fiscal Calendar" }, 
+
+          { "name": "Fiscal Quarter Name", "rule": "Quarter full name Q[n] YYYY based on Fiscal Calendar" }, 
+
+          { "name": "Fiscal Quarter Num", "rule": "Quarter of year number (1-3) based on Fiscal Calendar" }, 
+
+          { "name": "Fiscal Year Name", "rule": "character YYYY format (based on fiscal calendar)" }, 
+
+          { "name": "Fiscal Year Num", "rule": "integer YYYY format (based on fiscal calendar)" }, 
+
+          { "name": "Is Canada Holiday", "rule": "if canadian holiday then Y else N" }, 
+
+          { "name": "Is US Holiday", "rule": "if US holiday then Y else N" }, 
+
+          { "name": "Is Weekend", "rule": "if day is Saturday or Sunday then Y else N" }, 
+
+          { "name": "Last Day of Fiscal Quarter", "rule": "if last day of fiscal quarter then Y else N" }, 
+
+          { "name": "Last Day of Fiscal Year", "rule": "if last day of fiscal year then Y else N" }, 
+
+          { "name": "Last Day of Month", "rule": "if last day of month then Y else N" }, 
+
+          { "name": "Last Day of Quarter", "rule": "if last day of quarter then Y else N" }, 
+
+          { "name": "Last Day of Week", "rule": "if last day of week then Y else N (sunday)" }, 
+
+          { "name": "Last Day of Year", "rule": "if last day of year then Y else N" }, 
+
+          { "name": "Month Abbr", "rule": "3 character month abbriviation, mixed case" }, 
+
+          { "name": "Month Name", "rule": "Full month name, mixed case" }, 
+
+          { "name": "Month of Fiscal Quarter", "rule": "month of quater based on fiscal year (1-3)" }, 
+
+          { "name": "Month of Fiscal Year", "rule": "month of year based on fiscal year (1-12)" }, 
+
+          { "name": "Month of Quarter", "rule": "month of quater based on calendar year (1-3)" }, 
+
+          { "name": "Month of Year", "rule": "month of year based on calendar year (1-12)" }, 
+
+          { "name": "Quarter Abbr", "rule": "Quarter Abbriviation (Q + month of quarter)" }, 
+
+          { "name": "Quarter Name", "rule": "Quarter full name Q[n] YYYY" }, 
+
+          { "name": "Quarter Num", "rule": "Quarter of year number (1-3)" }, 
+
+          { "name": "Week of Month", "rule": "Week of the month, starts with the first day of the month" }, 
+
+          { "name": "Week of Year", "rule": "week of the year, starts with the first sunday of the year" }, 
+
+          { "name": "Year Name", "rule": "character YYYY format" }, 
+
+          { "name": "Year Num", "rule": "integer YYYY format" } 
+
+        ] 
+
+      }, 
+
+      { 
+
+        "Table Type": "dimension", 
+
+        "Table Name": "dim_company_D", 
+
+        "SCD Type": "Type 2", 
+
+        "Include Effective Date": "No", 
+
+        "Source L1": ["INT6024"], 
+
+        "Source Field Exclusions": ["None"], 
+
+        "Business Key": ["Company_ID"], 
+
+        "Custom Attributes": [] 
+
+      }, 
+
+      { 
+
+        "Table Type": "dimension", 
+
+        "Table Name": "dim_cost_center_D", 
+
+        "SCD Type": "Type 2", 
+
+        "Include Effective Date": "No", 
+
+        "Source L1": ["INT6025"], 
+
+        "Source Field Exclusions": ["None"], 
+
+        "Business Key": ["cost_center_id"], 
+
+        "Custom Attributes": [] 
+
+      }, 
+
+      { 
+
+        "Table Type": "dimension", 
+
+        "Table Name": "dim_grade_profile_D", 
+
+        "SCD Type": "Type 2", 
+
+        "Include Effective Date": "No", 
+
+        "Source L1": ["INT6020"], 
+
+        "Source Field Exclusions": ["None"], 
+
+        "Business Key": ["Grade_Profile_ID"], 
+
+        "Custom Attributes": [] 
+
+      }, 
+
+      { 
+
+        "Table Type": "dimension", 
+
+        "Table Name": "dim_grade_profile_D", 
+
+        "SCD Type": "Type 2", 
+
+        "Include Effective Date": "No", 
+
+        "Source L1": ["INT6021", "INT6022"], 
+
+        "Source Field Exclusions": ["None"], 
+
+        "Business Key": ["Job_Profile_ID"], 
+
+        "Custom Attributes": [ 
+
+          { 
+
+            "name": "Is Manager", 
+
+            "rule": "if Management Level = MLH_Professional then false\nelse if Magagement Level in (MLH_Management Hierarchy,\nMLH_Professional,\nMLH_Management,\nMLH_Senior Management,\nMLH_Senior Leadership,\nMLH_Executive,\nMLH_Senior Executive,\nMLH_Group Head,\nMLH_CEO) then true\nelse NULL" 
+
+          }, 
+
+          { 
+
+            "name": "Is People Manager", 
+
+            "rule": "if Job Category = JC_People Manager then true else false" 
+
+          } 
+
+        ] 
+
+      }, 
+
+      { 
+
+        "Table Type": "dimension", 
+
+        "Table Name": "dim_location_D", 
+
+        "SCD Type": "Type 2", 
+
+        "Include Effective Date": "No", 
+
+        "Source L1": ["INT6023"], 
+
+        "Source Field Exclusions": ["None"], 
+
+        "Business Key": ["Location_ID"], 
+
+        "Custom Attributes": [] 
+
+      }, 
+
+      { 
+
+        "Table Type": "dimension", 
+
+        "Table Name": "dim_matrix_org_D", 
+
+        "SCD Type": "Type 2", 
+
+        "Include Effective Date": "No", 
+
+        "Source L1": ["INT6027"], 
+
+        "Source Field Exclusions": ["None"], 
+
+        "Business Key": ["Matrix_Organization_ID"], 
+
+        "Custom Attributes": [] 
+
+      }, 
+
+      { 
+
+        "Table Type": "dimension", 
+
+        "Table Name": "dim_worker_profile_D", 
+
+        "SCD Type": "Type 2", 
+
+        "Include Effective Date": "No", 
+
+        "Source L1": ["INT6031"], 
+
+        "Source Field Exclusions": ["None"], 
+
+        "Business Key": ["employee_ID"], 
+
+        "Custom Attributes": [ 
+
+          { 
+
+            "name": "Age Band", 
+
+            "rule": "Evaluate Age (For active employees, use current age. For Term'd Employees use age at most recent termination)\n19 and under\n20 - 24\n25 - 29\n30 - 34\n35 - 39\n40 - 44\n45 - 49\n50 - 54\n55 - 59\n60 and over\nElse \"Unknown Age\"" 
+
+          } 
+
+        ] 
+
+      }, 
+
+      { 
+
+        "Table Type": "dimension", 
+
+        "Table Name": "dim_supervisory_org_layers_D", 
+
+        "SCD Type": "Type 2", 
+
+        "Include Effective Date": "No", 
+
+        "Source L1": ["INT6028"], 
+
+        "Source Field Exclusions": ["None"], 
+
+        "Business Key": ["Department_ID"], 
+
+        "Custom Attributes": [ 
+
+          { 
+
+            "name": "Supervisory Organization Is Bottom", 
+
+            "rule": "department is at the bottom of the management chain then true else false" 
+
+          }, 
+
+          { 
+
+            "name": "Supervisory Organization Is Top", 
+
+            "rule": "department is at the top of the management chain then true else false" 
+
+          }, 
+
+          { 
+
+            "name": "Supervisory Organization Levels From Parent", 
+
+            "rule": "count of levels between department and parent department" 
+
+          } 
+
+        ], 
+
+        "Special Instructions": "Normalized version of the INT6028 Source. Table should have 1 row per department per parent." 
+
+      }, 
+
+      { 
+
+        "Table Type": "dimension", 
+
+        "Table Name": "dim_supervisory_org_D", 
+
+        "SCD Type": "Type 2", 
+
+        "Include Effective Date": "No", 
+
+        "Source L1": ["INT6028"], 
+
+        "Source Field Exclusions": ["None"], 
+
+        "Business Key": ["Department_ID"], 
+
+        "Custom Attributes": [ 
+
+          { "name": "Levels from Top Organization", "rule": "number of levels from the top most sup org" }, 
+
+          { "name": "Subordinate Supervisory Organizations", "rule": "concatination of subordninate sup org reference IDs with '|'" }, 
+
+          { "name": "Sup Org Level 1 ID", "rule": "lookup level 1 (top level) sup org reference ID" }, 
+
+          { "name": "Sup Org Level 1 Manager ID", "rule": "lookup level 1 (top level) sup org manager employee ID" }, 
+
+          { "name": "Sup Org Level 1 Manager Name", "rule": "lookup level 1 (top level) sup org manager preferred name" }, 
+
+          { "name": "Sup Org Level 1 Name", "rule": "lookup level 1 (top level) sup org name" }, 
+
+          { "name": "Sup Org Level 1 WID", "rule": "straight move" }, 
+
+          { "name": "Sup Org Level 10 ID", "rule": "lookup level 10 (from top) sup org reference ID" }, 
+
+          { "name": "Sup Org Level 10 Manager ID", "rule": "lookup level 10 (from top) sup org manager employee ID" }, 
+
+          { "name": "Sup Org Level 10 Manager Name", "rule": "lookup level 10 (from top) sup org manager preferred name" }, 
+
+          { "name": "Sup Org Level 10 Name", "rule": "lookup level 10 (from top) sup org name" }, 
+
+          { "name": "Sup Org Level 10 WID", "rule": "straight move" }, 
+
+          { "name": "Sup Org Level 11 ID", "rule": "lookup level 11 (from top) sup org reference ID" }, 
+
+          { "name": "Sup Org Level 11 Manager ID", "rule": "lookup level 11 (from top) sup org manager employee ID" }, 
+
+          { "name": "Sup Org Level 11 Manager Name", "rule": "lookup level 11 (from top) sup org manager preferred name" }, 
+
+          { "name": "Sup Org Level 11 Name", "rule": "lookup level 11 (from top) sup org name" }, 
+
+          { "name": "Sup Org Level 11 WID", "rule": "straight move" }, 
+
+          { "name": "Sup Org Level 12 ID", "rule": "lookup level 12 (from top) sup org reference ID" }, 
+
+          { "name": "Sup Org Level 12 Manager ID", "rule": "lookup level 12 (from top) sup org manager employee ID" }, 
+
+          { "name": "Sup Org Level 12 Manager Name", "rule": "lookup level 12 (from top) sup org manager preferred name" }, 
+
+          { "name": "Sup Org Level 12 Name", "rule": "lookup level 12 (from top) sup org name" }, 
+
+          { "name": "Sup Org Level 12 WID", "rule": "straight move" }, 
+
+          { "name": "Sup Org Level 13 ID", "rule": "lookup level 13 (from top) sup org reference ID" }, 
+
+          { "name": "Sup Org Level 13 Manager ID", "rule": "lookup level 13 (from top) sup org manager employee ID" }, 
+
+          { "name": "Sup Org Level 13 Manager Name", "rule": "lookup level 13 (from top) sup org manager preferred name" }, 
+
+          { "name": "Sup Org Level 13 Name", "rule": "lookup level 13 (from top) sup org name" }, 
+
+          { "name": "Sup Org Level 13 WID", "rule": "straight move" }, 
+
+          { "name": "Sup Org Level 14 ID", "rule": "lookup level 14 (from top) sup org reference ID" }, 
+
+          { "name": "Sup Org Level 14 Manager ID", "rule": "lookup level 14 (from top) sup org manager employee ID" }, 
+
+          { "name": "Sup Org Level 14 Manager Name", "rule": "lookup level 14 (from top) sup org manager preferred name" }, 
+
+          { "name": "Sup Org Level 14 Name", "rule": "lookup level 14 (from top) sup org name" }, 
+
+          { "name": "Sup Org Level 14 WID", "rule": "straight move" }, 
+
+          { "name": "Sup Org Level 15 ID", "rule": "lookup level 15 (from top) sup org reference ID" }, 
+
+          { "name": "Sup Org Level 15 Manager ID", "rule": "lookup level 15 (from top) sup org manager employee ID" }, 
+
+          { "name": "Sup Org Level 15 Manager Name", "rule": "lookup level 15 (from top) sup org manager preferred name" }, 
+
+          { "name": "Sup Org Level 15 Name", "rule": "lookup level 15 (from top) sup org name" }, 
+
+          { "name": "Sup Org Level 15 WID", "rule": "straight move" }, 
+
+          { "name": "Sup Org Level 2 ID", "rule": "lookup level 2 (from top) sup org reference ID" }, 
+
+          { "name": "Sup Org Level 2 Manager ID", "rule": "lookup level 2 (from top) sup org manager employee ID" }, 
+
+          { "name": "Sup Org Level 2 Manager Name", "rule": "lookup level 2 (from top) sup org manager preferred name" }, 
+
+          { "name": "Sup Org Level 2 Name", "rule": "lookup level 2 (from top) sup org name" }, 
+
+          { "name": "Sup Org Level 2 WID", "rule": "straight move" }, 
+
+          { "name": "Sup Org Level 3 ID", "rule": "lookup level 3 (from top) sup org reference ID" }, 
+
+          { "name": "Sup Org Level 3 Manager ID", "rule": "lookup level 3 (from top) sup org manager employee ID" }, 
+
+          { "name": "Sup Org Level 3 Manager Name", "rule": "lookup level 3 (from top) sup org manager preferred name" }, 
+
+          { "name": "Sup Org Level 3 Name", "rule": "lookup level 3 (from top) sup org name" }, 
+
+          { "name": "Sup Org Level 3 WID", "rule": "straight move" }, 
+
+          { "name": "Sup Org Level 4 ID", "rule": "lookup level 4 (from top) sup org reference ID" }, 
+
+          { "name": "Sup Org Level 4 Manager ID", "rule": "lookup level 4 (from top) sup org manager employee ID" }, 
+
+          { "name": "Sup Org Level 4 Manager Name", "rule": "lookup level 4 (from top) sup org manager preferred name" }, 
+
+          { "name": "Sup Org Level 4 Name", "rule": "lookup level 4 (from top) sup org name" }, 
+
+          { "name": "Sup Org Level 4 WID", "rule": "straight move" }, 
+
+          { "name": "Sup Org Level 5 ID", "rule": "lookup level 5 (from top) sup org reference ID" }, 
+
+          { "name": "Sup Org Level 5 Manager ID", "rule": "lookup level 5 (from top) sup org manager employee ID" }, 
+
+          { "name": "Sup Org Level 5 Manager Name", "rule": "lookup level 5 (from top) sup org manager preferred name" }, 
+
+          { "name": "Sup Org Level 5 Name", "rule": "lookup level 5 (from top) sup org name" }, 
+
+          { "name": "Sup Org Level 5 WID", "rule": "straight move" }, 
+
+          { "name": "Sup Org Level 6 ID", "rule": "lookup level 6 (from top) sup org reference ID" }, 
+
+          { "name": "Sup Org Level 6 Manager ID", "rule": "lookup level 6 (from top) sup org manager employee ID" }, 
+
+          { "name": "Sup Org Level 6 Manager Name", "rule": "lookup level 6 (from top) sup org manager preferred name" }, 
+
+          { "name": "Sup Org Level 6 Name", "rule": "lookup level 6 (from top) sup org name" }, 
+
+          { "name": "Sup Org Level 6 WID", "rule": "straight move" }, 
+
+          { "name": "Sup Org Level 7 ID", "rule": "lookup level 7 (from top) sup org reference ID" }, 
+
+          { "name": "Sup Org Level 7 Manager ID", "rule": "lookup level 7 (from top) sup org manager employee ID" }, 
+
+          { "name": "Sup Org Level 7 Manager Name", "rule": "lookup level 7 (from top) sup org manager preferred name" }, 
+
+          { "name": "Sup Org Level 7 Name", "rule": "lookup level 7 (from top) sup org name" }, 
+
+          { "name": "Sup Org Level 7 WID", "rule": "straight move" }, 
+
+          { "name": "Sup Org Level 8 ID", "rule": "lookup level 8 (from top) sup org reference ID" }, 
+
+          { "name": "Sup Org Level 8 Manager ID", "rule": "lookup level 8 (from top) sup org manager employee ID" }, 
+
+          { "name": "Sup Org Level 8 Manager Name", "rule": "lookup level 8 (from top) sup org manager preferred name" }, 
+
+          { "name": "Sup Org Level 8 Name", "rule": "lookup level 8 (from top) sup org name" }, 
+
+          { "name": "Sup Org Level 8 WID", "rule": "straight move" }, 
+
+          { "name": "Sup Org Level 9 ID", "rule": "lookup level 9 (from top) sup org reference ID" }, 
+
+          { "name": "Sup Org Level 9 Manager ID", "rule": "lookup level 9 (from top) sup org manager employee ID" }, 
+
+          { "name": "Sup Org Level 9 Manager Name", "rule": "lookup level 9 (from top) sup org manager preferred name" }, 
+
+          { "name": "Sup Org Level 9 Name", "rule": "lookup level 9 (from top) sup org name" }, 
+
+          { "name": "Sup Org Level 9 WID", "rule": "straight move" } 
+
+        ], 
+
+        "Special Instructions": "Department and Sup Org are interchangeable terms" 
+
+      }, 
+
+      { 
+
+        "Table Type": "dimension", 
+
+        "Table Name": "dim_report_to_layers_D", 
+
+        "SCD Type": "Type 2", 
+
+        "Include Effective Date": "No", 
+
+        "Source L1": ["INT6028"], 
+
+        "Source Field Exclusions": ["None"], 
+
+        "Business Key": ["Employee_ID"], 
+
+        "Custom Attributes": [ 
+
+          { "name": "Is Bottom", "rule": "if worker is at the bottom of the reporting chain, Y else N" }, 
+
+          { "name": "Is Direct Report", "rule": "if worker reports directly to manager, Y else N" }, 
+
+          { "name": "Is Indirect Report", "rule": "if worker reports indirectly to manager, Y else N" }, 
+
+          { "name": "Is Top", "rule": "if top most worker in hierarchy, Y else N" }, 
+
+          { "name": "Levels From Parent", "rule": "worker level - parent level" } 
+
+        ], 
+
+        "Special Instructions": "Same concept as dim_sup_org_layers_d except this is the owner EIN of the department. It is a normalized table that has one row per employee per parent employee id." 
+
+      }, 
+
+      { 
+
+        "Table Type": "dimension", 
+
+        "Table Name": "dim_report_to_D", 
+
+        "SCD Type": "Type 2", 
+
+        "Include Effective Date": "No", 
+
+        "Source L1": ["INT6028"], 
+
+        "Source Field Exclusions": ["None"], 
+
+        "Business Key": ["Employee_ID"], 
+
+        "Custom Attributes": [ 
+
+          { "name": "Level 1 Manager ID", "rule": "level 1 employee ID of parent" }, 
+
+          { "name": "Level 1 Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Level 10 Manager ID", "rule": "level 10 employee ID of parent" }, 
+
+          { "name": "Level 10 Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Level 11 Manager ID", "rule": "level 11 employee ID of parent" }, 
+
+          { "name": "Level 11 Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Level 12 Manager ID", "rule": "level 12 employee ID of parent" }, 
+
+          { "name": "Level 12 Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Level 13 Manager ID", "rule": "level 13 employee ID of parent" }, 
+
+          { "name": "Level 13 Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Level 14 Manager ID", "rule": "level 14 employee ID of parent" }, 
+
+          { "name": "Level 14 Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Level 15 Manager ID", "rule": "level 15 employee ID of parent" }, 
+
+          { "name": "Level 15 Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Level 2 Manager ID", "rule": "level 2 employee ID of parent" }, 
+
+          { "name": "Level 2 Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Level 3 Manager ID", "rule": "level 3 employee ID of parent" }, 
+
+          { "name": "Level 3 Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Level 4 Manager ID", "rule": "level 4 employee ID of parent" }, 
+
+          { "name": "Level 4 Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Level 5 Manager ID", "rule": "level 5 employee ID of parent" }, 
+
+          { "name": "Level 5 Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Level 6 Manager ID", "rule": "level 6 employee ID of parent" }, 
+
+          { "name": "Level 6 Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Level 7 Manager ID", "rule": "level 7 employee ID of parent" }, 
+
+          { "name": "Level 7 Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Level 8 Manager ID", "rule": "level 8 employee ID of parent" }, 
+
+          { "name": "Level 8 Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Level 9 Manager ID", "rule": "level 9 employee ID of parent" }, 
+
+          { "name": "Level 9 Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Manager Preferred Name", "rule": "lookup EIN to profile for preferred name" }, 
+
+          { "name": "Manager Worker ID", "rule": "straight move (immediate manager EIN)" } 
+
+        ], 
+
+        "Special Instructions": "Flatenned version of the owner EIN of the department." 
+
+      }, 
+
+      { 
+
+        "Table Type": "dimension", 
+
+        "Table Name": "dim_worker_job_D", 
+
+        "SCD Type": "Type 2", 
+
+        "Include Effective Date": "Yes", 
+
+        "Source L1": ["INT0095e", "INT0096", "INT0098"], 
+
+        "Source Field Exclusions": [ 
+
+          "Active Status Date", 
+
+          "Benefits Service Date", 
+
+          "Continuous Service Date", 
+
+          "Contract End Date", 
+
+          "Contract Start Date", 
+
+          "Eligible for Hire", 
+
+          "Eligible for Rehire", 
+
+          "Employment Active Status Flag", 
+
+          "Employment Status", 
+
+          "End Employment Date", 
+
+          "Hire Reason", 
+
+          "Hire Rescinded Flag", 
+
+          "Hired Job Application", 
+
+          "Hired Requisition", 
+
+          "Latest Hire Date", 
+
+          "Original Hire Date", 
+
+          "Primary Termination Reason Category", 
+
+          "Primary Termination Reason Subcategory", 
+
+          "Retired Flag", 
+
+          "Retirement Date", 
+
+          "Retirement Eligibility Date", 
+
+          "Seniority Date", 
+
+          "Termination Date" 
+
+        ], 
+
+        "Business Key": ["Employee_ID", "Effective_date"], 
+
+        "Custom Attributes": [ 
+
+          { "name": "Department Entry Date", "rule": "earliest effective date of when the worker moved into the sup org" }, 
+
+          { "name": "Grade Entry Date", "rule": "earliest effective date of when the worker moved into the grade" }, 
+
+          { "name": "Job Entry Date", "rule": "earliest effective date of when the worker moved into the job profile" }, 
+
+          { "name": "Position Entry Date", "rule": "earliest effective date of when the worker moved into the position" }, 
+
+          { "name": "Work Model Start Date", "rule": "earliest effective date of when the worker moved into the work model" } 
+
+        ], 
+
+        "Special Instructions": "enriched from the three “*DLY_VW” views via as‑of logic (see §6 for algorithm)" 
+
+      }, 
+
+      { 
+
+        "Table Type": "dimension", 
+
+        "Table Name": "dim_worker_status_D", 
+
+        "SCD Type": "Type 2", 
+
+        "Include Effective Date": "Yes", 
+
+        "Source L1": ["INT0095e"], 
+
+        "Source Field Exclusions": [], 
+
+        "Business Key": ["Employee_ID", "effective_date"], 
+
+        "Custom Attributes": [], 
+
+        "Special Instructions": "Only include columns that were listed as Source Field Exclusions on dim_worker_job_d. (see §6 for algorithm)" 
+
+      } 
+
+    ] 
+
+  } 
+
+} 
+
+5.2 Facts 
+
+- fct_worker_movement_F – transaction grain: 1 row per employee_id per effective_date (include sequence_number if needed). Derived from dim_worker_job_D (no direct L1 joins). Resolve all FKs as‑of effective_date within SCD windows. Include FKs to all dimensions , Resolve all PRIOR ROW FKs as‑of effective_date of prior row based on grain within SCD windows. Include PRIOR ROW FKs to all dimensions.  
+
+Add the following metrics (business rules to the right): Base Pay Change Count	if current base pay - previous row <> 0 then 1 else 0, must be active on both rows 
+
+Company Change Count	if company id from current row <> company id on previous effdt row then 1 else 0, must be active on both rows 
+
+Cost Center Change Count	if cost center id from current row <> cost center id on previous effdt row then 1 else 0, must be active on both rows 
+
+Demotion Count	If Job Change = 1 and Current Grade < Previous Grade and Current Status = Active and Previous Status = Active then 1 else 0 
+
+External Hire Count	If Business Process Reason = Hire then 1 else 0 
+
+Grade Change Count	if grade id from current row <> grade id on previous effdt row then 1 else 0, must be active on both rows 
+
+Grade Decrease Count	if grade id from current row < grade id on previous effdt row then 1 else 0, must be active on both rows 
+
+Grade Increase Count	if grade id from current row > grade id on previous effdt row then 1 else 0, must be active on both rows 
+
+Hire Count	External Hire Count + Internal Hire Count 
+
+Internal Hire Count	If Business Process Reason = Change Job and Initiated from a Job Application then 1 else 0 
+
+Involuntary Termination Count           Primary Termination Category = Involuntary 
+
+Job Change Count	if job profile id from current row <> job profile id on previous effdt row then 1 else 0, must be active on both rows 
+
+Lateral Move Count	If Job Change = 1 and Current Grade = Previous Grade and Current Status = Active and Previous Status = Active then 1 else 0 
+
+Location Change Count	if location id from current row <> location id on previous effdt row then 1 else 0, must be active on both rows 
+
+Management Level Change Count  if mgmt level from current row <> mgmt level on previous effdt row then 1 else 0, must be active on both rows 
+
+Management Level Decrease Count              if mgmt level from current row < mgmt level on previous effdt row then 1 else 0, must be active on both rows 
+
+Management Level Increase Count if mgmt level from current row > mgmt level on previous effdt row then 1 else 0, must be active on both rows 
+
+Matrix Organization Change Count if matrix organization id from current row <> matrix organization id on previous effdt row then 1 else 0, must be active on both rows 
+
+Promotion Count	If Job Change = 1 and Current Grade > Previous Grade and Current Status = Active and Previous Status = Active then 1 else 0 
+
+Promotion Count Business Process               If Business Process Reason like "%Promotion%" then 1 else 0 
+
+Regrettable Termination Count           
+
+Rehire Count	If Business Process Reason = Hire > Rehire then 1 else 0 
+
+Structured Termination Count	 
+
+Supervisory Organization Change Count    if sup org id from current row <> sup org id on previous effdt row then 1 else 0, must be active on both rows 
+
+Termination Count	if Business Process = Termiantion Event then 1 else 0 
+
+Unstructured Termination Count       
+
+Voluntary Termination Count	if Primary Termination Category = Voluntary then 1 else 0 
+
+Worker Model Change Count              if work model id from current row <> work model id on previous effdt row then 1 else 0, must be active on both rows 
+
+ 
+ 
+
+- fct_worker_headcount_restat_F – monthly snapshot; restate last 24 months; one row per active (incl. leave) worker at month‑end; as‑of FK resolution.  Include all dimensions. 
+
+Add metric: 
+
+Headcount  if worker status = active then 1 else 0 
+
+ 
