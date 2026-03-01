@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HR Workday Data Pipeline | WARLAB</title>
+    <title>Fabric Learning Paths — Interactive Role-Based Learning Guide | WARLAB</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -218,44 +218,6 @@
             margin-bottom: 16px;
         }
 
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 24px;
-        }
-
-        .stat-card {
-            background: #EBF1F9;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid #2E5C8A;
-        }
-
-        .stat-card .label {
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            color: #2E5C8A;
-            letter-spacing: 0.5px;
-            margin-bottom: 8px;
-        }
-
-        .stat-card .value {
-            font-size: 24px;
-            font-weight: 700;
-            color: #0B162A;
-            font-family: 'IBM Plex Mono', monospace;
-        }
-
-        .stat-card .description {
-            font-size: 13px;
-            color: #475569;
-            margin-top: 8px;
-            margin-bottom: 0;
-        }
-
         /* Info Card */
         .info-card {
             background: #EBF1F9;
@@ -467,10 +429,6 @@
             .project-cards {
                 grid-template-columns: 1fr;
             }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
         }
 
         @media (max-width: 480px) {
@@ -522,10 +480,10 @@
         <div class="container">
             <div class="overline">Project</div>
             <div class="title-wrapper">
-                <h1>HR Workday Data Pipeline</h1>
+                <h1>Fabric Learning Paths — Interactive Role-Based Learning Guide</h1>
                 <span class="status-pill status-complete">COMPLETE</span>
             </div>
-            <p class="description">Simulated Workday HR data generator and AWS deployment pipeline for a 10,000-employee organization.</p>
+            <p class="description">An interactive, role-based learning guide helping teams navigate Microsoft Fabric certifications, training resources, and skill development paths.</p>
         </div>
     </section>
 
@@ -533,76 +491,39 @@
         <div class="container">
             <section>
                 <h2>Overview</h2>
-                <p>A standalone project providing a complete data generation and cloud deployment pipeline for Workday-style HR data. The generator creates realistic transactional HR datasets for a simulated 10,000-employee North American financial services organization, producing 40,000+ transactions across multiple data domains. The AWS deployment component provides full infrastructure-as-code for S3, Glue, and Redshift Serverless.</p>
+                <p>The Fabric Learning Paths project provides a structured, interactive guide for teams adopting Microsoft Fabric. Rather than a one-size-fits-all approach, it maps learning paths by role — from data engineers and analysts to administrators and business users — helping each team member find the most relevant certifications, training modules, and hands-on labs. The interactive web interface allows users to filter by role, experience level, and learning objective, with direct links to official Microsoft resources, community content, and recommended conference sessions.</p>
             </section>
 
             <section>
-                <h2>Data Model</h2>
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="label">core_hr_employees</div>
-                        <div class="value">10K</div>
-                        <p class="description">Non-transactional employee master data</p>
-                    </div>
-                    <div class="stat-card">
-                        <div class="label">job_movement_transactions</div>
-                        <div class="value">7K</div>
-                        <p class="description">Hires, promotions, terminations, moves</p>
-                    </div>
-                    <div class="stat-card">
-                        <div class="label">compensation_change_transactions</div>
-                        <div class="value">20K</div>
-                        <p class="description">Merit increases, market adjustments, equity</p>
-                    </div>
-                    <div class="stat-card">
-                        <div class="label">worker_movement_transactions</div>
-                        <div class="value">13K</div>
-                        <p class="description">Transfers, relocations, org changes</p>
-                    </div>
-                </div>
-                <p style="margin-top: 24px;"><strong>Total:</strong> 40,000+ transactions over 1 year</p>
-            </section>
-
-            <section>
-                <h2>Architecture</h2>
-                <p>The pipeline follows a two-stage approach:</p>
-                <p><strong>Data Generation:</strong> Python-based generator using Faker and NumPy to produce Workday-style CSV files with realistic organizational hierarchies (Business Unit → Division → Department → Team), compensation structures, and temporal patterns</p>
-                <p><strong>AWS Deployment:</strong> CloudFormation-based infrastructure including encrypted S3 storage, Redshift Serverless with optimized table design, Glue ETL jobs using native COPY commands, and daily automated scheduling with full IAM role definitions</p>
+                <h2>Learning Framework</h2>
+                <p><strong>Role-Based Paths:</strong> Separate learning tracks for Data Engineers, Data Analysts, Data Scientists, Administrators, and Business Users</p>
+                <p><strong>Certification Mapping:</strong> Aligned with Microsoft's Fabric certification program, including prerequisites and study resources</p>
+                <p><strong>Conference Guide:</strong> Curated recommendations for Fabric-focused sessions at major analytics conferences</p>
+                <p><strong>Interactive Navigation:</strong> Single-page web app with filtering by role, level, and topic area</p>
             </section>
 
             <section>
                 <h2>Tools & Technologies</h2>
                 <div class="tech-list">
-                    <span class="tech-tag">AWS S3</span>
-                    <span class="tech-tag">AWS Redshift Serverless</span>
-                    <span class="tech-tag">AWS Glue</span>
-                    <span class="tech-tag">AWS CloudFormation</span>
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Faker</span>
-                    <span class="tech-tag">NumPy</span>
-                    <span class="tech-tag">Pandas</span>
-                    <span class="tech-tag">Workday</span>
+                    <span class="tech-tag">Microsoft Fabric</span>
+                    <span class="tech-tag">HTML/JS</span>
+                    <span class="tech-tag">Learning Design</span>
+                    <span class="tech-tag">Certifications</span>
                 </div>
             </section>
 
             <section>
                 <h2>Key Artifacts</h2>
                 <ul class="artifacts-list">
-                    <li><a href="https://github.com/WARLAB01/warlab-projects/blob/main/projects/hr-workday-pipeline/workday_hr_data_generator.py">Data Generator</a></li>
-                    <li><a href="https://github.com/WARLAB01/warlab-projects/tree/main/projects/hr-workday-pipeline/aws_deployment">AWS Deployment Scripts</a></li>
-                    <li><a href="https://github.com/WARLAB01/warlab-projects/tree/main/projects/hr-workday-pipeline/aws_deployment/cloudformation">CloudFormation Templates</a></li>
-                    <li><a href="https://github.com/WARLAB01/warlab-projects/blob/main/projects/hr-workday-pipeline/docs/technical/ARCHITECTURE.md">Architecture Docs</a></li>
-                    <li><a href="https://github.com/WARLAB01/warlab-projects/blob/main/projects/hr-workday-pipeline/docs/technical/DATA_DICTIONARY.md">Data Dictionary</a></li>
-                    <li><a href="https://github.com/WARLAB01/warlab-projects/blob/main/projects/hr-workday-pipeline/docs/governance/DATA_GOVERNANCE.md">Data Governance</a></li>
-                    <li><a href="https://github.com/WARLAB01/warlab-projects/blob/main/projects/hr-workday-pipeline/docs/operations/RUNBOOK.md">Runbook</a></li>
-                    <li><a href="https://github.com/WARLAB01/warlab-projects/blob/main/projects/hr-workday-pipeline/docs/user-guides/GETTING_STARTED.md">Getting Started Guide</a></li>
+                    <li><a href="https://warlab01.github.io/fabric-learning-paths/">Interactive Learning Guide</a></li>
+                    <li><a href="https://github.com/WARLAB01/fabric-learning-paths">Source Repository</a></li>
                 </ul>
             </section>
 
             <section>
                 <h2>Governance Notes</h2>
                 <div class="info-card">
-                    <p>This project generates entirely synthetic HR data using statistical distributions modeled on publicly available workforce statistics. No real employee data, proprietary Workday configurations, or confidential organizational information was used. The organizational structure, compensation bands, and demographic distributions are fictional.</p>
+                    <p>All learning resources referenced are publicly available through Microsoft Learn, official certification programs, and public conference schedules. No proprietary training materials or internal organizational content is included.</p>
                 </div>
             </section>
         </div>
@@ -612,13 +533,13 @@
         <div class="container">
             <h3>Other Projects</h3>
             <div class="project-cards">
-                <a href="hr-datamart-v1.html" class="project-card">
-                    <h4>HR Datamart V1</h4>
-                    <p>People Analytics Dashboard with three-layer ETL pipeline</p>
+                <a href="hr-analytics-fabric-catalog.html" class="project-card">
+                    <h4>People Analytics Pattern Catalog</h4>
+                    <p>93 Fabric analytics patterns across 8 HR domains</p>
                 </a>
                 <a href="hr-datamart-v2.html" class="project-card">
                     <h4>HR Datamart V2</h4>
-                    <p>Enterprise Workforce Analytics with star schema and SCD Type 2</p>
+                    <p>Enterprise workforce analytics with star schema architecture</p>
                 </a>
             </div>
         </div>
@@ -636,24 +557,23 @@
             <div>
                 <h4>Projects</h4>
                 <ul>
-                    <li><a href="../projects.html">All Projects</a></li>
                     <li><a href="hr-datamart-v1.html">HR Datamart V1</a></li>
                     <li><a href="hr-datamart-v2.html">HR Datamart V2</a></li>
-                    <li><a href="hr-workday-pipeline.html">Workday Pipeline</a></li>
-                    <li><a href="hr-analytics-fabric-catalog.html">Pattern Catalog</a></li>
-                    <li><a href="fabric-learning-paths.html">Fabric Learning</a></li>
-                    <li><a href="financial-services-task-inventory.html">FS Task Inventory</a></li>
+                    <li><a href="hr-workday-pipeline.html">HR Workday Pipeline</a></li>
+                    <li><a href="hr-analytics-fabric-catalog.html">Fabric Pattern Catalog</a></li>
+                    <li><a href="fabric-learning-paths.html">Fabric Learning Paths</a></li>
+                    <li><a href="financial-services-task-inventory.html">Financial Services Tasks</a></li>
                 </ul>
             </div>
             <div>
                 <h4>Resources</h4>
                 <ul>
                     <li><a href="../governance.html">Governance</a></li>
-                    <li><a href="https://github.com/WARLAB01/warlab-projects">GitHub</a></li>
+                    <li><a href="https://github.com/WARLAB01">GitHub</a></li>
                 </ul>
             </div>
             <div class="copyright">
-                <p>&copy; 2026 WARLAB · Workforce Analytics Research Lab</p>
+                <p>&copy; 2026 WARLAB &middot; Workforce Analytics Research Lab</p>
             </div>
         </div>
     </footer>
