@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Datamart V1 — People Analytics Dashboard | WARLAB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #0F172A;
+            line-height: 1.6;
+            background-color: #F8F9FB;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 36px;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 28px;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+
+        h3 {
+            font-size: 20px;
+            line-height: 1.3;
+            margin-bottom: 16px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #475569;
+            margin-bottom: 16px;
+        }
+
+        a {
+            color: #2E5C8A;
+            text-decoration: none;
+            transition: color 150ms ease;
+        }
+
+        a:hover {
+            color: #E64100;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: white;
+            border-bottom: 1px solid #E8ECF0;
+            padding: 16px 24px;
+            box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+            transition: box-shadow 150ms ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            color: #0B162A;
+            text-decoration: none;
+            transition: color 150ms ease;
+        }
+
+        nav .logo:hover {
+            color: #E64100;
+        }
+
+        nav .logo svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        nav .links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        nav .links a {
+            font-size: 14px;
+            font-weight: 500;
+            color: #475569;
+            position: relative;
+            transition: color 150ms ease;
+        }
+
+        nav .links a:hover {
+            color: #0B162A;
+        }
+
+        nav .links a.active {
+            color: #E64100;
+        }
+
+        nav .links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #E64100;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0B162A 0%, #162D4A 100%);
+            padding: 64px 24px;
+            color: white;
+        }
+
+        .hero .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero .overline {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #E64100;
+            margin-bottom: 16px;
+        }
+
+        .hero .title-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .hero h1 {
+            color: white;
+        }
+
+        .status-pill {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-complete {
+            background-color: #CFDEF0;
+            color: #2E5C8A;
+        }
+
+        .status-active {
+            background-color: #FFF1EB;
+            color: #E64100;
+        }
+
+        .hero .description {
+            font-size: 18px;
+            color: #5B92C6;
+            font-weight: 500;
+        }
+
+        /* Main Content */
+        main {
+            background: white;
+            padding: 64px 24px;
+        }
+
+        main .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        section {
+            margin-bottom: 56px;
+        }
+
+        section p {
+            margin-bottom: 16px;
+        }
+
+        /* Info Card */
+        .info-card {
+            background: #EBF1F9;
+            border-left: 4px solid #E64100;
+            padding: 24px;
+            border-radius: 8px;
+            margin-top: 24px;
+        }
+
+        .info-card p {
+            color: #0F172A;
+            margin-bottom: 0;
+        }
+
+        /* Tech Tags */
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .tech-tag {
+            display: inline-block;
+            padding: 8px 14px;
+            background-color: #EBF1F9;
+            color: #2E5C8A;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid #CFDEF0;
+        }
+
+        /* Artifacts List */
+        .artifacts-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .artifacts-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #E8ECF0;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .artifacts-list li:last-child {
+            border-bottom: none;
+        }
+
+        .artifacts-list li::before {
+            content: '→';
+            color: #E64100;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .artifacts-list a {
+            color: #2E5C8A;
+            font-weight: 500;
+            transition: color 150ms ease;
+        }
+
+        .artifacts-list a:hover {
+            color: #E64100;
+        }
+
+        /* Related Projects Section */
+        .related-section {
+            background-color: #F8F9FB;
+            padding: 64px 24px;
+            margin-top: 64px;
+        }
+
+        .related-section .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .related-section h3 {
+            margin-bottom: 32px;
+        }
+
+        .project-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .project-card {
+            background: white;
+            border: 1px solid #E8ECF0;
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 150ms ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .project-card:hover {
+            border-color: #E64100;
+            box-shadow: 0 4px 12px rgba(230, 65, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .project-card h4 {
+            color: #0B162A;
+            margin-bottom: 8px;
+        }
+
+        .project-card p {
+            font-size: 14px;
+            color: #94A3B8;
+            margin-bottom: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: #0B162A;
+            color: white;
+            padding: 48px 24px;
+            margin-top: 0;
+        }
+
+        footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        footer h4 {
+            color: white;
+            margin-bottom: 16px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer li {
+            margin-bottom: 12px;
+        }
+
+        footer a {
+            color: #94A3B8;
+            font-size: 14px;
+            transition: color 150ms ease;
+        }
+
+        footer a:hover {
+            color: #E64100;
+        }
+
+        footer .copyright {
+            grid-column: 1 / -1;
+            border-top: 1px solid #2E5C8A;
+            padding-top: 24px;
+            font-size: 13px;
+            color: #94A3B8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            h3 {
+                font-size: 18px;
+            }
+
+            nav .links {
+                gap: 16px;
+            }
+
+            nav .links a {
+                font-size: 13px;
+            }
+
+            .hero {
+                padding: 48px 24px;
+            }
+
+            main {
+                padding: 48px 24px;
+            }
+
+            .related-section {
+                padding: 48px 24px;
+            }
+
+            .hero .title-wrapper {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .project-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav .container {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+            }
+
+            nav .links {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            .hero .description {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <svg viewBox="0 0 120 98" fill="none">
+                    <path d="M10 8 L32 90 L52 40" stroke="#0B162A" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                    <path d="M52 40 L72 90 L82 62" stroke="#0B162A" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                    <path d="M82 62 L110 8" stroke="#E64100" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </svg>
+                WARLAB
+            </a>
+            <ul class="links">
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../projects.html" class="active">Projects</a></li>
+                <li><a href="../governance.html">Governance</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="overline">Project</div>
+            <div class="title-wrapper">
+                <h1>HR Datamart V1 — People Analytics Dashboard</h1>
+                <span class="status-pill status-complete">COMPLETE</span>
+            </div>
+            <p class="description">A full ETL pipeline from simulated Workday data through AWS to an interactive analytics dashboard.</p>
+        </div>
+    </section>
+
+    <main>
+        <div class="container">
+            <section>
+                <h2>Overview</h2>
+                <p>The original WARLAB project — a complete people analytics pipeline demonstrating how AI-assisted development can build production-grade data infrastructure. The project takes simulated Workday HR data through a three-layer architecture (Landing → Source → Star Schema) on AWS Redshift, culminating in an interactive ECharts dashboard for workforce analytics.</p>
+            </section>
+
+            <section>
+                <h2>Architecture</h2>
+                <p>The pipeline follows a classic three-layer data warehouse pattern:</p>
+                <p><strong>Layer 1 (Landing):</strong> Raw CSV feeds loaded from S3 via COPY commands</p>
+                <p><strong>Layer 3 Source:</strong> Cleaned and conformed staging tables</p>
+                <p><strong>Layer 3 Star:</strong> Dimensional model with fact and dimension tables optimized for analytics</p>
+                <p>AWS services include S3 for storage, Glue for ETL orchestration, Redshift Serverless for the data warehouse, Lambda for dashboard data extraction, and CloudFront for dashboard hosting.</p>
+            </section>
+
+            <section>
+                <h2>Tools & Technologies</h2>
+                <div class="tech-list">
+                    <span class="tech-tag">AWS Redshift</span>
+                    <span class="tech-tag">AWS S3</span>
+                    <span class="tech-tag">AWS Glue</span>
+                    <span class="tech-tag">AWS Lambda</span>
+                    <span class="tech-tag">AWS CloudFront</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">ECharts</span>
+                    <span class="tech-tag">SQL</span>
+                </div>
+            </section>
+
+            <section>
+                <h2>Key Artifacts</h2>
+                <ul class="artifacts-list">
+                    <li><a href="https://github.com/WARLAB01/warlab-projects/tree/main/hr-datamart/artifacts/dashboard">Interactive Dashboard</a></li>
+                    <li><a href="https://github.com/WARLAB01/warlab-projects/tree/main/hr-datamart/artifacts/ddl">DDL Scripts (L1, L3 Source, L3 Star)</a></li>
+                    <li><a href="https://github.com/WARLAB01/warlab-projects/tree/main/hr-datamart/artifacts/dml">ETL Load Scripts</a></li>
+                    <li><a href="https://github.com/WARLAB01/warlab-projects/tree/main/hr-datamart/artifacts/glue">Glue Jobs</a></li>
+                    <li><a href="https://github.com/WARLAB01/warlab-projects/tree/main/hr-datamart/artifacts/lambda">Lambda Functions</a></li>
+                    <li><a href="https://github.com/WARLAB01/warlab-projects/tree/main/hr-datamart/artifacts/qa">QA Test Suite</a></li>
+                    <li><a href="https://github.com/WARLAB01/warlab-projects/tree/main/hr-datamart/artifacts/runbook">Runbook</a></li>
+                    <li><a href="https://github.com/WARLAB01/warlab-projects/tree/main/hr-datamart/artifacts/data_gen">Data Generator</a></li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Governance Notes</h2>
+                <div class="info-card">
+                    <p>This project uses only synthetically generated HR data. No real employee records, proprietary schemas, or employer-specific data were used at any point. The simulated data generator produces realistic patterns for demonstration purposes only.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <section class="related-section">
+        <div class="container">
+            <h3>Other Projects</h3>
+            <div class="project-cards">
+                <a href="hr-datamart-v2.html" class="project-card">
+                    <h4>HR Datamart V2</h4>
+                    <p>Enterprise Workforce Analytics with star schema and SCD Type 2</p>
+                </a>
+                <a href="hr-workday-pipeline.html" class="project-card">
+                    <h4>HR Workday Pipeline</h4>
+                    <p>Data generator and AWS deployment for 10,000 employees</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div>
+                <h4>About</h4>
+                <ul>
+                    <li><a href="../index.html#about">WARLAB</a></li>
+                    <li><a href="../index.html">Home</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Projects</h4>
+                <ul>
+                    <li><a href="../projects.html">All Projects</a></li>
+                    <li><a href="hr-datamart-v1.html">HR Datamart V1</a></li>
+                    <li><a href="hr-datamart-v2.html">HR Datamart V2</a></li>
+                    <li><a href="hr-workday-pipeline.html">HR Workday Pipeline</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="../governance.html">Governance</a></li>
+                    <li><a href="https://github.com/WARLAB01/warlab-projects">GitHub</a></li>
+                </ul>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 WARLAB. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

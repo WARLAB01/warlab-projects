@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="WARLAB: Workforce Analytics Research Lab. An independent, educational research project exploring workforce analytics and AI.">
+  <meta name="theme-color" content="#0B162A">
+  <title>WARLAB — Workforce Analytics Research Lab</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* CSS Reset & Variables */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      /* Colors */
+      --navy: #0B162A;
+      --navy-light: #162D4A;
+      --steel: #2E5C8A;
+      --sky-blue: #5B92C6;
+      --ice-blue: #CFDEF0;
+      --pale-blue: #EBF1F9;
+      --orange: #E64100;
+      --orange-light: #F06A30;
+      --orange-pale: #FFF1EB;
+      --text-primary: #0F172A;
+      --gray-dark: #475569;
+      --gray: #94A3B8;
+      --gray-light: #E8ECF0;
+      --off-white: #F8F9FB;
+      --white: #FFFFFF;
+
+      /* Fonts */
+      --font-heading: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+
+      /* Spacing */
+      --spacing-xs: 0.5rem;
+      --spacing-sm: 1rem;
+      --spacing-md: 1.5rem;
+      --spacing-lg: 2rem;
+      --spacing-xl: 3rem;
+      --spacing-2xl: 4rem;
+      --spacing-3xl: 5rem;
+
+      /* Transitions */
+      --transition: 150ms ease;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text-primary);
+      background-color: var(--white);
+      line-height: 1.6;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      line-height: 1.2;
+      margin-bottom: var(--spacing-md);
+    }
+
+    h1 {
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.015em;
+    }
+
+    h3 {
+      font-size: clamp(1.25rem, 3vw, 1.5rem);
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 1rem;
+      margin-bottom: var(--spacing-md);
+      color: var(--text-primary);
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: 56px;
+      background-color: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--spacing-lg);
+      transition: box-shadow var(--transition);
+    }
+
+    nav.scrolled {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      text-decoration: none;
+      color: var(--white);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-brand svg {
+      width: 32px;
+      height: auto;
+      flex-shrink: 0;
+    }
+
+    .nav-brand .war {
+      color: var(--white);
+    }
+
+    .nav-brand .lab {
+      color: var(--orange);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: var(--spacing-lg);
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: color var(--transition);
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--orange);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--orange);
+      transition: width var(--transition);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 0 var(--spacing-md);
+      }
+
+      .nav-brand span {
+        display: none;
+      }
+
+      .nav-links {
+        gap: var(--spacing-md);
+      }
+
+      .nav-links a {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* Hero Section */
+    .hero {
+      background-color: var(--navy);
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      padding: 100px var(--spacing-lg) 80px;
+      text-align: center;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(91, 146, 198, 0.1), transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-overline {
+      color: var(--orange);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: var(--spacing-xl);
+      display: block;
+    }
+
+    .hero-mark {
+      width: 72px;
+      height: auto;
+      margin: 0 auto var(--spacing-2xl);
+      display: block;
+    }
+
+    .hero h1 {
+      margin-bottom: var(--spacing-lg);
+      color: var(--white);
+    }
+
+    .hero h1 .accent-blue {
+      color: var(--ice-blue);
+    }
+
+    .hero h1 .accent-orange {
+      color: var(--orange);
+    }
+
+    .hero-subhead {
+      font-size: 1.125rem;
+      color: var(--sky-blue);
+      margin-bottom: var(--spacing-2xl);
+      line-height: 1.6;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: var(--spacing-md);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      border: none;
+      transition: all var(--transition);
+    }
+
+    .btn-primary {
+      background-color: var(--orange);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--orange-light);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(230, 65, 0, 0.3);
+    }
+
+    .btn-secondary {
+      background-color: var(--navy-light);
+      color: var(--white);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--steel);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(46, 92, 138, 0.3);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--white);
+      border: 1px solid var(--white);
+    }
+
+    .btn-outline:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+
+    .btn-ghost {
+      background-color: transparent;
+      color: var(--steel);
+      border: none;
+    }
+
+    .btn-ghost:hover {
+      color: var(--orange);
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 60px var(--spacing-md) 50px;
+      }
+
+      .hero-mark {
+        width: 56px;
+      }
+
+      .hero-subhead {
+        font-size: 1rem;
+      }
+
+      .hero-ctas {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+
+    /* Sections */
+    section {
+      padding: var(--spacing-3xl) var(--spacing-lg);
+    }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-overline {
+      color: var(--orange);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: var(--spacing-md);
+      display: block;
+    }
+
+    section h2 {
+      margin-bottom: var(--spacing-2xl);
+    }
+
+    /* About Section */
+    .about {
+      background-color: var(--white);
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-2xl);
+      margin-bottom: var(--spacing-2xl);
+    }
+
+    .about-copy p {
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      color: var(--text-primary);
+    }
+
+    .info-card {
+      background-color: var(--pale-blue);
+      border-left: 4px solid var(--steel);
+      padding: var(--spacing-lg);
+      border-radius: 6px;
+      margin-bottom: var(--spacing-2xl);
+    }
+
+    .info-card p {
+      margin-bottom: 0;
+      font-size: 0.95rem;
+      color: var(--navy-light);
+      line-height: 1.6;
+    }
+
+    .brand-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacing-sm);
+      margin: var(--spacing-2xl) 0;
+    }
+
+    .divider-line {
+      width: 40px;
+      height: 1px;
+      background-color: var(--navy);
+    }
+
+    .divider-dot {
+      width: 6px;
+      height: 6px;
+      background-color: var(--navy);
+      border-radius: 50%;
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: var(--spacing-2xl) var(--spacing-md);
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+      }
+
+      .about-copy p {
+        font-size: 1rem;
+      }
+    }
+
+    /* Principles Section */
+    .principles {
+      background-color: var(--off-white);
+    }
+
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-xl);
+    }
+
+    .principle-block {
+      background-color: var(--white);
+      padding: var(--spacing-lg);
+      border-radius: 12px;
+      border: 1px solid var(--gray-light);
+      transition: all var(--transition);
+    }
+
+    .principle-block:hover {
+      border-color: var(--orange);
+      box-shadow: 0 8px 24px rgba(230, 65, 0, 0.08);
+    }
+
+    .principle-block h3 {
+      color: var(--navy);
+      font-size: 1.125rem;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .principle-block .label {
+      color: var(--orange);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: var(--spacing-sm);
+      display: block;
+    }
+
+    .principle-block p {
+      font-size: 0.95rem;
+      color: var(--gray-dark);
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+      .principles-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Projects Section */
+    .projects {
+      background-color: var(--white);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--spacing-xl);
+    }
+
+    .feature-card {
+      background-color: var(--white);
+      border: 1px solid var(--gray-light);
+      border-top: 3px solid var(--orange);
+      border-radius: 12px;
+      padding: var(--spacing-xl);
+      text-decoration: none;
+      color: inherit;
+      transition: all var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .feature-card:hover {
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+      transform: translateY(-4px);
+    }
+
+    .feature-card-icon {
+      font-size: 2rem;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .feature-card h3 {
+      color: var(--navy);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .feature-card p {
+      color: var(--gray-dark);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    @media (max-width: 768px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card {
+        padding: var(--spacing-lg);
+      }
+    }
+
+    /* Data & Methods Section */
+    .data {
+      background-color: var(--navy);
+      color: var(--white);
+    }
+
+    .data .section-overline {
+      color: var(--orange);
+    }
+
+    .data h2 {
+      color: var(--white);
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .data-intro {
+      color: var(--ice-blue);
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      margin-bottom: var(--spacing-2xl);
+      max-width: 800px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--spacing-xl);
+      margin-bottom: var(--spacing-2xl);
+    }
+
+    .stat-card {
+      background-color: var(--navy-light);
+      padding: var(--spacing-xl);
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .stat-number {
+      color: var(--orange);
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 700;
+      margin-bottom: var(--spacing-sm);
+      display: block;
+    }
+
+    .stat-label {
+      color: var(--sky-blue);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .data-outro {
+      color: var(--sky-blue);
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 800px;
+    }
+
+    @media (max-width: 768px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Governance Section */
+    .governance {
+      background-color: var(--white);
+    }
+
+    .governance-content {
+      max-width: 900px;
+      margin-bottom: var(--spacing-2xl);
+    }
+
+    .governance-content p {
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      color: var(--text-primary);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .governance-ctas {
+      display: flex;
+      gap: var(--spacing-md);
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      .governance-ctas {
+        flex-direction: column;
+      }
+
+      .governance-ctas .btn {
+        width: 100%;
+      }
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--navy);
+      color: var(--white);
+      padding: var(--spacing-2xl) var(--spacing-lg);
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacing-lg);
+      margin-bottom: var(--spacing-2xl);
+      flex-wrap: wrap;
+    }
+
+    .footer-wordmark {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      text-decoration: none;
+      color: var(--white);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.125rem;
+    }
+
+    .footer-wordmark svg {
+      width: 28px;
+      height: auto;
+    }
+
+    .footer-wordmark .war {
+      color: var(--white);
+    }
+
+    .footer-wordmark .lab {
+      color: var(--orange);
+    }
+
+    .footer-disclosure {
+      color: var(--gray);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .footer-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacing-sm);
+      margin: var(--spacing-2xl) 0;
+    }
+
+    .footer-divider .divider-line {
+      background-color: var(--gray);
+    }
+
+    .footer-divider .divider-dot {
+      background-color: var(--gray);
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--spacing-2xl);
+      margin-bottom: var(--spacing-2xl);
+    }
+
+    .footer-column h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: var(--spacing-md);
+      color: var(--white);
+      letter-spacing: 0.05em;
+    }
+
+    .footer-column p {
+      font-size: 0.85rem;
+      color: var(--gray);
+      margin-bottom: var(--spacing-md);
+      line-height: 1.6;
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column li {
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .footer-column a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color var(--transition);
+    }
+
+    .footer-column a:hover {
+      color: var(--orange);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: var(--spacing-lg);
+      text-align: center;
+    }
+
+    .footer-copyright {
+      color: var(--gray);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 768px) {
+      footer {
+        padding: var(--spacing-xl) var(--spacing-md);
+      }
+
+      .footer-top {
+        flex-direction: column;
+        gap: var(--spacing-md);
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+      }
+    }
+
+    /* Accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* Focus states */
+    a:focus, button:focus {
+      outline: 2px solid var(--orange);
+      outline-offset: 2px;
+    }
+
+    /* Print */
+    @media print {
+      nav {
+        position: static;
+      }
+
+      section {
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav id="nav">
+    <a href="#" class="nav-brand">
+      <svg width="32" height="26" viewBox="0 0 120 98" fill="none">
+        <path d="M10 8 L32 90 L52 40" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M52 40 L72 90 L82 62" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M82 62 L110 8" stroke="#E64100" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <span><span class="war">WAR</span><span class="lab">LAB</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="governance.html">Governance</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <span class="hero-overline">Workforce Analytics Research Lab</span>
+        <svg class="hero-mark" viewBox="0 0 120 98" fill="none">
+          <path d="M10 8 L32 90 L52 40" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M52 40 L72 90 L82 62" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M82 62 L110 8" stroke="#E64100" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+        <h1>Experimenting at the edge of <span class="accent-blue">workforce analytics</span> and <span class="accent-orange">AI</span>.</h1>
+        <p class="hero-subhead">An independent, educational research project exploring what happens when you point modern AI tools at real workforce analytics problems — using only public data, open methods, and a healthy sense of curiosity.</p>
+        <div class="hero-ctas">
+          <a href="projects.html" class="btn btn-primary">Explore Projects</a>
+          <a href="governance.html" class="btn btn-outline">Read the Governance Charter</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+      <div class="section-inner">
+        <span class="section-overline">About</span>
+        <h2>What is WARLAB?</h2>
+
+        <div class="about-content">
+          <div class="about-copy">
+            <p>WARLAB is an experimental sandbox for workforce analytics research. It exists to ask questions, test ideas, and share what's learned — not to sell anything or represent anyone.</p>
+          </div>
+          <div class="about-copy">
+            <p>The work here sits at the intersection of people analytics, AI tooling, and the kinds of messy, interesting problems that don't fit neatly into a vendor demo. Think of it less as a polished product and more as a researcher's open notebook: some entries are refined, some are rough sketches, and all of them are honest about what worked and what didn't.</p>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <p>Everything published through WARLAB is built on publicly available data, synthetic datasets, and general domain knowledge. No proprietary data. No employer systems. No confidential information of any kind.</p>
+        </div>
+
+        <div class="brand-divider">
+          <div class="divider-line"></div>
+          <div class="divider-dot"></div>
+          <div class="divider-line"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Principles Section -->
+    <section class="principles" id="principles">
+      <div class="section-inner">
+        <span class="section-overline">Principles</span>
+        <h2>How This Works</h2>
+
+        <div class="principles-grid">
+          <div class="principle-block">
+            <span class="label">Educational</span>
+            <h3>It's educational, not commercial.</h3>
+            <p>WARLAB doesn't sell products, services, or consulting. The goal is learning — and sharing that learning with others working in the same space.</p>
+          </div>
+
+          <div class="principle-block">
+            <span class="label">Experimental</span>
+            <h3>It's experimental, not authoritative.</h3>
+            <p>Research outputs are working hypotheses, not finished conclusions. Methods are documented so others can replicate, challenge, or build on them. If something's wrong, that's useful information too.</p>
+          </div>
+
+          <div class="principle-block">
+            <span class="label">AI-Generated</span>
+            <h3>It's AI-generated, made available for human evaluation.</h3>
+            <p>Most content here is generated by AI tools — large language models, coding assistants, analytical platforms. That's the point. WARLAB publishes AI outputs so practitioners can see what these tools actually produce, evaluate the quality themselves, and form their own conclusions about what works and what doesn't.</p>
+          </div>
+
+          <div class="principle-block">
+            <span class="label">Independent</span>
+            <h3>It's independent.</h3>
+            <p>WARLAB is not affiliated with, endorsed by, or representative of any employer, financial institution, or commercial entity. Opinions and findings are the project's own.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+      <div class="section-inner">
+        <span class="section-overline">Explore</span>
+        <h2>What You'll Find Here</h2>
+
+        <div class="projects-grid">
+          <a href="projects.html" class="feature-card">
+            <span class="feature-card-icon">🔬</span>
+            <h3>Research Projects</h3>
+            <p>Explorations into agentic AI workflows for HR data, workforce pattern analysis, natural language interfaces for people data, and the governance frameworks needed to do any of this responsibly.</p>
+          </a>
+
+          <a href="projects.html" class="feature-card">
+            <span class="feature-card-icon">📦</span>
+            <h3>Published Resources</h3>
+            <p>Templates, reference architectures, methodology write-ups — designed to be genuinely useful to other practitioners, not gated behind a signup form.</p>
+          </a>
+
+          <a href="#" class="feature-card">
+            <span class="feature-card-icon">✍️</span>
+            <h3>Blog</h3>
+            <p>Written the way a practitioner actually thinks about this work: what the real problems are, what's promising, what's overhyped, and what keeps you up at night in a regulated industry.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Data & Methods Section -->
+    <section class="data" id="data">
+      <div class="section-inner">
+        <span class="section-overline">Transparency</span>
+        <h2>Data & Methods</h2>
+
+        <p class="data-intro">Everything we publish is built on public sources or synthetic data. No proprietary systems. No confidential datasets. Full disclosure of AI use.</p>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-number">100%</span>
+            <div class="stat-label">Public or Synthetic Data</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">0</span>
+            <div class="stat-label">Proprietary Sources</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">Full</span>
+            <div class="stat-label">AI Generation Disclosure</div>
+          </div>
+        </div>
+
+        <p class="data-outro">Methods are documented, findings are shared, and everything can be audited. That's the only way to build trust in research that uses AI tools. We're here to show you what's real and what's not.</p>
+      </div>
+    </section>
+
+    <!-- Governance Section -->
+    <section class="governance" id="governance">
+      <div class="section-inner">
+        <span class="section-overline">Trust</span>
+        <h2>Governance</h2>
+
+        <div class="governance-content">
+          <p>WARLAB operates under a transparent governance charter that defines what we do, what we don't, and how we make decisions. This isn't a marketing exercise — it's how we hold ourselves accountable.</p>
+          <p>The charter covers data sourcing, AI use disclosure, publication standards, and conflict-of-interest management. If we violate it, the charter itself explains how and why that matters.</p>
+        </div>
+
+        <div class="governance-ctas">
+          <a href="governance.html" class="btn btn-secondary">Read the Governance Charter →</a>
+          <a href="governance.html#disclosures" class="btn btn-outline">View Disclosure Framework →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <a href="#" class="footer-wordmark">
+          <svg width="28" height="23" viewBox="0 0 120 98" fill="none">
+            <path d="M10 8 L32 90 L52 40" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <path d="M52 40 L72 90 L82 62" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <path d="M82 62 L110 8" stroke="#E64100" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+          <span><span class="war">WAR</span><span class="lab">LAB</span></span>
+        </a>
+      </div>
+
+      <div class="footer-disclosure">
+        <p>An independent research project exploring workforce analytics and AI.</p>
+        <p>No affiliation with employers, vendors, or commercial interests.</p>
+      </div>
+
+      <div class="footer-divider">
+        <div class="divider-line"></div>
+        <div class="divider-dot"></div>
+        <div class="divider-line"></div>
+      </div>
+
+      <div class="footer-content">
+        <div class="footer-column">
+          <p><strong>WARLAB</strong><br>Workforce Analytics Research Lab</p>
+        </div>
+
+        <div class="footer-column">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="governance.html">Governance</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://github.com/WARLAB01/warlab-projects" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2026 WARLAB · Workforce Analytics Research Lab</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Sticky nav shadow on scroll
+    const nav = document.getElementById('nav');
+    const heroSection = document.querySelector('.hero');
+
+    function updateNavStyle() {
+      const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+      if (window.scrollY > heroBottom) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    }
+
+    window.addEventListener('scroll', updateNavStyle, { passive: true });
+    window.addEventListener('load', updateNavStyle);
+
+    // Smooth anchor navigation fallback for older browsers
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#' && href !== '' && !href.includes('.html')) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
