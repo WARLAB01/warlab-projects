@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WARLAB Site Editor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #0F172A;
+            background: #F8F9FB;
+            line-height: 1.5;
+        }
+        h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; }
+
+        /* Top Bar */
+        .topbar {
+            background: #0B162A;
+            color: white;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .topbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            white-space: nowrap;
+        }
+        .topbar-brand svg { width: 24px; height: 20px; }
+        .topbar-brand .lab { color: #E64100; }
+        .topbar-brand .editor-badge {
+            font-size: 10px;
+            font-weight: 600;
+            background: #2E5C8A;
+            color: #CFDEF0;
+            padding: 2px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-left: 8px;
+        }
+
+        /* Auth */
+        .auth-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .auth-bar input {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 13px;
+            background: #162D4A;
+            border: 1px solid #2E5C8A;
+            color: #CFDEF0;
+            padding: 8px 14px;
+            border-radius: 6px;
+            width: 300px;
+            outline: none;
+            transition: border-color 150ms;
+        }
+        .auth-bar input:focus { border-color: #E64100; }
+        .auth-bar input::placeholder { color: #5B92C6; }
+        .btn {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 150ms;
+            white-space: nowrap;
+        }
+        .btn-orange { background: #E64100; color: white; }
+        .btn-orange:hover { background: #F06A30; }
+        .btn-orange:disabled { background: #475569; cursor: not-allowed; }
+        .btn-ghost { background: transparent; color: #94A3B8; border: 1px solid #2E5C8A; }
+        .btn-ghost:hover { color: white; border-color: white; }
+        .status-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: #475569;
+            flex-shrink: 0;
+        }
+        .status-dot.connected { background: #22C55E; }
+        .status-dot.error { background: #E64100; }
+        .status-text {
+            font-size: 12px;
+            color: #94A3B8;
+            white-space: nowrap;
+        }
+
+        /* Layout */
+        .app {
+            display: none;
+            grid-template-columns: 260px 1fr;
+            min-height: calc(100vh - 52px);
+        }
+        .app.visible { display: grid; }
+
+        /* Sidebar */
+        .sidebar {
+            background: white;
+            border-right: 1px solid #E8ECF0;
+            padding: 24px 0;
+            overflow-y: auto;
+        }
+        .sidebar-title {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #94A3B8;
+            padding: 0 20px;
+            margin-bottom: 12px;
+        }
+        .page-item {
+            display: block;
+            padding: 10px 20px;
+            font-size: 14px;
+            color: #475569;
+            cursor: pointer;
+            border-left: 3px solid transparent;
+            transition: all 120ms;
+            text-decoration: none;
+        }
+        .page-item:hover { background: #F8F9FB; color: #0B162A; }
+        .page-item.active {
+            background: #EBF1F9;
+            color: #0B162A;
+            border-left-color: #E64100;
+            font-weight: 600;
+        }
+        .page-item .page-path {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: #94A3B8;
+            display: block;
+            margin-top: 2px;
+        }
+        .sidebar-divider {
+            height: 1px;
+            background: #E8ECF0;
+            margin: 16px 20px;
+        }
+
+        /* Editor Area */
+        .editor-area {
+            padding: 32px;
+            overflow-y: auto;
+        }
+        .editor-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+        }
+        .editor-header h2 {
+            font-size: 24px;
+            color: #0B162A;
+        }
+        .editor-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        /* Section Card */
+        .section-card {
+            background: white;
+            border: 1px solid #E8ECF0;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+        .section-card-header {
+            padding: 16px 24px;
+            background: #F8F9FB;
+            border-bottom: 1px solid #E8ECF0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            user-select: none;
+        }
+        .section-card-header h3 {
+            font-size: 15px;
+            color: #0B162A;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-card-header .chevron {
+            color: #94A3B8;
+            transition: transform 150ms;
+            font-size: 14px;
+        }
+        .section-card-header .chevron.open { transform: rotate(90deg); }
+        .section-card-body {
+            padding: 24px;
+            display: none;
+        }
+        .section-card-body.open { display: block; }
+
+        /* Form Fields */
+        .field-group {
+            margin-bottom: 20px;
+        }
+        .field-group:last-child { margin-bottom: 0; }
+        .field-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #0B162A;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .field-label .field-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: #94A3B8;
+            background: #F8F9FB;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        .field-input {
+            width: 100%;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #0F172A;
+            background: #F8F9FB;
+            border: 1px solid #E8ECF0;
+            border-radius: 8px;
+            padding: 10px 14px;
+            outline: none;
+            transition: border-color 150ms, box-shadow 150ms;
+        }
+        .field-input:focus {
+            border-color: #E64100;
+            box-shadow: 0 0 0 3px rgba(230, 65, 0, 0.08);
+        }
+        textarea.field-input {
+            resize: vertical;
+            min-height: 80px;
+            line-height: 1.6;
+        }
+        select.field-input {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 36px;
+            cursor: pointer;
+        }
+        .field-input.changed {
+            border-color: #E64100;
+            background: #FFF1EB;
+        }
+
+        /* Repeating Items (Project Cards, Tech Tags) */
+        .repeating-items {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .repeating-item {
+            background: #F8F9FB;
+            border: 1px solid #E8ECF0;
+            border-radius: 8px;
+            padding: 20px;
+            position: relative;
+        }
+        .repeating-item-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+        .repeating-item-header h4 {
+            font-size: 14px;
+            color: #2E5C8A;
+        }
+        .btn-remove {
+            font-size: 12px;
+            color: #94A3B8;
+            background: none;
+            border: 1px solid #E8ECF0;
+            padding: 4px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 150ms;
+        }
+        .btn-remove:hover { color: #E64100; border-color: #E64100; }
+        .btn-add {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #2E5C8A;
+            background: #EBF1F9;
+            border: 1px dashed #CFDEF0;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 150ms;
+            margin-top: 12px;
+        }
+        .btn-add:hover { background: #CFDEF0; color: #0B162A; }
+
+        /* Tags Editor */
+        .tags-editor {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+        .tag-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #EBF1F9;
+            color: #2E5C8A;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+        .tag-pill .tag-remove {
+            cursor: pointer;
+            color: #94A3B8;
+            font-size: 14px;
+            line-height: 1;
+            transition: color 150ms;
+        }
+        .tag-pill .tag-remove:hover { color: #E64100; }
+        .tag-input-mini {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 13px;
+            background: transparent;
+            border: 1px dashed #CFDEF0;
+            border-radius: 20px;
+            padding: 4px 12px;
+            outline: none;
+            color: #2E5C8A;
+            width: 120px;
+            transition: border-color 150ms;
+        }
+        .tag-input-mini:focus { border-color: #E64100; }
+        .tag-input-mini::placeholder { color: #94A3B8; }
+
+        /* Commit Panel */
+        .commit-panel {
+            background: white;
+            border-top: 1px solid #E8ECF0;
+            padding: 16px 32px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: sticky;
+            bottom: 0;
+            box-shadow: 0 -2px 8px rgba(0,0,0,0.04);
+        }
+        .commit-panel input {
+            flex: 1;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 13px;
+            background: #F8F9FB;
+            border: 1px solid #E8ECF0;
+            border-radius: 6px;
+            padding: 10px 14px;
+            outline: none;
+            color: #0F172A;
+        }
+        .commit-panel input:focus { border-color: #E64100; }
+        .commit-panel input::placeholder { color: #94A3B8; }
+        .change-count {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            color: #E64100;
+            white-space: nowrap;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 120px 40px;
+            color: #94A3B8;
+        }
+        .empty-state h2 {
+            font-size: 20px;
+            color: #475569;
+            margin-bottom: 12px;
+        }
+        .empty-state p { font-size: 14px; }
+
+        /* Loading */
+        .spinner {
+            width: 18px; height: 18px;
+            border: 2px solid #E8ECF0;
+            border-top-color: #E64100;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+            display: inline-block;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 80px;
+            right: 32px;
+            padding: 14px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            z-index: 200;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 300ms;
+        }
+        .toast.visible { opacity: 1; transform: translateY(0); }
+        .toast.success { background: #EBF1F9; color: #2E5C8A; border: 1px solid #CFDEF0; }
+        .toast.error { background: #FFF1EB; color: #E64100; border: 1px solid #E64100; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .app.visible { grid-template-columns: 1fr; }
+            .sidebar { display: none; }
+            .auth-bar input { width: 180px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="topbar-brand">
+            <svg viewBox="0 0 120 98" fill="none">
+                <path d="M10 8 L32 90 L52 40" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M52 40 L72 90 L82 62" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M82 62 L110 8" stroke="#E64100" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+            <span>WAR<span class="lab">LAB</span></span>
+            <span class="editor-badge">Site Editor</span>
+        </div>
+        <div class="auth-bar">
+            <span class="status-dot" id="status-dot"></span>
+            <span class="status-text" id="status-text">Not connected</span>
+            <input type="password" id="pat-input" placeholder="Enter GitHub PAT (ghp_...)" autocomplete="off">
+            <button class="btn btn-orange" id="connect-btn" onclick="connect()">Connect</button>
+            <button class="btn btn-ghost" id="disconnect-btn" onclick="disconnect()" style="display:none">Disconnect</button>
+        </div>
+    </div>
+
+    <!-- App -->
+    <div class="app" id="app">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-title">Main Pages</div>
+            <div id="main-pages"></div>
+            <div class="sidebar-divider"></div>
+            <div class="sidebar-title">Project Pages</div>
+            <div id="project-pages"></div>
+        </div>
+
+        <!-- Editor Area -->
+        <div class="editor-area" id="editor-area">
+            <div class="empty-state">
+                <h2>Select a page to edit</h2>
+                <p>Choose a page from the sidebar to begin editing its content.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+    // ── Configuration ──
+    const REPO = 'WARLAB01/warlab-projects';
+    const BRANCH = 'main';
+    const API = 'https://api.github.com';
+
+    // Page definitions: maps CSS selectors to editable fields
+    const PAGES = [
+        {
+            id: 'index', name: 'Landing Page', path: 'docs/index.html', group: 'main',
+            sections: [
+                {
+                    id: 'hero', name: 'Hero Section',
+                    fields: [
+                        { key: 'overline', label: 'Overline', selector: '.hero-overline', type: 'text' },
+                        { key: 'heading', label: 'Heading', selector: '.hero-heading', type: 'text' },
+                        { key: 'subhead', label: 'Subheading', selector: '.hero-subhead', type: 'textarea' },
+                    ]
+                },
+                {
+                    id: 'about', name: 'About Section',
+                    fields: [
+                        { key: 'overline', label: 'Overline', selector: '#about .section-overline', type: 'text' },
+                        { key: 'heading', label: 'Heading', selector: '#about .section-heading', type: 'text' },
+                        { key: 'copy', label: 'About Text', selector: '.about-copy', type: 'textarea', html: true },
+                    ]
+                }
+            ]
+        },
+        {
+            id: 'projects', name: 'Projects Hub', path: 'docs/projects.html', group: 'main',
+            sections: [
+                {
+                    id: 'hero', name: 'Hero Section',
+                    fields: [
+                        { key: 'overline', label: 'Overline', selector: '.hero-overline', type: 'text' },
+                        { key: 'heading', label: 'Heading', selector: '.hero h1', type: 'text' },
+                        { key: 'desc', label: 'Description', selector: '.hero-desc', type: 'textarea' },
+                    ]
+                },
+                {
+                    id: 'projects-grid', name: 'Project Cards', type: 'repeating',
+                    containerSelector: '.projects-grid',
+                    itemSelector: '.project-card',
+                    fields: [
+                        { key: 'status', label: 'Status', selector: '.project-status', type: 'select', options: ['Complete', 'Active', 'Planning'] },
+                        { key: 'title', label: 'Title', selector: 'h3', type: 'text' },
+                        { key: 'desc', label: 'Description', selector: '.project-desc', type: 'textarea' },
+                        { key: 'link', label: 'Detail Page Link', selector: '.project-link', type: 'text', attr: 'href' },
+                        { key: 'tags', label: 'Tech Tags', type: 'tags', containerSelector: '.tech-tags', itemSelector: '.tech-tag' },
+                    ]
+                }
+            ]
+        },
+        {
+            id: 'governance', name: 'Governance', path: 'docs/governance.html', group: 'main',
+            sections: [
+                {
+                    id: 'hero', name: 'Hero Section',
+                    fields: [
+                        { key: 'overline', label: 'Overline', selector: '.hero-overline', type: 'text' },
+                        { key: 'heading', label: 'Heading', selector: '.hero h1', type: 'text' },
+                        { key: 'desc', label: 'Description', selector: '.hero-desc', type: 'textarea' },
+                    ]
+                }
+            ]
+        },
+        {
+            id: 'contact', name: 'Contact', path: 'docs/contact.html', group: 'main',
+            sections: [
+                {
+                    id: 'hero', name: 'Hero Section',
+                    fields: [
+                        { key: 'overline', label: 'Overline', selector: '.hero-overline', type: 'text' },
+                        { key: 'heading', label: 'Heading', selector: '.hero h1', type: 'text' },
+                        { key: 'desc', label: 'Description', selector: '.hero-desc', type: 'textarea' },
+                    ]
+                },
+                {
+                    id: 'form-intro', name: 'Form Intro',
+                    fields: [
+                        { key: 'heading', label: 'Heading', selector: '.contact-intro h2', type: 'text' },
+                        { key: 'desc', label: 'Description', selector: '.contact-intro p', type: 'textarea' },
+                    ]
+                }
+            ]
+        },
+    ];
+
+    // Generate project detail page definitions dynamically
+    const PROJECT_DETAIL_PAGES = [
+        { id: 'hr-datamart-v1', name: 'HR Datamart V1', path: 'docs/projects/hr-datamart-v1.html' },
+        { id: 'hr-datamart-v2', name: 'HR Datamart V2', path: 'docs/projects/hr-datamart-v2.html' },
+        { id: 'hr-workday-pipeline', name: 'HR Workday Pipeline', path: 'docs/projects/hr-workday-pipeline.html' },
+        { id: 'hr-analytics-fabric-catalog', name: 'Pattern Catalog', path: 'docs/projects/hr-analytics-fabric-catalog.html' },
+        { id: 'fabric-learning-paths', name: 'Fabric Learning Paths', path: 'docs/projects/fabric-learning-paths.html' },
+        { id: 'financial-services-task-inventory', name: 'FS Task Inventory', path: 'docs/projects/financial-services-task-inventory.html' },
+    ];
+
+    PROJECT_DETAIL_PAGES.forEach(p => {
+        PAGES.push({
+            id: p.id, name: p.name, path: p.path, group: 'project',
+            sections: [
+                {
+                    id: 'hero', name: 'Hero Section',
+                    fields: [
+                        { key: 'heading', label: 'Title', selector: '.hero h1, .hero .container h1', type: 'text' },
+                        { key: 'desc', label: 'Description', selector: '.hero .description, .hero .container .description, .hero p.description', type: 'textarea' },
+                    ]
+                },
+                {
+                    id: 'overview', name: 'Overview',
+                    fields: [
+                        { key: 'content', label: 'Overview Text', selector: 'main section:first-of-type', type: 'textarea', html: true },
+                    ]
+                },
+                {
+                    id: 'tech', name: 'Tools & Technologies', type: 'tags-section',
+                    containerSelector: '.tech-list',
+                    itemSelector: '.tech-tag',
+                },
+                {
+                    id: 'governance', name: 'Governance Notes',
+                    fields: [
+                        { key: 'note', label: 'Note', selector: '.info-card p', type: 'textarea' },
+                    ]
+                }
+            ]
+        });
+    });
+
+    // ── State ──
+    let pat = '';
+    let currentPage = null;
+    let originalHtml = '';
+    let currentSha = '';
+    let currentDoc = null;
+    let changes = {};
+
+    // ── Auth ──
+    async function connect() {
+        const input = document.getElementById('pat-input');
+        const token = input.value.trim();
+        if (!token) return;
+
+        setStatus('connecting');
+        try {
+            const res = await ghFetch('/user', token);
+            if (!res.ok) throw new Error('Invalid token');
+            pat = token;
+            sessionStorage.setItem('_wp', token);
+            input.value = '';
+            setStatus('connected');
+            document.getElementById('connect-btn').style.display = 'none';
+            document.getElementById('disconnect-btn').style.display = '';
+            document.getElementById('pat-input').style.display = 'none';
+            document.getElementById('app').classList.add('visible');
+            renderSidebar();
+        } catch (e) {
+            setStatus('error', e.message);
+        }
+    }
+
+    function disconnect() {
+        pat = '';
+        sessionStorage.removeItem('_wp');
+        setStatus('disconnected');
+        document.getElementById('connect-btn').style.display = '';
+        document.getElementById('disconnect-btn').style.display = 'none';
+        document.getElementById('pat-input').style.display = '';
+        document.getElementById('app').classList.remove('visible');
+        currentPage = null;
+    }
+
+    function setStatus(state, msg) {
+        const dot = document.getElementById('status-dot');
+        const text = document.getElementById('status-text');
+        dot.className = 'status-dot';
+        if (state === 'connected') { dot.classList.add('connected'); text.textContent = 'Connected'; }
+        else if (state === 'error') { dot.classList.add('error'); text.textContent = msg || 'Error'; }
+        else if (state === 'connecting') { text.textContent = 'Connecting...'; }
+        else { text.textContent = 'Not connected'; }
+    }
+
+    // ── GitHub API ──
+    function ghFetch(endpoint, token) {
+        return fetch(`${API}${endpoint}`, {
+            headers: { 'Authorization': `token ${token || pat}`, 'Accept': 'application/vnd.github.v3+json' }
+        });
+    }
+
+    async function fetchFile(path) {
+        const res = await ghFetch(`/repos/${REPO}/contents/${path}?ref=${BRANCH}`);
+        if (!res.ok) throw new Error(`Failed to fetch ${path}`);
+        const data = await res.json();
+        return { content: decodeBase64(data.content), sha: data.sha };
+    }
+
+    async function commitFile(path, content, sha, message) {
+        const res = await fetch(`${API}/repos/${REPO}/contents/${path}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `token ${pat}`,
+                'Accept': 'application/vnd.github.v3+json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                message: message || `Update ${path.split('/').pop()} via WARLAB Editor`,
+                content: encodeBase64(content),
+                sha: sha,
+                branch: BRANCH
+            })
+        });
+        if (!res.ok) {
+            const err = await res.json();
+            throw new Error(err.message || 'Commit failed');
+        }
+        return res.json();
+    }
+
+    // Base64 helpers that handle UTF-8
+    function decodeBase64(str) {
+        const bytes = Uint8Array.from(atob(str.replace(/\n/g, '')), c => c.charCodeAt(0));
+        return new TextDecoder().decode(bytes);
+    }
+
+    function encodeBase64(str) {
+        const bytes = new TextEncoder().encode(str);
+        let binary = '';
+        bytes.forEach(b => binary += String.fromCharCode(b));
+        return btoa(binary);
+    }
+
+    // ── Sidebar ──
+    function renderSidebar() {
+        const mainEl = document.getElementById('main-pages');
+        const projEl = document.getElementById('project-pages');
+        mainEl.innerHTML = '';
+        projEl.innerHTML = '';
+
+        PAGES.forEach(page => {
+            const el = document.createElement('div');
+            el.className = 'page-item';
+            el.innerHTML = `${page.name}<span class="page-path">${page.path}</span>`;
+            el.onclick = () => loadPage(page.id);
+            (page.group === 'main' ? mainEl : projEl).appendChild(el);
+        });
+    }
+
+    // ── Load Page ──
+    async function loadPage(pageId) {
+        const page = PAGES.find(p => p.id === pageId);
+        if (!page) return;
+
+        currentPage = page;
+        changes = {};
+
+        // Update sidebar active state
+        document.querySelectorAll('.page-item').forEach(el => el.classList.remove('active'));
+        const items = document.querySelectorAll('.page-item');
+        items.forEach(el => {
+            if (el.textContent.includes(page.name)) el.classList.add('active');
+        });
+
+        const area = document.getElementById('editor-area');
+        area.innerHTML = '<div style="text-align:center;padding:60px"><div class="spinner"></div><p style="margin-top:16px;color:#94A3B8;font-size:14px">Loading page...</p></div>';
+
+        try {
+            const file = await fetchFile(page.path);
+            originalHtml = file.content;
+            currentSha = file.sha;
+            currentDoc = new DOMParser().parseFromString(originalHtml, 'text/html');
+            renderEditor(page);
+        } catch (e) {
+            area.innerHTML = `<div class="empty-state"><h2>Error loading page</h2><p>${e.message}</p></div>`;
+        }
+    }
+
+    // ── Render Editor ──
+    function renderEditor(page) {
+        const area = document.getElementById('editor-area');
+        let html = `
+            <div class="editor-header">
+                <h2>${page.name}</h2>
+                <div class="editor-actions">
+                    <span class="change-count" id="change-count"></span>
+                    <button class="btn btn-ghost" onclick="loadPage('${page.id}')">Reload</button>
+                </div>
+            </div>
+        `;
+
+        page.sections.forEach(section => {
+            html += renderSection(section);
+        });
+
+        html += `
+            <div class="commit-panel">
+                <input type="text" id="commit-msg" placeholder="Commit message (optional)">
+                <button class="btn btn-orange" id="save-btn" onclick="saveChanges()">Save & Commit</button>
+            </div>
+        `;
+
+        area.innerHTML = html;
+
+        // Open first section by default
+        const firstBody = area.querySelector('.section-card-body');
+        const firstChevron = area.querySelector('.chevron');
+        if (firstBody) { firstBody.classList.add('open'); }
+        if (firstChevron) { firstChevron.classList.add('open'); }
+    }
+
+    function renderSection(section) {
+        let bodyHtml = '';
+
+        if (section.type === 'repeating') {
+            bodyHtml = renderRepeatingSection(section);
+        } else if (section.type === 'tags-section') {
+            bodyHtml = renderTagsSection(section);
+        } else {
+            section.fields.forEach(field => {
+                bodyHtml += renderField(section.id, field);
+            });
+        }
+
+        return `
+            <div class="section-card">
+                <div class="section-card-header" onclick="toggleSection(this)">
+                    <h3><span class="chevron">&#9654;</span> ${section.name}</h3>
+                </div>
+                <div class="section-card-body">${bodyHtml}</div>
+            </div>
+        `;
+    }
+
+    function renderField(sectionId, field) {
+        let value = '';
+        try {
+            const el = currentDoc.querySelector(field.selector);
+            if (el) {
+                if (field.attr) {
+                    value = el.getAttribute(field.attr) || '';
+                } else if (field.html) {
+                    value = el.innerHTML.trim();
+                } else {
+                    value = el.textContent.trim();
+                }
+            }
+        } catch (e) { /* selector not found */ }
+
+        const fieldId = `${sectionId}__${field.key}`;
+
+        if (field.type === 'select') {
+            const opts = (field.options || []).map(o =>
+                `<option value="${o}" ${value.toLowerCase().includes(o.toLowerCase()) ? 'selected' : ''}>${o}</option>`
+            ).join('');
+            return `
+                <div class="field-group">
+                    <div class="field-label">${field.label} <span class="field-tag">${field.selector || ''}</span></div>
+                    <select class="field-input" data-field-id="${fieldId}" onchange="trackChange('${fieldId}', this.value)">
+                        ${opts}
+                    </select>
+                </div>
+            `;
+        }
+
+        if (field.type === 'textarea' || field.html) {
+            return `
+                <div class="field-group">
+                    <div class="field-label">${field.label} <span class="field-tag">${field.selector || ''}</span></div>
+                    <textarea class="field-input" data-field-id="${fieldId}" rows="4"
+                        oninput="trackChange('${fieldId}', this.value)">${escapeHtml(value)}</textarea>
+                </div>
+            `;
+        }
+
+        return `
+            <div class="field-group">
+                <div class="field-label">${field.label} <span class="field-tag">${field.selector || ''}</span></div>
+                <input type="text" class="field-input" data-field-id="${fieldId}" value="${escapeAttr(value)}"
+                    oninput="trackChange('${fieldId}', this.value)">
+            </div>
+        `;
+    }
+
+    function renderRepeatingSection(section) {
+        const container = currentDoc.querySelector(section.containerSelector);
+        if (!container) return '<p style="color:#94A3B8;font-size:14px">Section not found in page HTML.</p>';
+
+        const items = container.querySelectorAll(section.itemSelector);
+        let html = '<div class="repeating-items">';
+
+        items.forEach((item, idx) => {
+            html += `<div class="repeating-item">`;
+            html += `<div class="repeating-item-header"><h4>Card ${idx + 1}</h4><button class="btn-remove" onclick="removeCard(${idx}, '${section.id}')">Remove</button></div>`;
+
+            section.fields.forEach(field => {
+                if (field.type === 'tags') {
+                    const tagContainer = item.querySelector(field.containerSelector);
+                    const tags = tagContainer ? Array.from(tagContainer.querySelectorAll(field.itemSelector)).map(t => t.textContent.trim()) : [];
+                    const fieldId = `${section.id}__${idx}__${field.key}`;
+                    html += `
+                        <div class="field-group">
+                            <div class="field-label">${field.label}</div>
+                            <div class="tags-editor" id="tags-${fieldId}">
+                                ${tags.map(t => `<span class="tag-pill">${escapeHtml(t)}<span class="tag-remove" onclick="removeTag(this, '${fieldId}')">&times;</span></span>`).join('')}
+                                <input type="text" class="tag-input-mini" placeholder="+ add" onkeydown="addTag(event, '${fieldId}')">
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    let value = '';
+                    try {
+                        const el = item.querySelector(field.selector);
+                        if (el) {
+                            value = field.attr ? (el.getAttribute(field.attr) || '') : el.textContent.trim();
+                        }
+                    } catch(e) {}
+
+                    const fieldId = `${section.id}__${idx}__${field.key}`;
+
+                    if (field.type === 'select') {
+                        const opts = (field.options || []).map(o =>
+                            `<option value="${o}" ${value.toLowerCase().includes(o.toLowerCase()) ? 'selected' : ''}>${o}</option>`
+                        ).join('');
+                        html += `
+                            <div class="field-group">
+                                <div class="field-label">${field.label}</div>
+                                <select class="field-input" data-field-id="${fieldId}" onchange="trackChange('${fieldId}', this.value)">${opts}</select>
+                            </div>
+                        `;
+                    } else if (field.type === 'textarea') {
+                        html += `
+                            <div class="field-group">
+                                <div class="field-label">${field.label}</div>
+                                <textarea class="field-input" data-field-id="${fieldId}" rows="3"
+                                    oninput="trackChange('${fieldId}', this.value)">${escapeHtml(value)}</textarea>
+                            </div>
+                        `;
+                    } else {
+                        html += `
+                            <div class="field-group">
+                                <div class="field-label">${field.label}</div>
+                                <input type="text" class="field-input" data-field-id="${fieldId}" value="${escapeAttr(value)}"
+                                    oninput="trackChange('${fieldId}', this.value)">
+                            </div>
+                        `;
+                    }
+                }
+            });
+            html += '</div>';
+        });
+
+        html += '</div>';
+        html += `<button class="btn-add" onclick="addCard('${section.id}')">+ Add Project Card</button>`;
+        return html;
+    }
+
+    function renderTagsSection(section) {
+        const container = currentDoc.querySelector(section.containerSelector);
+        if (!container) return '<p style="color:#94A3B8;font-size:14px">Section not found.</p>';
+
+        const tags = Array.from(container.querySelectorAll(section.itemSelector)).map(t => t.textContent.trim());
+        const fieldId = `${section.id}__tags`;
+        return `
+            <div class="field-group">
+                <div class="field-label">Technology Tags</div>
+                <div class="tags-editor" id="tags-${fieldId}">
+                    ${tags.map(t => `<span class="tag-pill">${escapeHtml(t)}<span class="tag-remove" onclick="removeTag(this, '${fieldId}')">&times;</span></span>`).join('')}
+                    <input type="text" class="tag-input-mini" placeholder="+ add" onkeydown="addTag(event, '${fieldId}')">
+                </div>
+            </div>
+        `;
+    }
+
+    // ── Section Toggle ──
+    function toggleSection(header) {
+        const body = header.nextElementSibling;
+        const chevron = header.querySelector('.chevron');
+        body.classList.toggle('open');
+        chevron.classList.toggle('open');
+    }
+
+    // ── Change Tracking ──
+    function trackChange(fieldId, value) {
+        changes[fieldId] = value;
+        const input = document.querySelector(`[data-field-id="${fieldId}"]`);
+        if (input) input.classList.add('changed');
+        updateChangeCount();
+    }
+
+    function updateChangeCount() {
+        const countEl = document.getElementById('change-count');
+        const n = Object.keys(changes).length;
+        if (countEl) countEl.textContent = n > 0 ? `${n} change${n > 1 ? 's' : ''}` : '';
+    }
+
+    // ── Tags ──
+    function addTag(event, fieldId) {
+        if (event.key !== 'Enter') return;
+        event.preventDefault();
+        const input = event.target;
+        const value = input.value.trim();
+        if (!value) return;
+
+        const pill = document.createElement('span');
+        pill.className = 'tag-pill';
+        pill.innerHTML = `${escapeHtml(value)}<span class="tag-remove" onclick="removeTag(this, '${fieldId}')">&times;</span>`;
+        input.parentNode.insertBefore(pill, input);
+        input.value = '';
+        trackChange(fieldId, getTagValues(fieldId));
+    }
+
+    function removeTag(removeBtn, fieldId) {
+        removeBtn.parentNode.remove();
+        trackChange(fieldId, getTagValues(fieldId));
+    }
+
+    function getTagValues(fieldId) {
+        const editor = document.getElementById(`tags-${fieldId}`);
+        if (!editor) return [];
+        return Array.from(editor.querySelectorAll('.tag-pill')).map(p =>
+            p.textContent.replace('×', '').trim()
+        );
+    }
+
+    // ── Add/Remove Cards ──
+    function addCard(sectionId) {
+        showToast('To add new cards, use the GitHub editor or ask Claude to add a project page.', 'error');
+    }
+
+    function removeCard(idx, sectionId) {
+        showToast('Card removal via editor coming soon. Use GitHub directly for structural changes.', 'error');
+    }
+
+    // ── Save & Commit ──
+    async function saveChanges() {
+        if (Object.keys(changes).length === 0) {
+            showToast('No changes to save.', 'error');
+            return;
+        }
+
+        const btn = document.getElementById('save-btn');
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner"></span> Saving...';
+
+        try {
+            // Apply changes to the parsed document
+            applyChanges();
+
+            // Serialize back to HTML string
+            // Use the original HTML as base and do targeted replacements
+            let updatedHtml = serializeDoc();
+
+            const msg = document.getElementById('commit-msg').value.trim() ||
+                `Update ${currentPage.path.split('/').pop()} via WARLAB Editor`;
+
+            const result = await commitFile(currentPage.path, updatedHtml, currentSha, msg);
+            currentSha = result.content.sha;
+            originalHtml = updatedHtml;
+            changes = {};
+            updateChangeCount();
+
+            // Remove changed highlights
+            document.querySelectorAll('.field-input.changed').forEach(el => el.classList.remove('changed'));
+            document.getElementById('commit-msg').value = '';
+            showToast('Changes committed successfully!', 'success');
+        } catch (e) {
+            showToast(`Error: ${e.message}`, 'error');
+        } finally {
+            btn.disabled = false;
+            btn.textContent = 'Save & Commit';
+        }
+    }
+
+    function applyChanges() {
+        if (!currentPage || !currentDoc) return;
+
+        for (const [fieldId, value] of Object.entries(changes)) {
+            const parts = fieldId.split('__');
+
+            // Find section
+            const section = currentPage.sections.find(s => s.id === parts[0]);
+            if (!section) continue;
+
+            if (section.type === 'repeating' && parts.length >= 3) {
+                const idx = parseInt(parts[1]);
+                const fieldKey = parts[2];
+                const field = section.fields.find(f => f.key === fieldKey);
+                if (!field) continue;
+
+                const container = currentDoc.querySelector(section.containerSelector);
+                if (!container) continue;
+                const items = container.querySelectorAll(section.itemSelector);
+                if (idx >= items.length) continue;
+
+                if (field.type === 'tags') {
+                    const tagContainer = items[idx].querySelector(field.containerSelector);
+                    if (tagContainer && Array.isArray(value)) {
+                        tagContainer.innerHTML = value.map(t =>
+                            `\n                    <span class="tech-tag">${t}</span>`
+                        ).join('') + '\n                ';
+                    }
+                } else if (field.type === 'select' && field.key === 'status') {
+                    const el = items[idx].querySelector(field.selector);
+                    if (el) {
+                        el.textContent = value;
+                        el.className = 'project-status ' +
+                            (value.toLowerCase() === 'active' ? 'status-active' :
+                             value.toLowerCase() === 'complete' ? 'status-complete' : 'status-planning');
+                    }
+                } else {
+                    const el = items[idx].querySelector(field.selector);
+                    if (el) {
+                        if (field.attr) el.setAttribute(field.attr, value);
+                        else el.textContent = value;
+                    }
+                }
+            } else if (section.type === 'tags-section' && parts[1] === 'tags') {
+                const container = currentDoc.querySelector(section.containerSelector);
+                if (container && Array.isArray(value)) {
+                    container.innerHTML = value.map(t =>
+                        `\n                    <span class="tech-tag">${t}</span>`
+                    ).join('') + '\n                ';
+                }
+            } else {
+                const fieldKey = parts[1];
+                const field = section.fields.find(f => f.key === fieldKey);
+                if (!field) continue;
+
+                try {
+                    const el = currentDoc.querySelector(field.selector);
+                    if (el) {
+                        if (field.attr) el.setAttribute(field.attr, value);
+                        else if (field.html) el.innerHTML = value;
+                        else el.textContent = value;
+                    }
+                } catch(e) {}
+            }
+        }
+    }
+
+    function serializeDoc() {
+        // Reconstruct using the doctype + html outerHTML approach
+        // This preserves the overall structure better than XMLSerializer
+        const doctype = '<!DOCTYPE html>';
+        const htmlEl = currentDoc.documentElement;
+
+        // Use outerHTML which handles the serialization
+        let html = doctype + '\n' + htmlEl.outerHTML;
+
+        // Fix common serialization issues
+        html = html.replace(/ xmlns="http:\/\/www\.w3\.org\/1999\/xhtml"/g, '');
+
+        return html;
+    }
+
+    // ── Utilities ──
+    function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+
+    function escapeAttr(str) {
+        return str.replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function showToast(msg, type) {
+        const toast = document.getElementById('toast');
+        toast.textContent = msg;
+        toast.className = `toast ${type}`;
+        requestAnimationFrame(() => toast.classList.add('visible'));
+        setTimeout(() => toast.classList.remove('visible'), 4000);
+    }
+
+    // ── Auto-connect from session ──
+    (function init() {
+        const saved = sessionStorage.getItem('_wp');
+        if (saved) {
+            document.getElementById('pat-input').value = saved;
+            connect();
+        }
+    })();
+    </script>
+</body>
+</html>
