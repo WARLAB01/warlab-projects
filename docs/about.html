@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is WARLab? — WARLAB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #0F172A;
+            background: #F8F9FB;
+            line-height: 1.6;
+        }
+        h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; }
+
+        /* ── Navigation ── */
+        nav {
+            position: sticky; top: 0; z-index: 1000;
+            background: white;
+            border-bottom: 1px solid #E8ECF0;
+            height: 56px;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 32px;
+            transition: box-shadow 150ms ease;
+        }
+        nav.scrolled { box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .nav-left {
+            display: flex; align-items: center; gap: 12px;
+            text-decoration: none; cursor: pointer;
+        }
+        .nav-logo { width: 28px; height: 22.75px; }
+        .nav-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600; font-size: 16px; letter-spacing: -0.5px;
+        }
+        .nav-text .war { color: #0B162A; }
+        .nav-text .lab { color: #E64100; }
+        .nav-right { display: flex; gap: 32px; align-items: center; }
+        .nav-link {
+            font-size: 14px; font-weight: 500; color: #475569;
+            text-decoration: none; position: relative; transition: color 150ms ease;
+        }
+        .nav-link:hover { color: #0B162A; }
+        .nav-link.active { color: #0B162A; }
+        .nav-link.active::after {
+            content: ''; position: absolute; bottom: -8px; left: 0; right: 0;
+            height: 2px; background: #E64100;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            background: linear-gradient(135deg, #0B162A 0%, #162D4A 100%);
+            padding: 80px 32px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
+        .hero-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+        .hero-overline {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px; font-weight: 600; letter-spacing: 2px;
+            color: #E64100; text-transform: uppercase; margin-bottom: 16px;
+        }
+        .hero h1 { font-size: 42px; font-weight: 700; line-height: 1.2; margin-bottom: 20px; }
+        .hero-desc {
+            font-size: 18px; color: #5B92C6; line-height: 1.7; max-width: 640px; margin: 0 auto;
+        }
+
+        /* ── Content Container ── */
+        .content { max-width: 860px; margin: 0 auto; padding: 64px 32px; }
+
+        /* ── Section Overline ── */
+        .section-overline {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px; font-weight: 600; letter-spacing: 2px;
+            text-transform: uppercase; color: #E64100;
+            margin-bottom: 12px; display: block;
+        }
+
+        /* ── Section headings ── */
+        .content h2 { font-size: 28px; color: #0B162A; margin-bottom: 20px; }
+        .content h3 { font-size: 20px; color: #0B162A; margin-bottom: 12px; }
+        .content p { font-size: 16px; color: #475569; margin-bottom: 16px; line-height: 1.7; }
+
+        /* ── Section spacing ── */
+        .section-block { margin-bottom: 64px; }
+
+        /* ── MIA Hero Card ── */
+        .mia-card {
+            background: linear-gradient(135deg, #0B162A 0%, #162D4A 100%);
+            border-radius: 16px;
+            padding: 40px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 32px;
+        }
+        .mia-card::before {
+            content: '';
+            position: absolute; top: 0; right: 0;
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(230,65,0,0.08), transparent 70%);
+            pointer-events: none;
+        }
+        .mia-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+        .mia-icon {
+            width: 56px; height: 56px; border-radius: 12px;
+            background: linear-gradient(135deg, #E64100, #F06A30);
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px; font-weight: 700; color: white;
+            flex-shrink: 0;
+            box-shadow: 0 4px 16px rgba(230,65,0,0.3);
+        }
+        .mia-title h3 { color: white; margin-bottom: 4px; font-size: 24px; }
+        .mia-title .subtitle { font-size: 14px; color: #5B92C6; font-weight: 400; }
+        .mia-card p { color: #CFDEF0; font-size: 15px; line-height: 1.75; margin-bottom: 16px; }
+        .mia-card .fun-fact { color: #F06A30; font-style: normal; font-weight: 500; }
+        .mia-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+        .mia-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px; padding: 6px 14px; border-radius: 20px;
+            border: 1px solid rgba(207,222,240,0.25); color: #CFDEF0;
+            background: rgba(207,222,240,0.06);
+        }
+
+        /* ── Memory Tiers ── */
+        .memory-tiers {
+            display: flex; flex-direction: column; gap: 2px;
+            border-radius: 16px; overflow: hidden;
+            border: 1px solid #E8ECF0;
+            margin-bottom: 24px;
+        }
+        .memory-tier {
+            background: white;
+            padding: 28px 32px;
+            display: grid;
+            grid-template-columns: 56px 1fr;
+            gap: 20px; align-items: start;
+            border-bottom: 1px solid #E8ECF0;
+            transition: background 150ms ease;
+        }
+        .memory-tier:last-child { border-bottom: none; }
+        .memory-tier:hover { background: #F8F9FB; }
+        .tier-icon {
+            width: 56px; height: 56px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 20px; font-weight: 700; flex-shrink: 0;
+        }
+        .tier-1 .tier-icon { background: #EBF1F9; color: #2E5C8A; border: 1px solid #CFDEF0; }
+        .tier-2 .tier-icon { background: #FFF1EB; color: #E64100; border: 1px solid #F06A30; }
+        .tier-3 .tier-icon { background: #EBF1F9; color: #2E5C8A; border: 1px solid #CFDEF0; }
+        .tier-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px; color: #94A3B8; letter-spacing: 1px;
+            text-transform: uppercase; margin-bottom: 8px;
+        }
+        .tier-content h3 { margin-bottom: 6px; font-size: 18px; }
+        .tier-content p { margin-bottom: 0; }
+
+        /* ── Consolidation Process ── */
+        .consolidation {
+            background: white; border: 1px solid #E8ECF0;
+            border-left: 4px solid #E64100;
+            border-radius: 12px; padding: 28px 32px;
+        }
+        .consolidation h3 { color: #E64100; font-size: 18px; margin-bottom: 8px; }
+        .consolidation p { margin-bottom: 16px; }
+        .flow-steps { display: flex; flex-wrap: wrap; gap: 10px; }
+        .flow-step {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px; padding: 6px 14px; border-radius: 8px;
+            background: #FFF1EB; border: 1px solid rgba(230,65,0,0.15);
+            color: #E64100;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .flow-step::after { content: '→'; color: #94A3B8; }
+        .flow-step:last-child::after { content: ''; }
+
+        /* ── Learning Card ── */
+        .learning-card {
+            background: white; border: 1px solid #E8ECF0;
+            border-radius: 16px; padding: 32px;
+            position: relative; overflow: hidden;
+        }
+        .learning-card::after {
+            content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #E64100, #2E5C8A, #5B92C6);
+        }
+        .callout {
+            margin-top: 20px; padding: 16px 20px; border-radius: 8px;
+            background: #EBF1F9; border-left: 3px solid #2E5C8A;
+            font-size: 14px; color: #475569; line-height: 1.7;
+        }
+        .callout strong { color: #2E5C8A; font-weight: 600; }
+
+        /* ── Capabilities Grid ── */
+        .cap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 16px;
+        }
+        .cap-card {
+            background: white; border: 1px solid #E8ECF0;
+            border-radius: 12px; padding: 24px; text-align: center;
+            transition: all 150ms ease;
+        }
+        .cap-card:hover {
+            border-color: #E64100;
+            box-shadow: 0 4px 12px rgba(230,65,0,0.08);
+            transform: translateY(-2px);
+        }
+        .cap-emoji { font-size: 28px; margin-bottom: 12px; display: block; }
+        .cap-card h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .cap-card p { font-size: 13px; color: #94A3B8; margin-bottom: 0; }
+
+        /* ── Communication Cards ── */
+        .comms-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .comm-card {
+            background: white; border: 1px solid #E8ECF0;
+            border-radius: 12px; padding: 24px; text-align: center;
+        }
+        .comm-label {
+            display: inline-block;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+            padding: 4px 12px; border-radius: 6px; margin-bottom: 12px;
+        }
+        .comm-api { color: #2E5C8A; background: #EBF1F9; }
+        .comm-cli { color: #E64100; background: #FFF1EB; }
+        .comm-custom { color: #0B162A; background: #F8F9FB; border: 1px solid #E8ECF0; }
+        .comm-card h4 { font-size: 16px; margin-bottom: 6px; }
+        .comm-card p { font-size: 14px; color: #94A3B8; margin-bottom: 0; line-height: 1.5; }
+
+        /* ── Integration Chips ── */
+        .int-row { display: flex; flex-wrap: wrap; gap: 10px; }
+        .int-chip {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 13px; padding: 8px 18px; border-radius: 8px;
+            background: white; border: 1px solid #E8ECF0; color: #475569;
+            transition: all 150ms ease;
+        }
+        .int-chip:hover { border-color: #2E5C8A; color: #2E5C8A; }
+
+        /* ── Origin Card ── */
+        .origin-card {
+            background: white; border: 1px solid #E8ECF0;
+            border-radius: 16px; padding: 36px;
+            position: relative; overflow: hidden;
+        }
+        .origin-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #E64100, #F06A30, #2E5C8A);
+        }
+        .timeline { margin-top: 24px; display: flex; flex-direction: column; gap: 16px; }
+        .timeline-item {
+            display: flex; align-items: center; gap: 12px; font-size: 15px;
+        }
+        .timeline-dot {
+            width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+        }
+        .timeline-item:nth-child(1) .timeline-dot { background: #E64100; }
+        .timeline-item:nth-child(2) .timeline-dot { background: #2E5C8A; }
+        .timeline-item:nth-child(3) .timeline-dot { background: #5B92C6; }
+        .timeline-item span { color: #475569; }
+        .timeline-item strong { color: #0B162A; font-weight: 600; }
+
+        /* ── Footer ── */
+        footer {
+            background: #0B162A; color: white;
+            padding: 64px 32px 32px;
+        }
+        .footer-content { max-width: 1200px; margin: 0 auto; }
+        .footer-top {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 48px; margin-bottom: 48px;
+        }
+        .footer-logo-section { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+        .footer-logo { width: 28px; height: 22.75px; }
+        .footer-wordmark {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600; font-size: 16px; letter-spacing: -0.5px;
+        }
+        .footer-wordmark .lab { color: #E64100; }
+        .footer-tagline { font-size: 13px; color: #94A3B8; line-height: 1.6; }
+        .footer-column h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px; font-weight: 600; margin-bottom: 16px;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .footer-column ul { list-style: none; }
+        .footer-column li { margin-bottom: 12px; }
+        .footer-column a {
+            color: #CFDEF0; text-decoration: none; font-size: 14px;
+            transition: color 150ms ease;
+        }
+        .footer-column a:hover { color: white; }
+        .footer-divider {
+            border-top: 1px solid #162D4A; padding: 32px 0; margin-bottom: 32px;
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+        }
+        .footer-divider::before, .footer-divider::after {
+            content: ''; width: 100%; height: 1px; background: white;
+        }
+        .footer-divider-dot {
+            width: 4px; height: 4px; border-radius: 50%;
+            background: #0B162A; flex-shrink: 0;
+        }
+        .footer-disclosure {
+            font-size: 12px; color: #94A3B8; line-height: 1.7; margin-bottom: 24px;
+        }
+        .footer-bottom {
+            padding-top: 24px; border-top: 1px solid #162D4A;
+            text-align: center; font-size: 12px; color: #94A3B8;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            nav { padding: 0 24px; }
+            .nav-right { gap: 24px; }
+            .hero { padding: 60px 24px; }
+            .hero h1 { font-size: 32px; }
+            .content { padding: 48px 24px; }
+            .memory-tier { grid-template-columns: 1fr; padding: 20px; }
+            .tier-icon { width: 44px; height: 44px; font-size: 16px; }
+            .comms-grid { grid-template-columns: 1fr; }
+            .cap-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-top { gap: 32px; }
+            footer { padding: 48px 24px 24px; }
+        }
+
+        @media (max-width: 480px) {
+            nav { padding: 0 16px; height: 48px; }
+            .nav-text { font-size: 14px; }
+            .nav-right { gap: 16px; }
+            .nav-link { font-size: 12px; }
+            .hero { padding: 48px 16px; }
+            .hero h1 { font-size: 26px; }
+            .hero-desc { font-size: 15px; }
+            .content { padding: 40px 16px; }
+            .mia-card { padding: 24px; }
+            .cap-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .footer-top { grid-template-columns: 1fr; gap: 24px; }
+            footer { padding: 32px 16px 16px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="nav">
+        <a href="index.html" class="nav-left">
+            <svg class="nav-logo" viewBox="0 0 120 98" fill="none">
+                <path d="M10 8 L32 90 L52 40" stroke="#0B162A" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M52 40 L72 90 L82 62" stroke="#0B162A" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M82 62 L110 8" stroke="#E64100" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+            <span class="nav-text"><span class="war">WAR</span><span class="lab">LAB</span></span>
+        </a>
+        <div class="nav-right">
+            <a href="about.html" class="nav-link active">About</a>
+            <a href="projects.html" class="nav-link">Projects</a>
+            <a href="governance.html" class="nav-link">Governance</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner">
+            <p class="hero-overline">System Architecture Overview</p>
+            <h1>What is WARLab?</h1>
+            <p class="hero-desc">A multi-VM agent orchestration platform built on a Mac Studio, with a memory architecture rooted in cognitive science principles. The product of a background spanning Computer Science, Data Science, and Psychology (Cognitive Science), plus 20+ years of independent experimentation.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="content">
+
+        <!-- MIA Supervisor -->
+        <div class="section-block">
+            <span class="section-overline">Supervisor Agent</span>
+            <div class="mia-card">
+                <div class="mia-header">
+                    <div class="mia-icon">M</div>
+                    <div class="mia-title">
+                        <h3>MIA</h3>
+                        <div class="subtitle">My Intelligent Assistant — Central Orchestrator</div>
+                    </div>
+                </div>
+                <p>MIA is a lightweight supervisor agent built on a heavily customized version of OpenClaw (clawdbot) with a unique security and memory architecture. Running on a local LLM, she functions primarily as a router and cron job scheduler — dispatching tasks to specialized sub-agents across isolated VMs. When tasks require deeper reasoning, such as memory search or ambiguous requests, MIA escalates to more capable models like GPT-4o or Haiku, with connections managed through OpenRouter.</p>
+                <p><span class="fun-fact">Fun fact:</span> MIA was originally trained to write sassy Torch and Rockabilly songs — and some of that attitude has stuck around. She can be a little sharp, a little irreverent, and occasionally too cool for the room. It's a feature, not a bug.</p>
+                <div class="mia-tags">
+                    <span class="mia-tag">OpenClaw / clawdbot</span>
+                    <span class="mia-tag">Local LLM Router</span>
+                    <span class="mia-tag">OpenRouter Gateway</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Memory Architecture -->
+        <div class="section-block">
+            <span class="section-overline">Three-Tier Memory Architecture</span>
+            <div class="memory-tiers">
+                <div class="memory-tier tier-1">
+                    <div class="tier-icon">1</div>
+                    <div class="tier-content">
+                        <div class="tier-label">Tier 1 — Primary Memory</div>
+                        <h3>MIA Core</h3>
+                        <p>Deliberately small and lightweight. Contains personality guidelines, an index of all sub-memory files, and a keyword log from past interactions with a directory of pointers. This is all MIA needs to know <em>who she is</em> and <em>where to route</em>. Designed to stay fast — the brain's equivalent of working memory.</p>
+                    </div>
+                </div>
+                <div class="memory-tier tier-2">
+                    <div class="tier-icon">2</div>
+                    <div class="tier-content">
+                        <div class="tier-label">Tier 2 — Skill Memory</div>
+                        <h3>Per-Capability Context</h3>
+                        <p>Each skill or capability maintains its own dedicated memory file, loaded into context only when that skill path is activated. Some capabilities share joint memory files for cross-domain knowledge. When MIA routes to a skill, that skill's memory is loaded — bringing the relevant expertise and history into focus.</p>
+                    </div>
+                </div>
+                <div class="memory-tier tier-3">
+                    <div class="tier-icon">3</div>
+                    <div class="tier-content">
+                        <div class="tier-label">Tier 3 — Long-Term Memory</div>
+                        <h3>Consolidated Knowledge</h3>
+                        <p>The archive. Daily conversations and process logs are migrated here nightly, tagged, and prioritized. Important memories are pinned; critical ones are promoted up to Primary Memory. This is where WARLab's cumulative intelligence lives — and what makes it a system that genuinely learns over time.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="consolidation">
+                <h3>Nightly Consolidation Process</h3>
+                <p>Every night, an automated process reviews the day's activity — migrating conversations and process files into long-term memory, tagging for future relevance, and surfacing anything critical.</p>
+                <div class="flow-steps">
+                    <span class="flow-step">Migrate daily logs</span>
+                    <span class="flow-step">Tag &amp; prioritize</span>
+                    <span class="flow-step">Pin important items</span>
+                    <span class="flow-step">Promote to Primary</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cognitive Learning Loop -->
+        <div class="section-block">
+            <span class="section-overline">Cognitive Learning Loop</span>
+            <div class="learning-card">
+                <h3>Documentation-Driven Learning</h3>
+                <p>Every skill MIA runs calls a dedicated memory-tracking process that documents what happened: what worked, what didn't, and what was learned. This isn't passive logging — it's active learning. The system uses rework events (triggered by task failures or user redirection) as high-weight learning signals.</p>
+                <p>The principle is borrowed directly from cognitive science: when a human makes a mistake and is made aware of it, the corrective memory is encoded more strongly. WARLab applies the same bias — errors that are caught and corrected produce the most durable and useful memories.</p>
+                <div class="callout">
+                    <strong>Cognitive Science Foundation:</strong> This architecture draws on an academic path through Computer Science, Data Science, and Psychology (Cognitive Science) — applying research on error-driven learning, memory consolidation, and attentional weighting to the design of an AI memory system.
+                </div>
+            </div>
+        </div>
+
+        <!-- Sub-Agent Capabilities -->
+        <div class="section-block">
+            <span class="section-overline">Sub-Agent Capabilities</span>
+            <div class="cap-grid">
+                <div class="cap-card">
+                    <span class="cap-emoji">&#x1F3B5;</span>
+                    <h4>Music Creation</h4>
+                    <p>Generate songs &amp; audio</p>
+                </div>
+                <div class="cap-card">
+                    <span class="cap-emoji">&#x1F4DE;</span>
+                    <h4>Phone Calls</h4>
+                    <p>Automated voice tasks</p>
+                </div>
+                <div class="cap-card">
+                    <span class="cap-emoji">&#x1F4C5;</span>
+                    <h4>Calendars</h4>
+                    <p>Scheduling &amp; reminders</p>
+                </div>
+                <div class="cap-card">
+                    <span class="cap-emoji">&#x1F50D;</span>
+                    <h4>Research</h4>
+                    <p>Deep-dive investigation</p>
+                </div>
+                <div class="cap-card">
+                    <span class="cap-emoji">&#x1F310;</span>
+                    <h4>Web Development</h4>
+                    <p>Build &amp; deploy sites</p>
+                </div>
+                <div class="cap-card">
+                    <span class="cap-emoji">&#x1F4BB;</span>
+                    <h4>Code Generation</h4>
+                    <p>Write &amp; debug software</p>
+                </div>
+                <div class="cap-card">
+                    <span class="cap-emoji">&#x1F608;</span>
+                    <h4>Meme Generation</h4>
+                    <p>Because obviously</p>
+                </div>
+                <div class="cap-card">
+                    <span class="cap-emoji">&#x1F399;</span>
+                    <h4>True-Crime Podcasts</h4>
+                    <p>Research, script &amp; produce</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cross-VM Communication -->
+        <div class="section-block">
+            <span class="section-overline">Cross-VM Communication</span>
+            <div class="comms-grid">
+                <div class="comm-card">
+                    <span class="comm-label comm-api">API</span>
+                    <h4>API Calls</h4>
+                    <p>RESTful communication between services and external tool integrations</p>
+                </div>
+                <div class="comm-card">
+                    <span class="comm-label comm-cli">CLI</span>
+                    <h4>CLI Triggers</h4>
+                    <p>Direct command-line invocation of workflows and agent processes</p>
+                </div>
+                <div class="comm-card">
+                    <span class="comm-label comm-custom">CUSTOM</span>
+                    <h4>VM Bridge</h4>
+                    <p>Custom-built application designed to overcome the limitations of isolated VM environments</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tool Integrations -->
+        <div class="section-block">
+            <span class="section-overline">Tool Integrations</span>
+            <div class="int-row">
+                <span class="int-chip">Claude Code</span>
+                <span class="int-chip">Codex</span>
+                <span class="int-chip">OpenRouter</span>
+                <span class="int-chip">GPT-4o</span>
+                <span class="int-chip">Haiku</span>
+                <span class="int-chip">OpenClaw</span>
+            </div>
+        </div>
+
+        <!-- Origin Story -->
+        <div class="section-block">
+            <span class="section-overline">Origin</span>
+            <div class="origin-card">
+                <h3>Born from a Stomach Bug</h3>
+                <p>WARLab started during a holiday break when a stomach bug derailed travel plans. With unexpected free time and nowhere to go, the builder began putting together something to help with music creation — specifically, an AI that could write Torch and Rockabilly songs. That assistant became MIA, and the project quickly outgrew its original scope. What started as a creative tool evolved into a full agent orchestration platform, informed by decades of study and experimentation in how humans and machines learn.</p>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <span><strong>10+ years</strong> — Formal education: CS &rarr; Data Science &rarr; Psychology (Cognitive Science)</span>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <span><strong>20+ years</strong> — Independent experimentation &amp; R&amp;D</span>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <span><strong>Holiday break</strong> — Built the first prototype to make sassy Rockabilly songs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-top">
+                <div>
+                    <div class="footer-logo-section">
+                        <svg class="footer-logo" viewBox="0 0 120 98" fill="none">
+                            <path d="M10 8 L32 90 L52 40" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            <path d="M52 40 L72 90 L82 62" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            <path d="M82 62 L110 8" stroke="#E64100" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        </svg>
+                        <span class="footer-wordmark"><span>WAR</span><span class="lab">LAB</span></span>
+                    </div>
+                    <p class="footer-tagline">Workforce Analytics Research Lab — exploring AI, data, and workforce futures.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="governance.html">Governance</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="https://github.com/WARLAB01" target="_blank">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-divider">
+                <div class="footer-divider-dot"></div>
+            </div>
+
+            <p class="footer-disclosure">WARLAB is an independent educational research project. Content is primarily AI-generated and published for evaluation and educational purposes. Not affiliated with any employer or commercial entity. Not intended as professional advice. Verify independently before use.</p>
+
+            <div class="footer-bottom">
+                &copy; 2026 WARLAB &middot; Workforce Analytics Research Lab
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 0) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
