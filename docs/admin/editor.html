@@ -359,6 +359,21 @@
         .tag-input-mini:focus { border-color: #E64100; }
         .tag-input-mini::placeholder { color: #94A3B8; }
 
+        /* Drag Reorder */
+        .repeating-item { transition: transform 150ms ease, box-shadow 150ms ease; }
+        .repeating-item.dragging { opacity: 0.5; box-shadow: 0 4px 16px rgba(11,22,42,0.15); }
+        .repeating-item.drag-over { border-top: 3px solid #E64100; }
+        .drag-handle {
+            cursor: grab;
+            color: #94A3B8;
+            font-size: 18px;
+            padding: 4px 8px;
+            user-select: none;
+            transition: color 150ms;
+        }
+        .drag-handle:hover { color: #2E5C8A; }
+        .drag-handle:active { cursor: grabbing; }
+
         /* Commit Panel */
         .commit-panel {
             background: white;
@@ -569,6 +584,26 @@
                     fields: [
                         { key: 'heading', label: 'Heading', selector: '.contact-intro h2', type: 'text' },
                         { key: 'desc', label: 'Description', selector: '.contact-intro p', type: 'textarea' },
+                    ]
+                }
+            ]
+        },
+        {
+            id: 'about', name: 'What is WARLab?', path: 'docs/about.html', group: 'main',
+            sections: [
+                {
+                    id: 'hero', name: 'Hero Section',
+                    fields: [
+                        { key: 'overline', label: 'Overline', selector: '.hero-overline', type: 'text' },
+                        { key: 'heading', label: 'Heading', selector: '.hero h1', type: 'text' },
+                        { key: 'desc', label: 'Description', selector: '.hero-desc', type: 'textarea' },
+                    ]
+                },
+                {
+                    id: 'mia', name: 'MIA Agent Card',
+                    fields: [
+                        { key: 'title', label: 'Agent Name', selector: '.mia-card .mia-title h3', type: 'text' },
+                        { key: 'subtitle', label: 'Subtitle', selector: '.mia-card .mia-title .subtitle', type: 'text' },
                     ]
                 }
             ]
@@ -875,26 +910,18 @@
         if (!container) return '<p style="color:#94A3B8;font-size:14px">Section not found in page HTML.</p>';
 
         const items = container.querySelectorAll(section.itemSelector);
-        let html = '<div class="repeating-items">';
+        let html = '<div class="repeating-items" data-section-id="' + section.id + '">';
 
         items.forEach((item, idx) => {
-            html += `<div class="repeating-item">`;
-            html += `<div class="repeating-item-header"><h4>Card ${idx + 1}</h4><button class="btn-remove" onclick="removeCard(${idx}, '${section.id}')">Remove</button></div>`;
+            html += '<div class="repeating-item" draggable="true" data-card-idx="' + idx + '">';
+            html += '<div class="repeating-item-header"><span class="drag-handle" title="Drag to reorder">&#9776;</span><h4>Card ' + (idx + 1) + '</h4><button class="btn-remove" onclick="removeCard(' + idx + ', \'' + section.id + '\')">Remove</button></div>';
 
             section.fields.forEach(field => {
                 if (field.type === 'tags') {
                     const tagContainer = item.querySelector(field.containerSelector);
                     const tags = tagContainer ? Array.from(tagContainer.querySelectorAll(field.itemSelector)).map(t => t.textContent.trim()) : [];
-                    const fieldId = `${section.id}__${idx}__${field.key}`;
-                    html += `
-                        <div class="field-group">
-                            <div class="field-label">${field.label}</div>
-                            <div class="tags-editor" id="tags-${fieldId}">
-                                ${tags.map(t => `<span class="tag-pill">${escapeHtml(t)}<span class="tag-remove" onclick="removeTag(this, '${fieldId}')">&times;</span></span>`).join('')}
-                                <input type="text" class="tag-input-mini" placeholder="+ add" onkeydown="addTag(event, '${fieldId}')">
-                            </div>
-                        </div>
-                    `;
+                    const fieldId = section.id + '__' + idx + '__' + field.key;
+                    html += '\n                        <div class="field-group">\n                            <div class="field-label">' + field.label + '</div>\n                            <div class="tags-editor" id="tags-' + fieldId + '">\n                                ' + tags.map(t => '<span class="tag-pill">' + escapeHtml(t) + '<span class="tag-remove" onclick="removeTag(this, \'' + fieldId + '\')">&times;</span></span>').join('') + '\n                                <input type="text" class="tag-input-mini" placeholder="+ add" onkeydown="addTag(event, \'' + fieldId + '\')">\n                            </div>\n                        </div>\n                    ';
                 } else {
                     let value = '';
                     try {
@@ -904,34 +931,17 @@
                         }
                     } catch(e) {}
 
-                    const fieldId = `${section.id}__${idx}__${field.key}`;
+                    const fieldId = section.id + '__' + idx + '__' + field.key;
 
                     if (field.type === 'select') {
                         const opts = (field.options || []).map(o =>
-                            `<option value="${o}" ${value.toLowerCase().includes(o.toLowerCase()) ? 'selected' : ''}>${o}</option>`
+                            '<option value="' + o + '" ' + (value.toLowerCase().includes(o.toLowerCase()) ? 'selected' : '') + '>' + o + '</option>'
                         ).join('');
-                        html += `
-                            <div class="field-group">
-                                <div class="field-label">${field.label}</div>
-                                <select class="field-input" data-field-id="${fieldId}" onchange="trackChange('${fieldId}', this.value)">${opts}</select>
-                            </div>
-                        `;
+                        html += '\n                            <div class="field-group">\n                                <div class="field-label">' + field.label + '</div>\n                                <select class="field-input" data-field-id="' + fieldId + '" onchange="trackChange(\'' + fieldId + '\', this.value)">' + opts + '</select>\n                            </div>\n                        ';
                     } else if (field.type === 'textarea') {
-                        html += `
-                            <div class="field-group">
-                                <div class="field-label">${field.label}</div>
-                                <textarea class="field-input" data-field-id="${fieldId}" rows="3"
-                                    oninput="trackChange('${fieldId}', this.value)">${escapeHtml(value)}</textarea>
-                            </div>
-                        `;
+                        html += '\n                            <div class="field-group">\n                                <div class="field-label">' + field.label + '</div>\n                                <textarea class="field-input" data-field-id="' + fieldId + '" rows="3"\n                                    oninput="trackChange(\'' + fieldId + '\', this.value)">' + escapeHtml(value) + '</textarea>\n                            </div>\n                        ';
                     } else {
-                        html += `
-                            <div class="field-group">
-                                <div class="field-label">${field.label}</div>
-                                <input type="text" class="field-input" data-field-id="${fieldId}" value="${escapeAttr(value)}"
-                                    oninput="trackChange('${fieldId}', this.value)">
-                            </div>
-                        `;
+                        html += '\n                            <div class="field-group">\n                                <div class="field-label">' + field.label + '</div>\n                                <input type="text" class="field-input" data-field-id="' + fieldId + '" value="' + escapeAttr(value) + '"\n                                    oninput="trackChange(\'' + fieldId + '\', this.value)">\n                            </div>\n                        ';
                     }
                 }
             });
@@ -939,7 +949,7 @@
         });
 
         html += '</div>';
-        html += `<button class="btn-add" onclick="addCard('${section.id}')">+ Add Project Card</button>`;
+        html += '<button class="btn-add" onclick="addCard(\'' + section.id + '\')">+ Add Project Card</button>';
         return html;
     }
 
@@ -1019,6 +1029,73 @@
     function removeCard(idx, sectionId) {
         showToast('Card removal via editor coming soon. Use GitHub directly for structural changes.', 'error');
     }
+
+    // ── Drag & Drop Reorder ──
+    let dragSrcIdx = null;
+    let dragSectionId = null;
+
+    document.addEventListener('dragstart', function(e) {
+        const item = e.target.closest('.repeating-item[draggable]');
+        if (!item) return;
+        dragSrcIdx = parseInt(item.dataset.cardIdx);
+        dragSectionId = item.closest('.repeating-items').dataset.sectionId;
+        item.classList.add('dragging');
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/plain', dragSrcIdx);
+    });
+
+    document.addEventListener('dragover', function(e) {
+        const item = e.target.closest('.repeating-item[draggable]');
+        if (!item) return;
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+        document.querySelectorAll('.repeating-item.drag-over').forEach(el => el.classList.remove('drag-over'));
+        if (parseInt(item.dataset.cardIdx) !== dragSrcIdx) {
+            item.classList.add('drag-over');
+        }
+    });
+
+    document.addEventListener('dragleave', function(e) {
+        const item = e.target.closest('.repeating-item[draggable]');
+        if (item) item.classList.remove('drag-over');
+    });
+
+    document.addEventListener('drop', function(e) {
+        e.preventDefault();
+        const targetItem = e.target.closest('.repeating-item[draggable]');
+        if (!targetItem) return;
+        const targetIdx = parseInt(targetItem.dataset.cardIdx);
+        if (dragSrcIdx === null || dragSrcIdx === targetIdx) return;
+
+        const section = currentPage.sections.find(s => s.id === dragSectionId);
+        if (!section || section.type !== 'repeating') return;
+
+        const container = currentDoc.querySelector(section.containerSelector);
+        if (!container) return;
+
+        const items = Array.from(container.querySelectorAll(section.itemSelector));
+        if (dragSrcIdx >= items.length || targetIdx >= items.length) return;
+
+        const movedItem = items[dragSrcIdx];
+        const targetElement = items[targetIdx];
+
+        if (dragSrcIdx < targetIdx) {
+            container.insertBefore(movedItem, targetElement.nextSibling);
+        } else {
+            container.insertBefore(movedItem, targetElement);
+        }
+
+        trackChange('__reorder__' + dragSectionId, Date.now().toString());
+        renderEditor(currentPage);
+        showToast('Cards reordered — save to commit.', 'success');
+    });
+
+    document.addEventListener('dragend', function(e) {
+        document.querySelectorAll('.repeating-item.dragging').forEach(el => el.classList.remove('dragging'));
+        document.querySelectorAll('.repeating-item.drag-over').forEach(el => el.classList.remove('drag-over'));
+        dragSrcIdx = null;
+        dragSectionId = null;
+    });
 
     // ── Save & Commit ──
     async function saveChanges() {
