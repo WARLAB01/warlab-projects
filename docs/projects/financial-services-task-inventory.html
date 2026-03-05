@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financial Services Task Inventory — Comprehensive Workforce Taxonomy | WARLAB</title>
+    <title>Financial Services Task Inventory — AI Workforce Exposure Analysis | WARLAB</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -199,6 +199,39 @@
             font-weight: 500;
         }
 
+        /* Stat Cards */
+        .stat-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-card .stat-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .stat-card .stat-label {
+            font-size: 12px;
+            color: #5B92C6;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
         /* Main Content */
         main {
             background: white;
@@ -230,6 +263,56 @@
         .info-card p {
             color: #0F172A;
             margin-bottom: 0;
+        }
+
+        .info-card.methodology {
+            border-left-color: #2E5C8A;
+        }
+
+        /* Tier Cards */
+        .tier-grid {
+            display: grid;
+            gap: 20px;
+            margin-top: 24px;
+        }
+
+        .tier-card {
+            background: #F8F9FB;
+            border: 1px solid #E8ECF0;
+            border-radius: 8px;
+            padding: 24px;
+        }
+
+        .tier-card .tier-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .tier-card .tier-label.peer-reviewed { color: #2E5C8A; }
+        .tier-card .tier-label.empirical { color: #E64100; }
+        .tier-card .tier-label.forward-looking { color: #475569; }
+
+        .tier-card h4 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: #0B162A;
+        }
+
+        .tier-card p {
+            font-size: 14px;
+            color: #475569;
+            margin-bottom: 0;
+        }
+
+        .tier-card .tier-source {
+            font-size: 12px;
+            color: #94A3B8;
+            margin-top: 8px;
+            font-style: italic;
         }
 
         /* Tech Tags */
@@ -270,7 +353,7 @@
         }
 
         .artifacts-list li::before {
-            content: '→';
+            content: '\2192';
             color: #E64100;
             font-weight: 700;
             flex-shrink: 0;
@@ -285,6 +368,39 @@
 
         .artifacts-list a:hover {
             color: #E64100;
+        }
+
+        .artifacts-list .artifact-desc {
+            display: block;
+            font-size: 13px;
+            color: #94A3B8;
+            margin-top: 2px;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #E64100;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 150ms ease, gap 150ms ease;
+            margin-top: 16px;
+        }
+
+        .cta-button:hover {
+            background: #F06A30;
+            color: white;
+            gap: 12px;
+        }
+
+        .cta-button::after {
+            content: '\2192';
         }
 
         /* Related Projects Section */
@@ -429,6 +545,10 @@
             .project-cards {
                 grid-template-columns: 1fr;
             }
+
+            .stat-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 480px) {
@@ -454,6 +574,11 @@
             .hero .description {
                 font-size: 16px;
             }
+
+            .stat-cards {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
         }
     </style>
 </head>
@@ -469,10 +594,9 @@
                 WARLAB
             </a>
             <ul class="links">
-                <li><a href="../about.html">About</a></li>
+                <li><a href="../index.html#about">About</a></li>
                 <li><a href="../projects.html" class="active">Projects</a></li>
                 <li><a href="../governance.html">Governance</a></li>
-                <li><a href="../contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -482,9 +606,27 @@
             <div class="overline">Project</div>
             <div class="title-wrapper">
                 <h1>Financial Services Task Inventory</h1>
-                <span class="status-pill status-complete">COMPLETE</span>
+                <span class="status-pill status-active">Active</span>
             </div>
-            <p class="description">A comprehensive inventory of 1,545 financial services tasks organized in a 4-level taxonomy with scoring and interactive exploration tools.</p>
+            <p class="description">A comprehensive task-level inventory of 4,075 activities across 15 business functions in financial services, with a 3-tier AI exposure assessment grounded in peer-reviewed and empirical research.</p>
+            <div class="stat-cards">
+                <div class="stat-card">
+                    <div class="stat-value">4,075</div>
+                    <div class="stat-label">Tasks</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">15</div>
+                    <div class="stat-label">Functions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">253</div>
+                    <div class="stat-label">Activities</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">3-Tier</div>
+                    <div class="stat-label">AI Framework</div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -492,40 +634,104 @@
         <div class="container">
             <section>
                 <h2>Overview</h2>
-                <p>The Financial Services Task Inventory catalogs 1,545 discrete tasks performed across the financial services industry, organized into a rigorous 4-level hierarchical taxonomy. Each task is scored and categorized to support workforce planning, automation assessment, and skills mapping initiatives. The interactive web interface provides filtering, search, and drill-down capabilities across the full taxonomy — from high-level functional areas down to individual tasks — making it a practical reference for anyone researching workforce composition in financial services.</p>
+                <p>The Financial Services Task Inventory is a structured reference dataset cataloguing the work performed across a large financial services organization. It decomposes 15 business functions into 70 L2 processes and 253 L3 activities, ultimately defining 4,075 individual tasks — each annotated with cognitive complexity, regulatory classification, cross-functional dependencies, skills requirements, and AI exposure assessments.</p>
+                <p>The inventory is designed as a foundation for strategic workforce planning, job redesign, and AI transformation analysis. Rather than relying on a single AI exposure metric, the project implements a transparent 3-tier assessment framework that layers peer-reviewed research, empirical data, and forward-looking indicators — each with clearly documented sources and limitations.</p>
+                <a href="https://warlab01.github.io/financial-services-task-inventory/#methodology" class="cta-button">View Framework & Methodology</a>
+            </section>
+
+            <section>
+                <h2>3-Tier AI Assessment Framework</h2>
+                <p>Every AI exposure metric in this inventory is traceable to a specific source. No scores are fabricated or interpolated. The framework is designed so that users can evaluate the evidence behind each tier independently.</p>
+
+                <div class="tier-grid">
+                    <div class="tier-card">
+                        <div class="tier-label peer-reviewed">Tier 1 — Peer-Reviewed</div>
+                        <h4>Eloundou E0 / E1 / E2 Classification</h4>
+                        <p>Each task is classified using the categorical rubric from Eloundou et al. (2023), published in <em>Science</em>. E0 = no meaningful LLM exposure; E1 = direct LLM use can reduce task time by 50%+; E2 = LLM-powered tools (with software built on top) can reduce task time by 50%+. Aggregated via the Eloundou beta measure.</p>
+                        <p class="tier-source">Source: Eloundou et al. (2023). "GPTs are GPTs." Science, 381(6654).</p>
+                    </div>
+
+                    <div class="tier-card">
+                        <div class="tier-label empirical">Tier 2 — Empirical</div>
+                        <h4>Anthropic Economic Index (AEI) Success Rates</h4>
+                        <p>Where available, tasks are matched to empirical success rates from the Anthropic Economic Index — derived from 2 million real Claude.ai conversations (November 2025 data). 1,709 of 4,075 tasks (42%) have an AEI match. Success rates reflect observed task completion, not theoretical capability.</p>
+                        <p class="tier-source">Source: Anthropic Economic Index (January 2026). CC-BY, HuggingFace. Note: Anthropic is a commercial AI lab with potential interest in demonstrating AI capability.</p>
+                    </div>
+
+                    <div class="tier-card">
+                        <div class="tier-label forward-looking">Tier 3 — Forward-Looking</div>
+                        <h4>Agentic Potential Flag</h4>
+                        <p>A constructed indicator (High / Medium / Low) identifying tasks where agentic AI — multi-step workflows, tool orchestration, code execution — may expand capabilities beyond what basic LLM chatbot interaction can achieve. This is an analytical construct, not an empirical measurement.</p>
+                        <p class="tier-source">Source: WARLAB-constructed heuristic based on task description analysis. No peer-reviewed validation.</p>
+                    </div>
+                </div>
             </section>
 
             <section>
                 <h2>Taxonomy Structure</h2>
-                <p><strong>4-Level Hierarchy:</strong> Functional Area → Department → Process → Task, providing systematic coverage of the financial services value chain</p>
-                <p><strong>1,545 Tasks:</strong> Comprehensive inventory spanning front office, middle office, back office, risk, compliance, technology, and corporate functions</p>
-                <p><strong>Task Scoring:</strong> Each task scored across multiple dimensions to support automation potential analysis and workforce planning</p>
-                <p><strong>Interactive Explorer:</strong> Single-page web application with search, filtering, and hierarchical navigation across all taxonomy levels</p>
+                <p>The inventory follows a four-level hierarchy designed to map to real organizational structures in financial services. L1 functions represent major business areas (e.g., Retail Banking, Risk Management, Technology & Operations). L2 processes decompose functions into operational domains. L3 activities represent discrete work areas. L4 tasks are the atomic unit — individual activities that can be assigned to a role and assessed for AI exposure.</p>
+                <p>Each task carries 18 structured fields including cognitive complexity (Bloom's taxonomy), regulatory classification, defense line mapping (Three Lines of Defense), cross-functional flags, skills requirements, and all three tiers of AI exposure assessment.</p>
+            </section>
+
+            <section>
+                <h2>Data Sources</h2>
+                <p>The inventory draws on publicly available occupational frameworks and research, including O*NET 30.2 task descriptions, SOC occupation codes, industry certification requirements, regulatory frameworks (Basel III, IFRS 9, AML/KYC), and financial services domain expertise. AI exposure classifications are sourced from Eloundou et al. (2023) and the Anthropic Economic Index (2026). No proprietary employer data is used.</p>
             </section>
 
             <section>
                 <h2>Tools & Technologies</h2>
                 <div class="tech-list">
-                    <span class="tech-tag">Financial Services</span>
-                    <span class="tech-tag">Task Analysis</span>
-                    <span class="tech-tag">Taxonomy</span>
-                    <span class="tech-tag">HTML/JS</span>
-                    <span class="tech-tag">Workforce Planning</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">O*NET 30.2</span>
+                    <span class="tech-tag">Chart.js</span>
+                    <span class="tech-tag">Vanilla JS</span>
+                    <span class="tech-tag">GitHub Pages</span>
+                    <span class="tech-tag">JSON</span>
+                    <span class="tech-tag">Bloom's Taxonomy</span>
+                    <span class="tech-tag">Three Lines of Defense</span>
                 </div>
             </section>
 
             <section>
                 <h2>Key Artifacts</h2>
                 <ul class="artifacts-list">
-                    <li><a href="https://warlab01.github.io/financial-services-task-inventory/">Interactive Task Explorer</a></li>
-                    <li><a href="https://github.com/WARLAB01/financial-services-task-inventory">Source Repository</a></li>
+                    <li>
+                        <div>
+                            <a href="https://warlab01.github.io/financial-services-task-inventory/#methodology">Assessment Framework & Methodology</a>
+                            <span class="artifact-desc">3-tier AI exposure framework, scoring methodology, data source documentation</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="https://warlab01.github.io/financial-services-task-inventory/#explorer">Interactive Task Explorer</a>
+                            <span class="artifact-desc">Filterable, searchable interface for all 4,075 tasks with drill-down detail</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="https://warlab01.github.io/financial-services-task-inventory/#dashboard">Executive Dashboard</a>
+                            <span class="artifact-desc">KPI cards, distribution charts, and strategic summary</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="https://warlab01.github.io/financial-services-task-inventory/#runbook">Hay Method Runbook</a>
+                            <span class="artifact-desc">Korn Ferry Hay Method integration for job evaluation</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="https://github.com/WARLAB01/financial-services-task-inventory">GitHub Repository</a>
+                            <span class="artifact-desc">Source code and deployed application</span>
+                        </div>
+                    </li>
                 </ul>
             </section>
 
             <section>
                 <h2>Governance Notes</h2>
                 <div class="info-card">
-                    <p>All task definitions are based on publicly available financial services industry documentation, regulatory frameworks, and general domain knowledge. No proprietary organizational data, job descriptions, or internal process documentation from any financial institution is used. Task scoring methodology is documented and reproducible.</p>
+                    <p>This inventory is a reference dataset constructed from public sources for educational and analytical purposes. It does not represent any specific employer's organizational structure, job descriptions, or workforce data. AI exposure assessments are based on published research and should not be used as the sole basis for workforce decisions. All metrics include transparent source attribution so users can evaluate the evidence independently.</p>
                 </div>
             </section>
         </div>
@@ -535,13 +741,17 @@
         <div class="container">
             <h3>Other Projects</h3>
             <div class="project-cards">
-                <a href="hr-workday-pipeline.html" class="project-card">
-                    <h4>HR Workday Pipeline</h4>
-                    <p>Simulated HR data pipeline for a 10,000-employee financial services org</p>
-                </a>
                 <a href="hr-datamart-v1.html" class="project-card">
                     <h4>HR Datamart V1</h4>
-                    <p>People Analytics Dashboard with three-layer ETL pipeline</p>
+                    <p>People Analytics dashboard with full ETL pipeline from Workday to ECharts</p>
+                </a>
+                <a href="hr-datamart-v2.html" class="project-card">
+                    <h4>HR Datamart V2</h4>
+                    <p>Enterprise Workforce Analytics with star schema and SCD Type 2</p>
+                </a>
+                <a href="hr-workday-pipeline.html" class="project-card">
+                    <h4>HR Workday Pipeline</h4>
+                    <p>Data generator and AWS deployment for 10,000 employees</p>
                 </a>
             </div>
         </div>
@@ -552,31 +762,29 @@
             <div>
                 <h4>About</h4>
                 <ul>
-                    <li><a href="../about.html">WARLAB</a></li>
+                    <li><a href="../index.html#about">WARLAB</a></li>
                     <li><a href="../index.html">Home</a></li>
                 </ul>
             </div>
             <div>
                 <h4>Projects</h4>
                 <ul>
+                    <li><a href="../projects.html">All Projects</a></li>
                     <li><a href="hr-datamart-v1.html">HR Datamart V1</a></li>
                     <li><a href="hr-datamart-v2.html">HR Datamart V2</a></li>
                     <li><a href="hr-workday-pipeline.html">HR Workday Pipeline</a></li>
-                    <li><a href="hr-analytics-fabric-catalog.html">Fabric Pattern Catalog</a></li>
-                    <li><a href="fabric-learning-paths.html">Fabric Learning Paths</a></li>
-                    <li><a href="financial-services-task-inventory.html">Financial Services Tasks</a></li>
+                    <li><a href="financial-services-task-inventory.html">Task Inventory</a></li>
                 </ul>
             </div>
             <div>
                 <h4>Resources</h4>
                 <ul>
                     <li><a href="../governance.html">Governance</a></li>
-                    <li><a href="../contact.html">Contact</a></li>
-                    <li><a href="https://github.com/WARLAB01">GitHub</a></li>
+                    <li><a href="https://github.com/WARLAB01/warlab-projects">GitHub</a></li>
                 </ul>
             </div>
             <div class="copyright">
-                <p>&copy; 2026 WARLAB &middot; Workforce Analytics Research Lab</p>
+                <p>&copy; 2026 WARLAB. All rights reserved.</p>
             </div>
         </div>
     </footer>
