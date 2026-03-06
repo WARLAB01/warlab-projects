@@ -1,0 +1,16 @@
+Matrix_Organization_ID,Matrix_Organization_Status,Maxtrix_Organization_Name,Maxtrix_Organization_Code,Matrix_Organization_Type,Matrix_Organization_SubType
+MORG_DIG_XFORM,Active,Digital Transformation,DT,Project,Strategic
+MORG_ESG,Active,ESG & Sustainability,ESG,Committee,Governance
+MORG_DEI,Active,Diversity Equity & Inclusion,DEI,Committee,Cultural
+MORG_INNOV,Active,Innovation Lab,INN,Project,Strategic
+MORG_DATA_GOV,Active,Data Governance Council,DGC,Committee,Governance
+MORG_CX,Active,Client Experience,CX,Project,Strategic
+MORG_CLOUD,Active,Cloud Migration,CLD,Project,Technology
+MORG_REG_CHG,Active,Regulatory Change,REG,Project,Compliance
+MORG_MA,Active,M&A Integration,MA,Project,Strategic
+MORG_TALENT,Active,Talent Strategy,TAL,Committee,HR
+MORG_AI_ML,Active,AI & Machine Learning,AI,Project,Technology
+MORG_COST_OPT,Active,Cost Optimization,COT,Project,Finance
+MORG_CYBER,Active,Cybersecurity Task Force,CYB,Committee,Technology
+MORG_WM_STRAT,Active,Wealth Management Strategy,WMS,Project,Business
+MORG_US_EXPAN,Active,US Expansion,USE,Project,Strategic

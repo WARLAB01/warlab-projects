@@ -1,0 +1,95 @@
+Job_Profile_ID,Job_Profile_WID,AAP_Job_Group,Bonus_Eligibility,Customer_Facing,EEO1_Code,Job_Collection,Loan_Originator_Code,National_Occupation_Code,Occupation_Code,Recruitment_Channel,Standard_Occupation_Code,Stock
+JP_0001,10a92b1afd77cabfc8fa175c34c2362e,AAP_07,Not Eligible,Y,3.1,Technology,,51100,OCC_1894,Internal,15-1252,Not Eligible
+JP_0002,65f427295e5e3ad63e16e47dcdaf9508,AAP_06,Eligible,Y,2.2,Technology,,21232,OCC_4925,Agency,43-3031,Eligible
+JP_0003,92187e2e0e0a9d261fc7c7fe6b6472ef,AAP_10,Not Eligible,Y,7.1,Technology,,21230,OCC_8824,Agency,41-3021,Eligible
+JP_0004,6b07cad9f96f36ae80078ba5eceb2699,AAP_20,Eligible,N,5.1,Technology,,11102,OCC_2089,Agency,15-2051,Eligible
+JP_0005,b97bf1d5a428e9688f5db9fb6b376e6e,AAP_03,Eligible,Y,9.1,Technology,,21310,OCC_7914,Agency,43-3031,Not Eligible
+JP_0006,8300a4927d64f74253e8876cb8c9778f,AAP_15,Eligible,N,4.1,Technology,,21110,OCC_1007,Internal,11-1011,Eligible
+JP_0007,b030bdcc06e9ab6527b122b17031c8c3,AAP_03,Eligible,Y,2.2,Technology,LO333,11100,OCC_8543,Agency,13-2011,Eligible
+JP_0008,fb571350a12da8f46c5bcfa1ef4844a5,AAP_20,Not Eligible,N,2.2,Technology,,21231,OCC_8942,External,15-1256,Not Eligible
+JP_0009,a2935a97f6ba4138627f8145f348cb00,AAP_19,Eligible,N,3.1,Technology,LO548,12101,OCC_2590,External,13-2051,Eligible
+JP_0010,9e157898b5c53519322ac799e2ebaec5,AAP_15,Eligible,Y,2.2,Technology,,21231,OCC_5468,External,41-3021,Eligible
+JP_0011,860c920107f3be319f1ff4d3895a9b52,AAP_01,Eligible,N,6.1,Technology,,41201,OCC_3863,Referral,43-3031,Eligible
+JP_0012,2afd3160f80f0a6308455ab561a26051,AAP_05,Eligible,N,6.1,Technology,,41200,OCC_7092,Agency,43-3031,Not Eligible
+JP_0013,bf7fefca429e572314ee578443f6ee34,AAP_06,Eligible,N,2.1,Technology,,12101,OCC_5629,Agency,15-1256,Eligible
+JP_0014,e421782d1f3136c01c0e5db1fbba2d86,AAP_19,Eligible,N,3.1,Technology,,51100,OCC_9750,Internal,13-2051,Not Eligible
+JP_0015,ac23794934c1d78f5c07a1dc78ab20f9,AAP_05,Eligible,Y,4.1,Technology,,12100,OCC_8319,Referral,13-1111,Eligible
+JP_0016,3eac739ccb4f4af7527e73d404652fe6,AAP_07,Eligible,Y,2.2,Technology,,41400,OCC_2681,Referral,13-2011,Not Eligible
+JP_0017,03685730a074bf8e82bd0b2dcddd80b1,AAP_03,Eligible,Y,1.1,Technology,,21211,OCC_2213,Internal,43-3031,Eligible
+JP_0018,6bc76b25c491a1d2ffc900b59e87b100,AAP_18,Eligible,Y,1.1,Finance & Accounting,,11100,OCC_1697,External,43-3031,Not Eligible
+JP_0019,e7852143d5850e80904594806e9f35e9,AAP_01,Eligible,Y,8.1,Finance & Accounting,,41400,OCC_5189,Agency,41-3021,Eligible
+JP_0020,6dd895d2a03ce65e8d06e32e7d65fb92,AAP_15,Not Eligible,Y,1.2,Finance & Accounting,,11200,OCC_2953,External,11-1021,Not Eligible
+JP_0021,aba909c46694ef9b90b4455e5cb22e45,AAP_18,Eligible,N,6.1,Finance & Accounting,,41400,OCC_5232,Agency,15-1256,Not Eligible
+JP_0022,1ec78126698aed50a647c00497f521a1,AAP_12,Eligible,N,7.1,Finance & Accounting,,41200,OCC_1882,External,15-1252,Eligible
+JP_0023,e56f37820d78a926b46df3b9c7b5a5e6,AAP_20,Eligible,N,9.1,Finance & Accounting,,21230,OCC_5975,Internal,13-2051,Not Eligible
+JP_0024,bbc0f1a3bc0d6ca77ad8a009a092f2b4,AAP_16,Eligible,N,2.2,Finance & Accounting,,51100,OCC_2685,Internal,15-1252,Not Eligible
+JP_0025,0ed0f30214df840e8fd44aaa1a8a227e,AAP_04,Eligible,N,8.1,Finance & Accounting,,41201,OCC_1239,Internal,13-2011,Eligible
+JP_0026,e0cabe61b5002a39aab9831e8a2b66bf,AAP_18,Not Eligible,Y,5.1,Finance & Accounting,,11102,OCC_6334,Internal,15-1256,Not Eligible
+JP_0027,2cf1bfb2eb9872612f8bf9a2bbb814a9,AAP_07,Not Eligible,Y,8.1,Finance & Accounting,,21310,OCC_1905,External,15-2051,Eligible
+JP_0028,e2d0bb69bcb162970271800dc7cacdef,AAP_03,Eligible,Y,2.2,Risk & Compliance,,21230,OCC_9691,Agency,43-3031,Eligible
+JP_0029,3eaa1a9eb063bee5d4ee3dbcbdfb146f,AAP_18,Not Eligible,Y,8.1,Risk & Compliance,,21211,OCC_1938,Referral,11-1021,Not Eligible
+JP_0030,8964742f1427da6c7c4bd56ec50b9f58,AAP_20,Eligible,Y,6.1,Risk & Compliance,,21230,OCC_3003,Internal,13-2051,Eligible
+JP_0031,39db9d6640ceff899bca4fc583d1674f,AAP_06,Eligible,Y,4.1,Risk & Compliance,,62100,OCC_8368,Referral,13-2011,Not Eligible
+JP_0032,ce7c927bb85f3821d52d06185c5e6d5b,AAP_06,Eligible,Y,1.2,Risk & Compliance,,21211,OCC_8714,Agency,43-3031,Eligible
+JP_0033,056312c8ea56320db57d1f40776e9686,AAP_12,Eligible,Y,9.1,Risk & Compliance,,21211,OCC_5582,Referral,15-2051,Not Eligible
+JP_0034,e55bfd9c3df26c813ae62f491a0551c4,AAP_05,Not Eligible,N,1.2,Risk & Compliance,,21310,OCC_5445,Internal,15-2051,Not Eligible
+JP_0035,2aad99444f70a4985641accd08a05d96,AAP_18,Eligible,N,3.1,Risk & Compliance,,21231,OCC_2179,External,13-2011,Eligible
+JP_0036,4250206005b3ca79e434e385f81b946f,AAP_04,Not Eligible,Y,6.1,Risk & Compliance,,21110,OCC_7971,Referral,15-1252,Not Eligible
+JP_0037,8306e5777e906861311fe7d000b4b519,AAP_17,Eligible,Y,3.1,Operations,,21211,OCC_9219,Agency,43-3031,Eligible
+JP_0038,4d1ca438e153bc84f2c9759196c5f44d,AAP_13,Eligible,N,7.1,Operations,,11201,OCC_1218,Agency,13-2051,Not Eligible
+JP_0039,99895d5d3a06f633447512cf952ab4a2,AAP_02,Not Eligible,N,1.2,Operations,,51100,OCC_3621,Agency,15-1256,Eligible
+JP_0040,fe08d5b353f534aaa08769b2958c0348,AAP_19,Not Eligible,Y,2.1,Operations,,12101,OCC_1943,Internal,43-4051,Eligible
+JP_0041,af88b7ca1d1c20484b00bb5125f24311,AAP_20,Eligible,Y,1.2,Operations,,41201,OCC_8353,Referral,13-1111,Not Eligible
+JP_0042,de70234306311665aea8954f83ae24ef,AAP_10,Eligible,N,1.1,Operations,,21230,OCC_1817,Internal,43-3031,Eligible
+JP_0043,4ac1cec7e5918e7f08191f6567ee84ec,AAP_18,Eligible,Y,6.1,Operations,,11201,OCC_3035,Internal,13-1111,Eligible
+JP_0044,246efb16d801b0030074a48c32f55d03,AAP_11,Not Eligible,N,3.1,Operations,,41200,OCC_1847,Agency,15-1252,Not Eligible
+JP_0045,532df501d47a445191253817e1d4e9ef,AAP_11,Not Eligible,Y,7.1,Human Resources,,11100,OCC_3996,External,13-2051,Eligible
+JP_0046,d154cd731683347975d411d8691e1328,AAP_08,Eligible,Y,8.1,Human Resources,,12101,OCC_8039,Internal,15-2051,Not Eligible
+JP_0047,b208a64dc55ec5c2fa466e50006ebe6e,AAP_17,Not Eligible,N,8.1,Human Resources,,11101,OCC_6420,Agency,11-1011,Not Eligible
+JP_0048,da6e0799f992a2ac1405cb0b3a2e8f87,AAP_06,Eligible,N,5.1,Human Resources,,21232,OCC_9173,Agency,43-4051,Eligible
+JP_0049,9785099396f706cfd78b806351a61952,AAP_07,Eligible,N,2.1,Human Resources,,51101,OCC_3970,Referral,41-3021,Eligible
+JP_0050,24c249deb80b377c7719e96961c7fac3,AAP_09,Eligible,Y,4.1,Human Resources,,21230,OCC_9370,External,41-3021,Eligible
+JP_0051,92ca45cd37ea4fe20e4b17fa73355df7,AAP_12,Eligible,N,9.1,Human Resources,,12100,OCC_8148,Internal,15-1252,Eligible
+JP_0052,67962dae1fdba629c5aca772721d2d7d,AAP_16,Eligible,Y,4.1,Human Resources,,21310,OCC_8615,Referral,13-2051,Eligible
+JP_0053,aa8f8c849e26c694567776439beb218a,AAP_07,Eligible,N,2.1,Legal & Compliance,,21110,OCC_8534,External,13-2011,Not Eligible
+JP_0054,ad3d7e8fb8915ea1526be03d21f37787,AAP_01,Eligible,N,6.1,Legal & Compliance,,21231,OCC_8784,External,15-1256,Eligible
+JP_0055,0c59e942b62aa20d9d73e5d440b08d69,AAP_12,Eligible,Y,1.1,Legal & Compliance,,11102,OCC_8046,Agency,15-1252,Eligible
+JP_0056,a331b132e54783ddaee7fc5129fc2e83,AAP_05,Eligible,N,8.1,Legal & Compliance,,62100,OCC_3246,Agency,15-1256,Eligible
+JP_0057,82becdf0e272c630780486990da76f80,AAP_20,Eligible,N,8.1,Legal & Compliance,,21230,OCC_9292,Agency,41-3021,Not Eligible
+JP_0058,3bb1c511fb49001ee060e4b097741f6d,AAP_03,Eligible,N,4.1,Sales & Client Relations,,51101,OCC_8257,Referral,41-3021,Not Eligible
+JP_0059,b8274415d96c33e08596cd872e8d2d10,AAP_01,Eligible,N,2.1,Sales & Client Relations,,11100,OCC_3698,Referral,43-3031,Eligible
+JP_0060,84fa5206dd62686cbfb73f86cb2bde9d,AAP_17,Not Eligible,N,6.1,Sales & Client Relations,,11100,OCC_4355,Internal,15-1252,Eligible
+JP_0061,3d3204d1906294d7a1db29c8df685a31,AAP_15,Eligible,Y,8.1,Sales & Client Relations,,21220,OCC_9635,External,13-2051,Eligible
+JP_0062,561689df2908863b9c46c7d663a1709b,AAP_12,Eligible,N,9.1,Sales & Client Relations,,41200,OCC_3837,Agency,11-1011,Eligible
+JP_0063,e5d7123bf6b7e647380053bbd1076df3,AAP_03,Eligible,N,4.1,Sales & Client Relations,,41400,OCC_1588,External,41-3021,Eligible
+JP_0064,eb9148b1236355e722de251f9fb25193,AAP_17,Not Eligible,Y,9.1,Sales & Client Relations,,21110,OCC_7902,Agency,13-1111,Eligible
+JP_0065,61dc367b3670528e51d35408febb3137,AAP_06,Eligible,N,6.1,Sales & Client Relations,,62100,OCC_5574,External,43-4051,Eligible
+JP_0066,916f0978d6852309522f0f494c0aa008,AAP_03,Eligible,N,5.1,Sales & Client Relations,,12100,OCC_3538,Agency,41-3021,Not Eligible
+JP_0067,dfc97f1242e01371e5f367012ce80b76,AAP_14,Eligible,N,5.1,Sales & Client Relations,,51101,OCC_9279,External,13-1111,Not Eligible
+JP_0068,aa1ab0726a71dba3fdd4c0da02cdbfa5,AAP_05,Eligible,Y,6.1,Marketing,,64100,OCC_3949,Internal,43-3031,Not Eligible
+JP_0069,294da5eab84174874d95d7a5bca39160,AAP_20,Eligible,N,9.1,Marketing,,21220,OCC_3585,Agency,43-3031,Not Eligible
+JP_0070,ce6229bda7aa94ab5779879cfdf96e9c,AAP_02,Eligible,Y,3.1,Marketing,,62100,OCC_1738,Internal,13-1111,Not Eligible
+JP_0071,ef1dcb251b23dd488cf3378e3a6efb2e,AAP_09,Eligible,Y,6.1,Marketing,,21232,OCC_8142,External,13-1111,Not Eligible
+JP_0072,119e0ed47b5a57272d89cb3f90611110,AAP_02,Eligible,N,7.1,Marketing,,11100,OCC_5850,External,11-1021,Eligible
+JP_0073,c14798f79242d6a75376037725cbda12,AAP_20,Eligible,N,6.1,Executive Leadership,,41400,OCC_9143,External,43-4051,Not Eligible
+JP_0074,74646e3444c7f55a60f95e900fa44df0,AAP_01,Eligible,N,5.1,Executive Leadership,,11201,OCC_4148,External,15-1256,Not Eligible
+JP_0075,7f8a1383a499e5402c5f01021d306717,AAP_13,Not Eligible,N,4.1,Executive Leadership,,11100,OCC_3861,External,43-4051,Eligible
+JP_0076,28fde4e84798a7e153400efcec8c0561,AAP_01,Eligible,Y,3.1,Executive Leadership,,11200,OCC_8628,Referral,11-1021,Not Eligible
+JP_0077,a2ee61d87a87e992c37303a8f1e7dfbf,AAP_02,Eligible,Y,5.1,Executive Leadership,,11102,OCC_2565,Agency,11-1011,Eligible
+JP_0078,447767d2f22b90c736ca4619c7b3bc68,AAP_06,Eligible,N,4.1,Executive Leadership,,12100,OCC_9585,Referral,15-2051,Not Eligible
+JP_0079,bbcfa2a62ddc564d5075381e3b3c0e48,AAP_03,Eligible,Y,1.1,Executive Leadership,,21211,OCC_3219,External,13-2051,Not Eligible
+JP_0080,ef261149a772b84890803efdc505820b,AAP_14,Eligible,N,1.2,Executive Leadership,,21230,OCC_9137,Agency,41-3021,Eligible
+JP_0081,bd90db2ff91142f5f68f378cb2eadf2b,AAP_01,Eligible,N,8.1,Corporate Services,,62100,OCC_1587,Internal,43-4051,Not Eligible
+JP_0082,cb40dc89bdf6c35e4b6be4ecb64018b4,AAP_19,Eligible,Y,3.1,Corporate Services,,41400,OCC_5094,External,13-2051,Not Eligible
+JP_0083,7ca3ec0debd4426453bf82efa1b7aa5b,AAP_05,Eligible,N,4.1,Corporate Services,,11200,OCC_2203,Internal,15-1252,Eligible
+JP_0084,8b205d5213404fc5eb014827f1675b16,AAP_10,Eligible,N,1.2,Corporate Services,,41400,OCC_8765,External,15-1252,Eligible
+JP_0085,3f2f75eb66cb3f64c599d70348aeb085,AAP_01,Eligible,N,4.1,Corporate Services,,11102,OCC_3599,External,43-4051,Eligible
+JP_0086,d9abaf99cc6790ff8d7fe5e9e5983f20,AAP_14,Eligible,N,2.1,Corporate Services,,21211,OCC_3631,Agency,13-2011,Eligible
+JP_0087,4739086b6a365005ae690cceb0ff54f4,AAP_11,Eligible,Y,9.1,Investment Management,,51101,OCC_3227,External,15-2051,Eligible
+JP_0088,9290343b91a2b6044cc53aa1bbdb0e9e,AAP_10,Eligible,Y,7.1,Investment Management,,21110,OCC_9931,External,11-1011,Eligible
+JP_0089,e0b2da12c6435fe4193924bd4a4e1f9b,AAP_09,Not Eligible,N,2.1,Investment Management,,21232,OCC_6196,Referral,11-1021,Not Eligible
+JP_0090,67ba0ac5288ea0e6fae3e713fcbbecdf,AAP_03,Not Eligible,Y,4.1,Investment Management,,51100,OCC_3120,External,15-1256,Eligible
+JP_0091,ef738592418d771f163a0560ab606bed,AAP_05,Eligible,Y,1.2,Investment Management,LO986,11200,OCC_6057,Referral,41-3021,Not Eligible
+JP_0092,c632d2a0b45c3833f4ed1660150b67c3,AAP_13,Eligible,N,8.1,Investment Management,,51101,OCC_5853,Agency,15-1256,Not Eligible
+JP_0093,2de2f90bab31fdbff78228b09f8fe72f,AAP_09,Eligible,Y,1.1,Investment Management,,21220,OCC_5455,Agency,13-1111,Eligible
+JP_0094,5ff5d84c202c42aad0a0d8742130d6e0,AAP_12,Eligible,N,3.1,Investment Management,,21211,OCC_3246,External,41-3021,Eligible

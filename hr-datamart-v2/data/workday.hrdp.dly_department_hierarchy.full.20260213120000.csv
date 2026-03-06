@@ -1,0 +1,145 @@
+Department_ID,Department_WID,Department_Name,Dept_Name_with_Manager_Name,Active,Parent_Dept_ID,Owner_EIN,Department_Level,PRIMARY_LOCATION_CODE,Type,Subtype
+DEPT_CEO,fd95b0da7cf357502433128743549c08,Office of the CEO,Office of the CEO,1,,,1,LOC_TOR_HQ,Supervisory,Division
+DEPT_CEO_001,5746f3921351800fc5cca22ae16e4354,Office of the CEO - Strategy,Office of the CEO - Strategy,1,DEPT_CEO,,2,LOC_TOR_FP,Supervisory,Department
+DEPT_CEO_002,b03e9c4f5ef9ac63934ead14d956684d,Office of the CEO - Operations,Office of the CEO - Operations,1,DEPT_CEO_001,,3,LOC_NYC,Supervisory,Team
+DEPT_CEO_003,d411afe2513c400f509ea9ee83228bab,Office of the CEO - Analytics,Office of the CEO - Analytics,1,DEPT_CEO_001,,4,LOC_TOR_HQ,Supervisory,Team
+DEPT_FIN,776f4e30e61075862316d6a348e06504,Finance Division,Finance Division,1,DEPT_CEO,,1,LOC_TOR_HQ,Supervisory,Division
+DEPT_FIN_004,e1d5083a6cb92ce90609f6f218a070b3,Finance - Strategy,Finance - Strategy,1,DEPT_FIN,,2,LOC_MTL,Supervisory,Department
+DEPT_FIN_005,1ce979f3bf739ca27fd601f18eca3d9a,Finance - Operations,Finance - Operations,1,DEPT_FIN,,2,LOC_TOR_FP,Supervisory,Department
+DEPT_FIN_006,ccb7b5cd2a5d1fc94949104ed774c33b,Finance - Analytics,Finance - Analytics,1,DEPT_FIN,,2,LOC_MTL,Supervisory,Department
+DEPT_FIN_007,d3d7b107ac8e2023660a6f7fb0d96ffb,Finance - Delivery,Finance - Delivery,1,DEPT_FIN,,2,LOC_MTL,Supervisory,Department
+DEPT_FIN_008,8d77e030c23af93a83b2f739cf7a8c1f,Finance - Support,Finance - Support,1,DEPT_FIN,,2,LOC_TOR_HQ,Supervisory,Department
+DEPT_FIN_009,18349ea8b308a64488fad3b49b7c95a1,Finance - Advisory,Finance - Advisory,1,DEPT_FIN,,2,LOC_TOR_HQ,Supervisory,Department
+DEPT_FIN_010,f57f2347827f653aa01b813110d6807b,Finance - Governance,Finance - Governance,1,DEPT_FIN,,2,LOC_VAN,Supervisory,Department
+DEPT_FIN_011,d5426e141ff7f87f1786363fc3df4a5c,Finance - Projects,Finance - Projects,1,DEPT_FIN_004,,3,LOC_SF,Supervisory,Team
+DEPT_FIN_012,185adc336c5483d1dde7d8a55f471347,Finance - Infrastructure,Finance - Infrastructure,1,DEPT_FIN_005,,3,LOC_CA_REM,Supervisory,Team
+DEPT_FIN_013,37fa769b25eebfe3b1860a28153ceec8,Finance - Client Services,Finance - Client Services,1,DEPT_FIN_006,,3,LOC_HAL,Supervisory,Team
+DEPT_FIN_014,dd75c424e987bd7707bcbd5865b2a6fa,Finance - Research,Finance - Research,1,DEPT_FIN_007,,4,LOC_VAN,Supervisory,Team
+DEPT_FIN_015,aa24f249026dcd6b20a6bb3035de5558,Finance - Development,Finance - Development,1,DEPT_FIN_008,,4,LOC_TOR_HQ,Supervisory,Team
+DEPT_TECH,5da908eafd4fe7924a5cda6e6bde3bd8,Technology Division,Technology Division,1,DEPT_CEO,,1,LOC_TOR_HQ,Supervisory,Division
+DEPT_TECH_016,aec75f5d7efe718a7af8ee983a031695,Technology - Strategy,Technology - Strategy,1,DEPT_TECH,,2,LOC_TOR_HQ,Supervisory,Department
+DEPT_TECH_017,82707ed8cd76b75de29dee743a3f4eec,Technology - Operations,Technology - Operations,1,DEPT_TECH,,2,LOC_BOS,Supervisory,Department
+DEPT_TECH_018,0744101a7ad9ed8e6700bf2c2b444b65,Technology - Analytics,Technology - Analytics,1,DEPT_TECH,,2,LOC_TOR_HQ,Supervisory,Department
+DEPT_TECH_019,4a12b857beb23856f37829db096d91bc,Technology - Delivery,Technology - Delivery,1,DEPT_TECH,,2,LOC_TOR_HQ,Supervisory,Department
+DEPT_TECH_020,55792310a0dfe40d4c7bad2bccf1b06a,Technology - Support,Technology - Support,1,DEPT_TECH,,2,LOC_TOR_FP,Supervisory,Department
+DEPT_TECH_021,3aebecf17ad6e2b8a4e4fcd091e15222,Technology - Advisory,Technology - Advisory,1,DEPT_TECH,,2,LOC_NYC,Supervisory,Department
+DEPT_TECH_022,d0cbceb5f7e94a14e5930be7e4781d77,Technology - Governance,Technology - Governance,1,DEPT_TECH,,2,LOC_CHI,Supervisory,Department
+DEPT_TECH_023,2c1db40cfdb6dacc8c93da5076fa24d5,Technology - Projects,Technology - Projects,1,DEPT_TECH,,2,LOC_TOR_HQ,Supervisory,Department
+DEPT_TECH_024,bfd297edaff0921fde43e60b48bcc36f,Technology - Infrastructure,Technology - Infrastructure,1,DEPT_TECH,,2,LOC_TOR_HQ,Supervisory,Department
+DEPT_TECH_025,7ae3900679fce2984bc1bcc7503ce4bf,Technology - Client Services,Technology - Client Services,1,DEPT_TECH,,2,LOC_CA_REM,Supervisory,Department
+DEPT_TECH_026,61d4179dd0aac3d0b43b9334d4de07c3,Technology - Research,Technology - Research,1,DEPT_TECH,,2,LOC_OTT,Supervisory,Department
+DEPT_TECH_027,820caab3d40329ebb90261f03026153e,Technology - Development,Technology - Development,1,DEPT_TECH,,2,LOC_MTL,Supervisory,Department
+DEPT_TECH_028,94bfae230914ff2e1a22d69dfa9f8951,Technology - Planning,Technology - Planning,1,DEPT_TECH,,2,LOC_TOR_HQ,Supervisory,Department
+DEPT_TECH_029,0bd3e86f6fcc037f817e63e852ea8754,Technology - Integration,Technology - Integration,1,DEPT_TECH,,2,LOC_WIN,Supervisory,Department
+DEPT_TECH_030,246404efeba2d64c1e6e6bab6a1ebc28,Technology - Compliance,Technology - Compliance,1,DEPT_TECH,,2,LOC_US_REM,Supervisory,Department
+DEPT_TECH_031,0a4c8b0043a3e1faf9b2ac8049c536ad,Technology - Reporting,Technology - Reporting,1,DEPT_TECH_016,,3,LOC_NYC,Supervisory,Team
+DEPT_TECH_032,d36c57ada8072e0f4cbf51cc9cec9e59,Technology - Processing,Technology - Processing,1,DEPT_TECH_017,,3,LOC_TOR_HQ,Supervisory,Team
+DEPT_TECH_033,ec570dc9f060607b8b682c95f7693ce6,Technology - Trading,Technology - Trading,1,DEPT_TECH_018,,3,LOC_TOR_HQ,Supervisory,Team
+DEPT_TECH_034,e91928a8b701cd93260532fcf1571bc9,Technology - Risk,Technology - Risk,1,DEPT_TECH_019,,3,LOC_MTL,Supervisory,Team
+DEPT_TECH_035,33443c1ce78ab6e529ce60d25f58a318,Technology - Innovation,Technology - Innovation,1,DEPT_TECH_020,,3,LOC_US_REM,Supervisory,Team
+DEPT_TECH_036,b59d952e4843aaec308a640f9d28066c,Technology - Quality Assurance,Technology - Quality Assurance,1,DEPT_TECH_021,,3,LOC_VAN,Supervisory,Team
+DEPT_TECH_037,524f6b7d676387eb9c4ff48cc1ea4844,Technology - Architecture,Technology - Architecture,1,DEPT_TECH_022,,3,LOC_TOR_FP,Supervisory,Team
+DEPT_TECH_038,e86281192da9570a8888703bb01067c5,Technology - Engineering,Technology - Engineering,1,DEPT_TECH_023,,4,LOC_VAN,Supervisory,Team
+DEPT_TECH_039,668d6a1aeb03d050ed26c1a875cd8cda,Technology - Data,Technology - Data,1,DEPT_TECH_024,,4,LOC_TOR_FP,Supervisory,Team
+DEPT_TECH_040,4f512b152f7ddbef12a4e8659dfbdaec,Technology - Transformation,Technology - Transformation,1,DEPT_TECH_025,,4,LOC_MTL,Supervisory,Team
+DEPT_RISK,c691a81f2cbc0aa0fae6286266ca3eaf,Risk Management Division,Risk Management Division,1,DEPT_CEO,,1,LOC_TOR_HQ,Supervisory,Division
+DEPT_RISK_041,c14e7c0e5264a1c66b13ac295ca237ef,Risk Management - Strategy,Risk Management - Strategy,1,DEPT_RISK,,2,LOC_TOR_HQ,Supervisory,Department
+DEPT_RISK_042,699aa08827a9a050e7133f82a03c2164,Risk Management - Operations,Risk Management - Operations,1,DEPT_RISK,,2,LOC_TOR_HQ,Supervisory,Department
+DEPT_RISK_043,9cc317a9de32386e139aee13cc3524cb,Risk Management - Analytics,Risk Management - Analytics,1,DEPT_RISK,,2,LOC_NYC,Supervisory,Department
+DEPT_RISK_044,61ec91631c378073434de33195a0ef59,Risk Management - Delivery,Risk Management - Delivery,1,DEPT_RISK,,2,LOC_MTL,Supervisory,Department
+DEPT_RISK_045,b1ed14eab04beb842edaba0fbe2ffd78,Risk Management - Support,Risk Management - Support,1,DEPT_RISK,,2,LOC_TOR_FP,Supervisory,Department
+DEPT_RISK_046,bd62faeaa256801fdd0594eb376c44bb,Risk Management - Advisory,Risk Management - Advisory,1,DEPT_RISK,,2,LOC_CA_REM,Supervisory,Department
+DEPT_RISK_047,42868b1ffb0a5e632df883ddb8012b30,Risk Management - Governance,Risk Management - Governance,1,DEPT_RISK,,2,LOC_TOR_HQ,Supervisory,Department
+DEPT_RISK_048,efb9e14cbcb66721fa6b068f3ba0244f,Risk Management - Projects,Risk Management - Projects,1,DEPT_RISK,,2,LOC_SF,Supervisory,Department
+DEPT_RISK_049,66677b6ef7c5b3bd83bca31617d3afbe,Risk Management - Infrastructure,Risk Management - Infrastructure,1,DEPT_RISK,,2,LOC_TOR_HQ,Supervisory,Department
+DEPT_RISK_050,ac644e5ee48d4f29578a716212b927fc,Risk Management - Client Services,Risk Management - Client Services,1,DEPT_RISK_041,,3,LOC_CHI,Supervisory,Team
+DEPT_RISK_051,4ee87b1937d663b1dbf1cd65b10837d8,Risk Management - Research,Risk Management - Research,1,DEPT_RISK_042,,3,LOC_TOR_HQ,Supervisory,Team
+DEPT_RISK_052,00aafc39a5183b33d42206382def161a,Risk Management - Development,Risk Management - Development,1,DEPT_RISK_043,,3,LOC_TOR_HQ,Supervisory,Team
+DEPT_RISK_053,34f9f68452758a05f849ff7e2b519df5,Risk Management - Planning,Risk Management - Planning,1,DEPT_RISK_044,,3,LOC_CHI,Supervisory,Team
+DEPT_RISK_054,037e7ab0d0bd3b3d8f73c771ca7c4b20,Risk Management - Integration,Risk Management - Integration,1,DEPT_RISK_045,,4,LOC_SF,Supervisory,Team
+DEPT_RISK_055,755b6de1b7e29996dbed0aadf68fbf36,Risk Management - Compliance,Risk Management - Compliance,1,DEPT_RISK_046,,4,LOC_SF,Supervisory,Team
+DEPT_OPS,af99bcd6b61bd99cec8a09695457ad2b,Operations Division,Operations Division,1,DEPT_CEO,,1,LOC_TOR_HQ,Supervisory,Division
+DEPT_OPS_056,7153e8387a749a8668c1362ebefce32f,Operations - Strategy,Operations - Strategy,1,DEPT_OPS,,2,LOC_MTL,Supervisory,Department
+DEPT_OPS_057,5afe62e8939d93c01f90d2a88051bdb6,Operations - Operations,Operations - Operations,1,DEPT_OPS,,2,LOC_VAN,Supervisory,Department
+DEPT_OPS_058,224760649a8dc65e9346aeca44704c18,Operations - Analytics,Operations - Analytics,1,DEPT_OPS,,2,LOC_CA_REM,Supervisory,Department
+DEPT_OPS_059,88c0d5e19d4a9560de85c9c30c560ab0,Operations - Delivery,Operations - Delivery,1,DEPT_OPS,,2,LOC_TOR_HQ,Supervisory,Department
+DEPT_OPS_060,bfe3d65b8c57de053e024559e976c9a7,Operations - Support,Operations - Support,1,DEPT_OPS,,2,LOC_BOS,Supervisory,Department
+DEPT_OPS_061,04746cb43a8a3c753938c29a44a272a4,Operations - Advisory,Operations - Advisory,1,DEPT_OPS,,2,LOC_DAL,Supervisory,Department
+DEPT_OPS_062,aece0a292d587de50e7fe8f88211fd6e,Operations - Governance,Operations - Governance,1,DEPT_OPS,,2,LOC_TOR_HQ,Supervisory,Department
+DEPT_OPS_063,15e94f05063f0dcdc91bfeade34c6f8e,Operations - Projects,Operations - Projects,1,DEPT_OPS,,2,LOC_CHI,Supervisory,Department
+DEPT_OPS_064,1dab2b7fd49bfa0cc467bb79ca7cb924,Operations - Infrastructure,Operations - Infrastructure,1,DEPT_OPS,,2,LOC_TOR_HQ,Supervisory,Department
+DEPT_OPS_065,f3513900d7497230f8bc820115f60279,Operations - Client Services,Operations - Client Services,1,DEPT_OPS,,2,LOC_MTL,Supervisory,Department
+DEPT_OPS_066,30d5d3a1709ca5f6dd1547682c61213e,Operations - Research,Operations - Research,1,DEPT_OPS,,2,LOC_CHI,Supervisory,Department
+DEPT_OPS_067,0605e7fa210282e9ce4e3e6414abb999,Operations - Development,Operations - Development,1,DEPT_OPS,,2,LOC_DAL,Supervisory,Department
+DEPT_OPS_068,ce64ff73012368816204096875973944,Operations - Planning,Operations - Planning,1,DEPT_OPS_056,,3,LOC_NYC,Supervisory,Team
+DEPT_OPS_069,3e64f7dd48fc15278f76f80ba3a40403,Operations - Integration,Operations - Integration,1,DEPT_OPS_057,,3,LOC_TOR_HQ,Supervisory,Team
+DEPT_OPS_070,e182149178a88f77fc1d4807db290f59,Operations - Compliance,Operations - Compliance,1,DEPT_OPS_058,,3,LOC_HAL,Supervisory,Team
+DEPT_OPS_071,882ce699d63b047e2e0938a93ba4edbd,Operations - Reporting,Operations - Reporting,1,DEPT_OPS_059,,3,LOC_OTT,Supervisory,Team
+DEPT_OPS_072,1a114f0d1df74c9fa197e769d40f4612,Operations - Processing,Operations - Processing,1,DEPT_OPS_060,,3,LOC_DAL,Supervisory,Team
+DEPT_OPS_073,0434a1a9893af2e1a461c39691a578f6,Operations - Trading,Operations - Trading,1,DEPT_OPS_061,,3,LOC_WIN,Supervisory,Team
+DEPT_OPS_074,f3bf6e71ef90224a4b09e3dd51d7af0d,Operations - Risk,Operations - Risk,1,DEPT_OPS_062,,4,LOC_NYC,Supervisory,Team
+DEPT_OPS_075,1c651a704e80d7d8a2f0241d14f26b02,Operations - Innovation,Operations - Innovation,1,DEPT_OPS_063,,4,LOC_TOR_FP,Supervisory,Team
+DEPT_HR,22b9a4ce275393b6a5b64254ae0c52f9,Human Resources Division,Human Resources Division,1,DEPT_CEO,,1,LOC_TOR_HQ,Supervisory,Division
+DEPT_HR_076,30b083724c0cd1d58c497613b5c9d08d,Human Resources - Strategy,Human Resources - Strategy,1,DEPT_HR,,2,LOC_HAL,Supervisory,Department
+DEPT_HR_077,51a1228cb9466ab5408d57e5f3c05a39,Human Resources - Operations,Human Resources - Operations,1,DEPT_HR,,2,LOC_TOR_HQ,Supervisory,Department
+DEPT_HR_078,524974bc99342b78b677bf37af47a08e,Human Resources - Analytics,Human Resources - Analytics,1,DEPT_HR,,2,LOC_NYC,Supervisory,Department
+DEPT_HR_079,4fdcdb45101a27295aba7a9fd79b7387,Human Resources - Delivery,Human Resources - Delivery,1,DEPT_HR,,2,LOC_TOR_HQ,Supervisory,Department
+DEPT_HR_080,2bf1f6173955eb9e640cb4c1cd4792f7,Human Resources - Support,Human Resources - Support,1,DEPT_HR_076,,3,LOC_CHI,Supervisory,Team
+DEPT_HR_081,406a2251fee09dd3a32b9d2ac263521b,Human Resources - Advisory,Human Resources - Advisory,1,DEPT_HR_077,,3,LOC_TOR_FP,Supervisory,Team
+DEPT_HR_082,ca70dbd9701799a81c77349235e96970,Human Resources - Governance,Human Resources - Governance,1,DEPT_HR_078,,3,LOC_TOR_HQ,Supervisory,Team
+DEPT_HR_083,4efacdb7f4d64faf40b287dc2585a2d9,Human Resources - Projects,Human Resources - Projects,1,DEPT_HR_079,,4,LOC_TOR_FP,Supervisory,Team
+DEPT_LEGAL,7ca2ba0e9ef3f0e4e28363018eed6e2f,Legal Division,Legal Division,1,DEPT_CEO,,1,LOC_TOR_HQ,Supervisory,Division
+DEPT_LEGAL_084,82655048c1c08c3d0ae760849e25b3bd,Legal - Strategy,Legal - Strategy,1,DEPT_LEGAL,,2,LOC_MIA,Supervisory,Department
+DEPT_LEGAL_085,f4dc84597b208b9839db2bcff1e21f53,Legal - Operations,Legal - Operations,1,DEPT_LEGAL,,2,LOC_TOR_HQ,Supervisory,Department
+DEPT_LEGAL_086,4a941740493cacd0177a968c954525fa,Legal - Analytics,Legal - Analytics,1,DEPT_LEGAL,,2,LOC_MTL,Supervisory,Department
+DEPT_LEGAL_087,05d0e68191a5e037f60189b5742c97af,Legal - Delivery,Legal - Delivery,1,DEPT_LEGAL_084,,3,LOC_VAN,Supervisory,Team
+DEPT_LEGAL_088,cc72a98076709eadaf626d1e054aba66,Legal - Support,Legal - Support,1,DEPT_LEGAL_085,,3,LOC_TOR_FP,Supervisory,Team
+DEPT_LEGAL_089,318884de787e429d85fd4172f5796440,Legal - Advisory,Legal - Advisory,1,DEPT_LEGAL_086,,4,LOC_TOR_HQ,Supervisory,Team
+DEPT_SALES,70a02b1fb7027c730411f01112363f24,Sales & Advisory Division,Sales & Advisory Division,1,DEPT_CEO,,1,LOC_TOR_HQ,Supervisory,Division
+DEPT_SALES_090,2e84ba513f4f54fca468ccb25b183236,Sales & Advisory - Strategy,Sales & Advisory - Strategy,1,DEPT_SALES,,2,LOC_MTL,Supervisory,Department
+DEPT_SALES_091,ba1e54897773e4b1706ad95ccf00b4c4,Sales & Advisory - Operations,Sales & Advisory - Operations,1,DEPT_SALES,,2,LOC_TOR_HQ,Supervisory,Department
+DEPT_SALES_092,5d90bac318e69e08cd0ac1b2658001ce,Sales & Advisory - Analytics,Sales & Advisory - Analytics,1,DEPT_SALES,,2,LOC_MTL,Supervisory,Department
+DEPT_SALES_093,e66fbc072e26858e21733f343bbbfba5,Sales & Advisory - Delivery,Sales & Advisory - Delivery,1,DEPT_SALES,,2,LOC_TOR_HQ,Supervisory,Department
+DEPT_SALES_094,b004883ecdd3c28ff5241a3d9c4a23bf,Sales & Advisory - Support,Sales & Advisory - Support,1,DEPT_SALES,,2,LOC_TOR_HQ,Supervisory,Department
+DEPT_SALES_095,d306433101dbcd7c72569e59261f4c74,Sales & Advisory - Advisory,Sales & Advisory - Advisory,1,DEPT_SALES,,2,LOC_CHI,Supervisory,Department
+DEPT_SALES_096,3eb1b595447e3b77de02f4cdfcafda2a,Sales & Advisory - Governance,Sales & Advisory - Governance,1,DEPT_SALES,,2,LOC_US_REM,Supervisory,Department
+DEPT_SALES_097,5fa12adcaf9cccadcbfc67da484d2f71,Sales & Advisory - Projects,Sales & Advisory - Projects,1,DEPT_SALES,,2,LOC_WIN,Supervisory,Department
+DEPT_SALES_098,aec5af0eb120f7c95c5342423fdcc3a7,Sales & Advisory - Infrastructure,Sales & Advisory - Infrastructure,1,DEPT_SALES,,2,LOC_TOR_FP,Supervisory,Department
+DEPT_SALES_099,ef45136821c06336a90ae30390581382,Sales & Advisory - Client Services,Sales & Advisory - Client Services,1,DEPT_SALES,,2,LOC_US_REM,Supervisory,Department
+DEPT_SALES_100,30083eaa46d7acdc9d1a71ffc375a5f6,Sales & Advisory - Research,Sales & Advisory - Research,1,DEPT_SALES_090,,3,LOC_CA_REM,Supervisory,Team
+DEPT_SALES_101,836f6443ace894339cd1c7600278dbce,Sales & Advisory - Development,Sales & Advisory - Development,1,DEPT_SALES_091,,3,LOC_TOR_HQ,Supervisory,Team
+DEPT_SALES_102,e27c9f7bfbeef76bff8f1b83701c6313,Sales & Advisory - Planning,Sales & Advisory - Planning,1,DEPT_SALES_092,,3,LOC_TOR_HQ,Supervisory,Team
+DEPT_SALES_103,b6c9e006cc2fec17e3f35a56274c4756,Sales & Advisory - Integration,Sales & Advisory - Integration,1,DEPT_SALES_093,,3,LOC_TOR_HQ,Supervisory,Team
+DEPT_SALES_104,93910c763b21e0c17e1d3eb200742109,Sales & Advisory - Compliance,Sales & Advisory - Compliance,1,DEPT_SALES_094,,3,LOC_MIA,Supervisory,Team
+DEPT_SALES_105,3fa98f72b36b96e74a3e1ad7b1883e88,Sales & Advisory - Reporting,Sales & Advisory - Reporting,1,DEPT_SALES_095,,3,LOC_TOR_HQ,Supervisory,Team
+DEPT_SALES_106,828de5a3ecc09e28f82f1acf73654764,Sales & Advisory - Processing,Sales & Advisory - Processing,1,DEPT_SALES_096,,4,LOC_MTL,Supervisory,Team
+DEPT_SALES_107,4f37db4928fd91e737c4328a0ff8a6b1,Sales & Advisory - Trading,Sales & Advisory - Trading,1,DEPT_SALES_097,,4,LOC_TOR_HQ,Supervisory,Team
+DEPT_MKT,df21fe6c83f39acd09b53569c102fc48,Marketing Division,Marketing Division,1,DEPT_CEO,,1,LOC_TOR_HQ,Supervisory,Division
+DEPT_MKT_108,4c56bafd250e105afc42906639cee9c2,Marketing - Strategy,Marketing - Strategy,1,DEPT_MKT,,2,LOC_TOR_HQ,Supervisory,Department
+DEPT_MKT_109,302ea4b01717a74785b6dbdac66b3ac4,Marketing - Operations,Marketing - Operations,1,DEPT_MKT,,2,LOC_CHI,Supervisory,Department
+DEPT_MKT_110,bd6782a085596b61b792329c7d37b254,Marketing - Analytics,Marketing - Analytics,1,DEPT_MKT,,2,LOC_CAL,Supervisory,Department
+DEPT_MKT_111,f131d10eecdd3743ccb2c65e8983d84a,Marketing - Delivery,Marketing - Delivery,1,DEPT_MKT_108,,3,LOC_VAN,Supervisory,Team
+DEPT_MKT_112,172dfa64b9fa329e037423e58ffc0ebd,Marketing - Support,Marketing - Support,1,DEPT_MKT_109,,3,LOC_CAL,Supervisory,Team
+DEPT_MKT_113,649e3c4402cd3e5a87b8fe485ce8cb5c,Marketing - Advisory,Marketing - Advisory,1,DEPT_MKT_110,,4,LOC_WIN,Supervisory,Team
+DEPT_INVEST,d56a2ff82bbf4536dac527da3e0f7c00,Investment Management Division,Investment Management Division,1,DEPT_CEO,,1,LOC_TOR_HQ,Supervisory,Division
+DEPT_INVEST_114,4e92c531b5c656a8ce2fff9f47e8bd84,Investment Management - Strategy,Investment Management - Strategy,1,DEPT_INVEST,,2,LOC_MTL,Supervisory,Department
+DEPT_INVEST_115,447e18e178d8be5dec500e50eb15e08f,Investment Management - Operations,Investment Management - Operations,1,DEPT_INVEST,,2,LOC_VAN,Supervisory,Department
+DEPT_INVEST_116,ef3b0b9de713bc0a26bc2a89a7a07c0f,Investment Management - Analytics,Investment Management - Analytics,1,DEPT_INVEST,,2,LOC_MTL,Supervisory,Department
+DEPT_INVEST_117,531f09efccdf25c12cfa13c77b2468f9,Investment Management - Delivery,Investment Management - Delivery,1,DEPT_INVEST,,2,LOC_CA_REM,Supervisory,Department
+DEPT_INVEST_118,953b52023bba96dc6edce2dc978d1073,Investment Management - Support,Investment Management - Support,1,DEPT_INVEST,,2,LOC_US_REM,Supervisory,Department
+DEPT_INVEST_119,b32913a28dbe2037fbab88db15bc2955,Investment Management - Advisory,Investment Management - Advisory,1,DEPT_INVEST,,2,LOC_MTL,Supervisory,Department
+DEPT_INVEST_120,8c8c3257cdc340b2ca35ed14f5c2ab32,Investment Management - Governance,Investment Management - Governance,1,DEPT_INVEST,,2,LOC_OTT,Supervisory,Department
+DEPT_INVEST_121,e27789a7373915abfe5be526cb83e933,Investment Management - Projects,Investment Management - Projects,1,DEPT_INVEST_114,,3,LOC_TOR_HQ,Supervisory,Team
+DEPT_INVEST_122,49e5f0535670d032c4814ce6314bf4b2,Investment Management - Infrastructure,Investment Management - Infrastructure,1,DEPT_INVEST_115,,3,LOC_CA_REM,Supervisory,Team
+DEPT_INVEST_123,6ea9397c901af961b28ac825263bc203,Investment Management - Client Services,Investment Management - Client Services,1,DEPT_INVEST_116,,3,LOC_NYC,Supervisory,Team
+DEPT_INVEST_124,7ff28b228accb09798264af943ffe688,Investment Management - Research,Investment Management - Research,1,DEPT_INVEST_117,,4,LOC_TOR_FP,Supervisory,Team
+DEPT_INVEST_125,9b7518b3b9ad08a3ba29a19b70d574d2,Investment Management - Development,Investment Management - Development,1,DEPT_INVEST_118,,4,LOC_TOR_HQ,Supervisory,Team
+DEPT_ADMIN,aa3c18481f89a54ce4df350816fe4047,Corporate Services Division,Corporate Services Division,1,DEPT_CEO,,1,LOC_TOR_HQ,Supervisory,Division
+DEPT_ADMIN_126,7e811606758400f3817c64c9812e9b09,Corporate Services - Strategy,Corporate Services - Strategy,1,DEPT_ADMIN,,2,LOC_TOR_HQ,Supervisory,Department
+DEPT_ADMIN_127,a1c7dea42a904ab542124949609d951b,Corporate Services - Operations,Corporate Services - Operations,1,DEPT_ADMIN,,2,LOC_TOR_FP,Supervisory,Department
+DEPT_ADMIN_128,f51e6e663529da447c836d764a153e28,Corporate Services - Analytics,Corporate Services - Analytics,1,DEPT_ADMIN,,2,LOC_TOR_HQ,Supervisory,Department
+DEPT_ADMIN_129,786aa465c9466e5336e13d2bf2f8f342,Corporate Services - Delivery,Corporate Services - Delivery,1,DEPT_ADMIN,,2,LOC_CA_REM,Supervisory,Department
+DEPT_ADMIN_130,d8ff1fa6f7bd79e2fdde7fdcaccffa50,Corporate Services - Support,Corporate Services - Support,1,DEPT_ADMIN_126,,3,LOC_CA_REM,Supervisory,Team
+DEPT_ADMIN_131,cf5e4e844317396cde9f6472436687d9,Corporate Services - Advisory,Corporate Services - Advisory,1,DEPT_ADMIN_127,,3,LOC_OTT,Supervisory,Team
+DEPT_ADMIN_132,3af4a536109896b34667676f9789e84d,Corporate Services - Governance,Corporate Services - Governance,1,DEPT_ADMIN_128,,3,LOC_TOR_FP,Supervisory,Team
+DEPT_ADMIN_133,b0b308b1433182b5a5cf075b72036274,Corporate Services - Projects,Corporate Services - Projects,1,DEPT_ADMIN_129,,4,LOC_CA_REM,Supervisory,Team

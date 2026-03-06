@@ -1,0 +1,17 @@
+Location_ID,Location_WID,Location_Name,Inactive,Address_Line_1,Address_Line_2,City,Region,REGION_NAME,Country,COUNTRY_NAME,Location_Postal_Code,Location_Identifier,Latitude,Longitude,Location_Type,Location_Usage_Type,Trade_Name,Worksite_ID_Code
+LOC_TOR_HQ,952ae0a6fa1f62c936ee5b25726b62be,Toronto - Head Office,0,201 King Street,,Toronto,ON,Ontario,CA,Canada,M5J 2S1,LOC_TOR_HQ,43.64260000,-79.38710000,Office,Business Site,WARLab,WS_LOC_TOR_HQ
+LOC_TOR_FP,ea6f15fa926d73a76be8d92d91003d96,Toronto - First Canadian Place,0,957 Adelaide Street,,Toronto,ON,Ontario,CA,Canada,M5X 1A1,LOC_TOR_FP,43.64900000,-79.38150000,Office,Business Site,WARLab,WS_LOC_TOR_FP
+LOC_MTL,95883b37aed8d35483a1db2c1b2cdc29,Montreal Office,0,385 Broad Street,,Montreal,QC,Quebec,CA,Canada,H3B 4W8,LOC_MTL,45.50170000,-73.56730000,Office,Business Site,WARLab,WS_LOC_MTL
+LOC_VAN,5e5f0081880fc5a89f2df0efcf50bee6,Vancouver Office,0,693 Wall Street,,Vancouver,BC,British Columbia,CA,Canada,V6C 3L6,LOC_VAN,49.28270000,-123.12070000,Office,Business Site,WARLab,WS_LOC_VAN
+LOC_CAL,a5e78df199c7afdd18b3b48accdf99dd,Calgary Office,0,548 Adelaide Street,,Calgary,AB,Alberta,CA,Canada,T2P 3C5,LOC_CAL,51.04470000,-114.07190000,Office,Business Site,WARLab,WS_LOC_CAL
+LOC_OTT,f0c4117f3e92a66cbed6839a69846d19,Ottawa Office,0,337 King Street,,Ottawa,ON,Ontario,CA,Canada,K1P 1J9,LOC_OTT,45.42150000,-75.69720000,Office,Business Site,WARLab,WS_LOC_OTT
+LOC_WIN,dc9510bbe00f3bd153054e842eb96dd8,Winnipeg Office,0,238 Bay Street,Suite 2315,Winnipeg,MB,Manitoba,CA,Canada,R3C 4A5,LOC_WIN,49.89510000,-97.13840000,Office,Business Site,WARLab,WS_LOC_WIN
+LOC_HAL,13c56716ed343c1af76c17d4cbd434e0,Halifax Office,0,73 King Street,,Halifax,NS,Nova Scotia,CA,Canada,B3J 3N2,LOC_HAL,44.64880000,-63.57520000,Office,Business Site,WARLab,WS_LOC_HAL
+LOC_CA_REM,3a876a4f8436cca7216219df3fa5e25c,Canada - Remote,0,891 Bay Street,,Various,ON,Ontario,CA,Canada,M5V 1J2,LOC_CA_REM,43.64260000,-79.38710000,Virtual,Remote,WARLab,WS_LOC_CA_REM
+LOC_NYC,a5f92470c300e80ec620d0c9c34640f5,New York Office,0,820 Broad Street,Suite 2486,New York,NY,New York,US,United States,10005,LOC_NYC,40.70610000,-74.00890000,Office,Business Site,WARLab,WS_LOC_NYC
+LOC_CHI,d5cef0a2c1c9f2c61e72b96230109949,Chicago Office,0,843 Front Street,,Chicago,IL,Illinois,US,United States,60606,LOC_CHI,41.87810000,-87.62980000,Office,Business Site,WARLab,WS_LOC_CHI
+LOC_SF,110742a8ed4a050fc2244ac47e57cc93,San Francisco Office,0,767 Adelaide Street,,San Francisco,CA,California,US,United States,94105,LOC_SF,37.77490000,-122.41940000,Office,Business Site,WARLab,WS_LOC_SF
+LOC_BOS,8cb463b15810b6d6147256262c163d20,Boston Office,0,562 Queen Street,,Boston,MA,Massachusetts,US,United States,02110,LOC_BOS,42.36010000,-71.05890000,Office,Business Site,WARLab,WS_LOC_BOS
+LOC_MIA,206c31a74fa8f578d2a54be372db4783,Miami Office,0,889 Bay Street,,Miami,FL,Florida,US,United States,33131,LOC_MIA,25.76170000,-80.19180000,Office,Business Site,WARLab,WS_LOC_MIA
+LOC_DAL,7f11053c3e2163bffbf5e6dadf6aeeb8,Dallas Office,0,726 Queen Street,,Dallas,TX,Texas,US,United States,75201,LOC_DAL,32.77670000,-96.79700000,Office,Business Site,WARLab,WS_LOC_DAL
+LOC_US_REM,23d341548700f06792a63b421b68b3bb,United States - Remote,0,934 Adelaide Street,,Various,NY,New York,US,United States,10001,LOC_US_REM,40.74840000,-73.99670000,Virtual,Remote,WARLab,WS_LOC_US_REM
