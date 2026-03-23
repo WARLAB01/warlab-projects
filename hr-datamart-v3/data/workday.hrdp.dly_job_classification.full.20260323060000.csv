@@ -1,0 +1,95 @@
+Job_Classification_ID,Job_Classification_WID,Job_Classification_Name,Job_Classification_Group_ID,Job_Classification_Group_Name,Job_Profile_ID
+JCL_0001,888d8c06491e9e9ed702ef80a4c9312d,Software Engineer - Classification,JCL_GRP_TECH,Technology Professional,JP_0001
+JCL_0002,dda1c29b1d0db1d51015eceba3a21139,Senior Software Engineer - Classification,JCL_GRP_TECH,Technology Professional,JP_0002
+JCL_0003,0fe209905c78c7d195cf9418578a0a54,Staff Engineer - Classification,JCL_GRP_TECH,Technology Professional,JP_0003
+JCL_0004,1ac9f45435d654e3c953772d335f0ecd,Data Engineer - Classification,JCL_GRP_TECH,Technology Professional,JP_0004
+JCL_0005,fa5611f364a214c325d4833b8c571dbb,Data Scientist - Classification,JCL_GRP_TECH,Technology Professional,JP_0005
+JCL_0006,cbbe97ca8d0a73e3d779f74f754bd61d,Cloud Architect - Classification,JCL_GRP_TECH,Technology Professional,JP_0006
+JCL_0007,905757b17940244fee401ad99edf1983,DevOps Engineer - Classification,JCL_GRP_TECH,Technology Professional,JP_0007
+JCL_0008,8c8546ace72aa2feb8860157acce2384,QA Engineer - Classification,JCL_GRP_TECH,Technology Professional,JP_0008
+JCL_0009,c43736fb8e7b4fcc7a6a47cfc8a44986,IT Support Specialist - Classification,JCL_GRP_TECH,Technology Professional,JP_0009
+JCL_0010,705dab8453bc0210dd75dad85c4411fc,Cybersecurity Analyst - Classification,JCL_GRP_TECH,Technology Professional,JP_0010
+JCL_0011,38eafbe54ac5be08306a6ea3cb6e2198,Solutions Architect - Classification,JCL_GRP_TECH,Technology Professional,JP_0011
+JCL_0012,d703dfbdf8bee61909fcc912497361e2,Product Manager - Tech - Classification,JCL_GRP_TECH,Technology Professional,JP_0012
+JCL_0013,8cc5d16769f348c41e47dec78f9d0070,Technical Project Manager - Classification,JCL_GRP_TECH,Technology Professional,JP_0013
+JCL_0014,b732d6b9ffb5195c089befeeedf9d349,Database Administrator - Classification,JCL_GRP_TECH,Technology Professional,JP_0014
+JCL_0015,05c250a157b5d3074fc574e50e9efc89,Network Engineer - Classification,JCL_GRP_TECH,Technology Professional,JP_0015
+JCL_0016,39a26d47b6e775c45e9d4f2a76a9fb09,Systems Administrator - Classification,JCL_GRP_TECH,Technology Professional,JP_0016
+JCL_0017,a14ea5be5ded6867772d1bd5a5765b58,Business Intelligence Analyst - Classification,JCL_GRP_TECH,Technology Professional,JP_0017
+JCL_0018,de992dbfd0217e671b3412484337765e,Financial Analyst - Classification,JCL_GRP_FIN,Finance & Accounting,JP_0018
+JCL_0019,55779ffcf0969de20a08361986761a1d,Senior Financial Analyst - Classification,JCL_GRP_FIN,Finance & Accounting,JP_0019
+JCL_0020,4e7f3f2bcbfb8c411d60f29ee3964aa6,Accountant - Classification,JCL_GRP_FIN,Finance & Accounting,JP_0020
+JCL_0021,5966fbf6d0de01b08bdde89c716efa2c,Senior Accountant - Classification,JCL_GRP_FIN,Finance & Accounting,JP_0021
+JCL_0022,4a6d677a05dbddfa7a39b3633026156e,Controller - Classification,JCL_GRP_FIN,Finance & Accounting,JP_0022
+JCL_0023,7dd1e56b9a53db6636a09684b24fbc8d,Treasury Analyst - Classification,JCL_GRP_FIN,Finance & Accounting,JP_0023
+JCL_0024,f69495ac85fc1b76f081eed3ef810f98,Tax Specialist - Classification,JCL_GRP_FIN,Finance & Accounting,JP_0024
+JCL_0025,6daada84ebcfbb53fdda5c37559d1e49,Audit Analyst - Classification,JCL_GRP_FIN,Finance & Accounting,JP_0025
+JCL_0026,f44774c1e9fd95399f2db4a173c72119,Financial Planning Analyst - Classification,JCL_GRP_FIN,Finance & Accounting,JP_0026
+JCL_0027,416701034d6dadc99abb7e1f9d134553,Accounts Payable Specialist - Classification,JCL_GRP_FIN,Finance & Accounting,JP_0027
+JCL_0028,94ad214e2460d1d21979419df0dcbeaa,Risk Analyst - Classification,JCL_GRP_RISK,Risk & Compliance,JP_0028
+JCL_0029,9a51401b3bbd6c99c967525db908fc65,Senior Risk Analyst - Classification,JCL_GRP_RISK,Risk & Compliance,JP_0029
+JCL_0030,8833aebc981748165fab557ad2979062,Credit Risk Analyst - Classification,JCL_GRP_RISK,Risk & Compliance,JP_0030
+JCL_0031,e0ca7871d4302792df9a9d7167269297,Market Risk Analyst - Classification,JCL_GRP_RISK,Risk & Compliance,JP_0031
+JCL_0032,8f916a8776d6b8716a141b14b3c465f7,Operational Risk Analyst - Classification,JCL_GRP_RISK,Risk & Compliance,JP_0032
+JCL_0033,781c0891f66af8416824913671a17328,Compliance Analyst - Classification,JCL_GRP_RISK,Risk & Compliance,JP_0033
+JCL_0034,9c9d06f114c1a15bc12bd3b7e70991a6,AML Analyst - Classification,JCL_GRP_RISK,Risk & Compliance,JP_0034
+JCL_0035,bb56053310fea37f000ada8f2cf0873e,Regulatory Affairs Specialist - Classification,JCL_GRP_RISK,Risk & Compliance,JP_0035
+JCL_0036,13468b81013390aa7186325c4e80645c,Risk Manager - Classification,JCL_GRP_RISK,Risk & Compliance,JP_0036
+JCL_0037,7715f9fae6a38170e89aa42424c63b7b,Operations Analyst - Classification,JCL_GRP_OPS,Operations,JP_0037
+JCL_0038,22354138ed4cf75c7cdb26684189227e,Operations Specialist - Classification,JCL_GRP_OPS,Operations,JP_0038
+JCL_0039,2a2d66a7f96c22dc80a4198773048d4d,Trade Operations Analyst - Classification,JCL_GRP_OPS,Operations,JP_0039
+JCL_0040,6e3d478f2efd0234a6a3a0719fa03460,Settlement Specialist - Classification,JCL_GRP_OPS,Operations,JP_0040
+JCL_0041,0d309d4a0be5caef54a826e7ee97cbe5,Client Services Representative - Classification,JCL_GRP_OPS,Operations,JP_0041
+JCL_0042,13ab6134fb8541bf7048327dd720e2fc,Operations Manager - Classification,JCL_GRP_OPS,Operations,JP_0042
+JCL_0043,812bf45ce74c23a5d515014d3610e5f1,Process Improvement Analyst - Classification,JCL_GRP_OPS,Operations,JP_0043
+JCL_0044,580929f9e465eb96bb00a8a98b1e809e,Project Manager - Classification,JCL_GRP_OPS,Operations,JP_0044
+JCL_0045,557d5fbcd98ee60d0fd9d58224749734,HR Business Partner - Classification,JCL_GRP_HR,Human Resources,JP_0045
+JCL_0046,820232c01a0e75ae6fcc4abec7abb82f,Recruiter - Classification,JCL_GRP_HR,Human Resources,JP_0046
+JCL_0047,3173e87471ab301a066288212dba8387,Senior Recruiter - Classification,JCL_GRP_HR,Human Resources,JP_0047
+JCL_0048,4fe68dd07a612e20604d1d708eb68109,Compensation Analyst - Classification,JCL_GRP_HR,Human Resources,JP_0048
+JCL_0049,82c90bbf3202bc65ba23f0706caa0ce2,Benefits Specialist - Classification,JCL_GRP_HR,Human Resources,JP_0049
+JCL_0050,641a8e461d4bc1fbd9168724cafb2721,HRIS Analyst - Classification,JCL_GRP_HR,Human Resources,JP_0050
+JCL_0051,1ad23e342a05c2280ac8c8094f6bc66e,Learning & Development Specialist - Classification,JCL_GRP_HR,Human Resources,JP_0051
+JCL_0052,f67e2362632a38b2d133f7be6b1f839a,Employee Relations Specialist - Classification,JCL_GRP_HR,Human Resources,JP_0052
+JCL_0053,d5a747ae0464ecd22f7ca3e7715f73d5,Corporate Counsel - Classification,JCL_GRP_LEGAL,Legal & Compliance,JP_0053
+JCL_0054,8b43f8c630b891a95bf363ad2bcee3ec,Paralegal - Classification,JCL_GRP_LEGAL,Legal & Compliance,JP_0054
+JCL_0055,a74322c523acad980698cd3bea515692,Legal Analyst - Classification,JCL_GRP_LEGAL,Legal & Compliance,JP_0055
+JCL_0056,d1da558a96b5500d87c69a4946fe0866,Regulatory Counsel - Classification,JCL_GRP_LEGAL,Legal & Compliance,JP_0056
+JCL_0057,808df0c9320f7a3f6f32fdf04cad51cf,Contract Specialist - Classification,JCL_GRP_LEGAL,Legal & Compliance,JP_0057
+JCL_0058,2734b7e15455d776c8be22a1c5148075,Relationship Manager - Classification,JCL_GRP_SALES,Sales & Advisory,JP_0058
+JCL_0059,53a65bedbbc4ecd431bdbfd14b510b21,Financial Advisor - Classification,JCL_GRP_SALES,Sales & Advisory,JP_0059
+JCL_0060,da6383b045a58f42a32cd4eb20fa5c0b,Investment Advisor - Classification,JCL_GRP_SALES,Sales & Advisory,JP_0060
+JCL_0061,dc94791e934c438e44e8349f84dfd33c,Sales Associate - Classification,JCL_GRP_SALES,Sales & Advisory,JP_0061
+JCL_0062,54d01ccbb264c83cd314f58554ed2d84,Client Relationship Manager - Classification,JCL_GRP_SALES,Sales & Advisory,JP_0062
+JCL_0063,8860e9fe6b85a415cfe2eda74b45d0f5,Business Development Manager - Classification,JCL_GRP_SALES,Sales & Advisory,JP_0063
+JCL_0064,ef582ca20bd1d8514db4cc94576f0b9c,Private Banker - Classification,JCL_GRP_SALES,Sales & Advisory,JP_0064
+JCL_0065,5389ff817f2a76788f842900e43d4eac,Mortgage Specialist - Classification,JCL_GRP_SALES,Sales & Advisory,JP_0065
+JCL_0066,626aa08e0887f9a146bec45d66865890,Insurance Advisor - Classification,JCL_GRP_SALES,Sales & Advisory,JP_0066
+JCL_0067,aa0cfa9617b5a70431d0a82bafb506cd,Wealth Advisor - Classification,JCL_GRP_SALES,Sales & Advisory,JP_0067
+JCL_0068,8d50bcad20205aaba968171439d7a11a,Marketing Analyst - Classification,JCL_GRP_MKT,Marketing & Communications,JP_0068
+JCL_0069,7dfdffafaf2ba101442ad97564658f0d,Brand Manager - Classification,JCL_GRP_MKT,Marketing & Communications,JP_0069
+JCL_0070,09940ad425003a3ced54f3090ea7433e,Digital Marketing Specialist - Classification,JCL_GRP_MKT,Marketing & Communications,JP_0070
+JCL_0071,ab163c46da674249e5d749ae3beea98f,Communications Specialist - Classification,JCL_GRP_MKT,Marketing & Communications,JP_0071
+JCL_0072,15cbadbd20f93eb27a1a23dcbf4a45c0,Content Writer - Classification,JCL_GRP_MKT,Marketing & Communications,JP_0072
+JCL_0073,5ef31a4028019058728c5e31ad3c1643,Chief Executive Officer - Classification,JCL_GRP_EXEC,Executive Leadership,JP_0073
+JCL_0074,6c3daadf08ec599a25e3d7f0a20884d5,Chief Financial Officer - Classification,JCL_GRP_EXEC,Executive Leadership,JP_0074
+JCL_0075,8133ed39bdaf9ec7adf82c9cfe457a9b,Chief Technology Officer - Classification,JCL_GRP_EXEC,Executive Leadership,JP_0075
+JCL_0076,04ea53993db7801a9d7140d616f050aa,Chief Risk Officer - Classification,JCL_GRP_EXEC,Executive Leadership,JP_0076
+JCL_0077,49bc3629c80a7db9043f3c29a3dd2302,Chief Operating Officer - Classification,JCL_GRP_EXEC,Executive Leadership,JP_0077
+JCL_0078,11f6541788229474f7433f53781988bb,Chief Human Resources Officer - Classification,JCL_GRP_EXEC,Executive Leadership,JP_0078
+JCL_0079,3277be8d44b775a4b894566757bb23ac,Chief Legal Officer - Classification,JCL_GRP_EXEC,Executive Leadership,JP_0079
+JCL_0080,2bfc5977100c420a09cc9eacca122661,Chief Marketing Officer - Classification,JCL_GRP_EXEC,Executive Leadership,JP_0080
+JCL_0081,9af7d8c85340df3757d9cfede6c8f9dd,Executive Assistant - Classification,JCL_GRP_ADMIN,Administrative Support,JP_0081
+JCL_0082,e8ead7310a0a6536a70cb5a8ba0a0a14,Office Administrator - Classification,JCL_GRP_ADMIN,Administrative Support,JP_0082
+JCL_0083,a5ff1fbd1d33812a3e08616336f37fc0,Facilities Coordinator - Classification,JCL_GRP_ADMIN,Administrative Support,JP_0083
+JCL_0084,d4fa69ffa1553d401a3532041a495120,Receptionist - Classification,JCL_GRP_ADMIN,Administrative Support,JP_0084
+JCL_0085,11a97112d3b19bb0f89b12a9352e2278,Administrative Assistant - Classification,JCL_GRP_ADMIN,Administrative Support,JP_0085
+JCL_0086,ac686b5ca7d9515dfb77b37cfdebc3aa,Office Manager - Classification,JCL_GRP_ADMIN,Administrative Support,JP_0086
+JCL_0087,270a6e502a80a8052b8ef91cf2948469,Portfolio Manager - Classification,JCL_GRP_INVEST,Investment Management,JP_0087
+JCL_0088,f13ccf31a51aa65701a902d8201c97d1,Investment Analyst - Classification,JCL_GRP_INVEST,Investment Management,JP_0088
+JCL_0089,f820e94f50938a587fa1be695db479b4,Research Analyst - Classification,JCL_GRP_INVEST,Investment Management,JP_0089
+JCL_0090,cb363b51b87a54ad01bebbfc3bc0318c,Quantitative Analyst - Classification,JCL_GRP_INVEST,Investment Management,JP_0090
+JCL_0091,8688f729539ea713ffca48af5c92afdd,Trader - Classification,JCL_GRP_INVEST,Investment Management,JP_0091
+JCL_0092,4653c896ac67fb92f3a06d4ebeee69f9,Fund Accountant - Classification,JCL_GRP_INVEST,Investment Management,JP_0092
+JCL_0093,7e9adfe133c7365bbf1709bc2b7b372a,Performance Analyst - Classification,JCL_GRP_INVEST,Investment Management,JP_0093
+JCL_0094,3112fefe7e075a11bde8cbf4a94e3fdb,ESG Analyst - Classification,JCL_GRP_INVEST,Investment Management,JP_0094
