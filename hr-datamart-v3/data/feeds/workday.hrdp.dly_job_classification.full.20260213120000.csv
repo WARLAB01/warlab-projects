@@ -1,0 +1,95 @@
+Job_Classification_ID,Job_Classification_WID,Job_Classification_Name,Job_Classification_Group_ID,Job_Classification_Group_Name,Job_Profile_ID
+JC_0001,49c2391ce5fe71fb6944e3aeeb681d6d,Software Engineer,JCG_0001,Technology,JP_0001
+JC_0002,de1ecb32bea7ca6b02189e042b2f76d7,Senior Software Engineer,JCG_0001,Technology,JP_0002
+JC_0003,f767016a73688610ea8444b9f68e39c6,Staff Engineer,JCG_0001,Technology,JP_0003
+JC_0004,db4cdbd5006e40195a7e3d0210061154,Data Engineer,JCG_0001,Technology,JP_0004
+JC_0005,54c1838da236ccf6e549502670576073,Data Scientist,JCG_0001,Technology,JP_0005
+JC_0006,4db77dda6f8d350cb8f80a694c96c176,Cloud Architect,JCG_0001,Technology,JP_0006
+JC_0007,bb05131c37ac09ad4325b0dd2ddf2f8c,DevOps Engineer,JCG_0001,Technology,JP_0007
+JC_0008,6957fee0f87903128a7e6af9ec660bdc,QA Engineer,JCG_0001,Technology,JP_0008
+JC_0009,de2f21168461cb2cf5cf823732ec303f,IT Support Specialist,JCG_0001,Technology,JP_0009
+JC_0010,47b209b1514c75bfbb081503ba070bcf,Cybersecurity Analyst,JCG_0001,Technology,JP_0010
+JC_0011,db087ab64eb1ba7f5a0f5a7fe848d276,Solutions Architect,JCG_0001,Technology,JP_0011
+JC_0012,675139da7afe6359a701dc9948a49796,Product Manager - Tech,JCG_0001,Technology,JP_0012
+JC_0013,13f361c15430f8489a23236a01fac16a,Technical Project Manager,JCG_0001,Technology,JP_0013
+JC_0014,807b0eef1a1f0f68b1c6d1e3d4de541b,Database Administrator,JCG_0001,Technology,JP_0014
+JC_0015,1364a434d4bc644a851029102082ed0f,Network Engineer,JCG_0001,Technology,JP_0015
+JC_0016,20d69cdb34c6fff8ddd69deb50df92e1,Systems Administrator,JCG_0001,Technology,JP_0016
+JC_0017,b8bce322ca4a2a4498e15480ede7c152,Business Intelligence Analyst,JCG_0001,Technology,JP_0017
+JC_0018,2d0264a14fab4bf070c9d331576d0a06,Financial Analyst,JCG_0002,Finance & Accounting,JP_0018
+JC_0019,6a9acf05b899f4ff72068cc57589b3c3,Senior Financial Analyst,JCG_0002,Finance & Accounting,JP_0019
+JC_0020,f3da74b4747b431f3f6fbdadf8d07f31,Accountant,JCG_0002,Finance & Accounting,JP_0020
+JC_0021,76fe4194727674fc689e5da2aacf102f,Senior Accountant,JCG_0002,Finance & Accounting,JP_0021
+JC_0022,f2fc346420d668c0043b0f0e74d58915,Controller,JCG_0002,Finance & Accounting,JP_0022
+JC_0023,b3ead07faaff27e8c5baa52b3b02d9b1,Treasury Analyst,JCG_0002,Finance & Accounting,JP_0023
+JC_0024,2895f25f5610cfdef63399ee6e0ec7d6,Tax Specialist,JCG_0002,Finance & Accounting,JP_0024
+JC_0025,376473f2c7c94568959b0ff479181264,Audit Analyst,JCG_0002,Finance & Accounting,JP_0025
+JC_0026,0f7aab44f131badb369bf356ad5ef3d3,Financial Planning Analyst,JCG_0002,Finance & Accounting,JP_0026
+JC_0027,b1d575b81839649dd040f5badfbdb75a,Accounts Payable Specialist,JCG_0002,Finance & Accounting,JP_0027
+JC_0028,ac855cd4c8027cc34f56eed2be2ed5bc,Risk Analyst,JCG_0003,Risk & Compliance,JP_0028
+JC_0029,12f2bca553bd709b00eef7767d349cd2,Senior Risk Analyst,JCG_0003,Risk & Compliance,JP_0029
+JC_0030,a6d66ce8c242e20cac917315a061d92d,Credit Risk Analyst,JCG_0003,Risk & Compliance,JP_0030
+JC_0031,1d814b35f0e0371e5628431e49f6dd72,Market Risk Analyst,JCG_0003,Risk & Compliance,JP_0031
+JC_0032,289ac6b9a65dfbc52b79bcbfcac4e50e,Operational Risk Analyst,JCG_0003,Risk & Compliance,JP_0032
+JC_0033,0db595e2b7ac21fc4295e5f3b367908b,Compliance Analyst,JCG_0003,Risk & Compliance,JP_0033
+JC_0034,d93a0bb7f13b9abd7ef740afd95c6d90,AML Analyst,JCG_0003,Risk & Compliance,JP_0034
+JC_0035,d575d7b2df061e8a54d16469b337e357,Regulatory Affairs Specialist,JCG_0003,Risk & Compliance,JP_0035
+JC_0036,e0ffa7f7ab933c15a25c89a899753b97,Risk Manager,JCG_0003,Risk & Compliance,JP_0036
+JC_0037,e5006fc6ffc74d18d31ea78505a48f91,Operations Analyst,JCG_0004,Operations,JP_0037
+JC_0038,095ec4e6969dd84e6885f286e2d9ab50,Operations Specialist,JCG_0004,Operations,JP_0038
+JC_0039,8be0f122305003c13d37a277ae464bc2,Trade Operations Analyst,JCG_0004,Operations,JP_0039
+JC_0040,3621f42c982745da86b1d27c3791466d,Settlement Specialist,JCG_0004,Operations,JP_0040
+JC_0041,7026579f6f531f21963e4009939d1725,Client Services Representative,JCG_0004,Operations,JP_0041
+JC_0042,fcf290865835052c6852b1a7901a2058,Operations Manager,JCG_0004,Operations,JP_0042
+JC_0043,5e94bcc242c89646a8308fe4ff303e66,Process Improvement Analyst,JCG_0004,Operations,JP_0043
+JC_0044,f9253304cc6a173928b3b2318be9599f,Project Manager,JCG_0004,Operations,JP_0044
+JC_0045,6d559581f5022f3de259a198808edfce,HR Business Partner,JCG_0005,Human Resources,JP_0045
+JC_0046,2f210da93e3b6e37f239618a672bcb7c,Recruiter,JCG_0005,Human Resources,JP_0046
+JC_0047,19db7c125937d418a5600227f1791531,Senior Recruiter,JCG_0005,Human Resources,JP_0047
+JC_0048,b8a00f68cf0210d6b50ba1d64697376b,Compensation Analyst,JCG_0005,Human Resources,JP_0048
+JC_0049,63454c8e1bb2ad15747ea5b431d0a9be,Benefits Specialist,JCG_0005,Human Resources,JP_0049
+JC_0050,65295e6c2bf16209a3101562c9b646a2,HRIS Analyst,JCG_0005,Human Resources,JP_0050
+JC_0051,87ee8a423d82a3fda35d63cced528b04,Learning & Development Specialist,JCG_0005,Human Resources,JP_0051
+JC_0052,bf6cfed993b94a0eff81fe33e64e19ec,Employee Relations Specialist,JCG_0005,Human Resources,JP_0052
+JC_0053,8430e952350b89a09f6c63ab2c99fa3b,Corporate Counsel,JCG_0006,Legal & Compliance,JP_0053
+JC_0054,b8e763191a63edec426d40945dadff8c,Paralegal,JCG_0006,Legal & Compliance,JP_0054
+JC_0055,96b0fbdb43ebde925d0aa56a5664d98e,Legal Analyst,JCG_0006,Legal & Compliance,JP_0055
+JC_0056,ef8d85869f6e0512c3bced891c0001e7,Regulatory Counsel,JCG_0006,Legal & Compliance,JP_0056
+JC_0057,cff19c6f53ef8a328becf0b6e61e0c2b,Contract Specialist,JCG_0006,Legal & Compliance,JP_0057
+JC_0058,3a85bc140699a8e4eee4c08fa8362546,Relationship Manager,JCG_0007,Sales & Client Relations,JP_0058
+JC_0059,390d4e09451bc8a7e8242a507f295260,Financial Advisor,JCG_0007,Sales & Client Relations,JP_0059
+JC_0060,a9bbcfa7c174eb6e835413afe0a4bcef,Investment Advisor,JCG_0007,Sales & Client Relations,JP_0060
+JC_0061,623228194c1356f871385d2f1fe89fb5,Sales Associate,JCG_0007,Sales & Client Relations,JP_0061
+JC_0062,1e46d2a6ddac7af1ac49214a2c63dbd5,Client Relationship Manager,JCG_0007,Sales & Client Relations,JP_0062
+JC_0063,e94744cc7232bcc459f2fd772d4fc1d3,Business Development Manager,JCG_0007,Sales & Client Relations,JP_0063
+JC_0064,52721e14a201c5035913facab74734eb,Private Banker,JCG_0007,Sales & Client Relations,JP_0064
+JC_0065,6abfce7b82993d3dc6b93cd2655d1412,Mortgage Specialist,JCG_0007,Sales & Client Relations,JP_0065
+JC_0066,089df3a173e85409cc17c093438394ca,Insurance Advisor,JCG_0007,Sales & Client Relations,JP_0066
+JC_0067,728973548e9d4a76ffd0cfea58b5fcbb,Wealth Advisor,JCG_0007,Sales & Client Relations,JP_0067
+JC_0068,9b5ad5059ccce13fd3b79f4b6356663e,Marketing Analyst,JCG_0008,Marketing,JP_0068
+JC_0069,b916c2454f34f04559d9d29d633c317e,Brand Manager,JCG_0008,Marketing,JP_0069
+JC_0070,10f09f84e85f0fa1b81724f6bc4bd286,Digital Marketing Specialist,JCG_0008,Marketing,JP_0070
+JC_0071,09141dd5dd01a5f5919d574b520ffeb6,Communications Specialist,JCG_0008,Marketing,JP_0071
+JC_0072,e87c29089c4299d9901501ed46595d68,Content Writer,JCG_0008,Marketing,JP_0072
+JC_0073,f5dedfa2f0649322fc12fbef1be3e238,Chief Executive Officer,JCG_0009,Executive Leadership,JP_0073
+JC_0074,8b77810ce23ae027d7699b3a6efd9d0e,Chief Financial Officer,JCG_0009,Executive Leadership,JP_0074
+JC_0075,a29d7c04b7f8ee465a40bea1aba2d539,Chief Technology Officer,JCG_0009,Executive Leadership,JP_0075
+JC_0076,a29c3c5bc7405b5909ede43b118be96c,Chief Risk Officer,JCG_0009,Executive Leadership,JP_0076
+JC_0077,c0eaf1a8ad804cf294bd73424a18bf61,Chief Operating Officer,JCG_0009,Executive Leadership,JP_0077
+JC_0078,f768d601c758c92813820e7054ddabe2,Chief Human Resources Officer,JCG_0009,Executive Leadership,JP_0078
+JC_0079,b4f72be741d2d124b10e3011fbee1826,Chief Legal Officer,JCG_0009,Executive Leadership,JP_0079
+JC_0080,3bcdf17e32f7144b9ac85dd6856e5cde,Chief Marketing Officer,JCG_0009,Executive Leadership,JP_0080
+JC_0081,7d8d37e3cdc48ad8d6fe5b63360ec5b3,Executive Assistant,JCG_0010,Corporate Services,JP_0081
+JC_0082,26b5f0c94c9e8c373b44988a09114830,Office Administrator,JCG_0010,Corporate Services,JP_0082
+JC_0083,165d6015cbc1c345a0605006e770b1ba,Facilities Coordinator,JCG_0010,Corporate Services,JP_0083
+JC_0084,81074000ecd6c3833018a96c98df1f08,Receptionist,JCG_0010,Corporate Services,JP_0084
+JC_0085,ebd97368a2e29720c0096982061c9d68,Administrative Assistant,JCG_0010,Corporate Services,JP_0085
+JC_0086,5373c92d3de4bbd675f91f7274687adf,Office Manager,JCG_0010,Corporate Services,JP_0086
+JC_0087,cefc1d131ace560051aef5644ef62ba2,Portfolio Manager,JCG_0011,Investment Management,JP_0087
+JC_0088,eb0931c326f133e576b53eba17de03f0,Investment Analyst,JCG_0011,Investment Management,JP_0088
+JC_0089,68b9518aa4aa643e18f77cbe4b34c65e,Research Analyst,JCG_0011,Investment Management,JP_0089
+JC_0090,bf288526b4344888aaa4e87d16defa55,Quantitative Analyst,JCG_0011,Investment Management,JP_0090
+JC_0091,f39d91221af3121f917561c910ece77e,Trader,JCG_0011,Investment Management,JP_0091
+JC_0092,c8a325436a66b1c4307e5dfe2e7166d2,Fund Accountant,JCG_0011,Investment Management,JP_0092
+JC_0093,b176f9f887cf5f6015907321737dcd8a,Performance Analyst,JCG_0011,Investment Management,JP_0093
+JC_0094,200a4a02a5cb3897087cd3e172944da5,ESG Analyst,JCG_0011,Investment Management,JP_0094

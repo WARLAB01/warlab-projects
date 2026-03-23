@@ -1,0 +1,110 @@
+{
+  "version": "v3",
+  "generated_at": "2026-03-23T00:00:00Z",
+  "seed": 20160213,
+  "period": {
+    "start": "2016-02-13",
+    "end": "2026-02-13"
+  },
+  "feed_summary": {
+    "INT6020": {"rows": 15, "cols": 15, "description": "Grade Profiles"},
+    "INT6021": {"rows": 94, "cols": 30, "description": "Job Profiles"},
+    "INT6022": {"rows": 94, "cols": 6, "description": "Job Classification (normalized)"},
+    "INT6023": {"rows": 16, "cols": 19, "description": "Locations"},
+    "INT6024": {"rows": 8, "cols": 7, "description": "Companies"},
+    "INT6025": {"rows": 198, "cols": 6, "description": "Cost Centers"},
+    "INT6027": {"rows": 15, "cols": 7, "description": "Matrix Organizations"},
+    "INT6028": {"rows": 144, "cols": 12, "description": "Department Hierarchy"},
+    "INT6031": {"rows": 20970, "cols": 37, "description": "Worker Profiles"},
+    "INT6032": {"rows": 20970, "cols": 11, "description": "Positions"},
+    "INT0095E": {"rows": 117805, "cols": 81, "description": "Worker Job"},
+    "INT0096": {"rows": 353415, "cols": 9, "description": "Worker Organization"},
+    "INT0098": {"rows": 117805, "cols": 19, "description": "Worker Compensation"},
+    "INT270": {"rows": 1767, "cols": 3, "description": "Rescinded Transactions"}
+  },
+  "validation_checks": {
+    "total": 15,
+    "passed": 15,
+    "failed": 0,
+    "warnings": 1
+  },
+  "check_results": [
+    {"id": "RC-01", "label": "INT0095E has > 100k events", "status": "PASS"},
+    {"id": "RC-02", "label": "INT0096 = 3x INT0095E", "status": "PASS"},
+    {"id": "RC-03", "label": "INT0098 = INT0095E", "status": "PASS"},
+    {"id": "RC-04", "label": "INT6031 profiles > 10k", "status": "PASS"},
+    {"id": "RC-05", "label": "INT6032 positions = INT6031 profiles", "status": "PASS"},
+    {"id": "RI-01", "label": "WID set: INT0095E == INT0098", "status": "PASS"},
+    {"id": "RI-02", "label": "WID set: INT0096 WIDs subset of INT0095E WIDs", "status": "PASS"},
+    {"id": "RI-03", "label": "Employee IDs: INT0095E == INT6031", "status": "PASS"},
+    {"id": "RI-04", "label": "Job Profile IDs: INT0095E subset of INT6021", "status": "PASS"},
+    {"id": "RI-05", "label": "Company IDs: INT0096 subset of INT6024", "status": "PASS"},
+    {"id": "RI-06", "label": "Cost Center IDs: INT0096 subset of INT6025", "status": "PASS"},
+    {"id": "RI-07", "label": "Location names: INT0095E subset of INT6023", "status": "PASS"},
+    {"id": "RI-08", "label": "INT270 WIDs subset of transactional WIDs", "status": "PASS"},
+    {"id": "RI-09", "label": "No events before founding date", "status": "PASS"},
+    {"id": "HC-01", "label": "Final headcount 9,000-11,000", "status": "PASS"},
+    {"id": "WARN-01", "label": "matplotlib not available - charts not generated", "status": "WARN"}
+  ],
+  "schema_changes_verified": {
+    "INT6021_field_order": {
+      "cr": "INT6021",
+      "change": "Field order fixed; Job_Profile_ID is now column 1, Job_Profile_WID column 2",
+      "verified": true,
+      "col_count": 30
+    },
+    "INT6022_normalization": {
+      "cr": "INT6022",
+      "change": "Schema normalized to 6-field parent/child structure",
+      "verified": true,
+      "fields": ["Job_Classification_ID", "Job_Classification_WID", "Job_Classification_Name",
+                 "Job_Classification_Group_ID", "Job_Classification_Group_Name", "Job_Profile_ID"],
+      "col_count": 6
+    },
+    "INT6027_description": {
+      "cr": "INT6027",
+      "change": "Matrix_Organization_Description (VARCHAR 200) added at end",
+      "verified": true,
+      "col_count": 7
+    },
+    "INT6028_owner_ein_wid": {
+      "cr": "INT6028",
+      "change": "Owner_EIN_WID added after Owner_EIN; full 12-field spec",
+      "verified": true,
+      "col_count": 12
+    },
+    "INT6031_address_fields": {
+      "cr": "INT6031",
+      "change": "Address_Line_1 and Address_Line_2 added; field order fixed; Worker_ID is now PK (col 1)",
+      "verified": true,
+      "col_count": 37,
+      "notes": "Home_Addres_Postal_Code typo fixed to Home_Address_Postal_Code; duplicate INDIGENOUS column removed"
+    },
+    "INT0095E_rename": {
+      "cr": "INT0095E",
+      "change": "Worker_Sub-Type renamed to Worker_Sub_Type",
+      "verified": true,
+      "col_position": 9
+    }
+  },
+  "headcount_curve": {
+    "2016": 2011, "2017": 5013, "2018": 8015, "2019": 9508,
+    "2020": 10006, "2021": 10206, "2022": 9802, "2023": 10109,
+    "2024": 10304, "2025": 10002, "2026": 10055
+  },
+  "attrition_mix": {
+    "Voluntary": "58.0%",
+    "Involuntary": "24.5%",
+    "Retirement": "10.4%",
+    "End of Contract": "6.2%",
+    "Death": "0.9%"
+  },
+  "demographics": {
+    "gender": {
+      "Male": "51.7%", "Female": "45.2%", "Non-Binary": "2.0%", "Not Disclosed": "1.2%"
+    },
+    "generation": {
+      "Millennial": "41.5%", "Gen X": "28.0%", "Gen Z": "18.3%", "Baby Boomer": "12.1%"
+    }
+  }
+}

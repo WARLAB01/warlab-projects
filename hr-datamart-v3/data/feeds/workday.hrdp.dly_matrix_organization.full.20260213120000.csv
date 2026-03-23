@@ -1,0 +1,16 @@
+Matrix_Organization_ID,Matrix_Organization_Status,Maxtrix_Organization_Name,Maxtrix_Organization_Code,Matrix_Organization_Type,Matrix_Organization_SubType,Matrix_Organization_Description
+MORG_DIG_XFORM,Active,Digital Transformation,DT,Project,Strategic,Cross-functional project focused on Digital Transformation initiatives. Subtype: Strategic. Status: Active.
+MORG_ESG,Active,ESG & Sustainability,ESG,Committee,Governance,Cross-functional committee focused on ESG & Sustainability initiatives. Subtype: Governance. Status: Active.
+MORG_DEI,Active,Diversity Equity & Inclusion,DEI,Committee,Cultural,Cross-functional committee focused on Diversity Equity & Inclusion initiatives. Subtype: Cultural. Status: Active.
+MORG_INNOV,Active,Innovation Lab,INN,Project,Strategic,Cross-functional project focused on Innovation Lab initiatives. Subtype: Strategic. Status: Active.
+MORG_DATA_GOV,Active,Data Governance Council,DGC,Committee,Governance,Cross-functional committee focused on Data Governance Council initiatives. Subtype: Governance. Status: Active.
+MORG_CX,Active,Client Experience,CX,Project,Strategic,Cross-functional project focused on Client Experience initiatives. Subtype: Strategic. Status: Active.
+MORG_CLOUD,Active,Cloud Migration,CLD,Project,Technology,Cross-functional project focused on Cloud Migration initiatives. Subtype: Technology. Status: Active.
+MORG_REG_CHG,Active,Regulatory Change,REG,Project,Compliance,Cross-functional project focused on Regulatory Change initiatives. Subtype: Compliance. Status: Active.
+MORG_MA,Active,M&A Integration,MA,Project,Strategic,Cross-functional project focused on M&A Integration initiatives. Subtype: Strategic. Status: Active.
+MORG_TALENT,Active,Talent Strategy,TAL,Committee,HR,Cross-functional committee focused on Talent Strategy initiatives. Subtype: HR. Status: Active.
+MORG_AI_ML,Active,AI & Machine Learning,AI,Project,Technology,Cross-functional project focused on AI & Machine Learning initiatives. Subtype: Technology. Status: Active.
+MORG_COST_OPT,Active,Cost Optimization,COT,Project,Finance,Cross-functional project focused on Cost Optimization initiatives. Subtype: Finance. Status: Active.
+MORG_CYBER,Active,Cybersecurity Task Force,CYB,Committee,Technology,Cross-functional committee focused on Cybersecurity Task Force initiatives. Subtype: Technology. Status: Active.
+MORG_WM_STRAT,Active,Wealth Management Strategy,WMS,Project,Business,Cross-functional project focused on Wealth Management Strategy initiatives. Subtype: Business. Status: Active.
+MORG_US_EXPAN,Active,US Expansion,USE,Project,Strategic,Cross-functional project focused on US Expansion initiatives. Subtype: Strategic. Status: Active.
