@@ -2,10 +2,15 @@
 reference_data.py - Generate all reference/dimension source feeds.
 
 V3 changes:
-  CR1 - INT6021: Field order resequenced (Job_Profile_ID, Job_Profile_WID first)
-  CR2 - INT6022: Normalized schema — parent/child structure with Job_Classification_ID PK
-  CR3 - INT6027: Added Matrix_Organization_Description field
-  CR4 - INT6028: Added Owner_EIN_WID field (varchar 32, references Worker_Workday_ID)
+  CR1  - INT6021: Field order resequenced (Job_Profile_ID, Job_Profile_WID first)
+  CR2  - INT6022: Normalized schema — parent/child structure with Job_Classification_ID PK
+  CR3  - INT6027: Added Matrix_Organization_Description field
+  CR4  - INT6028: Added Owner_EIN_WID field (varchar 32, references Worker_Workday_ID)
+  INT6022/CR: JOB_CLASSIFICATION_GROUPS replaced with 11 Workday-standard groups;
+              _gen_job_classifications() now emits N×11 rows (one per job profile per group)
+  INT6032/CR: generate_positions() adds Work_Space, Pay_Rate_Type, Schedule_Weekly_Hours,
+              Scheduled_FTE, Default_Weekly_Hours, Employee_Type, shift_number,
+              Exclude_From_Headcount
 """
 
 import datetime
@@ -177,38 +182,30 @@ class ReferenceDataGenerator:
     #      New fields: Job_Classification_ID (PK), Job_Classification_WID,
     #                  Job_Classification_Name, Job_Classification_Group_ID,
     #                  Job_Classification_Group_Name, Job_Profile_ID
+    # INT6022/CR: Each job profile is assigned to ALL 11 classification groups.
+    #             Produces N_profiles × 11 rows; at most 1 classification per
+    #             (job_profile, group) pair (guaranteed by construction).
     # -------------------------------------------------------
     def _gen_job_classifications(self) -> List[Dict]:
-        # Build lookup: job function code -> classification group
-        fn_to_group = {}
-        for grp in config.JOB_CLASSIFICATION_GROUPS:
-            for fn_code in grp["fn_codes"]:
-                fn_to_group[fn_code] = grp
-
         rows = []
         jcl_seq = 1
 
         for jp in self.job_profiles:
-            fn_code = jp.get("Job_Family", "")
-            grp = fn_to_group.get(fn_code, {
-                "id": "JCL_GRP_OTHER",
-                "name": "Other",
-            })
+            for grp in config.JOB_CLASSIFICATION_GROUPS:
+                jcl_id = f"JCL_{jcl_seq:04d}"
+                jcl_wid = utils.generate_wid(self.rng)
+                jcl_name = f"{jp['Job_Profile_Name']} - {grp['name']}"
 
-            jcl_id = f"JCL_{jcl_seq:04d}"
-            jcl_wid = utils.generate_wid(self.rng)
-            jcl_name = f"{jp['Job_Profile_Name']} - Classification"
-
-            row = {
-                "Job_Classification_ID": jcl_id,
-                "Job_Classification_WID": jcl_wid,
-                "Job_Classification_Name": jcl_name,
-                "Job_Classification_Group_ID": grp["id"],
-                "Job_Classification_Group_Name": grp["name"],
-                "Job_Profile_ID": jp["Job_Profile_ID"],
-            }
-            rows.append(row)
-            jcl_seq += 1
+                row = {
+                    "Job_Classification_ID": jcl_id,
+                    "Job_Classification_WID": jcl_wid,
+                    "Job_Classification_Name": jcl_name,
+                    "Job_Classification_Group_ID": grp["id"],
+                    "Job_Classification_Group_Name": grp["name"],
+                    "Job_Profile_ID": jp["Job_Profile_ID"],
+                }
+                rows.append(row)
+                jcl_seq += 1
 
         return rows
 
@@ -418,6 +415,10 @@ class ReferenceDataGenerator:
 
     # -------------------------------------------------------
     # INT6032 - Positions (generated later, needs employee data)
+    # INT6032/CR: Added Work_Space (varchar, nullable), Pay_Rate_Type (varchar),
+    #             Schedule_Weekly_Hours (numeric), Scheduled_FTE (numeric),
+    #             Default_Weekly_Hours (numeric), Employee_Type (varchar),
+    #             shift_number (integer), Exclude_From_Headcount (boolean/varchar, nullable)
     # -------------------------------------------------------
     def generate_positions(self, employee_positions: List[Dict]) -> List[Dict]:
         rows = []
@@ -441,6 +442,14 @@ class ReferenceDataGenerator:
                 "Business_Title": ep.get("business_title", ""),
                 "Time_Type": ep.get("time_type", "Full_Time"),
                 "Location": ep.get("location_id", ""),
+                "Work_Space": ep.get("work_space", ""),
+                "Pay_Rate_Type": ep.get("pay_rate_type", "Salary"),
+                "Schedule_Weekly_Hours": ep.get("scheduled_weekly_hours", 37.5),
+                "Scheduled_FTE": ep.get("scheduled_fte", 1.0),
+                "Default_Weekly_Hours": ep.get("default_weekly_hours", 37.5),
+                "Employee_Type": ep.get("employee_type", "Regular"),
+                "shift_number": ep.get("shift_number", 0),
+                "Exclude_From_Headcount": ep.get("exclude_from_headcount", ""),
             }
             rows.append(row)
 
@@ -513,9 +522,13 @@ FIELD_ORDERS = {
         "Owner_EIN", "Owner_EIN_WID",
         "Department_Level", "PRIMARY_LOCATION_CODE", "Type", "Subtype",
     ],
+    # INT6032/CR: Added 8 new fields; final column order per spec
     "INT6032": [
         "Position_ID", "Supervisory_Organization", "Effective_Date",
         "Reason", "Worker_Type", "Worker_Sub_Type", "Job_Profile",
         "Job_Title", "Business_Title", "Time_Type", "Location",
+        "Work_Space", "Pay_Rate_Type", "Schedule_Weekly_Hours",
+        "Scheduled_FTE", "Default_Weekly_Hours", "Employee_Type",
+        "shift_number", "Exclude_From_Headcount",
     ],
 }

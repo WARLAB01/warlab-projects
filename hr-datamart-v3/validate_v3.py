@@ -39,6 +39,7 @@ FEEDS: Dict[str, Dict] = {
         "col_order_check": ("Job_Profile_ID", 0),   # must be column 0
     },
     # CR2: Normalized schema
+    # INT6022/CR: 11 standard groups; each job profile has exactly 11 rows
     "INT6022": {
         "file": f"workday.hrdp.dly_job_classification.full.{TS}.csv",
         "pk": "Job_Classification_ID",
@@ -46,6 +47,7 @@ FEEDS: Dict[str, Dict] = {
                           "Job_Classification_Name", "Job_Classification_Group_ID",
                           "Job_Classification_Group_Name", "Job_Profile_ID"],
         "fk": [("Job_Profile_ID", "INT6021", "Job_Profile_ID")],
+        "classification_groups_check": True,  # verifies 11 groups present and N×11 row model
     },
     "INT6023": {
         "file": f"workday.hrdp.dly_location.full.{TS}.csv",
@@ -78,10 +80,16 @@ FEEDS: Dict[str, Dict] = {
                           "Owner_EIN", "Owner_EIN_WID", "Department_Level",
                           "PRIMARY_LOCATION_CODE", "Type", "Subtype"],
     },
+    # INT6032/CR: 8 new fields added
     "INT6032": {
         "file": f"workday.hrdp.dly_positions.full.{TS}.csv",
         "pk": "Position_ID",
-        "required_cols": ["Position_ID", "Supervisory_Organization", "Worker_Type"],
+        "required_cols": [
+            "Position_ID", "Supervisory_Organization", "Worker_Type",
+            "Work_Space", "Pay_Rate_Type", "Schedule_Weekly_Hours",
+            "Scheduled_FTE", "Default_Weekly_Hours", "Employee_Type",
+            "shift_number", "Exclude_From_Headcount",
+        ],
         "fk": [("Job_Profile", "INT6021", "Job_Profile_ID")],
     },
     # CR6: Worker_Sub_Type (not Worker_Sub-Type)
@@ -223,7 +231,36 @@ def main():
             else:
                 print(f"  OK PK uniqueness on '{pk}'")
 
-        # 5. Non-empty columns
+        # 5a. INT6022/CR: verify 11 standard groups, N×11 row model
+        if spec.get("classification_groups_check") and rows:
+            EXPECTED_GROUPS = {
+                "AAP Job Group", "Bonus Eligibility", "Customer Facing", "EEO1 Code",
+                "Job Collection", "Loan Originator Code", "National Occupation Code",
+                "Occupation Code", "Recruitment Channel", "Standard Occupation Code", "Stock",
+            }
+            actual_groups = {r.get("Job_Classification_Group_Name", "") for r in rows}
+            missing_groups = EXPECTED_GROUPS - actual_groups
+            extra_groups   = actual_groups - EXPECTED_GROUPS
+            if missing_groups:
+                print(f"  ERROR: Missing classification groups: {sorted(missing_groups)}")
+                errors += 1
+            elif extra_groups:
+                print(f"  ERROR: Unexpected classification groups: {sorted(extra_groups)}")
+                errors += 1
+            else:
+                print(f"  OK all 11 standard classification groups present")
+            # Verify each job profile has exactly 11 rows
+            from collections import Counter
+            per_profile = Counter(r.get("Job_Profile_ID", "") for r in rows)
+            bad_profiles = {jp: cnt for jp, cnt in per_profile.items() if cnt != 11}
+            if bad_profiles:
+                examples = list(bad_profiles.items())[:3]
+                print(f"  ERROR: {len(bad_profiles)} job profile(s) don't have exactly 11 rows, e.g. {examples}")
+                errors += 1
+            else:
+                print(f"  OK N×11 model: all {len(per_profile):,} job profiles have exactly 11 classifications")
+
+        # 5b. Non-empty columns
         for col in spec.get("non_empty_cols", []):
             empty_count = sum(1 for r in rows if not r.get(col, "").strip())
             if empty_count > 0:

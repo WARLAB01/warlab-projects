@@ -620,6 +620,15 @@ class EmployeeTimelineGenerator:
                 "business_title": jp["Job_Profile_Name"],
                 "time_type": tt["name"],
                 "location_id": loc["id"],
+                # INT6032/CR: new fields
+                "pay_rate_type": "Salary",
+                "scheduled_weekly_hours": tt["hours"],
+                "default_weekly_hours": 37.5,
+                "scheduled_fte": tt["fte"],
+                "employee_type": wt["sub_type"],
+                "shift_number": 0,
+                "work_space": "",
+                "exclude_from_headcount": "1" if wt["type"] == "Contingent Worker" else "0",
             })
 
             self._gen_profile(emp_id, worker_wid, hire_date, country, loc, grade_id)

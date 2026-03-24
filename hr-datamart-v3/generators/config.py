@@ -11,6 +11,10 @@ V3 changes from V2:
   - CR4: INT6028 Owner_EIN_WID added
   - CR5: INT6031 field order fixed, Address_Line_1/2 added
   - CR6: INT0095E Worker_Sub-Type renamed to Worker_Sub_Type
+  - INT6022/CR: Updated JOB_CLASSIFICATION_GROUPS to 11 Workday-standard groups;
+                each job profile now gets 1 classification per group (N×11 rows)
+  - INT6032/CR: Added Work_Space, Pay_Rate_Type, Schedule_Weekly_Hours, Scheduled_FTE,
+                Default_Weekly_Hours, Employee_Type, shift_number, Exclude_From_Headcount
 """
 
 import datetime
@@ -346,21 +350,22 @@ JOB_CATEGORIES = [
 ]
 
 # ============================================================
-# CR2 - INT6022 Classification Groups (normalized schema)
-# Maps job function code -> classification group definition
+# INT6022/CR - Classification Groups (updated to Workday-standard groups)
+# All groups apply to every job profile (N×11 model).
+# fn_codes mapping removed — see reference_data._gen_job_classifications().
 # ============================================================
 JOB_CLASSIFICATION_GROUPS = [
-    {"id": "JCL_GRP_EXEC",   "name": "Executive Leadership",        "fn_codes": ["FN_EXEC"]},
-    {"id": "JCL_GRP_TECH",   "name": "Technology Professional",     "fn_codes": ["FN_TECH"]},
-    {"id": "JCL_GRP_FIN",    "name": "Finance & Accounting",        "fn_codes": ["FN_FIN"]},
-    {"id": "JCL_GRP_RISK",   "name": "Risk & Compliance",           "fn_codes": ["FN_RISK"]},
-    {"id": "JCL_GRP_OPS",    "name": "Operations",                  "fn_codes": ["FN_OPS"]},
-    {"id": "JCL_GRP_HR",     "name": "Human Resources",             "fn_codes": ["FN_HR"]},
-    {"id": "JCL_GRP_LEGAL",  "name": "Legal & Compliance",          "fn_codes": ["FN_LEGAL"]},
-    {"id": "JCL_GRP_SALES",  "name": "Sales & Advisory",            "fn_codes": ["FN_SALES"]},
-    {"id": "JCL_GRP_MKT",    "name": "Marketing & Communications",  "fn_codes": ["FN_MKT"]},
-    {"id": "JCL_GRP_INVEST", "name": "Investment Management",       "fn_codes": ["FN_INVEST"]},
-    {"id": "JCL_GRP_ADMIN",  "name": "Administrative Support",      "fn_codes": ["FN_ADMIN"]},
+    {"id": "JCL_GRP_AAP",   "name": "AAP Job Group"},
+    {"id": "JCL_GRP_BONUS", "name": "Bonus Eligibility"},
+    {"id": "JCL_GRP_CUST",  "name": "Customer Facing"},
+    {"id": "JCL_GRP_EEO1",  "name": "EEO1 Code"},
+    {"id": "JCL_GRP_COLL",  "name": "Job Collection"},
+    {"id": "JCL_GRP_LOAN",  "name": "Loan Originator Code"},
+    {"id": "JCL_GRP_NOC",   "name": "National Occupation Code"},
+    {"id": "JCL_GRP_OCC",   "name": "Occupation Code"},
+    {"id": "JCL_GRP_RECR",  "name": "Recruitment Channel"},
+    {"id": "JCL_GRP_SOC",   "name": "Standard Occupation Code"},
+    {"id": "JCL_GRP_STOCK", "name": "Stock"},
 ]
 
 # ============================================================

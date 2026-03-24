@@ -84,3 +84,48 @@ Automated task execution timing records for the WAR Lab HR Datamart project.
 
 *Log updated: 2026-02-06T19:21:19Z*
 *Executed by: Claude AI Assistant*
+
+---
+
+## Task 4: HR Datamart V3 — CR INT6022 + CR INT6032 (Chris Braden CRs)
+
+**Start Time:** 2026-03-24T15:38:53Z
+**End Time:** 2026-03-24T15:57:10Z
+**Duration:** 18 minutes 17 seconds
+
+### Scope
+Applied two change requests to HR Datamart V3 on branch `claude/friendly-cannon`.
+
+**INT6022 (Job Classification):**
+- Replaced 11 function-mapped classification groups with 11 Workday-standard groups:
+  AAP Job Group, Bonus Eligibility, Customer Facing, EEO1 Code, Job Collection,
+  Loan Originator Code, National Occupation Code, Occupation Code, Recruitment Channel,
+  Standard Occupation Code, Stock
+- Changed generation model from N rows (1 per job profile) to N×11 rows (1 per profile per group)
+- 94 job profiles × 11 groups = 1,034 rows (was 94)
+- All 94 profiles confirmed to have exactly 11 classifications; PK unique; all FKs resolve
+
+**INT6032 (Positions):**
+- Added 8 new fields in spec-mandated column order after Location:
+  Work_Space (varchar, nullable), Pay_Rate_Type (varchar),
+  Schedule_Weekly_Hours (numeric), Scheduled_FTE (numeric),
+  Default_Weekly_Hours (numeric), Employee_Type (varchar),
+  shift_number (integer), Exclude_From_Headcount (varchar, nullable)
+- Total columns: 11 → 19
+- 20,923 positions generated; PK unique; all FK to INT6021 resolve
+
+**Validation:** 0 errors, 0 warnings across all 14 feeds
+
+### Files Changed
+- `hr-datamart-v3/generators/config.py` — JOB_CLASSIFICATION_GROUPS replaced with 11 standard groups
+- `hr-datamart-v3/generators/reference_data.py` — `_gen_job_classifications()` N×11 model; `generate_positions()` + `FIELD_ORDERS["INT6032"]` updated
+- `hr-datamart-v3/generators/employee_timeline.py` — 8 new fields added to `position_assignments`
+- `hr-datamart-v3/validate_v3.py` — INT6022 group + N×11 checks; INT6032 schema check updated
+- `hr-datamart-v3/generate_all.py` — CR header updated
+- `hr-datamart-v3/data/workday.hrdp.dly_job_classification.full.20260323060000.csv` — regenerated
+- `hr-datamart-v3/data/workday.hrdp.dly_positions.full.20260323060000.csv` — regenerated
+
+---
+
+*Log updated: 2026-03-24T15:57:10Z*
+*Executed by: Claude Sonnet 4.6*

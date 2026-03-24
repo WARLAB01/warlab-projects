@@ -3,12 +3,16 @@
 generate_all.py - Orchestrator for WARLab HR Datamart V3 synthetic data generation.
 
 V3 change requests applied:
-  CR1 - INT6021 (Job Profile):    Field order resequenced (ID/WID lead)
-  CR2 - INT6022 (Job Class):      Normalized parent/child schema
-  CR3 - INT6027 (Matrix Org):     Added Matrix_Organization_Description
-  CR4 - INT6028 (Dept Hierarchy): Added Owner_EIN_WID field
-  CR5 - INT6031 (Worker Profile): Fixed field order + added Address_Line_1/2
-  CR6 - INT0095E (Worker Job):    Renamed Worker_Sub-Type → Worker_Sub_Type
+  CR1      - INT6021 (Job Profile):    Field order resequenced (ID/WID lead)
+  CR2      - INT6022 (Job Class):      Normalized parent/child schema
+  CR3      - INT6027 (Matrix Org):     Added Matrix_Organization_Description
+  CR4      - INT6028 (Dept Hierarchy): Added Owner_EIN_WID field
+  CR5      - INT6031 (Worker Profile): Fixed field order + added Address_Line_1/2
+  CR6      - INT0095E (Worker Job):    Renamed Worker_Sub-Type → Worker_Sub_Type
+  INT6022/CR - Job Classification: 11 standard groups; N×11 row model
+  INT6032/CR - Positions: Added Work_Space, Pay_Rate_Type, Schedule_Weekly_Hours,
+                          Scheduled_FTE, Default_Weekly_Hours, Employee_Type,
+                          shift_number, Exclude_From_Headcount
 
 Usage:
     python generate_all.py
@@ -34,7 +38,7 @@ def main():
     print(f"  Company: {config.COMPANY_NAME}")
     print(f"  Period:  {config.COMPANY_FOUNDED} to {config.DATA_END_DATE}")
     print(f"  Seed:    {config.SEED}")
-    print(f"  CRs:     INT6021/CR1 INT6022/CR2 INT6027/CR3 INT6028/CR4 INT6031/CR5 INT0095E/CR6")
+    print(f"  CRs:     INT6021/CR1 INT6022/CR2 INT6027/CR3 INT6028/CR4 INT6031/CR5 INT0095E/CR6 INT6022/CR INT6032/CR")
     print("=" * 70)
 
     rng = utils.get_rng(config.SEED)

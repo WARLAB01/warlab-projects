@@ -1,5 +1,47 @@
 # HR Datamart V3 — Changelog
 
+## [3.1.0] — 2026-03-24
+
+### Summary
+Applies two Chris Braden change requests (INT6022, INT6032) on top of the V3.0.0 baseline. All 14 feeds regenerated; 0 validation errors.
+
+### Generation stats
+| Metric | Value |
+|--------|-------|
+| Unique employees | 20,923 |
+| Total events | 118,316 |
+| Active at end-date | 10,055 |
+| Job Classifications (INT6022) | 1,034 (94 profiles × 11 groups) |
+| Positions (INT6032) | 20,923 |
+| Run time | ~28 seconds |
+
+### Changed
+
+#### INT6022 — Job Classification — Classification Groups Overhaul
+- **Replaced** 11 function-mapped groups (Executive Leadership, Technology Professional, etc.)
+  with 11 Workday-standard groups per CR spec:
+  `AAP Job Group`, `Bonus Eligibility`, `Customer Facing`, `EEO1 Code`, `Job Collection`,
+  `Loan Originator Code`, `National Occupation Code`, `Occupation Code`,
+  `Recruitment Channel`, `Standard Occupation Code`, `Stock`
+- **Changed** generation model: each job profile now assigned to **all 11 groups** (N×11 rows)
+  — at most 1 classification per (job profile, group) pair
+- Row count: 94 → **1,034** (94 profiles × 11 groups)
+- Schema (6 columns) and PKs unchanged
+
+#### INT6032 — Positions — New Fields
+- **Added** 8 new columns (appended after `Location`), final order per spec:
+  - `Work_Space` — varchar, nullable; workspace/desk identifier
+  - `Pay_Rate_Type` — varchar; "Salary" for all positions
+  - `Schedule_Weekly_Hours` — numeric; 37.5 (Full_Time) or 18.75 (Part_Time), sourced from INT0095E
+  - `Scheduled_FTE` — numeric; 1.0 or 0.5, sourced from INT0095E
+  - `Default_Weekly_Hours` — numeric; 37.5, sourced from INT0095E
+  - `Employee_Type` — varchar; mirrors Worker_Sub_Type (Regular / Fixed Term / Contractor)
+  - `shift_number` — integer; 0 (default), sourced from INT0095E
+  - `Exclude_From_Headcount` — varchar, nullable; "1" for Contingent Workers, "0" otherwise
+- Column count: 11 → **19**
+
+---
+
 ## [3.0.0] — 2026-03-23
 
 ### Summary
