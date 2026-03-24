@@ -1,5 +1,43 @@
 # HR Datamart V3 — Changelog
 
+## [3.2.0] — 2026-03-24
+
+### Summary
+Applies INT6022 domain value refinement (CR). Replaces free-form `"{profile} - {group}"` classification names with curated domain values (2–6 per group). All 94 job profiles are each assigned to exactly one domain value per group (1,034 rows unchanged). Validation 0 errors, 0 warnings; new domain-value conformance check added.
+
+### Changed
+
+#### INT6022 — Job Classification — Domain Value Refinement
+- **Replaced** classification names that mirrored the job profile title (`"Software Engineer - AAP Job Group"`, etc.) with proper, HR-standard domain values
+- **Domain values defined** for all 11 groups (2–6 values each):
+
+| Group | Values |
+|-------|--------|
+| AAP Job Group | Officials and Managers, Professionals, Technicians, Sales Workers, Administrative Support |
+| Bonus Eligibility | Eligible, Not Eligible, Discretionary |
+| Customer Facing | Yes, No |
+| EEO1 Code | Exec/Sr Officials & Mgrs, First/Mid Officials & Mgrs, Professionals, Technicians, Sales Workers, Administrative Support |
+| Job Collection | Technology, Finance, Risk & Compliance, Commercial, Corporate |
+| Loan Originator Code | Registered, Not Registered, Exempt |
+| National Occupation Code | NOC 0 - Management, NOC 1 - Business Finance & Administration, NOC 2 - Natural & Applied Sciences, NOC 4 - Education Law & Social Services, NOC 6 - Sales & Service |
+| Occupation Code | Technology & Engineering, Finance & Accounting, Risk & Compliance, Operations & Support, Commercial & Sales, Corporate Functions |
+| Recruitment Channel | Internal Transfer, External Job Site, Employee Referral, Recruiting Fair, Direct Sourcing |
+| Standard Occupation Code | 11-0000 Management, 13-0000 Business & Financial Operations, 15-0000 Computer & Mathematical, 17-0000 Architecture & Engineering, 41-0000 Sales & Related |
+| Stock | Eligible, Not Eligible, Restricted |
+
+- **Assignment logic**: function-code-driven rules (e.g. FN_TECH → Technology & Engineering in Occupation Code; FN_SALES roles with Mortgage/Banker/Advisor keywords → Registered in Loan Originator Code); deterministic sequence-based variation for mixed groups (AAP, Bonus, Recruitment Channel, Stock) — no extra RNG state consumed, so all other feeds are byte-identical
+- Row count, schema, and PK format unchanged (1,034 rows, 6 columns)
+
+### Generator / Config
+- `config.py`: added `JOB_CLASSIFICATION_DOMAIN_VALUES` dict (11 groups → list of domain value strings)
+- `reference_data.py`: extracted `_pick_classification(jp, grp_id)` helper; `_gen_job_classifications` delegates name selection to it
+
+### Validation
+- `validate_v3.py`: added **domain value conformance** check (5c) — asserts every `Job_Classification_Name` is a member of its group's allowed set
+- Result: 0 errors, 0 warnings (16/16 checks pass)
+
+---
+
 ## [3.1.0] — 2026-03-24
 
 ### Summary

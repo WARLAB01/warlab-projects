@@ -368,6 +368,93 @@ JOB_CLASSIFICATION_GROUPS = [
     {"id": "JCL_GRP_STOCK", "name": "Stock"},
 ]
 
+# INT6022/CR refinement — domain values per classification group.
+# Each group has 2–6 values; each job profile is assigned to exactly one
+# value per group (see reference_data._pick_classification).
+JOB_CLASSIFICATION_DOMAIN_VALUES = {
+    # US Affirmative Action Plan job categories
+    "JCL_GRP_AAP": [
+        "Officials and Managers",
+        "Professionals",
+        "Technicians",
+        "Sales Workers",
+        "Administrative Support",
+    ],
+    # Bonus programme eligibility
+    "JCL_GRP_BONUS": [
+        "Eligible",
+        "Not Eligible",
+        "Discretionary",
+    ],
+    # Whether the role has direct external-client interaction
+    "JCL_GRP_CUST": [
+        "Yes",
+        "No",
+    ],
+    # EEOC EEO-1 job categories
+    "JCL_GRP_EEO1": [
+        "Exec/Sr Officials & Mgrs",
+        "First/Mid Officials & Mgrs",
+        "Professionals",
+        "Technicians",
+        "Sales Workers",
+        "Administrative Support",
+    ],
+    # Internal business-unit grouping
+    "JCL_GRP_COLL": [
+        "Technology",
+        "Finance",
+        "Risk & Compliance",
+        "Commercial",
+        "Corporate",
+    ],
+    # NMLS Loan Originator registration status
+    "JCL_GRP_LOAN": [
+        "Registered",
+        "Not Registered",
+        "Exempt",
+    ],
+    # Canada National Occupational Classification codes
+    "JCL_GRP_NOC": [
+        "NOC 0 - Management",
+        "NOC 1 - Business, Finance & Administration",
+        "NOC 2 - Natural & Applied Sciences",
+        "NOC 4 - Education, Law & Social Services",
+        "NOC 6 - Sales & Service",
+    ],
+    # Internal occupation grouping
+    "JCL_GRP_OCC": [
+        "Technology & Engineering",
+        "Finance & Accounting",
+        "Risk & Compliance",
+        "Operations & Support",
+        "Commercial & Sales",
+        "Corporate Functions",
+    ],
+    # Primary sourcing channel for the role
+    "JCL_GRP_RECR": [
+        "Internal Transfer",
+        "External Job Site",
+        "Employee Referral",
+        "Recruiting Fair",
+        "Direct Sourcing",
+    ],
+    # US Bureau of Labor Statistics Standard Occupational Classification
+    "JCL_GRP_SOC": [
+        "11-0000 Management",
+        "13-0000 Business & Financial Operations",
+        "15-0000 Computer & Mathematical",
+        "17-0000 Architecture & Engineering",
+        "41-0000 Sales & Related",
+    ],
+    # Equity / stock plan eligibility
+    "JCL_GRP_STOCK": [
+        "Eligible",
+        "Not Eligible",
+        "Restricted",
+    ],
+}
+
 # ============================================================
 # WORKER TYPES
 # ============================================================

@@ -182,9 +182,9 @@ class ReferenceDataGenerator:
     #      New fields: Job_Classification_ID (PK), Job_Classification_WID,
     #                  Job_Classification_Name, Job_Classification_Group_ID,
     #                  Job_Classification_Group_Name, Job_Profile_ID
-    # INT6022/CR: Each job profile is assigned to ALL 11 classification groups.
-    #             Produces N_profiles × 11 rows; at most 1 classification per
-    #             (job_profile, group) pair (guaranteed by construction).
+    # INT6022/CR refinement: Each group has 2–6 domain values; each job
+    #   profile is assigned to exactly ONE domain value per group.
+    #   Produces N_profiles × 11 rows (same count as before).
     # -------------------------------------------------------
     def _gen_job_classifications(self) -> List[Dict]:
         rows = []
@@ -194,7 +194,7 @@ class ReferenceDataGenerator:
             for grp in config.JOB_CLASSIFICATION_GROUPS:
                 jcl_id = f"JCL_{jcl_seq:04d}"
                 jcl_wid = utils.generate_wid(self.rng)
-                jcl_name = f"{jp['Job_Profile_Name']} - {grp['name']}"
+                jcl_name = self._pick_classification(jp, grp["id"])
 
                 row = {
                     "Job_Classification_ID": jcl_id,
@@ -208,6 +208,149 @@ class ReferenceDataGenerator:
                 jcl_seq += 1
 
         return rows
+
+    def _pick_classification(self, jp: Dict, grp_id: str) -> str:
+        """Return the single domain value for a (job_profile, group) pair.
+
+        Uses deterministic sequence-based selection (no rng state consumed)
+        so downstream generators produce identical output to earlier runs.
+        """
+        # Profile sequence number drives variation (JP_0003 → seq=3)
+        seq = int(jp["Job_Profile_ID"].split("_")[1])
+
+        fn = jp["Job_Family"]
+        name = jp["Job_Profile_Name"]
+        is_exec  = fn == "FN_EXEC"
+        is_mgr   = jp.get("IS_MANAGER", "0") == "1"
+        is_sales = fn == "FN_SALES"
+        is_admin = fn == "FN_ADMIN"
+        is_tech  = fn == "FN_TECH"
+        is_fin   = fn in ("FN_FIN", "FN_INVEST")
+        is_risk  = fn in ("FN_RISK", "FN_LEGAL")
+        client_kw = ("Advisor", "Relationship", "Client", "Banker",
+                     "Mortgage", "Insurance", "Wealth")
+
+        if grp_id == "JCL_GRP_AAP":
+            if is_exec or (is_mgr and fn not in ("FN_TECH", "FN_FIN")):
+                return "Officials and Managers"
+            if is_sales:
+                return "Sales Workers"
+            if is_admin:
+                return "Administrative Support"
+            if is_tech:
+                return ["Professionals", "Technicians"][seq % 2]
+            return "Professionals"
+
+        if grp_id == "JCL_GRP_BONUS":
+            if is_exec or is_mgr:
+                return "Eligible"
+            if is_admin:
+                return ["Not Eligible", "Not Eligible", "Eligible"][seq % 3]
+            return ["Eligible", "Eligible", "Not Eligible", "Discretionary"][seq % 4]
+
+        if grp_id == "JCL_GRP_CUST":
+            if is_sales or any(k in name for k in client_kw):
+                return "Yes"
+            return "No"
+
+        if grp_id == "JCL_GRP_EEO1":
+            if is_exec:
+                return "Exec/Sr Officials & Mgrs"
+            if is_mgr:
+                return "First/Mid Officials & Mgrs"
+            if is_sales:
+                return "Sales Workers"
+            if is_admin:
+                return "Administrative Support"
+            if is_tech:
+                return ["Professionals", "Technicians"][seq % 2]
+            return "Professionals"
+
+        if grp_id == "JCL_GRP_COLL":
+            mapping = {
+                "FN_TECH":   "Technology",
+                "FN_FIN":    "Finance",
+                "FN_INVEST": "Finance",
+                "FN_RISK":   "Risk & Compliance",
+                "FN_LEGAL":  "Risk & Compliance",
+                "FN_SALES":  "Commercial",
+                "FN_MKT":    "Commercial",
+                "FN_OPS":    "Corporate",
+                "FN_HR":     "Corporate",
+                "FN_EXEC":   "Corporate",
+                "FN_ADMIN":  "Corporate",
+            }
+            return mapping.get(fn, "Corporate")
+
+        if grp_id == "JCL_GRP_LOAN":
+            loan_kw = ("Mortgage", "Banker", "Financial Advisor",
+                       "Investment Advisor", "Wealth Advisor")
+            if fn == "FN_SALES" and any(k in name for k in loan_kw):
+                return "Registered"
+            if is_exec:
+                return "Exempt"
+            return "Not Registered"
+
+        if grp_id == "JCL_GRP_NOC":
+            if is_exec or (is_mgr and fn not in ("FN_TECH", "FN_FIN")):
+                return "NOC 0 - Management"
+            if is_fin:
+                return "NOC 1 - Business, Finance & Administration"
+            if is_tech:
+                return "NOC 2 - Natural & Applied Sciences"
+            if is_risk or fn == "FN_HR":
+                return "NOC 4 - Education, Law & Social Services"
+            if is_sales:
+                return "NOC 6 - Sales & Service"
+            return "NOC 1 - Business, Finance & Administration"
+
+        if grp_id == "JCL_GRP_OCC":
+            mapping = {
+                "FN_TECH":   "Technology & Engineering",
+                "FN_FIN":    "Finance & Accounting",
+                "FN_INVEST": "Finance & Accounting",
+                "FN_RISK":   "Risk & Compliance",
+                "FN_LEGAL":  "Risk & Compliance",
+                "FN_OPS":    "Operations & Support",
+                "FN_SALES":  "Commercial & Sales",
+                "FN_MKT":    "Commercial & Sales",
+                "FN_HR":     "Corporate Functions",
+                "FN_EXEC":   "Corporate Functions",
+                "FN_ADMIN":  "Corporate Functions",
+            }
+            return mapping.get(fn, "Corporate Functions")
+
+        if grp_id == "JCL_GRP_RECR":
+            options = [
+                "Internal Transfer",
+                "External Job Site", "External Job Site",
+                "Employee Referral",
+                "Recruiting Fair",
+                "Direct Sourcing",
+            ]
+            return options[seq % len(options)]
+
+        if grp_id == "JCL_GRP_SOC":
+            if is_exec or (is_mgr and fn == "FN_EXEC"):
+                return "11-0000 Management"
+            if is_fin or is_risk:
+                return "13-0000 Business & Financial Operations"
+            if is_tech:
+                return "15-0000 Computer & Mathematical"
+            if is_sales:
+                return "41-0000 Sales & Related"
+            return "13-0000 Business & Financial Operations"
+
+        if grp_id == "JCL_GRP_STOCK":
+            if is_exec:
+                return "Restricted"
+            if is_mgr or fn in ("FN_TECH", "FN_FIN", "FN_INVEST", "FN_SALES"):
+                return "Eligible"
+            return ["Eligible", "Not Eligible", "Not Eligible"][seq % 3]
+
+        # Fallback: sequence-based pick from domain values
+        vals = config.JOB_CLASSIFICATION_DOMAIN_VALUES[grp_id]
+        return vals[seq % len(vals)]
 
     # -------------------------------------------------------
     # INT6023 - Location  (unchanged from v2)

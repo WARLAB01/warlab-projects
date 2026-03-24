@@ -231,12 +231,27 @@ def main():
             else:
                 print(f"  OK PK uniqueness on '{pk}'")
 
-        # 5a. INT6022/CR: verify 11 standard groups, N×11 row model
+        # 5a. INT6022/CR: verify 11 standard groups, N×11 row model,
+        #     and domain value conformance (INT6022/CR refinement)
         if spec.get("classification_groups_check") and rows:
             EXPECTED_GROUPS = {
                 "AAP Job Group", "Bonus Eligibility", "Customer Facing", "EEO1 Code",
                 "Job Collection", "Loan Originator Code", "National Occupation Code",
                 "Occupation Code", "Recruitment Channel", "Standard Occupation Code", "Stock",
+            }
+            # Domain values per group (mirrors config.JOB_CLASSIFICATION_DOMAIN_VALUES)
+            DOMAIN_VALUES: Dict[str, Set[str]] = {
+                "AAP Job Group":             {"Officials and Managers", "Professionals", "Technicians", "Sales Workers", "Administrative Support"},
+                "Bonus Eligibility":         {"Eligible", "Not Eligible", "Discretionary"},
+                "Customer Facing":           {"Yes", "No"},
+                "EEO1 Code":                 {"Exec/Sr Officials & Mgrs", "First/Mid Officials & Mgrs", "Professionals", "Technicians", "Sales Workers", "Administrative Support"},
+                "Job Collection":            {"Technology", "Finance", "Risk & Compliance", "Commercial", "Corporate"},
+                "Loan Originator Code":      {"Registered", "Not Registered", "Exempt"},
+                "National Occupation Code":  {"NOC 0 - Management", "NOC 1 - Business, Finance & Administration", "NOC 2 - Natural & Applied Sciences", "NOC 4 - Education, Law & Social Services", "NOC 6 - Sales & Service"},
+                "Occupation Code":           {"Technology & Engineering", "Finance & Accounting", "Risk & Compliance", "Operations & Support", "Commercial & Sales", "Corporate Functions"},
+                "Recruitment Channel":       {"Internal Transfer", "External Job Site", "Employee Referral", "Recruiting Fair", "Direct Sourcing"},
+                "Standard Occupation Code":  {"11-0000 Management", "13-0000 Business & Financial Operations", "15-0000 Computer & Mathematical", "17-0000 Architecture & Engineering", "41-0000 Sales & Related"},
+                "Stock":                     {"Eligible", "Not Eligible", "Restricted"},
             }
             actual_groups = {r.get("Job_Classification_Group_Name", "") for r in rows}
             missing_groups = EXPECTED_GROUPS - actual_groups
@@ -259,6 +274,19 @@ def main():
                 errors += 1
             else:
                 print(f"  OK N×11 model: all {len(per_profile):,} job profiles have exactly 11 classifications")
+            # Verify every Job_Classification_Name is a valid domain value for its group
+            domain_violations = []
+            for r in rows:
+                grp_name = r.get("Job_Classification_Group_Name", "")
+                jcl_name = r.get("Job_Classification_Name", "")
+                allowed  = DOMAIN_VALUES.get(grp_name)
+                if allowed and jcl_name not in allowed:
+                    domain_violations.append((r.get("Job_Profile_ID"), grp_name, jcl_name))
+            if domain_violations:
+                print(f"  ERROR: {len(domain_violations)} domain value violation(s), e.g. {domain_violations[:2]}")
+                errors += 1
+            else:
+                print(f"  OK domain values: all {len(rows):,} names are valid for their group")
 
         # 5b. Non-empty columns
         for col in spec.get("non_empty_cols", []):
