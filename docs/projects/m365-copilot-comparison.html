@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M365 Copilot vs. Copilot Cowork vs. Copilot Studio — HR Assessment | WARLAB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #0F172A;
+            line-height: 1.6;
+            background-color: #F8F9FB;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+        }
+        h1 { font-size: 36px; line-height: 1.2; }
+        h2 { font-size: 28px; line-height: 1.2; margin-bottom: 24px; }
+        h3 { font-size: 20px; line-height: 1.3; margin-bottom: 16px; }
+        h4 { font-size: 16px; line-height: 1.4; margin-bottom: 10px; }
+
+        p { font-size: 16px; color: #475569; margin-bottom: 16px; }
+        a { color: #2E5C8A; text-decoration: none; transition: color 150ms ease; }
+        a:hover { color: #E64100; }
+
+        /* Nav */
+        nav {
+            position: sticky; top: 0; z-index: 100;
+            background: white; border-bottom: 1px solid #E8ECF0;
+            padding: 16px 24px;
+            transition: box-shadow 150ms ease;
+        }
+        nav.scrolled { box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        nav .container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        nav .logo {
+            display: flex; align-items: center; gap: 12px;
+            font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px;
+            color: #0B162A; text-decoration: none; transition: color 150ms ease;
+        }
+        nav .logo:hover { color: #E64100; }
+        nav .logo svg { width: 28px; height: 28px; }
+        nav .links { display: flex; gap: 32px; list-style: none; }
+        nav .links a { font-size: 14px; font-weight: 500; color: #475569; position: relative; transition: color 150ms ease; }
+        nav .links a:hover { color: #0B162A; }
+        nav .links a.active { color: #E64100; }
+        nav .links a.active::after {
+            content: ''; position: absolute; bottom: -6px; left: 0; right: 0;
+            height: 2px; background-color: #E64100;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #0B162A 0%, #162D4A 100%);
+            padding: 64px 24px; color: white;
+        }
+        .hero .container { max-width: 800px; margin: 0 auto; }
+        .hero .overline {
+            font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 700;
+            letter-spacing: 2px; text-transform: uppercase; color: #E64100; margin-bottom: 16px;
+        }
+        .hero .title-wrapper { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+        .hero h1 { color: white; }
+        .hero .subtitle { font-size: 18px; color: #5B92C6; margin-bottom: 8px; font-weight: 500; }
+        .hero .meta { font-size: 13px; color: #94A3B8; font-family: 'IBM Plex Mono', monospace; }
+
+        .status-pill {
+            display: inline-block; padding: 6px 14px; border-radius: 20px;
+            font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
+            white-space: nowrap; margin-top: 6px;
+        }
+        .status-active { background-color: #FFF1EB; color: #E64100; }
+
+        /* Main */
+        main { background: white; padding: 64px 24px; }
+        main .container { max-width: 800px; margin: 0 auto; }
+        section { margin-bottom: 56px; }
+
+        /* Callout / Info Card */
+        .callout {
+            border-left: 4px solid #E64100;
+            background: #FFF8F5;
+            padding: 20px 24px;
+            border-radius: 0 8px 8px 0;
+            margin: 24px 0;
+        }
+        .callout p { color: #0F172A; margin-bottom: 0; font-size: 15px; line-height: 1.7; }
+        .callout.blue { border-left-color: #2E5C8A; background: #EBF1F9; }
+        .callout.blue p { color: #0F172A; }
+        .callout.spec { border-left-color: #94A3B8; background: #F8F9FB; }
+        .callout.spec p { color: #475569; font-size: 14px; }
+        .callout.spec::before {
+            content: '⚠ SPECULATION NOTE';
+            display: block; font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px; font-weight: 600; letter-spacing: 1.5px;
+            color: #94A3B8; margin-bottom: 8px;
+        }
+        .callout-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600;
+            letter-spacing: 1.5px; text-transform: uppercase; color: #E64100;
+            margin-bottom: 6px; display: block;
+        }
+
+        /* Tier Cards */
+        .tier-grid { display: grid; gap: 20px; margin-top: 24px; }
+        .tier-card {
+            background: #F8F9FB; border: 1px solid #E8ECF0;
+            border-left: 4px solid #E64100; border-radius: 0 8px 8px 0;
+            padding: 24px;
+        }
+        .tier-card.blue { border-left-color: #2E5C8A; }
+        .tier-card.steel { border-left-color: #5B92C6; }
+        .tier-card .tier-label {
+            font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;
+        }
+        .tier-card.blue .tier-label { color: #2E5C8A; }
+        .tier-card.steel .tier-label { color: #5B92C6; }
+        .tier-card:not(.blue):not(.steel) .tier-label { color: #E64100; }
+        .tier-card h4 { font-size: 17px; margin-bottom: 10px; color: #0B162A; }
+        .tier-card p { font-size: 14px; color: #475569; margin-bottom: 8px; }
+        .tier-card p:last-child { margin-bottom: 0; }
+        .tier-card .interaction-model {
+            font-size: 13px; color: #2E5C8A; font-style: italic;
+            background: white; border: 1px solid #CFDEF0; border-radius: 6px;
+            padding: 10px 14px; margin-top: 12px;
+        }
+
+        /* Comparison Table */
+        .table-wrapper { overflow-x: auto; margin: 24px 0; border-radius: 8px; border: 1px solid #E8ECF0; }
+        table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 640px; }
+        thead tr { background: #0B162A; }
+        thead th {
+            padding: 14px 16px; text-align: left;
+            font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600;
+            color: white; letter-spacing: 0.3px;
+        }
+        thead th:first-child { color: #5B92C6; }
+        tbody tr:nth-child(even) { background: #F8F9FB; }
+        tbody tr:nth-child(odd) { background: white; }
+        tbody tr:hover { background: #EBF1F9; }
+        tbody td { padding: 12px 16px; color: #475569; border-bottom: 1px solid #E8ECF0; vertical-align: top; }
+        tbody td:first-child { font-weight: 500; color: #0B162A; font-family: 'Space Grotesk', sans-serif; font-size: 13px; }
+        tbody tr:last-child td { border-bottom: none; }
+
+        /* Use Case Lists */
+        .use-case-block { margin-bottom: 32px; }
+        .use-case-block h4 { color: #0B162A; font-size: 16px; margin-bottom: 12px; }
+        .use-case-list { list-style: none; margin: 0 0 16px 0; }
+        .use-case-list li {
+            padding: 8px 0 8px 20px; border-bottom: 1px solid #F1F5F9;
+            font-size: 15px; color: #475569; position: relative;
+        }
+        .use-case-list li:last-child { border-bottom: none; }
+        .use-case-list li::before { content: '→'; color: #E64100; position: absolute; left: 0; font-weight: 700; }
+
+        /* Profile Cards */
+        .profile-grid { display: grid; gap: 20px; margin-top: 24px; }
+        .profile-card {
+            background: #F8F9FB; border: 1px solid #E8ECF0; border-radius: 8px; padding: 24px;
+        }
+        .profile-card .profile-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+        .profile-card .profile-badge {
+            font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600;
+            background: #0B162A; color: white; padding: 4px 10px; border-radius: 4px;
+            text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+        }
+        .profile-card h4 { color: #0B162A; font-size: 16px; margin-bottom: 0; }
+        .profile-card .profile-label { font-size: 12px; color: #94A3B8; font-weight: 500; margin-bottom: 10px; }
+        .profile-card p { font-size: 14px; color: #475569; margin-bottom: 10px; }
+        .profile-card p:last-child { margin-bottom: 0; }
+        .profile-stat {
+            display: inline-block; background: #EBF1F9; color: #2E5C8A;
+            border-radius: 6px; padding: 6px 12px; font-size: 13px; font-weight: 500;
+            margin-top: 8px;
+        }
+
+        /* Decision Tree */
+        .decision-tree {
+            background: #0B162A; border-radius: 8px; padding: 28px 24px; margin: 24px 0; overflow-x: auto;
+        }
+        .decision-tree pre {
+            font-family: 'IBM Plex Mono', monospace; font-size: 13px; line-height: 1.8;
+            color: #CFDEF0; white-space: pre; margin: 0;
+        }
+        .decision-tree pre .leaf { color: #E64100; font-weight: 600; }
+
+        /* Phase Cards */
+        .phase-grid { display: grid; gap: 20px; margin-top: 24px; }
+        .phase-card {
+            background: #F8F9FB; border: 1px solid #E8ECF0; border-radius: 8px;
+            padding: 24px; display: flex; gap: 20px;
+        }
+        .phase-number {
+            font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700;
+            color: #E8ECF0; line-height: 1; flex-shrink: 0; width: 36px;
+        }
+        .phase-content h4 { color: #0B162A; font-size: 16px; margin-bottom: 8px; }
+        .phase-content p { font-size: 14px; color: #475569; margin-bottom: 0; }
+
+        /* Risk Cards */
+        .risk-grid { display: grid; gap: 16px; margin-top: 24px; }
+        .risk-card {
+            background: white; border: 1px solid #E8ECF0; border-left: 4px solid #E64100;
+            border-radius: 0 8px 8px 0; padding: 20px 24px;
+        }
+        .risk-card h4 { color: #0B162A; font-size: 15px; margin-bottom: 8px; }
+        .risk-card p { font-size: 14px; color: #475569; margin-bottom: 0; }
+
+        /* Sources */
+        .sources-list { list-style: none; margin-top: 20px; }
+        .sources-list li {
+            padding: 10px 0; border-bottom: 1px solid #E8ECF0;
+            font-size: 14px; color: #475569; display: flex; align-items: flex-start; gap: 10px;
+        }
+        .sources-list li:last-child { border-bottom: none; }
+        .sources-list li::before {
+            content: '·'; color: #E64100; font-weight: 700;
+            font-size: 20px; line-height: 1.2; flex-shrink: 0;
+        }
+
+        /* Section divider */
+        .section-divider {
+            border: none; border-top: 1px solid #E8ECF0; margin: 0 0 56px 0;
+        }
+
+        /* Back link */
+        .back-link {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 14px; font-weight: 500; color: #475569;
+            margin-bottom: 32px; transition: color 150ms ease;
+        }
+        .back-link:hover { color: #E64100; }
+        .back-link::before { content: '←'; }
+
+        /* Footer */
+        footer { background: #0B162A; color: white; padding: 64px 24px 32px; }
+        footer .container { max-width: 1200px; margin: 0 auto; }
+        .footer-top {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 48px; margin-bottom: 48px;
+        }
+        .footer-logo-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+        .footer-wordmark { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 16px; }
+        .footer-wordmark .lab { color: #E64100; }
+        .footer-tagline { font-size: 13px; color: #94A3B8; line-height: 1.6; }
+        .footer-col h4 {
+            font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px;
+        }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 10px; }
+        .footer-col a { color: #CFDEF0; font-size: 14px; transition: color 150ms ease; }
+        .footer-col a:hover { color: white; }
+        .footer-bottom {
+            border-top: 1px solid #162D4A; padding-top: 24px; text-align: center;
+            font-size: 12px; color: #94A3B8; font-family: 'IBM Plex Mono', monospace;
+        }
+        .footer-disclosure { font-size: 12px; color: #94A3B8; line-height: 1.7; margin-bottom: 24px; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero { padding: 48px 16px; }
+            .hero h1 { font-size: 26px; }
+            .hero .subtitle { font-size: 15px; }
+            main { padding: 48px 16px; }
+            h2 { font-size: 22px; }
+            .phase-card { flex-direction: column; gap: 8px; }
+            .phase-number { font-size: 24px; width: auto; }
+            footer { padding: 48px 16px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav id="nav">
+    <div class="container">
+        <a href="../index.html" class="logo">
+            <svg viewBox="0 0 120 98" fill="none">
+                <path d="M10 8 L32 90 L52 40" stroke="#0B162A" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M52 40 L72 90 L82 62" stroke="#0B162A" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M82 62 L110 8" stroke="#E64100" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+            <span><span style="color:#0B162A">WAR</span><span style="color:#E64100">LAB</span></span>
+        </a>
+        <ul class="links">
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../projects.html" class="active">Projects</a></li>
+            <li><a href="../governance.html">Governance</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="container">
+        <p class="overline">HR Technology Assessment</p>
+        <div class="title-wrapper">
+            <h1>Microsoft 365 Copilot vs. Copilot Cowork vs. Copilot Studio</h1>
+            <span class="status-pill status-active">Active</span>
+        </div>
+        <p class="subtitle">An HR-focused assessment for regulated financial institutions</p>
+        <p class="meta">Prepared: March 24, 2026 &nbsp;·&nbsp; Audience: HR Technology &amp; Operations Leadership</p>
+    </div>
+</section>
+
+<!-- Main Content -->
+<main>
+    <div class="container">
+        <a href="../projects.html" class="back-link">Back to Projects</a>
+
+        <!-- Executive Summary -->
+        <section>
+            <h2>Executive Summary</h2>
+            <p>Microsoft has introduced three distinct AI capability tiers within the M365 ecosystem. Understanding where each one fits — and where the boundaries are — is critical for HR teams operating in a large, regulated financial institution where governance, auditability, and controlled rollout are non-negotiable.</p>
+            <p>This document examines the three tiers through an HR lens, identifies where each delivers value, and addresses the practical reality that Copilot Studio adoption will be governed and capacity-constrained in a regulated environment — even with a capable HR Analytics team (data scientists and data engineers) ready to build solutions.</p>
+            <div class="callout">
+                <span class="callout-label">Central Finding</span>
+                <p>Copilot Cowork may represent a meaningful middle ground — offering cross-app task execution and delegation capabilities that go well beyond regular Copilot, without requiring the custom agent development (and associated governance overhead) of Copilot Studio.</p>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- Three Tiers -->
+        <section>
+            <h2>The Three Tiers at a Glance</h2>
+            <div class="tier-grid">
+                <div class="tier-card blue">
+                    <p class="tier-label">Tier 1</p>
+                    <h4>Microsoft 365 Copilot (Standard)</h4>
+                    <p>The baseline AI assistant embedded in Word, Excel, PowerPoint, Outlook, and Teams. It operates within a single app at a time, responds to individual prompts, and produces content (drafts, summaries, formulas, slides). It draws on your organizational data through Microsoft Graph (emails, files, calendar, Teams conversations) but does not take actions across applications or run tasks in the background.</p>
+                    <div class="interaction-model">Interaction model: You prompt, it responds. One turn, one app.</div>
+                </div>
+                <div class="tier-card">
+                    <p class="tier-label">Tier 2</p>
+                    <h4>Copilot Cowork</h4>
+                    <p>A new capability layer announced March 9, 2026, as part of Wave 3 of Microsoft 365 Copilot. Built in close collaboration with Anthropic (using the same agentic architecture that powers Claude Cowork), Copilot Cowork shifts the model from "assistant that responds" to "agent that executes." You describe an outcome — Cowork breaks it into a multi-step plan, executes across M365 apps, runs in the background, and checks in with you at key decision points.</p>
+                    <div class="interaction-model">Interaction model: You delegate, it plans, executes, and reports back. Multi-turn, multi-app, asynchronous.</div>
+                    <p style="margin-top:12px; font-size:13px; color:#94A3B8;"><strong style="color:#475569;">Availability:</strong> Currently in Research Preview. Broader access through the Frontier program began rolling out in late March 2026. Requires M365 Copilot ($30/user/month) or the new E7 Frontier Suite ($99/user/month, available May 1, 2026).</p>
+                </div>
+                <div class="tier-card steel">
+                    <p class="tier-label">Tier 3</p>
+                    <h4>Copilot Studio</h4>
+                    <p>A no-code/low-code platform for building custom AI agents that can be published into M365 Copilot, Teams, SharePoint, and other channels. Agents can connect to external systems through 1,400+ Power Platform connectors, MCP servers, and custom APIs. This is where organizations build purpose-built bots — for example, an HR benefits self-service agent, a leave management workflow, or a payroll fraud detection system.</p>
+                    <p>In this organization, the HR Analytics team — which includes data scientists and data engineers — will own Copilot Studio development for HR use cases.</p>
+                    <div class="interaction-model">Interaction model: Technical teams design and build custom agents that end users interact with through familiar M365 surfaces.</div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- Comparison Table -->
+        <section>
+            <h2>How the Three Tiers Differ</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Dimension</th>
+                            <th>M365 Copilot (Standard)</th>
+                            <th>Copilot Cowork</th>
+                            <th>Copilot Studio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>What it does</td>
+                            <td>Responds to prompts within a single app</td>
+                            <td>Executes multi-step plans across apps</td>
+                            <td>Hosts custom-built agents for specific workflows</td>
+                        </tr>
+                        <tr>
+                            <td>Scope per interaction</td>
+                            <td>Single app (Word OR Excel OR Outlook)</td>
+                            <td>Cross-app (Word AND Excel AND Outlook in one task)</td>
+                            <td>Defined by the agent's design scope</td>
+                        </tr>
+                        <tr>
+                            <td>Background execution</td>
+                            <td>No — requires your presence</td>
+                            <td>Yes — runs while you do other work</td>
+                            <td>Yes — agents run autonomously within defined boundaries</td>
+                        </tr>
+                        <tr>
+                            <td>Takes actions</td>
+                            <td>Limited — mostly generates content</td>
+                            <td>Yes — modifies calendars, sends emails, creates files</td>
+                            <td>Yes — can write to external systems, trigger workflows</td>
+                        </tr>
+                        <tr>
+                            <td>Planning &amp; checkpoints</td>
+                            <td>No plan — direct output</td>
+                            <td>Shows plan, checkpoints, approval gates</td>
+                            <td>Configurable by agent designer</td>
+                        </tr>
+                        <tr>
+                            <td>Third-party connectivity</td>
+                            <td>Reads from connected data via Graph connectors</td>
+                            <td>Same data access as standard Copilot; execution scoped to M365 apps</td>
+                            <td>Full connectivity via 1,400+ connectors, MCP, custom APIs</td>
+                        </tr>
+                        <tr>
+                            <td>AI models</td>
+                            <td>Primarily OpenAI</td>
+                            <td>Multi-model (Claude + OpenAI, routed by task)</td>
+                            <td>Configurable per agent</td>
+                        </tr>
+                        <tr>
+                            <td>Who configures it</td>
+                            <td>End user (prompting)</td>
+                            <td>End user (task delegation)</td>
+                            <td>HR Analytics team (data scientists / data engineers) with governance oversight</td>
+                        </tr>
+                        <tr>
+                            <td>Governance overhead</td>
+                            <td>Standard M365 permissions</td>
+                            <td>Same as standard + audit trail for all agent actions</td>
+                            <td>Requires development lifecycle: design, test, approve, deploy</td>
+                        </tr>
+                        <tr>
+                            <td>Licensing</td>
+                            <td>M365 Copilot ($30/user/month add-on)</td>
+                            <td>Same license; Cowork is a capability within M365 Copilot</td>
+                            <td>Included with M365 Copilot; pay-as-you-go for agent consumption</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- Third-Party Connectivity -->
+        <section>
+            <h2>Third-Party Connectivity: What Can Cowork Actually Reach?</h2>
+            <p>This is an important nuance. The broader M365 Copilot ecosystem supports extensive third-party connectivity. Microsoft and partners provide 100+ prebuilt connectors to services like Salesforce, ServiceNow, Google Drive, Box, Confluence, and others. Additionally, federated connectors using MCP (Model Context Protocol) can fetch data in real time from external systems without indexing it into Microsoft Graph. Users can connect to services like Canva, Notion, and HubSpot directly within Copilot experiences.</p>
+            <p>However, Gartner analysts have noted a specific limitation of Cowork itself: unlike Claude Cowork (which can directly control desktop applications and interact with local files), Copilot Cowork <em>"does not support local computer use, cannot interact directly with local files or applications, and lacks native integrations with third-party tools and services."</em></p>
+            <div class="callout blue">
+                <span class="callout-label" style="color:#2E5C8A;">What This Means in Practice</span>
+                <p><strong>Can:</strong> Reason over third-party data that has been brought into the M365 tenant through connectors (e.g., Salesforce records indexed into Graph). Execute actions within M365 apps (Outlook, Excel, Word, PowerPoint, Teams, SharePoint).</p>
+                <p style="margin-top:10px;"><strong>Cannot:</strong> Natively take actions directly inside third-party systems like Workday, SAP SuccessFactors, or ServiceNow — that requires Copilot Studio agents or Power Automate flows.</p>
+                <p style="margin-top:10px; margin-bottom:0;">For an HR team, this means Cowork is powerful for orchestrating work that lives within the M365 surface, but workflows that require writing back to HRIS systems, benefits platforms, or compliance databases will likely need Copilot Studio — or at minimum, pre-built connectors triggered through Power Automate.</p>
+            </div>
+            <div class="callout spec">
+                <p>Microsoft's trajectory clearly points toward deeper third-party action capability within Cowork over time. The Wave 3 announcement and MCP adoption suggest this gap will narrow, but as of March 2026, the execution boundary for Cowork is the M365 app surface.</p>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- HR Use Cases -->
+        <section>
+            <h2>HR Use Cases: When Is Each Tier the Right Fit?</h2>
+
+            <div class="use-case-block">
+                <h3>When Standard M365 Copilot Is Enough</h3>
+                <p>Standard Copilot excels at single-app, single-turn productivity tasks. For HR professionals, this covers a significant volume of daily work.</p>
+
+                <h4>Drafting and communication</h4>
+                <ul class="use-case-list">
+                    <li>Writing job descriptions in Word (draft from a prompt, refine tone, adjust for inclusivity)</li>
+                    <li>Composing offer letters, rejection communications, and internal policy memos in Word or Outlook</li>
+                    <li>Summarizing long email threads about employee relations issues in Outlook</li>
+                    <li>Drafting talking points for difficult conversations or performance reviews</li>
+                </ul>
+
+                <h4>Meeting support</h4>
+                <ul class="use-case-list">
+                    <li>Summarizing Teams meeting recordings (e.g., a compensation committee discussion)</li>
+                    <li>Extracting action items from a benefits open enrollment planning meeting</li>
+                    <li>Generating meeting notes from a candidate interview conducted in Teams</li>
+                </ul>
+
+                <h4>Data analysis (single-spreadsheet)</h4>
+                <ul class="use-case-list">
+                    <li>Asking Copilot in Excel to identify trends in a turnover data spreadsheet</li>
+                    <li>Generating formulas to calculate headcount changes, attrition rates, or benefits utilization</li>
+                    <li>Creating charts from survey response data</li>
+                </ul>
+
+                <h4>Presentation creation</h4>
+                <ul class="use-case-list">
+                    <li>Generating a first-draft slide deck for a quarterly HR business review in PowerPoint</li>
+                    <li>Turning a Word document (e.g., a D&amp;I strategy paper) into a presentation</li>
+                </ul>
+
+                <h4>Content search and synthesis</h4>
+                <ul class="use-case-list">
+                    <li>Using Copilot Chat in "Work" mode to find information across SharePoint (e.g., "What does our remote work policy say about international assignments?")</li>
+                    <li>Summarizing a long compliance training document</li>
+                </ul>
+
+                <div class="callout" style="margin-top:20px;">
+                    <span class="callout-label">The Pattern</span>
+                    <p>Standard Copilot is the right tool when the task is contained within a single app, the output is content (a draft, a summary, a chart), and the HR professional is present to review and act on the output immediately.</p>
+                </div>
+            </div>
+
+            <div class="use-case-block">
+                <h3>When Copilot Cowork Is Better</h3>
+                <p>Cowork becomes the better tool when HR tasks involve multiple steps across multiple apps, when the work can run in the background, and when the outcome requires coordinated outputs rather than a single artifact.</p>
+
+                <h4>Multi-step meeting and calendar management</h4>
+                <ul class="use-case-list">
+                    <li>"Review my calendar for next week. Prioritize the compensation review meetings and the two candidate interviews. Reschedule or decline anything that can wait, and block 2 hours of prep time before each interview." Cowork can review the schedule, propose changes, and after approval, execute them — accepting, declining, rescheduling, and adding focus blocks.</li>
+                </ul>
+
+                <h4>End-to-end onboarding preparation</h4>
+                <ul class="use-case-list">
+                    <li>"I have three new hires starting on April 7. Pull together an onboarding checklist in Word based on our template in SharePoint, create a 30-60-90 day schedule, draft welcome emails from me to each of them, and set up prep meetings with their managers on my calendar." Cowork can execute this as a coordinated workflow across Word, Outlook, and Calendar — producing multiple deliverables from a single request.</li>
+                </ul>
+                <div class="callout spec">
+                    <p>The onboarding example assumes Cowork can access SharePoint templates and create calendar events from a single task chain. Based on Microsoft's published examples (calendar management, document creation, email drafting), this is within stated capabilities. However, the specific execution quality in Research Preview may vary.</p>
+                </div>
+
+                <h4>Board and leadership reporting</h4>
+                <ul class="use-case-list">
+                    <li>"Compile our quarterly workforce metrics. Pull the headcount data from the Excel tracker on SharePoint, summarize key trends, create a 5-slide executive summary in PowerPoint, and draft a cover email to the CHRO." This crosses Excel, PowerPoint, Outlook, and SharePoint — exactly the kind of multi-app orchestration Cowork is designed for.</li>
+                </ul>
+
+                <h4>Compensation cycle preparation</h4>
+                <ul class="use-case-list">
+                    <li>"Prepare for the annual compensation review. Summarize the last three compensation committee meeting notes from Teams, pull the salary benchmark data from the Excel workbook on SharePoint, and create a briefing document in Word that includes our current pay band analysis and the recommended adjustments."</li>
+                </ul>
+
+                <h4>Employee relations case preparation</h4>
+                <ul class="use-case-list">
+                    <li>"I have a meeting tomorrow about performance concerns with a manager's team. Summarize the relevant email threads from the last 60 days, pull any related meeting notes from Teams, and create a timeline document in Word." Cowork can aggregate information across Outlook and Teams into a structured deliverable.</li>
+                </ul>
+
+                <h4>Policy update communications</h4>
+                <ul class="use-case-list">
+                    <li>"We're updating the parental leave policy. Draft the updated policy document in Word based on the approved changes in this email thread, create a summary email for all people managers, and prepare an FAQ document for the intranet." Multi-output, cross-app, background execution.</li>
+                </ul>
+
+                <div class="callout" style="margin-top:20px;">
+                    <span class="callout-label">The Pattern</span>
+                    <p>Cowork is the right tool when the task requires coordination across 2+ M365 apps, when multiple outputs need to be produced, when the task takes more than a few minutes to complete, and when the HR professional wants to delegate and return to the results rather than shepherding each step.</p>
+                </div>
+            </div>
+
+            <div class="use-case-block">
+                <h3>When Copilot Studio Needs to Come Into Play</h3>
+                <p>Copilot Studio is required when the use case demands custom logic, external system integration, always-on availability for employees, or workflow automation that goes beyond the M365 surface.</p>
+
+                <h4>Employee self-service agents</h4>
+                <ul class="use-case-list">
+                    <li>A chatbot in Teams that answers benefits questions by querying the benefits platform, HR knowledge base, and policy documents. Employees ask "How much is left in my HSA?" or "What's the deadline for open enrollment?" and the agent retrieves real-time data. Requires integration with HRIS/benefits platforms (Workday, SAP SuccessFactors, etc.) — beyond what standard Copilot or Cowork can do.</li>
+                </ul>
+
+                <h4>Automated leave management</h4>
+                <ul class="use-case-list">
+                    <li>An agent that receives leave requests, cross-references with the HRIS system for balances and eligibility, checks team calendars for coverage conflicts, routes approvals, and updates the system of record. This is a workflow that writes back to external systems — firmly in Copilot Studio territory.</li>
+                </ul>
+
+                <h4>Payroll fraud detection</h4>
+                <ul class="use-case-list">
+                    <li>An agent that automatically cross-checks time data, schedules, and geolocation records against payroll processing. Requires access to payroll and timekeeping systems, custom logic, and automated alerting.</li>
+                </ul>
+
+                <h4>Onboarding workflow automation (end-to-end)</h4>
+                <ul class="use-case-list">
+                    <li>A comprehensive agent that triggers when a new hire record is created in the HRIS, provisions accounts, assigns training modules in the LMS, schedules orientation meetings, sends welcome communications, and tracks completion — all automatically.</li>
+                </ul>
+
+                <h4>Compliance training tracking</h4>
+                <ul class="use-case-list">
+                    <li>An agent that monitors training completion deadlines, sends reminders, escalates non-compliance to managers, and generates audit-ready reports by querying the LMS and HRIS.</li>
+                </ul>
+
+                <div class="callout" style="margin-top:20px;">
+                    <span class="callout-label">The Pattern</span>
+                    <p>Copilot Studio is required when the use case demands integration with non-M365 systems (HRIS, LMS, payroll, benefits platforms), custom business logic (eligibility rules, approval routing, fraud detection), always-on availability (employee self-service bots), or automated workflow triggers (event-driven processes).</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- Regulatory Reality -->
+        <section>
+            <h2>The Regulatory Reality: Why Cowork May Be the Sweet Spot</h2>
+
+            <h3>The Copilot Studio Constraint in Financial Institutions</h3>
+            <p>In a large regulated financial institution, any "agent building" activity through Copilot Studio will face significant governance requirements. While the HR Analytics team (data scientists and data engineers) has the technical depth to build these solutions — and the HR domain knowledge to do it well — each agent must still clear the same governance hurdles:</p>
+            <ul class="use-case-list">
+                <li><strong>Model risk management (MRM):</strong> Regulators (OCC, Fed, FINRA, FCA, PRA) expect model validation for systems that influence decisions. Custom AI agents may fall under model risk frameworks (SR 11-7 in the US, SS1/23 in the UK), requiring documentation, validation testing, and ongoing monitoring.</li>
+                <li><strong>Change management and SDLC:</strong> Custom agents require development, testing (including UAT, regression, and adversarial testing), security review, and staged deployment — the same lifecycle applied to any internal software.</li>
+                <li><strong>Data governance:</strong> Agents that connect to HRIS systems, payroll platforms, or employee PII require data classification review, access control mapping, and DLP policy alignment.</li>
+                <li><strong>Audit and compliance:</strong> Every agent action must be logged, traceable, and defensible during regulatory examination. Financial regulators have explicitly stated that AI-generated outputs carry the same compliance obligations as human-generated ones.</li>
+                <li><strong>Approval bottleneck:</strong> In practice, each agent competes for the same compliance review, security assessment, and model validation capacity. Even with a capable HR Analytics team ready to build, the constraint is not development speed — it's governance throughput. For most HR use cases, this means months from concept to production.</li>
+            </ul>
+            <p>This reality is precisely what makes Copilot Cowork attractive as a broadly deployable middle tier — it delivers meaningful capability uplift to the wider HR population while the HR Analytics team focuses its Copilot Studio efforts on the highest-value use cases that genuinely require custom agent development.</p>
+
+            <h3>Why Cowork May Be More Broadly Deployable</h3>
+            <p>Copilot Cowork operates within the existing M365 security and governance framework — it does not require building, testing, or deploying custom agents. It uses the same identity management, data protection policies, compliance boundaries, and audit capabilities that already apply to M365 Copilot.</p>
+
+            <div class="callout blue">
+                <span class="callout-label" style="color:#2E5C8A;">Key Governance Advantages for Regulated Environments</span>
+                <p><strong>No custom code or agent building:</strong> Cowork is a capability within the existing M365 Copilot license. HR professionals use it through natural language delegation, not agent design. This means it does not trigger SDLC or model risk review processes in the way a Copilot Studio agent would.</p>
+                <p style="margin-top:10px;"><strong>Full audit trail:</strong> Every action Cowork takes — every email drafted, file accessed, meeting scheduled — is recorded and auditable. This addresses a core regulatory requirement.</p>
+                <p style="margin-top:10px;"><strong>Human-in-the-loop by design:</strong> Cowork presents its plan, asks for approval at checkpoints, and requires confirmation before taking significant actions. This aligns with the "human oversight" expectations that regulators apply to AI in financial services.</p>
+                <p style="margin-top:10px;"><strong>Cloud-based, tenant-scoped:</strong> Cowork runs in the cloud within the organization's M365 tenant, inheriting existing Purview, Defender, and Entra controls. No data leaves the governance perimeter.</p>
+                <p style="margin-top:10px; margin-bottom:0;"><strong>No external system write access:</strong> The fact that Cowork cannot write back to external systems is actually a governance advantage — it limits the blast radius of any AI action to the M365 surface, where controls are already well-established.</p>
+            </div>
+
+            <div class="callout spec">
+                <p>Whether Cowork will be subject to model risk management review in financial institutions is an open question that will likely be resolved differently at different firms. The argument for exclusion is that Cowork is a vendor-provided capability (like Copilot itself) rather than a custom-built model, and its actions are bounded by the M365 surface with human approval gates. The argument for inclusion is that it takes autonomous multi-step actions on behalf of users, which some MRM frameworks may capture. This is a conversation for risk and compliance teams at each institution.</p>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- User Profiles -->
+        <section>
+            <h2>The Typical User: Who Benefits from Each Tier?</h2>
+            <div class="profile-grid">
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <span class="profile-badge">Tier 1</span>
+                        <h4>Standard Copilot User</h4>
+                    </div>
+                    <p class="profile-label">Profile: Any HR professional who works in M365 apps daily and wants to accelerate routine tasks.</p>
+                    <ul class="use-case-list">
+                        <li>HR Business Partners drafting communications, summarizing meetings, and searching for policy information</li>
+                        <li>Recruiters writing job descriptions, preparing interview questions, and summarizing candidate feedback</li>
+                        <li>Compensation analysts working with Excel data sets</li>
+                        <li>L&amp;D professionals creating training materials in Word and PowerPoint</li>
+                    </ul>
+                    <p><strong style="color:#0B162A;">Skill requirement:</strong> Basic prompting ability. No technical skills required.</p>
+                    <span class="profile-stat">30–60% time savings on drafting, summarization, and search (per Microsoft internal data)</span>
+                </div>
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <span class="profile-badge">Tier 2</span>
+                        <h4>Copilot Cowork User</h4>
+                    </div>
+                    <p class="profile-label">Profile: Senior HR professionals and HR managers who juggle multiple workstreams and spend significant time coordinating work across tools.</p>
+                    <ul class="use-case-list">
+                        <li>HR Directors preparing board presentations, leadership reports, and executive briefings that pull from multiple data sources</li>
+                        <li>HR Business Partners managing complex employee relations cases that require aggregating emails, meeting notes, and documents</li>
+                        <li>Compensation and Benefits managers preparing for annual cycles (open enrollment, compensation review, performance calibration)</li>
+                        <li>Talent Acquisition leads coordinating multi-stage hiring processes involving calendar management, document preparation, and stakeholder communication</li>
+                    </ul>
+                    <p><strong style="color:#0B162A;">Skill requirement:</strong> Same as standard Copilot — natural language delegation. The key shift is in how you think about the request: instead of "draft me a paragraph," it's "prepare me for this meeting by doing X, Y, and Z."</p>
+                    <span class="profile-stat">Reduces 1–3 hours of multi-step coordination to a delegated background task</span>
+                </div>
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <span class="profile-badge">Tier 3</span>
+                        <h4>Copilot Studio Builder</h4>
+                    </div>
+                    <p class="profile-label">Profile: The HR Analytics team — specifically its data scientists and data engineers — will build Copilot Studio solutions for the broader HR function.</p>
+                    <ul class="use-case-list">
+                        <li>Data scientists who can design agent logic, configure connectors to HRIS and benefits platforms, and build custom data retrieval and processing workflows</li>
+                        <li>Data engineers who can manage the integration architecture — connecting Copilot Studio to Workday, SAP SuccessFactors, or other HR systems through Power Platform connectors, MCP servers, or custom APIs</li>
+                        <li>These builders work in close partnership with HR business owners (who define use case requirements) and compliance/risk stakeholders (who validate agents before deployment)</li>
+                    </ul>
+                    <p><strong style="color:#0B162A;">Skill requirement:</strong> The HR Analytics team's existing data engineering and data science skill set maps well to Copilot Studio development. Power Platform familiarity is the main gap to assess — Copilot Studio uses a low-code/no-code interface with connector configuration, which is conceptually similar to pipeline orchestration but uses different tooling.</p>
+                    <span class="profile-stat">Expect 3–6+ months from concept to production per agent</span>
+                    <div class="callout spec" style="margin-top:16px;">
+                        <p>The "3–6+ months" estimate is based on typical technology change management timelines in large financial institutions, not on published data specific to Copilot Studio. Actual timelines will depend on the organization's specific governance processes, the complexity of the agent, and the external system integrations involved.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- Decision Framework -->
+        <section>
+            <h2>Decision Framework: Choosing the Right Tool</h2>
+            <div class="decision-tree">
+                <pre>
+START: What does the HR task require?
+
+├── Single app, single output (draft, summary, formula, chart)?
+│   └── → <span class="leaf">Standard M365 Copilot</span>
+│
+├── Multiple apps, multiple outputs, or background execution?
+│   ├── All work stays within M365 apps (Word, Excel, Outlook, PPT, Teams, SharePoint)?
+│   │   └── → <span class="leaf">Copilot Cowork</span>
+│   ├── Requires reading data from external systems (HRIS, benefits platform)?
+│   │   ├── Data already indexed into M365 via connectors?
+│   │   │   └── → <span class="leaf">Copilot Cowork</span> (can reason over the data)
+│   │   └── Data not in M365?
+│   │       └── → <span class="leaf">Copilot Studio</span> (connector + agent required)
+│   └── Requires writing back to external systems?
+│       └── → <span class="leaf">Copilot Studio</span> (or Power Automate)
+│
+├── Always-on employee self-service (chatbot, FAQ bot)?
+│   └── → <span class="leaf">Copilot Studio</span>
+│
+├── Automated workflow triggered by events (new hire created, leave request submitted)?
+│   └── → <span class="leaf">Copilot Studio</span> (or Power Automate)
+│
+└── Custom business logic (eligibility rules, fraud detection, approval routing)?
+    └── → <span class="leaf">Copilot Studio</span>
+                </pre>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- Rollout Recommendations -->
+        <section>
+            <h2>Recommendations for Rollout in a Regulated Financial Institution</h2>
+            <div class="phase-grid">
+                <div class="phase-card">
+                    <div class="phase-number">01</div>
+                    <div class="phase-content">
+                        <h4>Standard M365 Copilot — Broad Deployment</h4>
+                        <p>Deploy standard M365 Copilot to HR professionals across the function. Focus on prompting education, use case identification, and adoption tracking. This tier carries the lowest governance overhead and provides immediate productivity gains for drafting, summarization, data analysis, and search.</p>
+                    </div>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-number">02</div>
+                    <div class="phase-content">
+                        <h4>Copilot Cowork — Targeted Expansion</h4>
+                        <p>As Cowork moves from Research Preview to general availability, evaluate it for senior HR leaders and HR managers who handle high-coordination workstreams. The governance posture — full audit trail, human-in-the-loop, tenant-scoped, no external system write access — should make it deployable under existing M365 Copilot governance frameworks, potentially without triggering full model risk review.</p>
+                        <div class="callout spec" style="margin-top:16px;">
+                            <p>Whether Cowork can be deployed under existing M365 Copilot approvals or requires additional governance review will depend on each institution's interpretation of its AI risk framework. Early engagement with risk and compliance teams is recommended.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-number">03</div>
+                    <div class="phase-content">
+                        <h4>Copilot Studio — Selective, HR Analytics-Led</h4>
+                        <p>The HR Analytics team — with its data scientists and data engineers — will own Copilot Studio development for HR use cases. Identify 2–3 high-value use cases that justify the development and governance investment (employee self-service benefits agent, onboarding automation, or compliance training tracking are strong candidates). Treat these as formal development projects with full SDLC, testing, and compliance sign-off.</p>
+                        <p style="margin-top:10px;">The HR Analytics team should assess Power Platform skill gaps early and plan for enablement. Do not expect broad organic adoption — in a regulated environment, every Copilot Studio agent is a governed deployment, and the team's capacity to build, test, and maintain agents will be the binding constraint on how many can be in production at any given time.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- Key Risks -->
+        <section>
+            <h2>Key Risks and Considerations</h2>
+            <div class="risk-grid">
+                <div class="risk-card">
+                    <h4>Data Oversharing</h4>
+                    <p>Copilot (all tiers) inherits existing M365 permissions. If SharePoint permissions are messy — and in large financial institutions, they often are — Copilot can surface content that users have technical access to but should not be viewing. A SharePoint permissions audit is a prerequisite for any Copilot deployment, not an afterthought. This risk is amplified in HR, where employee PII, compensation data, and employee relations documentation are highly sensitive.</p>
+                </div>
+                <div class="risk-card">
+                    <h4>Prompt and Response Capture for Compliance</h4>
+                    <p>Financial regulators (FINRA, SEC, FCA, ESMA) expect firms to capture and archive AI interactions as business communications. Ensure Copilot interactions are captured through Microsoft Purview or a third-party compliance archiving solution. This applies to all three tiers.</p>
+                </div>
+                <div class="risk-card">
+                    <h4>Copilot Cowork Maturity</h4>
+                    <p>Copilot Cowork is in Research Preview as of March 2026. Production readiness, reliability, and the full scope of supported actions are still being validated. Plan for evaluation and pilot, not immediate broad deployment.</p>
+                </div>
+                <div class="risk-card">
+                    <h4>The HRIS Gap</h4>
+                    <p>The most transformative HR use cases — end-to-end onboarding, benefits self-service, leave management, payroll automation — require integration with HRIS platforms that live outside M365. Neither standard Copilot nor Cowork can write to these systems today. This remains the core value proposition of Copilot Studio, and the reason the HR Analytics team's Copilot Studio work is essential despite governance complexity. Prioritizing which HRIS integrations to build first — based on business impact, data sensitivity, and governance feasibility — should be a near-term planning exercise for the HR Analytics team.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- Sources -->
+        <section>
+            <h2>Sources and Attribution</h2>
+            <p>This analysis draws on the following primary sources. All speculation is explicitly labeled throughout the document. Factual claims are based on published Microsoft documentation, analyst reports, and credible technology journalism as of March 24, 2026.</p>
+            <ul class="sources-list">
+                <li>Microsoft 365 Blog: "Copilot Cowork: A new way of getting work done" (March 9, 2026)</li>
+                <li>Microsoft 365 Blog: "Powering Frontier Transformation with Copilot and agents" (March 9, 2026)</li>
+                <li>Microsoft Official Blog: "Introducing the First Frontier Suite built on Intelligence + Trust" (March 9, 2026)</li>
+                <li>Fortune: "Microsoft debuts Copilot Cowork built with Anthropic's help" (March 9, 2026)</li>
+                <li>Computerworld: "M365 Copilot gets its own version of Claude Cowork" (March 2026)</li>
+                <li>Gartner Research Note on Copilot Cowork limitations (cited in Computerworld)</li>
+                <li>Microsoft Learn: Copilot connectors overview, Copilot Studio documentation, Copilot Control System security and governance</li>
+                <li>Microsoft Adoption: Copilot Scenario Library for Human Resources</li>
+                <li>Smarsh: "Navigating Microsoft 365 Copilot Regulatory Compliance Requirements in Financial Services"</li>
+                <li>Data Science Dojo: "Claude Cowork vs. Copilot Cowork: What's the Difference?"</li>
+                <li>Neurons Lab: "Anthropic Cowork vs Microsoft Copilot vs Custom Solutions for Financial Institutions"</li>
+                <li>Access Business Technologies: "Microsoft Copilot for Financial Institutions: The 2026 Deployment Guide"</li>
+            </ul>
+        </section>
+
+    </div>
+</main>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-top">
+            <div>
+                <div class="footer-logo-row">
+                    <svg width="28" height="23" viewBox="0 0 120 98" fill="none">
+                        <path d="M10 8 L32 90 L52 40" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        <path d="M52 40 L72 90 L82 62" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        <path d="M82 62 L110 8" stroke="#E64100" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                    </svg>
+                    <span class="footer-wordmark"><span>WAR</span><span class="lab">LAB</span></span>
+                </div>
+                <p class="footer-tagline">Workforce Analytics Research Lab — exploring AI, data, and workforce futures.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../projects.html">Projects</a></li>
+                    <li><a href="../governance.html">Governance</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="https://github.com/WARLAB01/warlab-projects">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="footer-disclosure">WARLAB is an independent educational research project. Content is primarily AI-generated and published for evaluation and educational purposes. Not affiliated with any employer or commercial entity. Not intended as professional advice. Verify independently before use.</p>
+        <div class="footer-bottom">© 2026 WARLAB · Workforce Analytics Research Lab</div>
+    </div>
+</footer>
+
+<script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 0);
+    });
+</script>
+</body>
+</html>
