@@ -1,5 +1,30 @@
 # HR Datamart V3 — Changelog
 
+## [3.3.0] — 2026-03-25
+
+### Summary
+Adds incremental/daily operational run generator (generate_incremental.py). Produces
+timestamped daily directories containing FULL SNAPSHOT files for reference feeds
+(INT6020-INT6032) and DELTA files for transactional feeds (INT0095E, INT0096, INT0098,
+INT270). Includes first generated incremental run (2026-03-24).
+
+### Added
+
+#### generate_incremental.py — Incremental Run Generator
+- FULL SNAPSHOT generation for 10 reference/dimension feeds with minor daily changes
+- DELTA generation for 4 transactional feeds (INT0095E, INT0096, INT0098, INT270)
+- Deterministic seeding: per_file_seed = hash(global_seed + integration_id + run_timestamp)
+- Auto-detect next run date from baseline or last incremental
+- Observability artifacts per run: MANIFEST.md, CHANGE_SUMMARY.md, VALIDATION_SUMMARY.md
+- Referential integrity validation
+- Output structure: data/<YYYYMMDDHHMMSS>/ per run, preserving baseline
+
+#### First Incremental Run — 2026-03-24
+- 3 new hires, 2 job changes, 1 late-arriving transaction, 2 rescinded transactions
+- All 14 integration files generated; all validation checks PASS
+
+---
+
 ## [3.2.0] — 2026-03-24
 
 ### Summary
