@@ -307,9 +307,72 @@ class IncrementalGenerator:
                     row["Grade_Profile_Salary_Range_Midpoint"] = f"{mid + adjustment:.4f}"
                 except (ValueError, TypeError):
                     pass
+
+        elif feed_id == "INT6021":
+            # Minor job profile updates — tweak management level or job family
+            mgmt_levels = ["Individual Contributor", "Manager", "Director", "Senior Director", "VP"]
+            if "Management_Level" in row:
+                current = row.get("Management_Level", "")
+                choices = [m for m in mgmt_levels if m != current]
+                if choices and rng.random() < 0.3:
+                    row["Management_Level"] = rng.choice(choices)
+            if "Job_Family" in row and rng.random() < 0.5:
+                suffixes = ["- Updated", "- Revised", "- v2", ""]
+                current_val = row["Job_Family"].rstrip(" - Updated- Revised- v2")
+                row["Job_Family"] = current_val + rng.choice(suffixes)
+
+        elif feed_id == "INT6022":
+            # Minor classification updates — adjust effective date
+            if "Effective_Date" in row:
+                row["Effective_Date"] = self.run_date.isoformat()
+            elif "Classification_Effective_Date" in row:
+                row["Classification_Effective_Date"] = self.run_date.isoformat()
+
+        elif feed_id == "INT6023":
+            # Minor location updates — toggle active status or update time zone
+            time_zones = ["America/New_York", "America/Chicago", "America/Denver",
+                          "America/Los_Angeles", "America/Toronto", "Europe/London"]
+            if "Time_Zone" in row:
+                current_tz = row.get("Time_Zone", "")
+                choices = [tz for tz in time_zones if tz != current_tz]
+                if choices:
+                    row["Time_Zone"] = rng.choice(choices)
+            if "Location_Status" in row and rng.random() < 0.1:
+                row["Location_Status"] = "Inactive" if row["Location_Status"] == "Active" else "Active"
+
+        elif feed_id == "INT6024":
+            # Minor company updates — tweak currency or subtype
+            currencies = ["USD", "CAD", "GBP", "EUR"]
+            if "Company_Currency" in row:
+                current_ccy = row.get("Company_Currency", "")
+                choices = [c for c in currencies if c != current_ccy]
+                if choices:
+                    row["Company_Currency"] = rng.choice(choices)
+            if "Company_Subtype" in row and rng.random() < 0.3:
+                subtypes = ["Operating", "Holding", "Subsidiary", "Joint Venture"]
+                current_sub = row.get("Company_Subtype", "")
+                choices = [s for s in subtypes if s != current_sub]
+                if choices:
+                    row["Company_Subtype"] = rng.choice(choices)
+
+        elif feed_id == "INT6025":
+            # Minor cost center updates — update hierarchy or name suffix
+            if "Hierarchy" in row and rng.random() < 0.4:
+                hierarchy_val = row["Hierarchy"]
+                # Append a revision marker that changes each run
+                base_val = hierarchy_val.split(" (rev")[0]
+                row["Hierarchy"] = f"{base_val} (rev {self.run_date.strftime('%m%d')})"
+            if "Subtype" in row:
+                subtypes = ["Operating", "Corporate", "Shared Services", "Project"]
+                current_sub = row.get("Subtype", "")
+                choices = [s for s in subtypes if s != current_sub]
+                if choices:
+                    row["Subtype"] = rng.choice(choices)
+
         elif feed_id == "INT6027":
             if row.get("Matrix_Organization_Status") == "Active" and rng.random() < 0.05:
                 row["Matrix_Organization_Status"] = "Inactive"
+
         elif feed_id == "INT6028":
             if "Effective_Date" in row:
                 row["Effective_Date"] = self.run_date.isoformat()

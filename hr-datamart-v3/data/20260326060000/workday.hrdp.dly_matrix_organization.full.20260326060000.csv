@@ -1,0 +1,16 @@
+Matrix_Organization_ID,Matrix_Organization_Status,Maxtrix_Organization_Name,Maxtrix_Organization_Code,Matrix_Organization_Type,Matrix_Organization_SubType,Matrix_Organization_Description
+MORG_DIG_XFORM,Active,Digital Transformation,DT,Project,Strategic,Cross-functional initiative to modernize core banking systems and digitize client-facing workflows across all business lines.
+MORG_ESG,Active,ESG & Sustainability,ESG,Committee,Governance,"Governance body overseeing environmental, social, and governance commitments including carbon neutrality and responsible investing standards."
+MORG_DEI,Active,Diversity Equity & Inclusion,DEI,Committee,Cultural,"Employee-led committee driving programs for diverse hiring, equitable promotion practices, and inclusive workplace culture."
+MORG_INNOV,Active,Innovation Lab,INN,Project,Strategic,"Dedicated incubator for piloting emerging financial technologies including blockchain, open banking APIs, and AI-driven advisory tools."
+MORG_DATA_GOV,Active,Data Governance Council,DGC,Committee,Governance,"Enterprise council responsible for data quality standards, data lineage tracking, and compliance with privacy regulations across jurisdictions."
+MORG_CX,Active,Client Experience,CX,Project,Strategic,"Program focused on improving end-to-end client journeys across retail, wealth, and institutional segments using journey mapping and NPS metrics."
+MORG_CLOUD,Active,Cloud Migration,CLD,Project,Technology,"Multi-year initiative to migrate on-premises infrastructure to cloud platforms including AWS and Azure, targeting full migration by 2027."
+MORG_REG_CHG,Active,Regulatory Change,REG,Project,Compliance,"Cross-divisional project managing adoption of new capital adequacy rules, AML directives, and cross-border reporting obligations."
+MORG_MA,Active,M&A Integration,MA,Project,Strategic,"Integration management office coordinating people, process, and technology streams following acquisition of regional advisory firm."
+MORG_TALENT,Active,Talent Strategy,TAL,Committee,HR,"Leadership committee defining five-year workforce planning model, succession pipelines, and retention programs for critical roles."
+MORG_AI_ML,Active,AI & Machine Learning,AI,Project,Technology,"Centre of excellence for deploying machine learning models in credit scoring, fraud detection, and robo-advisory product development."
+MORG_COST_OPT,Active,Cost Optimization,COT,Project,Finance,"Finance-led program identifying $150M in operational savings through vendor renegotiation, process automation, and real estate consolidation."
+MORG_CYBER,Active,Cybersecurity Task Force,CYB,Committee,Technology,"Executive task force overseeing threat intelligence sharing, incident response readiness, and zero-trust architecture implementation."
+MORG_WM_STRAT,Active,Wealth Management Strategy,WMS,Project,Business,"Strategic review of wealth management product suite, fee structures, and advisor compensation models to improve AUM growth trajectory."
+MORG_US_EXPAN,Active,US Expansion,USE,Project,Strategic,Market entry program supporting growth of US advisory and capital markets operations with regulatory licensing and local talent acquisition.
