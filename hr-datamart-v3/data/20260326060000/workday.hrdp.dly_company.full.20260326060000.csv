@@ -1,9 +1,9 @@
 Company_ID,Company_WID,Company_Name,Company_Code,Business_Unit,Company_Subtype,Company_Currency
 WARLAB_HOLD,5d1d57b2951307116019507556ba507a,WARLab Holdings Inc.,WLH,Corporate,Holding Company,GBP
 WARLAB_CA,fef46eb34ca3e1310843d64298b747c4,WARLab Canada Ltd.,WLC,Canada Operations,Operating Company,CAD
-WARLAB_US,c682cef2da84d530251eda7fe5db31d9,WARLab Financial Services LLC,WLU,US Operations,Operating Company,USD
-WARLAB_WM,16ec4b2fc241af93430ce5248c9f0d3e,WARLab Wealth Management Inc.,WLW,Wealth Management,Operating Company,CAD
+WARLAB_US,c682cef2da84d530251eda7fe5db31d9,WARLab Financial Services LLC,WLU,US Operations,Operating Company,GBP
+WARLAB_WM,16ec4b2fc241af93430ce5248c9f0d3e,WARLab Wealth Management Inc.,WLW,Wealth Management,Operating,EUR
 WARLAB_CAP,e2df29f8fa319fdc0dd451f85baa9bd0,WARLab Capital Markets Inc.,WLK,Capital Markets,Operating Company,CAD
-WARLAB_INS,72388756198381fe51ae9a36aef46568,WARLab Insurance Services Ltd.,WLI,Insurance,Operating Company,CAD
+WARLAB_INS,72388756198381fe51ae9a36aef46568,WARLab Insurance Services Ltd.,WLI,Insurance,Subsidiary,GBP
 WARLAB_TECH,6268460dfcc652d3e0067926c0766550,WARLab Technology Solutions Inc.,WLT,Technology,Shared Services,CAD
 WARLAB_USADV,58ff42b4ea3dffd28c7be6bf8596056e,WARLab Advisory Services LLC,WLA,US Advisory,Operating Company,USD

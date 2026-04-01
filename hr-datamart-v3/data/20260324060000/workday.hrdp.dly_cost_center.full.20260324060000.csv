@@ -43,7 +43,7 @@ CC_0041,e23b7019ddd7ff32dd588f9c4df6cc88,0041,Technology - Integration,WARLab > 
 CC_0042,67ff3921c4aa86a2257d565eac2679f8,0042,Technology - Transformation,WARLab > Technology > Transformation,Cost Center
 CC_0043,c96a5905f15dca6d77812c9f5fce812c,0043,Technology - General,WARLab > Technology > General,Cost Center
 CC_0044,d81ac257e7018d5efc5d3c9b88393d1f,0044,Technology - Projects,WARLab > Technology > Projects,Cost Center
-CC_0045,80ef4801df0326acd6647bd6cd2a6b00,0045,Technology - Operations,WARLab > Technology > Operations,Cost Center
+CC_0045,80ef4801df0326acd6647bd6cd2a6b00,0045,Technology - Operations,WARLab > Technology > Operations,Corporate
 CC_0046,9fcd751260837214e821c63c52aab726,0046,Technology - Support,WARLab > Technology > Support,Cost Center
 CC_0047,33926e4ff8dee9bd8a5b849d568c045d,0047,Technology - Strategy,WARLab > Technology > Strategy,Cost Center
 CC_0048,1c7b0bacb830349d60bb688f97b39a69,0048,Technology - Analytics,WARLab > Technology > Analytics,Cost Center
@@ -63,7 +63,7 @@ CC_0061,1168b67ed7b30298f521bd350f6cb30f,0061,Risk Management - Projects,WARLab 
 CC_0062,d6dc93da3a4371a3d3a15091a6778595,0062,Risk Management - Operations,WARLab > Risk Management > Operations,Cost Center
 CC_0063,77ff4c4f4c5747c7089582bac6757891,0063,Risk Management - Support,WARLab > Risk Management > Support,Cost Center
 CC_0064,a7fdb184a4cfdd8d94c1da721bea5da7,0064,Risk Management - Strategy,WARLab > Risk Management > Strategy,Cost Center
-CC_0065,5f7be4dbe2df4a2ca48e6f434764253c,0065,Risk Management - Analytics,WARLab > Risk Management > Analytics,Cost Center
+CC_0065,5f7be4dbe2df4a2ca48e6f434764253c,0065,Risk Management - Analytics,WARLab > Risk Management > Analytics,Shared Services
 CC_0066,6197a1a84874ef72a7bdd564f8117812,0066,Risk Management - Delivery,WARLab > Risk Management > Delivery,Cost Center
 CC_0067,9c218dabb95d3a3593ea091ada78f44c,0067,Risk Management - Infrastructure,WARLab > Risk Management > Infrastructure,Cost Center
 CC_0068,5aa3802a9265d3145878a8831dd6913f,0068,Risk Management - Advisory,WARLab > Risk Management > Advisory,Cost Center
