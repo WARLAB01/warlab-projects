@@ -1,6 +1,6 @@
 # HR Agentic Demos — Artifact Bundle
 
-This folder contains the deliverables produced by the agents in the WARLAB **Agentic Demos for HR** catalog. Each demo lives in its own subfolder and contains the same shape of output: the artifact(s) the agent generated plus, in most cases, a Markdown run summary describing what the agent did.
+This folder contains the deliverables produced by the agents in the WARLAB **Agentic Demos for HR** catalog. Each demo lives in its own subfolder and contains the artifact(s) the agent generated plus, in most cases, a Markdown run summary describing what the agent did.
 
 For the live, video-narrated catalog see **https://demos.w4rlab.com**.
 
@@ -8,12 +8,10 @@ For the live, video-narrated catalog see **https://demos.w4rlab.com**.
 
 | Subfolder | Demo | Theme |
 |---|---|---|
-| `mre-review/` | MRE Artifact Review | Risk & Compliance |
-| `strategic-alignment/` | Strategic Alignment Check | Risk & Compliance |
-| `risk-hotspots/` | Risk Hot Spots | Risk & Compliance |
-| `pay-equity/` | Pay Equity Review | People & Pay |
-| `folder-organization/` | Folder Organization & AI Indexing | Operations & Automation |
-| `webform-automation/` | Automated Webform Submissions | Operations & Automation |
+| `mre-review/` | MRE Artifact Review | Document Analysis |
+| `strategic-alignment/` | Strategic Alignment Check | Document Analysis |
+| `webform-automation/` | Web Page Submission | Workflow Automation |
+| `folder-organization/` | Folder Content Analysis, Organization, and Indexing | Workflow Automation |
 
 ## Disclosure
 
