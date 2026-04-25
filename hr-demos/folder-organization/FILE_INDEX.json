@@ -1,0 +1,984 @@
+{
+  "$schema_version": "2.0",
+  "generated_at": "2026-04-25",
+  "root": "SYNTHESIS/",
+  "layout": "lifecycle (Option B): inputs/ → skills/ → outputs/ + misc/",
+  "description": "AI-agent-facing index of every file in the SYNTHESIS folder. Use 'topical_index' for query routing; use 'files' for per-file metadata. lifecycle_stage values: source | tool | generated_output | orphan | meta.",
+  "fictional_dataset_warning": "All NBFG content is a fictional bank used for demos. Do not treat any figure, person, or claim as real-world fact.",
+  "agent_routing_hints": {
+    "first_question_to_ask": "Is the user asking about (a) NBFG content/data, (b) running an analytics skill, or (c) reading already-generated skill outputs?",
+    "for_a_use": "files where lifecycle_stage='source' (everything under inputs/nbfg/)",
+    "for_b_use": "files where lifecycle_stage='tool' (start with the matching SKILL.md under skills/)",
+    "for_c_use": "files where lifecycle_stage='generated_output' AND is_latest=true (everything in outputs/latest/)",
+    "data_dictionary_path": "inputs/nbfg/data/DATA_DICTIONARY.md",
+    "lob_codes": {
+      "CPCB": "Canadian Personal & Commercial Banking",
+      "USPCB": "US Personal & Commercial Banking",
+      "WM": "Wealth Management",
+      "CM": "Capital Markets",
+      "CIB": "Corporate & Investment Banking",
+      "TECH": "Technology",
+      "OPS": "Operations",
+      "RISK": "Risk Management",
+      "FIN": "Finance",
+      "LEG": "Legal & Compliance",
+      "HR": "People & Culture"
+    },
+    "level_codes": {
+      "L1": "Entry / Analyst",
+      "L2": "Associate",
+      "L3": "Manager",
+      "L4": "Senior Manager / Staff Engineer",
+      "L5": "Director",
+      "L6": "Vice President",
+      "L7": "Senior Vice President",
+      "L8": "Executive Vice President"
+    },
+    "currencies": ["CAD", "USD"],
+    "regions": ["Canada", "United States"],
+    "engagement_dimensions": [
+      "Overall Engagement",
+      "Compensation & Rewards",
+      "Career Growth",
+      "Wellbeing",
+      "Manager Effectiveness",
+      "Inclusion & Belonging",
+      "Leadership Confidence",
+      "Strategic Clarity"
+    ]
+  },
+
+  "files": [
+    {
+      "id": "readme",
+      "path": "README.md",
+      "type": "markdown",
+      "lifecycle_stage": "meta",
+      "domain": "documentation",
+      "summary": "Folder map and how-to-use guide for SYNTHESIS. Single entry point for new readers.",
+      "key_topics": ["readme", "folder map", "how to use"],
+      "example_queries": ["What's in the SYNTHESIS folder?", "Where do I start?"]
+    },
+    {
+      "id": "synthesis_review",
+      "path": "SYNTHESIS_REVIEW.md",
+      "type": "markdown",
+      "lifecycle_stage": "meta",
+      "domain": "documentation",
+      "summary": "Review of the SYNTHESIS folder structure with reorganization options. Captures the rationale for the current Option B layout.",
+      "key_topics": ["review", "reorganization", "Option B"],
+      "example_queries": ["Why is the folder organized this way?"]
+    },
+    {
+      "id": "file_index",
+      "path": "FILE_INDEX.json",
+      "type": "json",
+      "lifecycle_stage": "meta",
+      "domain": "documentation",
+      "summary": "This file. Machine-readable per-file index plus topical query routing for AI agents.",
+      "key_topics": ["index", "routing", "agent reference"],
+      "example_queries": ["Which file should I read for X?"]
+    },
+
+    {
+      "id": "data_dictionary",
+      "path": "inputs/nbfg/data/DATA_DICTIONARY.md",
+      "type": "markdown",
+      "lifecycle_stage": "meta",
+      "domain": "data_documentation",
+      "summary": "Schema reference for the eight workforce CSVs in inputs/nbfg/data/. Includes LOB/level/region/currency code tables and per-file column docs.",
+      "key_topics": ["data dictionary", "schema", "lob codes", "level codes"],
+      "example_queries": [
+        "What does L4 mean?",
+        "What are the LOB codes?",
+        "What columns are in the engagement survey CSV?"
+      ]
+    },
+
+    {
+      "id": "nbfg_enterprise_strategy",
+      "path": "inputs/nbfg/strategy/01_NBFG_Enterprise_Strategy_2025-2027.docx",
+      "type": "docx",
+      "lifecycle_stage": "source",
+      "domain": "strategy",
+      "scope": "enterprise",
+      "time_period": "2025-2027",
+      "owner": "Office of the CEO (Margaret L. Chen)",
+      "summary": "Northbridge Financial Group three-year enterprise strategy. Five pillars including 'Be the Employer of Choice in North American Banking'. 50,000 employees, $4.3B 2024 NIBT, 12.8% CET1.",
+      "key_topics": ["enterprise strategy", "three-year plan", "five pillars", "talent investment", "Margaret Chen CEO", "$4.3B NIBT", "138-year history", "Canada US bank"],
+      "example_queries": [
+        "What is NBFG's enterprise strategy?",
+        "What are the five strategic pillars?",
+        "What is the 2024 NIBT baseline?",
+        "Who is the CEO of Northbridge?"
+      ]
+    },
+    {
+      "id": "wealth_strategy",
+      "path": "inputs/nbfg/strategy/02_Wealth_Management_Strategy_2025.docx",
+      "type": "docx",
+      "lifecycle_stage": "source",
+      "domain": "strategy",
+      "scope": "lob:Wealth Management",
+      "time_period": "2025",
+      "owner": "James Whitford, Group Head Wealth Management",
+      "summary": "Wealth Management 2025 strategy. Talent-led growth: +5% net advisor headcount, +12% AUM YoY, $385B AUM by 2027, $24M incremental talent investment.",
+      "key_topics": ["wealth strategy", "advisor headcount", "AUM growth", "intergenerational wealth transfer", "James Whitford", "Project Compass", "+5% advisors", "+12% AUM"],
+      "example_queries": [
+        "What is the Wealth Management strategy?",
+        "How many advisors did Wealth plan to hire?",
+        "What's the AUM target?",
+        "What is Project Compass?"
+      ]
+    },
+    {
+      "id": "tech_strategy",
+      "path": "inputs/nbfg/strategy/03_Technology_Talent_and_Modernization_Plan_2025.docx",
+      "type": "docx",
+      "lifecycle_stage": "source",
+      "domain": "strategy",
+      "scope": "function:Technology",
+      "time_period": "2025",
+      "owner": "Priya Ramaswamy, CTO",
+      "summary": "Technology 2025 strategy. 6,000 engineers, 16% 2024 attrition, Toronto senior eng comp 12-15% below market median per McLean & Co. study, $2.4B 2025-2027 envelope.",
+      "key_topics": ["technology strategy", "Toronto attrition", "engineering talent", "compensation gap", "McLean & Co study", "Priya Ramaswamy", "cloud migration", "$2.4B tech investment", "L4 L5 engineers"],
+      "example_queries": [
+        "What is the Technology strategy?",
+        "Why is Toronto Tech attrition so high?",
+        "What did the McLean & Co. comp study find?",
+        "How much is NBFG investing in Technology?"
+      ]
+    },
+    {
+      "id": "people_culture_strategy",
+      "path": "inputs/nbfg/strategy/04_People_and_Culture_Strategy_2025.docx",
+      "type": "docx",
+      "lifecycle_stage": "source",
+      "domain": "strategy",
+      "scope": "function:People and Culture",
+      "time_period": "2025",
+      "owner": "Diane Okafor-Lindgren, CHRO",
+      "summary": "People & Culture 2025 strategy. 71 enterprise engagement, 11.3% voluntary attrition (up from 9.9%), 6.4% regrettable attrition (above 5.5% target). Three pressure points: Toronto Tech, Capital Markets, Wealth advisors.",
+      "key_topics": ["people and culture strategy", "engagement", "regrettable attrition", "manager effectiveness", "Diane Okafor-Lindgren", "CHRO", "engagement bifurcation"],
+      "example_queries": [
+        "What is the People & Culture strategy?",
+        "What is the regrettable attrition target?",
+        "Where are the engagement pressure points?",
+        "Who is the CHRO?"
+      ]
+    },
+
+    {
+      "id": "enterprise_perf_review",
+      "path": "inputs/nbfg/decks/01_Enterprise_Performance_Review_Q4_2025.pptx",
+      "type": "pptx",
+      "lifecycle_stage": "source",
+      "domain": "business_review",
+      "scope": "enterprise",
+      "time_period": "Q4 2025 / FY2025",
+      "owner": "Office of the CFO",
+      "summary": "Board-level enterprise performance review for full-year 2025. $4.6B NIBT (+7% YoY), 14.3% ROE, 56.4% efficiency ratio, 12.6% CET1, 12.4% voluntary attrition, 70 engagement.",
+      "key_topics": ["enterprise performance review", "Q4 2025", "full year 2025", "$4.6B NIBT", "14.3% ROE", "board review", "scorecard"],
+      "example_queries": [
+        "What were 2025 enterprise results?",
+        "Did NBFG hit its 2025 financial plan?",
+        "What is the 2025 ROE?",
+        "How did engagement and attrition end the year?"
+      ]
+    },
+    {
+      "id": "capital_markets_review",
+      "path": "inputs/nbfg/decks/02_Capital_Markets_Annual_Business_Review_2025.pptx",
+      "type": "pptx",
+      "lifecycle_stage": "source",
+      "domain": "business_review",
+      "scope": "lob:Capital Markets",
+      "time_period": "FY2025",
+      "owner": "Sebastian R. Holm, Group Head Capital Markets",
+      "summary": "Capital Markets 2025 review. Record financials: $820M NIBT (+18%), 22% ROE. Engagement at enterprise low of 52. ~7% gender comp gap at VP/L6 under remediation.",
+      "key_topics": ["Capital Markets", "$820M NIBT", "record year", "FICC trading", "engagement 52", "VP gender comp gap", "Sebastian Holm", "good numbers bad people"],
+      "example_queries": [
+        "How did Capital Markets perform in 2025?",
+        "Why is Capital Markets engagement so low?",
+        "Is there a pay equity issue in Capital Markets?",
+        "What is FICC revenue?"
+      ]
+    },
+    {
+      "id": "canadian_pc_review",
+      "path": "inputs/nbfg/decks/03_Canadian_PC_Business_Review_2025.pptx",
+      "type": "pptx",
+      "lifecycle_stage": "source",
+      "domain": "business_review",
+      "scope": "lob:Canadian Personal and Commercial",
+      "time_period": "FY2025",
+      "owner": "Marie-Claire Tremblay, Group Head Canadian P&C",
+      "summary": "Canadian P&C 2025 review. $1.8B NIBT (+3%), $5.2B revenue (+1%), 53.0% efficiency, 78 engagement (highest revenue-generating LOB), 180K net new customers.",
+      "key_topics": ["Canadian Personal and Commercial", "Canadian P&C", "retail banking", "$1.8B NIBT", "engagement 78", "Marie-Claire Tremblay", "180K new customers", "digital adoption"],
+      "example_queries": [
+        "How did Canadian P&C perform in 2025?",
+        "Which LOB has the highest engagement?",
+        "How many new customers did P&C add?"
+      ]
+    },
+    {
+      "id": "wealth_q4_update",
+      "path": "inputs/nbfg/decks/04_Wealth_Management_Strategic_Update_Q4_2025.pptx",
+      "type": "pptx",
+      "lifecycle_stage": "source",
+      "domain": "business_review",
+      "scope": "lob:Wealth Management",
+      "time_period": "Q4 2025 / FY2025",
+      "owner": "James Whitford",
+      "summary": "Wealth Management Q4 2025 plan-vs-actual. Behind plan on every metric: 0% advisor growth (target +5%), 14% regrettable attrition (worse than 12% prior), $590M NIBT (-3% YoY vs $695M plan).",
+      "key_topics": ["Wealth Management plan vs actual", "advisor headcount miss", "strategy execution gap", "regrettable attrition", "James Whitford", "AUM", "Project Compass"],
+      "example_queries": [
+        "Did Wealth hit its 2025 plan?",
+        "What is the Wealth strategy execution gap?",
+        "How many advisors did Wealth actually hire vs plan?"
+      ]
+    },
+
+    {
+      "id": "engagement_survey_pdf",
+      "path": "inputs/nbfg/reports/01_2025_Annual_Engagement_Survey_Executive_Summary.pdf",
+      "type": "pdf",
+      "lifecycle_stage": "source",
+      "domain": "narrative_report",
+      "scope": "enterprise",
+      "time_period": "2025",
+      "owner": "Diane Okafor-Lindgren, CHRO",
+      "summary": "2025 enterprise engagement survey executive summary. 70 enterprise score (-1 vs 2024), 82% participation, 41,000 respondents. Top vs bottom LOB gap: 28pts (widest on record). Toronto Tech compensation perception 50/100 vs 64 enterprise.",
+      "key_topics": ["engagement survey", "70 enterprise score", "82% participation", "LOB scorecard", "compensation perception", "Toronto Technology", "manager effectiveness"],
+      "example_queries": [
+        "What did the 2025 engagement survey find?",
+        "What's the engagement score by LOB?",
+        "Which LOB scored lowest on engagement?"
+      ]
+    },
+    {
+      "id": "total_rewards_pdf",
+      "path": "inputs/nbfg/reports/02_2025_Total_Rewards_and_Compensation_Philosophy.pdf",
+      "type": "pdf",
+      "lifecycle_stage": "source",
+      "domain": "narrative_report",
+      "scope": "enterprise",
+      "time_period": "2025",
+      "owner": "Compensation Committee",
+      "summary": "2025 compensation philosophy. Five principles: pay-for-performance, market-competitive (±5% of median), shareholder alignment, equity, transparency. Pay-mix table by level. LTI in PSUs/RSUs with clawback.",
+      "key_topics": ["compensation philosophy", "total rewards", "pay for performance", "market median", "LTI", "PSUs RSUs", "pay mix by level", "clawback"],
+      "example_queries": [
+        "What is NBFG's compensation philosophy?",
+        "How does pay mix change by level?",
+        "What are the comp principles?",
+        "What is the LTI structure?"
+      ]
+    },
+    {
+      "id": "ceo_year_end_letter",
+      "path": "inputs/nbfg/reports/03_CEO_Year_End_Letter_to_Employees_2025.pdf",
+      "type": "pdf",
+      "lifecycle_stage": "source",
+      "domain": "narrative_report",
+      "scope": "enterprise",
+      "time_period": "2025",
+      "owner": "Margaret L. Chen, President & CEO",
+      "summary": "CEO year-end letter, December 2025. $4.6B NIBT (+7%), 14.3% ROE, Capital Markets record year, US franchise 3rd consecutive year of efficiency improvement, Wealth shortfall acknowledged. Variable comp pool funded at 105% of target.",
+      "key_topics": ["CEO letter", "Margaret Chen", "year end 2025", "variable comp pool 105%", "Wealth shortfall", "13.5M customers", "138 years"],
+      "example_queries": [
+        "What did the CEO say about 2025?",
+        "Did NBFG meet plan in 2025?",
+        "What was the variable comp funding decision?"
+      ]
+    },
+
+    {
+      "id": "data_attrition",
+      "path": "inputs/nbfg/data/attrition_data.csv",
+      "type": "csv",
+      "lifecycle_stage": "source",
+      "domain": "workforce_data",
+      "scope": "month x LOB x region x city x level",
+      "time_period": "monthly",
+      "row_count": 7007,
+      "schema": ["month", "lob_code", "lob_name", "region", "city", "level", "departures", "voluntary", "involuntary", "regrettable", "top_reason"],
+      "consumed_by": ["risk-hot-spots"],
+      "summary": "Monthly attrition by LOB/region/city/level. Includes voluntary/involuntary/regrettable splits and top_reason free-text.",
+      "key_topics": ["attrition", "departures", "regrettable", "voluntary", "monthly"],
+      "example_queries": [
+        "What is Toronto Technology attrition?",
+        "Which LOBs have rising attrition?",
+        "What's the top reason people are leaving?"
+      ]
+    },
+    {
+      "id": "data_compensation",
+      "path": "inputs/nbfg/data/compensation_summary.csv",
+      "type": "csv",
+      "lifecycle_stage": "source",
+      "domain": "workforce_data",
+      "scope": "year x LOB x region x level x gender",
+      "time_period": "annual",
+      "row_count": 1055,
+      "schema": ["year", "lob_code", "lob_name", "region", "level", "gender", "headcount", "avg_base_salary", "avg_bonus", "avg_total_comp", "median_base_salary", "median_total_comp", "currency"],
+      "consumed_by": ["pay-equity-review"],
+      "summary": "Annual compensation summary by LOB/region/level/gender. Includes mean and median base + total comp; currency column flags FX-normalization need.",
+      "key_topics": ["compensation", "total comp", "gender pay gap", "currency", "median salary"],
+      "example_queries": [
+        "What is the gender pay gap by level?",
+        "How does compensation compare across regions?",
+        "What's the average total comp at L6?"
+      ]
+    },
+    {
+      "id": "data_diversity",
+      "path": "inputs/nbfg/data/diversity_demographics.csv",
+      "type": "csv",
+      "lifecycle_stage": "source",
+      "domain": "workforce_data",
+      "scope": "year x LOB x region x level x gender x ethnicity",
+      "time_period": "annual",
+      "row_count": 7376,
+      "schema": ["year", "lob_code", "lob_name", "region", "level", "gender", "ethnicity_group", "headcount"],
+      "consumed_by": [],
+      "summary": "Annual diversity demographics: headcount by gender x ethnicity_group across LOB/region/level.",
+      "key_topics": ["diversity", "demographics", "ethnicity", "gender representation"],
+      "example_queries": [
+        "What is the gender breakdown by level?",
+        "How is diversity changing year over year?"
+      ]
+    },
+    {
+      "id": "data_engagement",
+      "path": "inputs/nbfg/data/engagement_survey_results.csv",
+      "type": "csv",
+      "lifecycle_stage": "source",
+      "domain": "workforce_data",
+      "scope": "year x LOB x region x dimension",
+      "time_period": "annual",
+      "row_count": 529,
+      "schema": ["year", "lob_code", "lob_name", "region", "dimension", "score", "external_benchmark", "participation_rate_pct", "respondents"],
+      "consumed_by": ["risk-hot-spots", "strategic-alignment-check"],
+      "summary": "Engagement survey results by LOB/region/dimension. Includes external benchmark and participation rate. Dimensions include Overall, Compensation & Rewards, Career Growth, Wellbeing, Manager Effectiveness, etc.",
+      "key_topics": ["engagement", "survey scores", "compensation perception", "wellbeing", "career growth", "manager effectiveness"],
+      "example_queries": [
+        "What is the engagement score for Capital Markets?",
+        "How does Toronto Tech compensation perception compare to enterprise?",
+        "Which dimension scores worst?"
+      ]
+    },
+    {
+      "id": "data_headcount",
+      "path": "inputs/nbfg/data/headcount_by_lob_region.csv",
+      "type": "csv",
+      "lifecycle_stage": "source",
+      "domain": "workforce_data",
+      "scope": "quarter x LOB x region x city x level",
+      "time_period": "quarterly",
+      "row_count": 12382,
+      "schema": ["quarter", "lob_code", "lob_name", "region", "city", "level", "headcount"],
+      "consumed_by": ["strategic-alignment-check", "risk-hot-spots"],
+      "summary": "Quarterly headcount by LOB/region/city/level. The largest CSV; the master headcount table.",
+      "key_topics": ["headcount", "FTE", "quarterly", "by region", "by city", "by level"],
+      "example_queries": [
+        "How many people work in Wealth?",
+        "What is Toronto Tech headcount trend?",
+        "How big is Capital Markets?"
+      ]
+    },
+    {
+      "id": "data_hiring",
+      "path": "inputs/nbfg/data/hiring_data.csv",
+      "type": "csv",
+      "lifecycle_stage": "source",
+      "domain": "workforce_data",
+      "scope": "month x LOB x region x city x level",
+      "time_period": "monthly",
+      "row_count": 12847,
+      "schema": ["month", "lob_code", "lob_name", "region", "city", "level", "hires", "source", "avg_time_to_fill_days"],
+      "consumed_by": ["strategic-alignment-check", "risk-hot-spots"],
+      "summary": "Monthly hires by LOB/region/city/level. Includes source (e.g. external/referral) and time-to-fill.",
+      "key_topics": ["hiring", "hires", "time to fill", "source of hire", "monthly"],
+      "example_queries": [
+        "How many advisors did Wealth hire in 2025?",
+        "What is time-to-fill for senior engineering roles?",
+        "Where are most hires sourced?"
+      ]
+    },
+    {
+      "id": "data_internal_movement",
+      "path": "inputs/nbfg/data/internal_movement.csv",
+      "type": "csv",
+      "lifecycle_stage": "source",
+      "domain": "workforce_data",
+      "scope": "quarter x from_LOB x to_LOB x level",
+      "time_period": "quarterly",
+      "row_count": 3480,
+      "schema": ["quarter", "from_lob_code", "from_lob_name", "to_lob_code", "to_lob_name", "level", "movement_type", "count"],
+      "consumed_by": [],
+      "summary": "Internal movement counts: people moving from one LOB to another, by quarter and level.",
+      "key_topics": ["internal mobility", "transfers", "movement"],
+      "example_queries": [
+        "Where do people move when they leave Technology?",
+        "What is internal mobility into Wealth?"
+      ]
+    },
+    {
+      "id": "data_promotions",
+      "path": "inputs/nbfg/data/promotion_rates.csv",
+      "type": "csv",
+      "lifecycle_stage": "source",
+      "domain": "workforce_data",
+      "scope": "year x LOB x level x gender",
+      "time_period": "annual",
+      "row_count": 463,
+      "schema": ["year", "lob_code", "lob_name", "level_from", "level_to", "gender", "eligible_count", "promoted_count", "promotion_rate_pct"],
+      "consumed_by": [],
+      "summary": "Annual promotion rates by LOB/level/gender. Includes eligible_count, promoted_count, and computed rate.",
+      "key_topics": ["promotion", "promotion rate", "level progression", "by gender"],
+      "example_queries": [
+        "What is the promotion rate for women at L4?",
+        "Are men and women promoted at the same rate?",
+        "Which LOB has the highest promotion rate?"
+      ]
+    },
+
+    {
+      "id": "skill_strategic_alignment",
+      "path": "skills/strategic-alignment-check/SKILL.md",
+      "type": "skill",
+      "lifecycle_stage": "tool",
+      "domain": "analytics_skill",
+      "summary": "Skill that cross-references strategy documents (Word/PDF/PowerPoint) against workforce CSVs to detect strategy/execution gaps. Outputs a 1-page PDF brief and a ~5-tab Excel workbook.",
+      "scripts": [
+        "skills/strategic-alignment-check/scripts/analyze.py",
+        "skills/strategic-alignment-check/scripts/build_outputs.py",
+        "skills/strategic-alignment-check/scripts/validate.py"
+      ],
+      "consumes_data": ["inputs/nbfg/data/headcount_by_lob_region.csv", "inputs/nbfg/data/hiring_data.csv", "inputs/nbfg/data/attrition_data.csv", "inputs/nbfg/data/engagement_survey_results.csv", "inputs/nbfg/strategy/*"],
+      "produces_artifacts": ["outputs/latest/strategic_alignment_brief.pdf", "outputs/latest/strategic_alignment_detail.xlsx"],
+      "key_topics": ["strategic alignment", "strategy execution gap", "plan vs actual"],
+      "example_queries": [
+        "Run a strategic alignment check",
+        "Where is strategy diverging from execution?"
+      ]
+    },
+    {
+      "id": "skill_pay_equity",
+      "path": "skills/pay-equity-review/SKILL.md",
+      "type": "skill",
+      "lifecycle_stage": "tool",
+      "domain": "analytics_skill",
+      "summary": "Skill that computes gender comp gaps at LOB+level grain and detects regional comp compression after FX-normalization. Outputs a 1-page PDF brief and a ~7-tab Excel workbook.",
+      "scripts": [
+        "skills/pay-equity-review/scripts/analyze.py",
+        "skills/pay-equity-review/scripts/build_outputs.py",
+        "skills/pay-equity-review/scripts/validate.py"
+      ],
+      "consumes_data": ["inputs/nbfg/data/compensation_summary.csv"],
+      "produces_artifacts": ["outputs/latest/pay_equity_brief.pdf", "outputs/latest/pay_equity_detail.xlsx"],
+      "key_topics": ["pay equity", "gender pay gap", "regional compression", "FX normalization"],
+      "example_queries": [
+        "Run a pay equity review",
+        "Where are the gender pay gaps?"
+      ]
+    },
+    {
+      "id": "skill_risk_hotspots",
+      "path": "skills/risk-hot-spots/SKILL.md",
+      "type": "skill",
+      "lifecycle_stage": "tool",
+      "domain": "analytics_skill",
+      "summary": "Skill that builds a composite risk score per LOB+region from engagement, attrition, hiring, and compensation signals. Outputs a 1-page PDF brief and a ~6-tab Excel workbook.",
+      "scripts": [
+        "skills/risk-hot-spots/scripts/analyze.py",
+        "skills/risk-hot-spots/scripts/build_outputs.py",
+        "skills/risk-hot-spots/scripts/validate.py"
+      ],
+      "consumes_data": ["inputs/nbfg/data/attrition_data.csv", "inputs/nbfg/data/engagement_survey_results.csv", "inputs/nbfg/data/hiring_data.csv", "inputs/nbfg/data/headcount_by_lob_region.csv"],
+      "produces_artifacts": ["outputs/latest/risk_hotspots_brief.pdf", "outputs/latest/risk_hotspots_detail.xlsx"],
+      "key_topics": ["risk hotspots", "talent risk", "composite risk score", "engagement attrition convergence"],
+      "example_queries": [
+        "Find the workforce risk hotspots",
+        "Where are engagement and attrition converging?"
+      ]
+    },
+    {
+      "id": "skill_install",
+      "path": "skills/INSTALL.sh",
+      "type": "shell",
+      "lifecycle_stage": "tool",
+      "domain": "installer",
+      "summary": "Bash script that copies the three NBFG demo skills into ~/.claude/skills/ (or a custom path).",
+      "key_topics": ["install", "setup", "claude skills"],
+      "example_queries": ["How do I install these skills?"]
+    },
+    {
+      "id": "shared_data_discovery",
+      "path": "skills/_shared/data_discovery.py",
+      "type": "python",
+      "lifecycle_stage": "tool",
+      "domain": "shared_helper",
+      "summary": "Helper module imported by each skill: locates input CSVs in the target folder. Default path lookup tries inputs/nbfg/data/ first then falls back to legacy NBFG_Demo_Pack/data/.",
+      "key_topics": ["data discovery", "shared helper", "csv locator"],
+      "example_queries": []
+    },
+    {
+      "id": "shared_skill_outputs",
+      "path": "skills/_shared/skill_outputs.py",
+      "type": "python",
+      "lifecycle_stage": "tool",
+      "domain": "shared_helper",
+      "summary": "Helper module imported by each skill: writes timestamped briefs and workbooks with BMO Corporate Classic styling.",
+      "key_topics": ["output builder", "BMO styling", "brief writer", "workbook writer"],
+      "example_queries": []
+    },
+
+    {
+      "id": "script_strat_align_analyze",
+      "path": "skills/strategic-alignment-check/scripts/analyze.py",
+      "type": "python",
+      "lifecycle_stage": "tool",
+      "domain": "skill_script",
+      "parent_skill": "skill_strategic_alignment",
+      "summary": "Core analysis logic for strategic-alignment-check: parses strategy docs, infers LOB intent (growth/maintain/reduce), reconciles against workforce data."
+    },
+    {
+      "id": "script_strat_align_build",
+      "path": "skills/strategic-alignment-check/scripts/build_outputs.py",
+      "type": "python",
+      "lifecycle_stage": "tool",
+      "domain": "skill_script",
+      "parent_skill": "skill_strategic_alignment",
+      "summary": "Output builder for strategic-alignment-check: writes the 1-page PDF brief and the multi-tab Excel detail workbook."
+    },
+    {
+      "id": "script_strat_align_validate",
+      "path": "skills/strategic-alignment-check/scripts/validate.py",
+      "type": "python",
+      "lifecycle_stage": "tool",
+      "domain": "skill_script",
+      "parent_skill": "skill_strategic_alignment",
+      "summary": "Validator/smoke-test for strategic-alignment-check: checks that required inputs are present and the pipeline runs end-to-end."
+    },
+    {
+      "id": "script_pay_equity_analyze",
+      "path": "skills/pay-equity-review/scripts/analyze.py",
+      "type": "python",
+      "lifecycle_stage": "tool",
+      "domain": "skill_script",
+      "parent_skill": "skill_pay_equity",
+      "summary": "Core analysis logic for pay-equity-review: computes signed gender comp gaps and FX-normalized regional compression."
+    },
+    {
+      "id": "script_pay_equity_build",
+      "path": "skills/pay-equity-review/scripts/build_outputs.py",
+      "type": "python",
+      "lifecycle_stage": "tool",
+      "domain": "skill_script",
+      "parent_skill": "skill_pay_equity",
+      "summary": "Output builder for pay-equity-review: writes the 1-page PDF brief and the ~7-tab Excel workbook."
+    },
+    {
+      "id": "script_pay_equity_validate",
+      "path": "skills/pay-equity-review/scripts/validate.py",
+      "type": "python",
+      "lifecycle_stage": "tool",
+      "domain": "skill_script",
+      "parent_skill": "skill_pay_equity",
+      "summary": "Validator/smoke-test for pay-equity-review."
+    },
+    {
+      "id": "script_risk_analyze",
+      "path": "skills/risk-hot-spots/scripts/analyze.py",
+      "type": "python",
+      "lifecycle_stage": "tool",
+      "domain": "skill_script",
+      "parent_skill": "skill_risk_hotspots",
+      "summary": "Core analysis logic for risk-hot-spots: composite scoring across attrition, engagement, hiring, and compensation signals."
+    },
+    {
+      "id": "script_risk_build",
+      "path": "skills/risk-hot-spots/scripts/build_outputs.py",
+      "type": "python",
+      "lifecycle_stage": "tool",
+      "domain": "skill_script",
+      "parent_skill": "skill_risk_hotspots",
+      "summary": "Output builder for risk-hot-spots: writes the 1-page PDF brief and the ~6-tab Excel workbook."
+    },
+    {
+      "id": "script_risk_validate",
+      "path": "skills/risk-hot-spots/scripts/validate.py",
+      "type": "python",
+      "lifecycle_stage": "tool",
+      "domain": "skill_script",
+      "parent_skill": "skill_risk_hotspots",
+      "summary": "Validator/smoke-test for risk-hot-spots."
+    },
+
+    {
+      "id": "out_strat_align_brief_latest",
+      "path": "outputs/latest/strategic_alignment_brief.pdf",
+      "type": "pdf",
+      "lifecycle_stage": "generated_output",
+      "domain": "analytics_artifact",
+      "produced_by": "strategic-alignment-check",
+      "is_latest": true,
+      "source_run": "20260425_1815",
+      "summary": "Canonical latest 1-page strategic alignment brief — top-5 strategy/execution gaps with severity coding."
+    },
+    {
+      "id": "out_strat_align_detail_latest",
+      "path": "outputs/latest/strategic_alignment_detail.xlsx",
+      "type": "xlsx",
+      "lifecycle_stage": "generated_output",
+      "domain": "analytics_artifact",
+      "produced_by": "strategic-alignment-check",
+      "is_latest": true,
+      "source_run": "20260425_1815",
+      "summary": "Canonical latest strategic alignment detail workbook (~5 tabs: Summary, Findings, Documents Reviewed, LOB Trend Metrics, Methodology)."
+    },
+    {
+      "id": "out_pay_equity_brief_latest",
+      "path": "outputs/latest/pay_equity_brief.pdf",
+      "type": "pdf",
+      "lifecycle_stage": "generated_output",
+      "domain": "analytics_artifact",
+      "produced_by": "pay-equity-review",
+      "is_latest": true,
+      "source_run": "20260425_1802",
+      "summary": "Canonical latest pay equity 1-page brief — top-5 findings ranked by gap magnitude and population affected."
+    },
+    {
+      "id": "out_pay_equity_detail_latest",
+      "path": "outputs/latest/pay_equity_detail.xlsx",
+      "type": "xlsx",
+      "lifecycle_stage": "generated_output",
+      "domain": "analytics_artifact",
+      "produced_by": "pay-equity-review",
+      "is_latest": true,
+      "source_run": "20260425_1802",
+      "summary": "Canonical latest pay equity detail workbook (~7 tabs: Summary, Findings, Gap by LOB+Level (Gender), Gap by LOB (Gender), Regional Compression, Detail by LOB+Level+Region, Methodology)."
+    },
+    {
+      "id": "out_risk_brief_latest",
+      "path": "outputs/latest/risk_hotspots_brief.pdf",
+      "type": "pdf",
+      "lifecycle_stage": "generated_output",
+      "domain": "analytics_artifact",
+      "produced_by": "risk-hot-spots",
+      "is_latest": true,
+      "source_run": "20260425_1802",
+      "summary": "Canonical latest risk hotspots 1-page brief — top-5 hotspots with composite scores and drivers."
+    },
+    {
+      "id": "out_risk_detail_latest",
+      "path": "outputs/latest/risk_hotspots_detail.xlsx",
+      "type": "xlsx",
+      "lifecycle_stage": "generated_output",
+      "domain": "analytics_artifact",
+      "produced_by": "risk-hot-spots",
+      "is_latest": true,
+      "source_run": "20260425_1802",
+      "summary": "Canonical latest risk hotspots detail workbook (~6 tabs: Summary, Findings, LOB+Region Risk Inputs, City Attrition Detail, Engagement Summary, Methodology)."
+    },
+
+    {
+      "id": "arc_strat_align_brief_1815",
+      "path": "outputs/archive/strategic_alignment/strategic_alignment_brief_20260425_1815.pdf",
+      "type": "pdf",
+      "lifecycle_stage": "generated_output",
+      "domain": "analytics_artifact",
+      "produced_by": "strategic-alignment-check",
+      "produced_at": "2026-04-25T18:15",
+      "is_latest": false,
+      "summary": "Archived strategic alignment brief (18:15 run) — same content as outputs/latest/strategic_alignment_brief.pdf, kept for diff."
+    },
+    {
+      "id": "arc_strat_align_detail_1815",
+      "path": "outputs/archive/strategic_alignment/strategic_alignment_detail_20260425_1815.xlsx",
+      "type": "xlsx",
+      "lifecycle_stage": "generated_output",
+      "domain": "analytics_artifact",
+      "produced_by": "strategic-alignment-check",
+      "produced_at": "2026-04-25T18:15",
+      "is_latest": false,
+      "summary": "Archived strategic alignment detail (18:15 run) — same content as outputs/latest/strategic_alignment_detail.xlsx."
+    },
+    {
+      "id": "arc_strat_align_brief_1802",
+      "path": "outputs/archive/strategic_alignment/strategic_alignment_brief_20260425_1802.pdf",
+      "type": "pdf",
+      "lifecycle_stage": "generated_output",
+      "domain": "analytics_artifact",
+      "produced_by": "strategic-alignment-check",
+      "produced_at": "2026-04-25T18:02",
+      "is_latest": false,
+      "summary": "Archived strategic alignment brief (18:02 run) — superseded."
+    },
+    {
+      "id": "arc_strat_align_detail_1802",
+      "path": "outputs/archive/strategic_alignment/strategic_alignment_detail_20260425_1802.xlsx",
+      "type": "xlsx",
+      "lifecycle_stage": "generated_output",
+      "domain": "analytics_artifact",
+      "produced_by": "strategic-alignment-check",
+      "produced_at": "2026-04-25T18:02",
+      "is_latest": false,
+      "summary": "Archived strategic alignment detail (18:02 run) — superseded."
+    },
+    {
+      "id": "arc_strat_align_brief_1752",
+      "path": "outputs/archive/strategic_alignment/strategic_alignment_brief_20260425_1752.pdf",
+      "type": "pdf",
+      "lifecycle_stage": "generated_output",
+      "domain": "analytics_artifact",
+      "produced_by": "strategic-alignment-check",
+      "produced_at": "2026-04-25T17:52",
+      "is_latest": false,
+      "summary": "Archived strategic alignment brief (first run, 17:52)."
+    },
+    {
+      "id": "arc_strat_align_detail_1752",
+      "path": "outputs/archive/strategic_alignment/strategic_alignment_detail_20260425_1752.xlsx",
+      "type": "xlsx",
+      "lifecycle_stage": "generated_output",
+      "domain": "analytics_artifact",
+      "produced_by": "strategic-alignment-check",
+      "produced_at": "2026-04-25T17:52",
+      "is_latest": false,
+      "summary": "Archived strategic alignment detail (first run, 17:52)."
+    },
+
+    {
+      "id": "arc_pay_equity_brief_1802",
+      "path": "outputs/archive/pay_equity/pay_equity_brief_20260425_1802.pdf",
+      "type": "pdf",
+      "lifecycle_stage": "generated_output",
+      "domain": "analytics_artifact",
+      "produced_by": "pay-equity-review",
+      "produced_at": "2026-04-25T18:02",
+      "is_latest": false,
+      "summary": "Archived pay equity brief (18:02 run) — same content as outputs/latest/pay_equity_brief.pdf."
+    },
+    {
+      "id": "arc_pay_equity_detail_1802",
+      "path": "outputs/archive/pay_equity/pay_equity_detail_20260425_1802.xlsx",
+      "type": "xlsx",
+      "lifecycle_stage": "generated_output",
+      "domain": "analytics_artifact",
+      "produced_by": "pay-equity-review",
+      "produced_at": "2026-04-25T18:02",
+      "is_latest": false,
+      "summary": "Archived pay equity detail (18:02 run) — same content as outputs/latest/pay_equity_detail.xlsx."
+    },
+    {
+      "id": "arc_pay_equity_brief_1758",
+      "path": "outputs/archive/pay_equity/pay_equity_brief_20260425_1758.pdf",
+      "type": "pdf",
+      "lifecycle_stage": "generated_output",
+      "domain": "analytics_artifact",
+      "produced_by": "pay-equity-review",
+      "produced_at": "2026-04-25T17:58",
+      "is_latest": false,
+      "summary": "Archived pay equity brief (17:58 run)."
+    },
+    {
+      "id": "arc_pay_equity_detail_1758",
+      "path": "outputs/archive/pay_equity/pay_equity_detail_20260425_1758.xlsx",
+      "type": "xlsx",
+      "lifecycle_stage": "generated_output",
+      "domain": "analytics_artifact",
+      "produced_by": "pay-equity-review",
+      "produced_at": "2026-04-25T17:58",
+      "is_latest": false,
+      "summary": "Archived pay equity detail (17:58 run)."
+    },
+    {
+      "id": "arc_pay_equity_brief_1756",
+      "path": "outputs/archive/pay_equity/pay_equity_brief_20260425_1756.pdf",
+      "type": "pdf",
+      "lifecycle_stage": "generated_output",
+      "domain": "analytics_artifact",
+      "produced_by": "pay-equity-review",
+      "produced_at": "2026-04-25T17:56",
+      "is_latest": false,
+      "summary": "Archived pay equity brief (first run, 17:56)."
+    },
+    {
+      "id": "arc_pay_equity_detail_1756",
+      "path": "outputs/archive/pay_equity/pay_equity_detail_20260425_1756.xlsx",
+      "type": "xlsx",
+      "lifecycle_stage": "generated_output",
+      "domain": "analytics_artifact",
+      "produced_by": "pay-equity-review",
+      "produced_at": "2026-04-25T17:56",
+      "is_latest": false,
+      "summary": "Archived pay equity detail (first run, 17:56)."
+    },
+
+    {
+      "id": "arc_risk_brief_1802",
+      "path": "outputs/archive/risk_hotspots/risk_hotspots_brief_20260425_1802.pdf",
+      "type": "pdf",
+      "lifecycle_stage": "generated_output",
+      "domain": "analytics_artifact",
+      "produced_by": "risk-hot-spots",
+      "produced_at": "2026-04-25T18:02",
+      "is_latest": false,
+      "summary": "Archived risk hotspots brief (18:02 run) — same content as outputs/latest/risk_hotspots_brief.pdf."
+    },
+    {
+      "id": "arc_risk_detail_1802",
+      "path": "outputs/archive/risk_hotspots/risk_hotspots_detail_20260425_1802.xlsx",
+      "type": "xlsx",
+      "lifecycle_stage": "generated_output",
+      "domain": "analytics_artifact",
+      "produced_by": "risk-hot-spots",
+      "produced_at": "2026-04-25T18:02",
+      "is_latest": false,
+      "summary": "Archived risk hotspots detail (18:02 run) — same content as outputs/latest/risk_hotspots_detail.xlsx."
+    },
+    {
+      "id": "arc_risk_brief_1801",
+      "path": "outputs/archive/risk_hotspots/risk_hotspots_brief_20260425_1801.pdf",
+      "type": "pdf",
+      "lifecycle_stage": "generated_output",
+      "domain": "analytics_artifact",
+      "produced_by": "risk-hot-spots",
+      "produced_at": "2026-04-25T18:01",
+      "is_latest": false,
+      "summary": "Archived risk hotspots brief (first run, 18:01)."
+    },
+    {
+      "id": "arc_risk_detail_1801",
+      "path": "outputs/archive/risk_hotspots/risk_hotspots_detail_20260425_1801.xlsx",
+      "type": "xlsx",
+      "lifecycle_stage": "generated_output",
+      "domain": "analytics_artifact",
+      "produced_by": "risk-hot-spots",
+      "produced_at": "2026-04-25T18:01",
+      "is_latest": false,
+      "summary": "Archived risk hotspots detail (first run, 18:01)."
+    },
+
+    {
+      "id": "misc_note",
+      "path": "misc/NOTE.md",
+      "type": "markdown",
+      "lifecycle_stage": "meta",
+      "domain": "documentation",
+      "summary": "Explains why files in misc/ are there. Currently documents the orphaned vantrax_submission_log.csv.",
+      "key_topics": ["misc", "orphan", "vantrax"],
+      "example_queries": ["What's in the misc folder?", "What is vantrax?"]
+    },
+    {
+      "id": "vantrax_log",
+      "path": "misc/vantrax_submission_log.csv",
+      "type": "csv",
+      "lifecycle_stage": "orphan",
+      "domain": "unknown",
+      "summary": "Small CSV (20 rows) listing employee_id, name, reference_number, status. All rows have status='submitted'. Not connected to NBFG demo. See misc/NOTE.md.",
+      "schema": ["employee_id", "name", "reference_number", "status"],
+      "row_count": 20,
+      "key_topics": ["vantrax", "submission", "employee log"],
+      "example_queries": [
+        "What is vantrax?",
+        "Who submitted PRV-2026 references?"
+      ]
+    }
+  ],
+
+  "topical_index": {
+    "wealth_management_strategy_vs_actual": [
+      "wealth_strategy",
+      "wealth_q4_update",
+      "ceo_year_end_letter",
+      "data_hiring",
+      "data_attrition",
+      "data_headcount",
+      "out_strat_align_brief_latest"
+    ],
+    "toronto_tech_compensation_attrition": [
+      "tech_strategy",
+      "engagement_survey_pdf",
+      "data_engagement",
+      "data_compensation",
+      "data_attrition",
+      "out_risk_brief_latest",
+      "out_pay_equity_brief_latest"
+    ],
+    "capital_markets_engagement_paradox": [
+      "capital_markets_review",
+      "engagement_survey_pdf",
+      "data_engagement",
+      "out_risk_brief_latest"
+    ],
+    "gender_pay_gap": [
+      "data_compensation",
+      "skill_pay_equity",
+      "out_pay_equity_brief_latest",
+      "out_pay_equity_detail_latest",
+      "capital_markets_review",
+      "data_promotions"
+    ],
+    "enterprise_2025_results": [
+      "enterprise_perf_review",
+      "ceo_year_end_letter",
+      "engagement_survey_pdf"
+    ],
+    "compensation_philosophy_and_pay_mix": [
+      "total_rewards_pdf",
+      "data_compensation"
+    ],
+    "engagement_by_lob": [
+      "engagement_survey_pdf",
+      "data_engagement",
+      "people_culture_strategy"
+    ],
+    "headcount_and_hiring_trends": [
+      "data_headcount",
+      "data_hiring",
+      "data_internal_movement",
+      "wealth_strategy",
+      "tech_strategy"
+    ],
+    "people_and_culture_strategy": [
+      "people_culture_strategy",
+      "engagement_survey_pdf",
+      "ceo_year_end_letter"
+    ],
+    "skills_and_outputs": [
+      "skill_strategic_alignment",
+      "skill_pay_equity",
+      "skill_risk_hotspots",
+      "skill_install",
+      "shared_data_discovery",
+      "shared_skill_outputs"
+    ],
+    "latest_skill_outputs_only": [
+      "out_strat_align_brief_latest",
+      "out_strat_align_detail_latest",
+      "out_pay_equity_brief_latest",
+      "out_pay_equity_detail_latest",
+      "out_risk_brief_latest",
+      "out_risk_detail_latest"
+    ],
+    "schema_questions": [
+      "data_dictionary"
+    ]
+  },
+
+  "changelog": [
+    {
+      "date": "2026-04-25",
+      "version": "2.0",
+      "summary": "Reorganized SYNTHESIS into Option B layout (inputs/skills/outputs/misc). All paths updated. Added README.md, DATA_DICTIONARY.md, misc/NOTE.md. Created outputs/latest/ canonical copies (no timestamps); moved historical runs to outputs/archive/{skill}/. Removed __pycache__/. Resolved the duplicate _skill_outputs/ folders. Updated skill SKILL.md and data_discovery.py default paths."
+    },
+    {
+      "date": "2026-04-25",
+      "version": "1.0",
+      "summary": "Initial index of pre-reorg layout."
+    }
+  ]
+}
