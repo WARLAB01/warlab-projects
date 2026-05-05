@@ -54,6 +54,12 @@ def main():
     print("\n[Step 3/5] Generating rescinded transactions...")
     timeline_gen.generate_rescinded()
 
+    print("\n[Step 3.5/5] Linking department owners to real workers (CR4 fix)...")
+    ref_gen.assign_department_owners(
+        profiles=timeline_gen.profiles,
+        active_employee_ids=timeline_gen.active_employees.keys(),
+    )
+
     print("\n[Step 4/5] Generating position records...")
     positions = ref_gen.generate_positions(timeline_gen.position_assignments)
 

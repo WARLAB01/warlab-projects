@@ -540,6 +540,89 @@ class ReferenceDataGenerator:
 
         return rows
 
+    # -------------------------------------------------------
+    # CR4 fix (2026-05-05): Assign Owner_EIN + Owner_EIN_WID from real workers.
+    # Called from orchestrator AFTER employee timelines are generated, so the
+    # owners point back to valid Worker_ID / Worker_Workday_ID rows in the
+    # worker_profile (INT6031) feed. Top-level division-owners are picked from
+    # the highest-grade workers; sub-department owners are picked from any
+    # active worker (deterministic via self.rng).
+    # -------------------------------------------------------
+    def assign_department_owners(self, profiles, active_employee_ids=None):
+        """Mutate self.departments and self.dept_tree to populate Owner_EIN /
+        Owner_EIN_WID with real Worker_ID / Worker_Workday_ID values.
+
+        profiles: list of EmployeeProfile from EmployeeTimelineGenerator.
+        active_employee_ids: optional iterable of employee_ids that are still
+                             active at end of simulation. If provided, owners
+                             are restricted to that set so terminated workers
+                             aren't owning departments.
+        """
+        if not profiles:
+            print("    [WARN] assign_department_owners: no profiles provided; "
+                  "Owner_EIN fields will remain empty")
+            return
+
+        active_set = set(active_employee_ids) if active_employee_ids else None
+
+        # Build a pool of (employee_id, worker_workday_id) tuples for active workers.
+        candidate_pool = []
+        for p in profiles:
+            if active_set is None or p.employee_id in active_set:
+                candidate_pool.append((p.employee_id, p.worker_workday_id))
+
+        if not candidate_pool:
+            # Fall back to all profiles if active filtering nuked everyone.
+            candidate_pool = [(p.employee_id, p.worker_workday_id) for p in profiles]
+
+        # Senior pool for top-level/division owners — first 5% (oldest hires
+        # by sequence) make a reasonable proxy for senior leadership.
+        senior_cutoff = max(5, len(candidate_pool) // 20)
+        senior_pool = candidate_pool[:senior_cutoff]
+
+        # Track which workers are already owners so we don't double-assign at
+        # the top tier (sub-depts can share for brevity in a small dataset).
+        used_top = set()
+        assigned = 0
+
+        for row in self.departments:
+            level = row.get("Department_Level", 1)
+            try:
+                level_int = int(level)
+            except (TypeError, ValueError):
+                level_int = 1
+
+            if level_int == 1:
+                # Division owner: pick from senior pool, avoid duplicates.
+                pool = [c for c in senior_pool if c[0] not in used_top] or senior_pool
+                ein, wid = self.rng.choice(pool)
+                used_top.add(ein)
+            else:
+                ein, wid = self.rng.choice(candidate_pool)
+
+            row["Owner_EIN"] = ein
+            row["Owner_EIN_WID"] = wid
+
+            # Keep dept_tree mirror in sync so any downstream reader sees it.
+            dept_id = row.get("Department_ID")
+            if dept_id in self.dept_tree:
+                self.dept_tree[dept_id]["Owner_EIN"] = ein
+                self.dept_tree[dept_id]["Owner_EIN_WID"] = wid
+
+            # Refresh the display name with the manager so the column actually
+            # earns its name. We look up the profile for a friendly name.
+            display_name = row.get("Department_Name", "")
+            mgr_profile = next((p for p in profiles if p.employee_id == ein), None)
+            if mgr_profile is not None:
+                row["Dept_Name_with_Manager_Name"] = (
+                    f"{display_name} ({mgr_profile.preferred_full_name})"
+                )
+
+            assigned += 1
+
+        print(f"    INT6028 owners assigned: {assigned} departments now reference "
+              f"valid Worker_ID / Worker_Workday_ID")
+
     def _gen_sub_dept_names(self, division_name: str, count: int) -> List[str]:
         div_short = division_name.replace(" Division", "").strip()
         suffixes = [

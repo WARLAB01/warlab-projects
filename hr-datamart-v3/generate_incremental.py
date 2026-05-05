@@ -280,7 +280,12 @@ class IncrementalGenerator:
 
         if feed_id in ("INT6020", "INT6021", "INT6022", "INT6023", "INT6024",
                         "INT6025", "INT6027", "INT6028"):
-            n_updates = rng.randint(1, min(3, len(rows)))
+            # CR4 fix (2026-05-05): Department hierarchy needs more visible
+            # daily churn so incremental loaders have something to detect.
+            if feed_id == "INT6028":
+                n_updates = rng.randint(5, min(12, max(5, len(rows))))
+            else:
+                n_updates = rng.randint(1, min(3, len(rows)))
             update_indices = rng.sample(range(len(rows)), n_updates)
             for idx in update_indices:
                 rows[idx] = self._apply_reference_update(feed_id, rows[idx], rng)
@@ -374,8 +379,61 @@ class IncrementalGenerator:
                 row["Matrix_Organization_Status"] = "Inactive"
 
         elif feed_id == "INT6028":
-            if "Effective_Date" in row:
-                row["Effective_Date"] = self.run_date.isoformat()
+            # CR4 fix (2026-05-05): the previous logic only set Effective_Date,
+            # but INT6028 has no Effective_Date column — so daily files were
+            # byte-identical to the baseline and incremental tests had nothing
+            # to detect. Apply changes to columns that actually exist:
+            #   - Reorganize: rotate Owner_EIN / Owner_EIN_WID to a different
+            #     active worker (keeps referential integrity with INT6031).
+            #   - Toggle Active for non-top-level depts (rare).
+            #   - Append a 'reorg' marker on Dept_Name_with_Manager_Name.
+            choice = rng.random()
+
+            if choice < 0.6 and self.worker_profiles:
+                # Reassign owner to a different active worker.
+                current_ein = row.get("Owner_EIN", "")
+                wp_items = list(self.worker_profiles.items())
+                # Filter to active workers when we know their status.
+                if self.active_workers:
+                    wp_items = [(wid, prof) for wid, prof in wp_items
+                                if wid in self.active_workers] or wp_items
+                # Avoid no-op: pick a worker different from the current owner.
+                wp_items = [(wid, prof) for wid, prof in wp_items
+                            if wid != current_ein] or wp_items
+                new_wid, new_prof = rng.choice(wp_items)
+                row["Owner_EIN"] = new_wid
+                row["Owner_EIN_WID"] = new_prof.get("Worker_Workday_ID", "")
+                # Refresh display name with new manager.
+                base_name = row.get("Department_Name", "")
+                # Strip any prior "(... ) " manager block so we don't stack them.
+                if "(" in row.get("Dept_Name_with_Manager_Name", ""):
+                    row["Dept_Name_with_Manager_Name"] = base_name
+                first = new_prof.get("Preferred_First_Name", "") or new_prof.get("Legal_First_Name", "")
+                last = new_prof.get("Last_Name", "")
+                if first or last:
+                    row["Dept_Name_with_Manager_Name"] = (
+                        f"{base_name} ({first} {last})".strip()
+                    )
+
+            elif choice < 0.85:
+                # Soft rename to flag a daily reorg.
+                base_name = row.get("Department_Name", "")
+                # Roll the date suffix on Dept_Name_with_Manager_Name so each
+                # daily file mutates this column predictably.
+                date_tag = self.run_date.strftime("%Y-%m-%d")
+                # Keep a clean root if there's an existing tag.
+                root = row.get("Dept_Name_with_Manager_Name", base_name).split(" [reorg ")[0]
+                row["Dept_Name_with_Manager_Name"] = f"{root} [reorg {date_tag}]"
+
+            else:
+                # Toggle Active for a non-top-level dept.
+                level = row.get("Department_Level", "1")
+                try:
+                    level_int = int(level)
+                except (TypeError, ValueError):
+                    level_int = 1
+                if level_int >= 3:
+                    row["Active"] = "0" if row.get("Active", "1") == "1" else "1"
 
         return row
 

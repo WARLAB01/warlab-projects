@@ -42,7 +42,7 @@ This incremental run simulates one day of normal operational activity for WARLab
 ### INT6028 (FULL)
 
 - **Rows:** 144
-- **Changes:** Updated 2 row(s) with minor field changes
+- **Changes:** Updated 12 row(s) with minor field changes
 
 ### INT6031 (FULL)
 

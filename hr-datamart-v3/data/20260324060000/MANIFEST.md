@@ -15,7 +15,7 @@
 | INT6024 | FULL | 8 | 0 | 1 | 0 | Updated 1 row(s) with minor field changes |
 | INT6025 | FULL | 198 | 0 | 2 | 0 | Updated 2 row(s) with minor field changes |
 | INT6027 | FULL | 15 | 0 | 1 | 0 | Updated 1 row(s) with minor field changes |
-| INT6028 | FULL | 144 | 0 | 2 | 0 | Updated 2 row(s) with minor field changes |
+| INT6028 | FULL | 144 | 0 | 12 | 0 | Updated 12 row(s) with minor field changes |
 | INT6031 | FULL | 20,926 | 3 | 2 | 0 | 2 address updates, 3 new hire profiles |
 | INT6032 | FULL | 20,923 | 0 | 1 | 0 | 1 position updates |
 | INT0095E | DELTA | 6 | 4 | 2 | 0 | Includes 1 late-arriving transaction |

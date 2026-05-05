@@ -19,7 +19,7 @@
 - **PASS**: INT6024 has 1 change(s)
 - **PASS**: INT6025 has 2 change(s)
 - **PASS**: INT6027 has 1 change(s)
-- **PASS**: INT6028 has 2 change(s)
+- **PASS**: INT6028 has 12 change(s)
 - **PASS**: INT6031 has 5 change(s)
 - **PASS**: INT6032 has 1 change(s)
 - **PASS**: INT0095E has 6 change(s)
