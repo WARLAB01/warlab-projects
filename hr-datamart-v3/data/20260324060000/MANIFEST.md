@@ -19,6 +19,6 @@
 | INT6031 | FULL | 20,926 | 3 | 2 | 0 | 2 address updates, 3 new hire profiles |
 | INT6032 | FULL | 20,923 | 0 | 1 | 0 | 1 position updates |
 | INT0095E | DELTA | 6 | 4 | 2 | 0 | Includes 1 late-arriving transaction |
-| INT0096 | DELTA | 18 | 18 | 0 | 0 | 18 organization assignment rows for 6 events |
+| INT0096 | DELTA | 19 | 19 | 0 | 0 | 19 organization assignment rows for 6 events |
 | INT0098 | DELTA | 6 | 6 | 0 | 0 | 6 compensation records for 6 events |
 | INT270 | DELTA | 2 | 2 | 0 | 0 | Rescinded 2 previously existing transaction(s) |

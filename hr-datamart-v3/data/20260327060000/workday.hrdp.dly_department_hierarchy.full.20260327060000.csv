@@ -7,15 +7,15 @@ DEPT_FIN,e8cd0d1144110c7ed2ffe4accb62fcad,Finance Division,Finance Division (Edw
 DEPT_FIN_004,402937c073e478b70d3475040ba4980d,Finance - Strategy,Finance - Strategy (Keith Nelson),1,DEPT_FIN,30014995,939629720dd8bb083c4c35a64e0246d8,2,LOC_TOR_FP,Supervisory,Department
 DEPT_FIN_005,a77b95b62f24525691a911ab22f10ee0,Finance - Operations,Finance - Operations (Alexander Martin),1,DEPT_FIN,30011506,80ca072858bcc483fc16388a6913cc99,2,LOC_DAL,Supervisory,Department
 DEPT_FIN_006,3b9b154918a201ba90a2bb694bedf73a,Finance - Analytics,Finance - Analytics (Cynthia Moore) [reorg 2026-03-25],1,DEPT_FIN,30015685,ab977f6fb64cf28c4c8eccbd1e1b9c8a,2,LOC_TOR_HQ,Supervisory,Department
-DEPT_FIN_007,cc20472fbb03633dc229ab7c07fa1929,Finance - Delivery,Finance - Delivery (Destiny Ford),1,DEPT_FIN,30018485,77f2d602dcb9a17ba2d83c64551a6af4,2,LOC_NYC,Supervisory,Department
-DEPT_FIN_008,10e8a5d5f14e8049aedb8329edc6e8c4,Finance - Support,Finance - Support (Molly Thompson),1,DEPT_FIN,30019160,2698db5015bddad283cbc5962bab705b,2,LOC_TOR_HQ,Supervisory,Department
+DEPT_FIN_007,cc20472fbb03633dc229ab7c07fa1929,Finance - Delivery,Finance - Delivery (Nicholas Day),1,DEPT_FIN,30018486,8b001e7f7730c392cc20cf10c6df34dd,2,LOC_NYC,Supervisory,Department
+DEPT_FIN_008,10e8a5d5f14e8049aedb8329edc6e8c4,Finance - Support,Finance - Support (Andrew Moore),1,DEPT_FIN,30019161,30e42bfa44780dcaf4a7f472879a399d,2,LOC_TOR_HQ,Supervisory,Department
 DEPT_FIN_009,4ddc7b26d6607d7b156825b25f7e41a2,Finance - Advisory,Finance - Advisory (Sandra Benson),1,DEPT_FIN,30013744,e8c192b36d00c16b113ac6f89f9aab62,2,LOC_TOR_FP,Supervisory,Department
 DEPT_FIN_010,3865c3f7aab6169eb215e915378e5876,Finance - Governance,Finance - Governance (Robert White),1,DEPT_FIN,30020785,11e2b6ad0b46ce520b204419760a9d00,2,LOC_US_REM,Supervisory,Department
 DEPT_FIN_011,0a79f3283d57fbade1e02a59088b4baa,Finance - Projects,Finance - Projects (Kelly Valentine),1,DEPT_FIN_004,30008147,5bff409ce4ee620d34e4941361b41ac4,3,LOC_TOR_HQ,Supervisory,Team
 DEPT_FIN_012,e3d0a7dbb769c6871d5acb989d1306dd,Finance - Infrastructure,Finance - Infrastructure (Kimberly Hill),1,DEPT_FIN_005,30010231,5bed99a56dcce831fa10c4389b20cf28,3,LOC_TOR_HQ,Supervisory,Team
 DEPT_FIN_013,50c85db7b692e1e8bfe00627125da5c2,Finance - Client Services,Finance - Client Services (Lucas Webb),1,DEPT_FIN_006,30001545,b9893c7f158435a3ae7c3e32d0fe27c5,3,LOC_VAN,Supervisory,Team
 DEPT_FIN_014,3e7c5cfc88d8b625685df848b47251eb,Finance - Research,Finance - Research (Joshua Lee),1,DEPT_FIN_007,30012229,50322001b31237d0f6081119f7a61ae8,4,LOC_TOR_HQ,Supervisory,Team
-DEPT_FIN_015,2d6816cc568269cda697c86108bcbf13,Finance - Development,Finance - Development (Jasmine Hensley),1,DEPT_FIN_008,30018211,1b03ca9e8425a09529cfcaedf6a197f9,4,LOC_VAN,Supervisory,Team
+DEPT_FIN_015,2d6816cc568269cda697c86108bcbf13,Finance - Development,Finance - Development (Robert Burgess),1,DEPT_FIN_008,30018212,1f80b1eba15652b84da4c7f9a465c1f7,4,LOC_VAN,Supervisory,Team
 DEPT_TECH,1a2fbf9f1623b46dccfa943617adf3fc,Technology Division,Technology Division (Amy Colon),1,DEPT_CEO,30000629,4517353aeda58a650b9edb5206d373d9,1,LOC_TOR_HQ,Supervisory,Division
 DEPT_TECH_016,d0e738fabf3cd550e3b437395686a778,Technology - Strategy,Technology - Strategy (Tammy Jones),1,DEPT_TECH,30019762,c602289823ff158de7029b76c1b604ad,2,LOC_CHI,Supervisory,Department
 DEPT_TECH_017,e210c05837b836ddc16335b1acbce455,Technology - Operations,Technology - Operations (Chad Berger),1,DEPT_TECH,30020685,65bea4d5a52b6b43d18a7414eff4c74f,2,LOC_TOR_HQ,Supervisory,Department
@@ -24,7 +24,7 @@ DEPT_TECH_019,38b492625ed600ae7c94387773b6b2a7,Technology - Delivery,Technology 
 DEPT_TECH_020,1a5e0712fff60ead7c73968aa735c3e7,Technology - Support,Technology - Support (Jeffrey Grant),1,DEPT_TECH,30011783,abd9617026fa167423e174469e4ca7b4,2,LOC_TOR_HQ,Supervisory,Department
 DEPT_TECH_021,5b6c37cdded4b2ca981a8f68d45ffc14,Technology - Advisory,Technology - Advisory (Matthew Wilson),1,DEPT_TECH,30007909,b3230d114fbb2905c2e42cd539b6eb58,2,LOC_NYC,Supervisory,Department
 DEPT_TECH_022,4a9b920f17dd3f0761c142da2b1da904,Technology - Governance,Technology - Governance (Samantha Smith),1,DEPT_TECH,30017172,34d8df4922371c7e706809063d225a83,2,LOC_VAN,Supervisory,Department
-DEPT_TECH_023,8203a3ddd03630a8b56a6b93eb119692,Technology - Projects,Technology - Projects (Cynthia Perez),1,DEPT_TECH,30017339,e224296ec752d426e5e372ea3607612b,2,LOC_DAL,Supervisory,Department
+DEPT_TECH_023,8203a3ddd03630a8b56a6b93eb119692,Technology - Projects,Technology - Projects (Christopher Carpenter),1,DEPT_TECH,30017340,62bc113ef2aacf838b7132bfa2855924,2,LOC_DAL,Supervisory,Department
 DEPT_TECH_024,ec9238bb6559952da52558bfab023606,Technology - Infrastructure,Technology - Infrastructure (Gary Hernandez),1,DEPT_TECH,30020795,bb708652b84850be3113cf713afa8da2,2,LOC_SF,Supervisory,Department
 DEPT_TECH_025,67e030c09260ec332c107a92388de221,Technology - Client Services,Technology - Client Services (Jennifer Griffin),1,DEPT_TECH,30017004,812deb8dfa7ed6f0041e1c41b54b38ba,2,LOC_VAN,Supervisory,Department
 DEPT_TECH_026,1c0c9d91f70e275d3eeefc04e0efa668,Technology - Research,Technology - Research (Adriana Carney),1,DEPT_TECH,30011585,26f1602f94a3a680bb03b896ea29aceb,2,LOC_MTL,Supervisory,Department
@@ -124,7 +124,7 @@ DEPT_MKT_113,af5d310074870ca527fd0defd1528744,Marketing - Advisory,Marketing - A
 DEPT_INVEST,027683cc78d8b9b3e548d7b3fb8ceac8,Investment Management Division,Investment Management Division (David Miller),1,DEPT_CEO,30000118,de1b9f5276d73af421a78b667bdc6613,1,LOC_TOR_HQ,Supervisory,Division
 DEPT_INVEST_114,1dc961e3ec838264bae5af0b0a3a6716,Investment Management - Strategy,Investment Management - Strategy (Christopher Johnson),1,DEPT_INVEST,30003075,cfc58994e05b9467a4c205273883b662,2,LOC_CAL,Supervisory,Department
 DEPT_INVEST_115,71a7e16346f2a27736bd7d5f4694b92e,Investment Management - Operations,Investment Management - Operations (Logan Soto),1,DEPT_INVEST,30020083,4eba7accff58c5b592989a4456a2065f,2,LOC_SF,Supervisory,Department
-DEPT_INVEST_116,1487436afc5a741cd8a8498027651820,Investment Management - Analytics,Investment Management - Analytics (Robert Collins),1,DEPT_INVEST,30018589,805ad99232bb6601b5bd39343f173940,2,LOC_TOR_FP,Supervisory,Department
+DEPT_INVEST_116,1487436afc5a741cd8a8498027651820,Investment Management - Analytics,Investment Management - Analytics (Brandon Wade),1,DEPT_INVEST,30018590,91a964123744d387fbce3782faebdf85,2,LOC_TOR_FP,Supervisory,Department
 DEPT_INVEST_117,7c3d0f9372d6a637762c1379a683d0ee,Investment Management - Delivery,Investment Management - Delivery (Donna Mills),1,DEPT_INVEST,30003565,12290b96c19235371d0ea45d7a12f9f4,2,LOC_TOR_HQ,Supervisory,Department
 DEPT_INVEST_118,6e908da0c6fbfbd58d215fedb103a9f6,Investment Management - Support,Investment Management - Support (Alexander Hernandez),1,DEPT_INVEST,30017644,de115164aaa93abaf8251cdd61abb78e,2,LOC_BOS,Supervisory,Department
 DEPT_INVEST_119,0694b7acbcb68ca07b226d7d1af51ff0,Investment Management - Advisory,Investment Management - Advisory (Kimberly Reynolds),1,DEPT_INVEST,30012247,6f26787700885de6f3803d47f938fe1e,2,LOC_CA_REM,Supervisory,Department
@@ -140,6 +140,6 @@ DEPT_ADMIN_127,7b15eba00064b0869967cc361017b136,Corporate Services - Operations,
 DEPT_ADMIN_128,d787b8f0795ebef9d3dd57d096898af3,Corporate Services - Analytics,Corporate Services - Analytics (James Wagner),1,DEPT_ADMIN,30015526,615a7de2623f495325fe049e5e907496,2,LOC_TOR_FP,Supervisory,Department
 DEPT_ADMIN_129,02da01ccce87ebd5454ed3abeb5b7af3,Corporate Services - Delivery,Corporate Services - Delivery (Laura Torres),1,DEPT_ADMIN,30016688,192c91d7058eb624eb3a8c3202c01d36,2,LOC_CA_REM,Supervisory,Department
 DEPT_ADMIN_130,2b8a83267d2dc64d0f2690777568b911,Corporate Services - Support,Corporate Services - Support (Jimmy Johnson),1,DEPT_ADMIN_126,30013013,92afa71b3ce83ba5a9499f93d034615c,3,LOC_NYC,Supervisory,Team
-DEPT_ADMIN_131,3ed088b4602711282f88aeabe826f3d1,Corporate Services - Advisory,Corporate Services - Advisory (Bruce Hall),1,DEPT_ADMIN_127,30019054,bcceb5515079c06d52681adc2bcd03f8,3,LOC_TOR_FP,Supervisory,Team
+DEPT_ADMIN_131,3ed088b4602711282f88aeabe826f3d1,Corporate Services - Advisory,Corporate Services - Advisory (Spencer Alexander),1,DEPT_ADMIN_127,30019055,aab659ee51aee994282c098b5a7a5e77,3,LOC_TOR_FP,Supervisory,Team
 DEPT_ADMIN_132,e715f2c5bac7b7142a75f52d0673a0ae,Corporate Services - Governance,Corporate Services - Governance (Jessica Berry),1,DEPT_ADMIN_128,30018032,8372b44b75dfb1ea268e0ce8e8fd5c22,3,LOC_TOR_HQ,Supervisory,Team
 DEPT_ADMIN_133,d0673250414fdafbdafb1a9e22a667ee,Corporate Services - Projects,Corporate Services - Projects (Alexandria Lane),1,DEPT_ADMIN_129,30004227,453cc3ceb48cb3af9590a52ad8f552c8,4,LOC_MTL,Supervisory,Team

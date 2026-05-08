@@ -615,7 +615,7 @@ class IncrementalGenerator:
             "Action_Reason_Code": "HIR_NEW", "Manager_ID": "", "Soft_Retirement_Indicator": "0",
             "Job_Profile_ID": jp_id, "Sequence_Number": "1", "Planned_End_Contract_Date": "",
             "Job_Entry_Dt": hire_date, "Stock_Grants": "", "Time_Type": tt["name"],
-            "Supervisory_Organization": dept_id, "Location": loc["name"],
+            "Supervisory_Organization": dept_id, "Location": loc_id,
             "Job_Title": job_title, "French_Job_Title": "", "Shift_Number": "0",
             "Scheduled_Weekly_Hours": f"{tt['hours']:.1f}",
             "Default_Weekly_Hours": f"{tt['hours']:.1f}",
@@ -834,9 +834,11 @@ class IncrementalGenerator:
         return row
 
     def _gen_worker_org_delta(self, job_delta_rows):
-        """Generate INT0096 delta — 3 rows per job event."""
+        """Generate INT0096 delta — 3-4 rows per job event (Matrix_Organization optional, ~30%)."""
         fieldnames = list(self.baseline.get("INT0096", ([], []))[0])
         delta_rows = []
+        # Issue 2 fix: deterministic per-run RNG for matrix-org assignment
+        rng = random.Random(derive_seed(self.global_seed, "INT0096_matrix", self.run_timestamp))
 
         for event in job_delta_rows:
             base = {
@@ -857,6 +859,13 @@ class IncrementalGenerator:
                                 "Organization_Type": "Company"})
             delta_rows.append({**base, "Organization_ID": event.get("Supervisory_Organization", ""),
                                 "Organization_Type": "Supervisory"})
+
+            # Issue 2 fix: ~30% of new hires get a Matrix_Organization row
+            # (mirrors transactional_data.TransactionalGenerator._event_to_096)
+            if event.get("Transaction_Type") == "Hire" and rng.random() < 0.30:
+                morg = rng.choice(config.MATRIX_ORGS)
+                delta_rows.append({**base, "Organization_ID": morg["id"],
+                                    "Organization_Type": "Matrix_Organization"})
 
         change_info = {"inserts": len(delta_rows), "updates": 0, "deletes": 0,
                         "notes": f"{len(delta_rows)} organization assignment rows for {len(job_delta_rows)} events"}

@@ -23,7 +23,7 @@
 - **PASS**: INT6031 has 6 change(s)
 - **PASS**: INT6032 has 1 change(s)
 - **PASS**: INT0095E has 9 change(s)
-- **PASS**: INT0096 has 27 change(s)
+- **PASS**: INT0096 has 28 change(s)
 - **PASS**: INT0098 has 9 change(s)
 - **PASS**: INT270 has 2 change(s)
 

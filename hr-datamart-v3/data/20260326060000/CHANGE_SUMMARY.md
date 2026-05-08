@@ -61,8 +61,8 @@ This incremental run simulates one day of normal operational activity for WARLab
 
 ### INT0096 (DELTA)
 
-- **Rows:** 30
-- **Changes:** 30 organization assignment rows for 10 events
+- **Rows:** 31
+- **Changes:** 31 organization assignment rows for 10 events
 
 ### INT0098 (DELTA)
 
