@@ -424,6 +424,13 @@ class EmployeeTimelineGenerator:
             if new_grade:
                 event.grade_id = new_grade
                 event.comp_grade = new_grade
+                # Issue 3 fix: keep comp_grade_profile in sync with grade on demotion
+                demo_grade_obj = next((g for g in config.GRADES if g["id"] == new_grade), None)
+                if demo_grade_obj:
+                    event.comp_grade_profile = demo_grade_obj["profile_id"]
+                    event.pay_range_min = demo_grade_obj["min"]
+                    event.pay_range_mid = demo_grade_obj["mid"]
+                    event.pay_range_max = demo_grade_obj["max"]
                 event.base_pay = utils.salary_for_grade(self.rng, new_grade)
                 event.compensation = event.base_pay
                 event.benefits_annual_rate = event.base_pay

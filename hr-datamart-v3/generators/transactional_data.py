@@ -244,7 +244,7 @@ class TransactionalDataWriter:
             "Stock_Grants": e.stock_grants,
             "Time_Type": e.time_type,
             "Supervisory_Organization": e.supervisory_organization,
-            "Location": e.location_name,
+            "Location": e.location_id,
             "Job_Title": e.job_title,
             "French_Job_Title": e.french_job_title,
             "Shift_Number": str(e.shift_number),
@@ -274,7 +274,14 @@ class TransactionalDataWriter:
         r2 = {**base, "Organization_ID": e.company_id, "Organization_Type": "Company"}
         r3 = {**base, "Organization_ID": e.sup_org_id, "Organization_Type": "Supervisory"}
 
-        return [r1, r2, r3]
+        rows = [r1, r2, r3]
+
+        # Issue 2 fix: add Matrix_Organization row for workers with a matrix org assignment
+        if e.matrix_org_id:
+            r4 = {**base, "Organization_ID": e.matrix_org_id, "Organization_Type": "Matrix_Organization"}
+            rows.append(r4)
+
+        return rows
 
     # ---------------------------------------------------------
     # INT0098 - Worker Compensation

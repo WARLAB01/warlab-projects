@@ -1,0 +1,1035 @@
+Job_Classification_ID,Job_Classification_WID,Job_Classification_Name,Job_Classification_Group_ID,Job_Classification_Group_Name,Job_Profile_ID
+JCL_0001,888d8c06491e9e9ed702ef80a4c9312d,Technicians,JCL_GRP_AAP,AAP Job Group,JP_0001
+JCL_0002,dda1c29b1d0db1d51015eceba3a21139,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0001
+JCL_0003,0fe209905c78c7d195cf9418578a0a54,No,JCL_GRP_CUST,Customer Facing,JP_0001
+JCL_0004,1ac9f45435d654e3c953772d335f0ecd,Technicians,JCL_GRP_EEO1,EEO1 Code,JP_0001
+JCL_0005,fa5611f364a214c325d4833b8c571dbb,Technology,JCL_GRP_COLL,Job Collection,JP_0001
+JCL_0006,cbbe97ca8d0a73e3d779f74f754bd61d,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0001
+JCL_0007,905757b17940244fee401ad99edf1983,NOC 2 - Natural & Applied Sciences,JCL_GRP_NOC,National Occupation Code,JP_0001
+JCL_0008,8c8546ace72aa2feb8860157acce2384,Technology & Engineering,JCL_GRP_OCC,Occupation Code,JP_0001
+JCL_0009,c43736fb8e7b4fcc7a6a47cfc8a44986,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0001
+JCL_0010,705dab8453bc0210dd75dad85c4411fc,15-0000 Computer & Mathematical,JCL_GRP_SOC,Standard Occupation Code,JP_0001
+JCL_0011,38eafbe54ac5be08306a6ea3cb6e2198,Eligible,JCL_GRP_STOCK,Stock,JP_0001
+JCL_0012,d703dfbdf8bee61909fcc912497361e2,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0002
+JCL_0013,8cc5d16769f348c41e47dec78f9d0070,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0002
+JCL_0014,b732d6b9ffb5195c089befeeedf9d349,No,JCL_GRP_CUST,Customer Facing,JP_0002
+JCL_0015,05c250a157b5d3074fc574e50e9efc89,First/Mid Officials & Mgrs,JCL_GRP_EEO1,EEO1 Code,JP_0002
+JCL_0016,39a26d47b6e775c45e9d4f2a76a9fb09,Technology,JCL_GRP_COLL,Job Collection,JP_0002
+JCL_0017,a14ea5be5ded6867772d1bd5a5765b58,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0002
+JCL_0018,de992dbfd0217e671b3412484337765e,NOC 2 - Natural & Applied Sciences,JCL_GRP_NOC,National Occupation Code,JP_0002
+JCL_0019,55779ffcf0969de20a08361986761a1d,Technology & Engineering,JCL_GRP_OCC,Occupation Code,JP_0002
+JCL_0020,4e7f3f2bcbfb8c411d60f29ee3964aa6,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0002
+JCL_0021,5966fbf6d0de01b08bdde89c716efa2c,15-0000 Computer & Mathematical,JCL_GRP_SOC,Standard Occupation Code,JP_0002
+JCL_0022,4a6d677a05dbddfa7a39b3633026156e,Eligible,JCL_GRP_STOCK,Stock,JP_0002
+JCL_0023,7dd1e56b9a53db6636a09684b24fbc8d,Technicians,JCL_GRP_AAP,AAP Job Group,JP_0003
+JCL_0024,f69495ac85fc1b76f081eed3ef810f98,Discretionary,JCL_GRP_BONUS,Bonus Eligibility,JP_0003
+JCL_0025,6daada84ebcfbb53fdda5c37559d1e49,No,JCL_GRP_CUST,Customer Facing,JP_0003
+JCL_0026,f44774c1e9fd95399f2db4a173c72119,Technicians,JCL_GRP_EEO1,EEO1 Code,JP_0003
+JCL_0027,416701034d6dadc99abb7e1f9d134553,Technology,JCL_GRP_COLL,Job Collection,JP_0003
+JCL_0028,94ad214e2460d1d21979419df0dcbeaa,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0003
+JCL_0029,9a51401b3bbd6c99c967525db908fc65,NOC 2 - Natural & Applied Sciences,JCL_GRP_NOC,National Occupation Code,JP_0003
+JCL_0030,8833aebc981748165fab557ad2979062,Technology & Engineering,JCL_GRP_OCC,Occupation Code,JP_0003
+JCL_0031,e0ca7871d4302792df9a9d7167269297,Employee Referral,JCL_GRP_RECR,Recruitment Channel,JP_0003
+JCL_0032,8f916a8776d6b8716a141b14b3c465f7,15-0000 Computer & Mathematical,JCL_GRP_SOC,Standard Occupation Code,JP_0003
+JCL_0033,781c0891f66af8416824913671a17328,Eligible,JCL_GRP_STOCK,Stock,JP_0003
+JCL_0034,9c9d06f114c1a15bc12bd3b7e70991a6,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0004
+JCL_0035,bb56053310fea37f000ada8f2cf0873e,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0004
+JCL_0036,13468b81013390aa7186325c4e80645c,No,JCL_GRP_CUST,Customer Facing,JP_0004
+JCL_0037,7715f9fae6a38170e89aa42424c63b7b,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0004
+JCL_0038,22354138ed4cf75c7cdb26684189227e,Technology,JCL_GRP_COLL,Job Collection,JP_0004
+JCL_0039,2a2d66a7f96c22dc80a4198773048d4d,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0004
+JCL_0040,6e3d478f2efd0234a6a3a0719fa03460,NOC 2 - Natural & Applied Sciences,JCL_GRP_NOC,National Occupation Code,JP_0004
+JCL_0041,0d309d4a0be5caef54a826e7ee97cbe5,Technology & Engineering,JCL_GRP_OCC,Occupation Code,JP_0004
+JCL_0042,13ab6134fb8541bf7048327dd720e2fc,Recruiting Fair,JCL_GRP_RECR,Recruitment Channel,JP_0004
+JCL_0043,812bf45ce74c23a5d515014d3610e5f1,15-0000 Computer & Mathematical,JCL_GRP_SOC,Standard Occupation Code,JP_0004
+JCL_0044,580929f9e465eb96bb00a8a98b1e809e,Eligible,JCL_GRP_STOCK,Stock,JP_0004
+JCL_0045,557d5fbcd98ee60d0fd9d58224749734,Technicians,JCL_GRP_AAP,AAP Job Group,JP_0005
+JCL_0046,820232c01a0e75ae6fcc4abec7abb82f,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0005
+JCL_0047,3173e87471ab301a066288212dba8387,No,JCL_GRP_CUST,Customer Facing,JP_0005
+JCL_0048,4fe68dd07a612e20604d1d708eb68109,Technicians,JCL_GRP_EEO1,EEO1 Code,JP_0005
+JCL_0049,82c90bbf3202bc65ba23f0706caa0ce2,Technology,JCL_GRP_COLL,Job Collection,JP_0005
+JCL_0050,641a8e461d4bc1fbd9168724cafb2721,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0005
+JCL_0051,1ad23e342a05c2280ac8c8094f6bc66e,NOC 2 - Natural & Applied Sciences,JCL_GRP_NOC,National Occupation Code,JP_0005
+JCL_0052,f67e2362632a38b2d133f7be6b1f839a,Technology & Engineering,JCL_GRP_OCC,Occupation Code,JP_0005
+JCL_0053,d5a747ae0464ecd22f7ca3e7715f73d5,Direct Sourcing,JCL_GRP_RECR,Recruitment Channel,JP_0005
+JCL_0054,8b43f8c630b891a95bf363ad2bcee3ec,15-0000 Computer & Mathematical,JCL_GRP_SOC,Standard Occupation Code,JP_0005
+JCL_0055,a74322c523acad980698cd3bea515692,Eligible,JCL_GRP_STOCK,Stock,JP_0005
+JCL_0056,d1da558a96b5500d87c69a4946fe0866,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0006
+JCL_0057,808df0c9320f7a3f6f32fdf04cad51cf,Not Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0006
+JCL_0058,2734b7e15455d776c8be22a1c5148075,No,JCL_GRP_CUST,Customer Facing,JP_0006
+JCL_0059,53a65bedbbc4ecd431bdbfd14b510b21,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0006
+JCL_0060,da6383b045a58f42a32cd4eb20fa5c0b,Technology,JCL_GRP_COLL,Job Collection,JP_0006
+JCL_0061,dc94791e934c438e44e8349f84dfd33c,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0006
+JCL_0062,54d01ccbb264c83cd314f58554ed2d84,NOC 2 - Natural & Applied Sciences,JCL_GRP_NOC,National Occupation Code,JP_0006
+JCL_0063,8860e9fe6b85a415cfe2eda74b45d0f5,Technology & Engineering,JCL_GRP_OCC,Occupation Code,JP_0006
+JCL_0064,ef582ca20bd1d8514db4cc94576f0b9c,Internal Transfer,JCL_GRP_RECR,Recruitment Channel,JP_0006
+JCL_0065,5389ff817f2a76788f842900e43d4eac,15-0000 Computer & Mathematical,JCL_GRP_SOC,Standard Occupation Code,JP_0006
+JCL_0066,626aa08e0887f9a146bec45d66865890,Eligible,JCL_GRP_STOCK,Stock,JP_0006
+JCL_0067,aa0cfa9617b5a70431d0a82bafb506cd,Technicians,JCL_GRP_AAP,AAP Job Group,JP_0007
+JCL_0068,8d50bcad20205aaba968171439d7a11a,Discretionary,JCL_GRP_BONUS,Bonus Eligibility,JP_0007
+JCL_0069,7dfdffafaf2ba101442ad97564658f0d,No,JCL_GRP_CUST,Customer Facing,JP_0007
+JCL_0070,09940ad425003a3ced54f3090ea7433e,Technicians,JCL_GRP_EEO1,EEO1 Code,JP_0007
+JCL_0071,ab163c46da674249e5d749ae3beea98f,Technology,JCL_GRP_COLL,Job Collection,JP_0007
+JCL_0072,15cbadbd20f93eb27a1a23dcbf4a45c0,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0007
+JCL_0073,5ef31a4028019058728c5e31ad3c1643,NOC 2 - Natural & Applied Sciences,JCL_GRP_NOC,National Occupation Code,JP_0007
+JCL_0074,6c3daadf08ec599a25e3d7f0a20884d5,Technology & Engineering,JCL_GRP_OCC,Occupation Code,JP_0007
+JCL_0075,8133ed39bdaf9ec7adf82c9cfe457a9b,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0007
+JCL_0076,04ea53993db7801a9d7140d616f050aa,15-0000 Computer & Mathematical,JCL_GRP_SOC,Standard Occupation Code,JP_0007
+JCL_0077,49bc3629c80a7db9043f3c29a3dd2302,Eligible,JCL_GRP_STOCK,Stock,JP_0007
+JCL_0078,11f6541788229474f7433f53781988bb,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0008
+JCL_0079,3277be8d44b775a4b894566757bb23ac,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0008
+JCL_0080,2bfc5977100c420a09cc9eacca122661,No,JCL_GRP_CUST,Customer Facing,JP_0008
+JCL_0081,9af7d8c85340df3757d9cfede6c8f9dd,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0008
+JCL_0082,e8ead7310a0a6536a70cb5a8ba0a0a14,Technology,JCL_GRP_COLL,Job Collection,JP_0008
+JCL_0083,a5ff1fbd1d33812a3e08616336f37fc0,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0008
+JCL_0084,d4fa69ffa1553d401a3532041a495120,NOC 2 - Natural & Applied Sciences,JCL_GRP_NOC,National Occupation Code,JP_0008
+JCL_0085,11a97112d3b19bb0f89b12a9352e2278,Technology & Engineering,JCL_GRP_OCC,Occupation Code,JP_0008
+JCL_0086,ac686b5ca7d9515dfb77b37cfdebc3aa,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0008
+JCL_0087,270a6e502a80a8052b8ef91cf2948469,15-0000 Computer & Mathematical,JCL_GRP_SOC,Standard Occupation Code,JP_0008
+JCL_0088,f13ccf31a51aa65701a902d8201c97d1,Eligible,JCL_GRP_STOCK,Stock,JP_0008
+JCL_0089,f820e94f50938a587fa1be695db479b4,Technicians,JCL_GRP_AAP,AAP Job Group,JP_0009
+JCL_0090,cb363b51b87a54ad01bebbfc3bc0318c,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0009
+JCL_0091,8688f729539ea713ffca48af5c92afdd,No,JCL_GRP_CUST,Customer Facing,JP_0009
+JCL_0092,4653c896ac67fb92f3a06d4ebeee69f9,Technicians,JCL_GRP_EEO1,EEO1 Code,JP_0009
+JCL_0093,7e9adfe133c7365bbf1709bc2b7b372a,Technology,JCL_GRP_COLL,Job Collection,JP_0009
+JCL_0094,3112fefe7e075a11bde8cbf4a94e3fdb,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0009
+JCL_0095,a37e8ba69b7c1d88b1323e6675779236,NOC 2 - Natural & Applied Sciences,JCL_GRP_NOC,National Occupation Code,JP_0009
+JCL_0096,41e32997dce2e664835013b2e86812a3,Technology & Engineering,JCL_GRP_OCC,Occupation Code,JP_0009
+JCL_0097,282c8e320664078ec15cd8bc8a7af1ba,Employee Referral,JCL_GRP_RECR,Recruitment Channel,JP_0009
+JCL_0098,e65d30bc1031da6c9938b753dee56e29,15-0000 Computer & Mathematical,JCL_GRP_SOC,Standard Occupation Code,JP_0009
+JCL_0099,53a4849b540108ff358c9972092ea081,Eligible,JCL_GRP_STOCK,Stock,JP_0009
+JCL_0100,1dd9f74015e3b2340c52156520c255f9,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0010
+JCL_0101,930891fa8fdd5b97044757497ded6091,Not Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0010
+JCL_0102,a1a9d8f3cb4a391543706864aaa1c77a,No,JCL_GRP_CUST,Customer Facing,JP_0010
+JCL_0103,4db1c08969c8bc216c5e8c6cc2218aea,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0010
+JCL_0104,b713f61b46d5cd906ceca53d56582c34,Technology,JCL_GRP_COLL,Job Collection,JP_0010
+JCL_0105,4e36a99eb50b163d934f3d3eeb42f92b,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0010
+JCL_0106,9e0f4925cbfde8da6f2183d387058f5d,NOC 2 - Natural & Applied Sciences,JCL_GRP_NOC,National Occupation Code,JP_0010
+JCL_0107,e5af4655b1fb33c6bbfd5be4a1ed9e65,Technology & Engineering,JCL_GRP_OCC,Occupation Code,JP_0010
+JCL_0108,b1903d109de09f508e9fa33fe4c49074,Recruiting Fair,JCL_GRP_RECR,Recruitment Channel,JP_0010
+JCL_0109,16f8df2c2aa6a2f8047d9ea6653507e1,15-0000 Computer & Mathematical,JCL_GRP_SOC,Standard Occupation Code,JP_0010
+JCL_0110,e73fa5c6a368374a623cda187dee542d,Eligible,JCL_GRP_STOCK,Stock,JP_0010
+JCL_0111,f41fbc2fc4f14ca80008298dd563c1b2,Technicians,JCL_GRP_AAP,AAP Job Group,JP_0011
+JCL_0112,98e2dfcc1ec4cfe90333b9f008413368,Discretionary,JCL_GRP_BONUS,Bonus Eligibility,JP_0011
+JCL_0113,3ca1f3a57a4094d1c2d44ae94fb395a6,No,JCL_GRP_CUST,Customer Facing,JP_0011
+JCL_0114,05ca52df72d16bece6aeed3fc8004e47,Technicians,JCL_GRP_EEO1,EEO1 Code,JP_0011
+JCL_0115,86c410f32f5b2bd44fc71d738c302895,Technology,JCL_GRP_COLL,Job Collection,JP_0011
+JCL_0116,bce513ea962e76f0f8e6fd494cfd0e18,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0011
+JCL_0117,de261f8c9b14aebb5d1765e742925575,NOC 2 - Natural & Applied Sciences,JCL_GRP_NOC,National Occupation Code,JP_0011
+JCL_0118,093e6249176df0e2a123b31f794a3b65,Technology & Engineering,JCL_GRP_OCC,Occupation Code,JP_0011
+JCL_0119,02f9890899db35ab25758450ac140b92,Direct Sourcing,JCL_GRP_RECR,Recruitment Channel,JP_0011
+JCL_0120,4d8c0870bb1607cd611c4df003550913,15-0000 Computer & Mathematical,JCL_GRP_SOC,Standard Occupation Code,JP_0011
+JCL_0121,1f3922da7d5102257bca885029bbd7b6,Eligible,JCL_GRP_STOCK,Stock,JP_0011
+JCL_0122,2958072589c88c0fc9735cb2d16ef7bd,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0012
+JCL_0123,80e2ba00acc2c355098bf419972556c2,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0012
+JCL_0124,be6f770b7495b84d7ce2b4f48705b7d1,No,JCL_GRP_CUST,Customer Facing,JP_0012
+JCL_0125,6bdad463c7036982b4149c2a998a7114,First/Mid Officials & Mgrs,JCL_GRP_EEO1,EEO1 Code,JP_0012
+JCL_0126,29ad746c5a4f5b4ecb63da9ab40fa3d5,Technology,JCL_GRP_COLL,Job Collection,JP_0012
+JCL_0127,fb9dae555adfebc08f074a13b96be4ab,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0012
+JCL_0128,0bb3f354f10455a296ee11183f872967,NOC 2 - Natural & Applied Sciences,JCL_GRP_NOC,National Occupation Code,JP_0012
+JCL_0129,3c720db3a60743bf56c04cccfaa92138,Technology & Engineering,JCL_GRP_OCC,Occupation Code,JP_0012
+JCL_0130,2b253ba0bc03f925bdcd9d3a952b7675,Internal Transfer,JCL_GRP_RECR,Recruitment Channel,JP_0012
+JCL_0131,ba9ba797e0a02f68bcc302afe77fb5c1,15-0000 Computer & Mathematical,JCL_GRP_SOC,Standard Occupation Code,JP_0012
+JCL_0132,fb8a6665c216d6aac0640f1380005a26,Eligible,JCL_GRP_STOCK,Stock,JP_0012
+JCL_0133,a9edc4782ce9ac2d214d924a408f5948,Technicians,JCL_GRP_AAP,AAP Job Group,JP_0013
+JCL_0134,f9ef8aa965cfbb4b6ed527a10fe934a2,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0013
+JCL_0135,757c692dd3d6044a424b1a167014e400,No,JCL_GRP_CUST,Customer Facing,JP_0013
+JCL_0136,e536032262f501977dd171624f921496,First/Mid Officials & Mgrs,JCL_GRP_EEO1,EEO1 Code,JP_0013
+JCL_0137,589c4cf7c70c128df5d19e52f9519eb5,Technology,JCL_GRP_COLL,Job Collection,JP_0013
+JCL_0138,fb247bc7400bdab573fc109dc97455a6,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0013
+JCL_0139,732b472c08dae19917cbbf679f4c2386,NOC 2 - Natural & Applied Sciences,JCL_GRP_NOC,National Occupation Code,JP_0013
+JCL_0140,358fbde01c0b4fedf4355be4c0719a77,Technology & Engineering,JCL_GRP_OCC,Occupation Code,JP_0013
+JCL_0141,28a446a797d0d8d22f5b55cce0c97f3e,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0013
+JCL_0142,af1fe012a5924542374cc8a7d35ae7de,15-0000 Computer & Mathematical,JCL_GRP_SOC,Standard Occupation Code,JP_0013
+JCL_0143,2d8cb949373dc289561005dc8336fbd3,Eligible,JCL_GRP_STOCK,Stock,JP_0013
+JCL_0144,b6ed119782d78f2f6400ff1e6b537258,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0014
+JCL_0145,33176a2c2eb893763e9b763fcfdf57c4,Not Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0014
+JCL_0146,62cadd4a1ed73f7326db9358698d23e5,No,JCL_GRP_CUST,Customer Facing,JP_0014
+JCL_0147,96491c63e53e685bb0afff1af4954886,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0014
+JCL_0148,84b77934bf1b160d5887e23691fd054b,Technology,JCL_GRP_COLL,Job Collection,JP_0014
+JCL_0149,2bd37bd9ecbe03078c5d739ea833ef03,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0014
+JCL_0150,c15e3151d7ea6e751429fa77cebcb028,NOC 2 - Natural & Applied Sciences,JCL_GRP_NOC,National Occupation Code,JP_0014
+JCL_0151,e13791d2e46c97226c279fc6d0659580,Technology & Engineering,JCL_GRP_OCC,Occupation Code,JP_0014
+JCL_0152,76f106d57931a4f2cf572c7f1b3ef9bf,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0014
+JCL_0153,9ecc0530e9e3a34b75298230a7d101cb,15-0000 Computer & Mathematical,JCL_GRP_SOC,Standard Occupation Code,JP_0014
+JCL_0154,827c945698d642a9dbe495919ff20335,Eligible,JCL_GRP_STOCK,Stock,JP_0014
+JCL_0155,2eebbdbc9c1e479991e18e30f29a8ffc,Technicians,JCL_GRP_AAP,AAP Job Group,JP_0015
+JCL_0156,7d0b9cf9a5b41fd50af5856cdf7f096a,Discretionary,JCL_GRP_BONUS,Bonus Eligibility,JP_0015
+JCL_0157,655138f4127b1dcd85be9fbb76053a8a,No,JCL_GRP_CUST,Customer Facing,JP_0015
+JCL_0158,287e699f665d0463b28790e1562339a8,Technicians,JCL_GRP_EEO1,EEO1 Code,JP_0015
+JCL_0159,7def709d9684b9b3f0f704ee8bfa536a,Technology,JCL_GRP_COLL,Job Collection,JP_0015
+JCL_0160,e928da2c7cf596491b174e9c3496c369,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0015
+JCL_0161,61fe6242b694f14a4e8687f78d2a692e,NOC 2 - Natural & Applied Sciences,JCL_GRP_NOC,National Occupation Code,JP_0015
+JCL_0162,44cb83ce02d3b75c031e27f0e49ffdad,Technology & Engineering,JCL_GRP_OCC,Occupation Code,JP_0015
+JCL_0163,d0a463f3a3ef4ac6ca63a75abc9575f7,Employee Referral,JCL_GRP_RECR,Recruitment Channel,JP_0015
+JCL_0164,936bc7a7d4fa7fcb7c351537bbe0d7fc,15-0000 Computer & Mathematical,JCL_GRP_SOC,Standard Occupation Code,JP_0015
+JCL_0165,f276c9e338b0e19736f0d3adab27e146,Eligible,JCL_GRP_STOCK,Stock,JP_0015
+JCL_0166,4de6e6ca85107a9dad708370dd0bf0ab,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0016
+JCL_0167,848051745c9800eb6a5889ca3dd9bdfd,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0016
+JCL_0168,be3e25a2173adbed1a4202f9223910f7,No,JCL_GRP_CUST,Customer Facing,JP_0016
+JCL_0169,763e5af1d1d57e747f13f55dec29ec1a,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0016
+JCL_0170,41b5aaf92bdb037d2e358b43872bf46c,Technology,JCL_GRP_COLL,Job Collection,JP_0016
+JCL_0171,a2fd2eec1dba18d7fd7015633110e698,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0016
+JCL_0172,49f661f4137ec440ea5fb543fbb298c1,NOC 2 - Natural & Applied Sciences,JCL_GRP_NOC,National Occupation Code,JP_0016
+JCL_0173,fe752e42cd5c8361317c012d4f7498e1,Technology & Engineering,JCL_GRP_OCC,Occupation Code,JP_0016
+JCL_0174,937bbc0ed004f85a711925d05f5ccb0f,Recruiting Fair,JCL_GRP_RECR,Recruitment Channel,JP_0016
+JCL_0175,5faf2c23957ed01d1ab74e9e87b782c0,15-0000 Computer & Mathematical,JCL_GRP_SOC,Standard Occupation Code,JP_0016
+JCL_0176,a918caef91b2424e99fc06a92b478887,Eligible,JCL_GRP_STOCK,Stock,JP_0016
+JCL_0177,c11dc082447ee6f37f82a3e422035cb0,Technicians,JCL_GRP_AAP,AAP Job Group,JP_0017
+JCL_0178,78773926d83d543ef7420a93320afce0,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0017
+JCL_0179,8ad3efe82b1ef76c99c0b0f07a06584f,No,JCL_GRP_CUST,Customer Facing,JP_0017
+JCL_0180,bb4c13140f32dc9511b360fd9d54011a,Technicians,JCL_GRP_EEO1,EEO1 Code,JP_0017
+JCL_0181,3160114f8e450adf65fb7393c0a9b748,Technology,JCL_GRP_COLL,Job Collection,JP_0017
+JCL_0182,d75c8293816a657d59ba5c77c4b440bc,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0017
+JCL_0183,40f737037751a29eaf66d7d03190e9f5,NOC 2 - Natural & Applied Sciences,JCL_GRP_NOC,National Occupation Code,JP_0017
+JCL_0184,ed302e785b1a57085ea56d41bbfaf8a6,Technology & Engineering,JCL_GRP_OCC,Occupation Code,JP_0017
+JCL_0185,ee1bbb096234c3341876300b5f8e36f2,Direct Sourcing,JCL_GRP_RECR,Recruitment Channel,JP_0017
+JCL_0186,b0a2258b25a641a0d62801154a238a21,15-0000 Computer & Mathematical,JCL_GRP_SOC,Standard Occupation Code,JP_0017
+JCL_0187,31bdfb2cda2caf9dc940b5080ae3d66d,Eligible,JCL_GRP_STOCK,Stock,JP_0017
+JCL_0188,e0e06f01915f385817e471fdaeb915ad,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0018
+JCL_0189,8d0b95ad324e3eb14763dcdd1b6a8501,Not Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0018
+JCL_0190,5f662950affb1f2990a3e502d5c41ce3,No,JCL_GRP_CUST,Customer Facing,JP_0018
+JCL_0191,bde269f76c59104ef525b07f22e3041f,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0018
+JCL_0192,6f3d3a26326a55520ec41f29adb2e557,Finance,JCL_GRP_COLL,Job Collection,JP_0018
+JCL_0193,febbd9faf19473d48851933fe47bec20,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0018
+JCL_0194,c6d805bf010b5b268ec8dcfd6ed4873d,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0018
+JCL_0195,03b7d65a7324bbb195397ce1f7a14ebc,Finance & Accounting,JCL_GRP_OCC,Occupation Code,JP_0018
+JCL_0196,f7525660ff5af32b10fd8340d09fa7ad,Internal Transfer,JCL_GRP_RECR,Recruitment Channel,JP_0018
+JCL_0197,60d9ff86011876198a05abbc4eb7ed81,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0018
+JCL_0198,25a29dae2ae7bf553b22429fdf51b79c,Eligible,JCL_GRP_STOCK,Stock,JP_0018
+JCL_0199,16bfc9555dee8538241558bd493db73b,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0019
+JCL_0200,64c5c86489bee69d83f248972b01b442,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0019
+JCL_0201,c00caa2333bf70f80a77346c527e63fd,No,JCL_GRP_CUST,Customer Facing,JP_0019
+JCL_0202,6d275794524d5c9d9a774c72425075ef,First/Mid Officials & Mgrs,JCL_GRP_EEO1,EEO1 Code,JP_0019
+JCL_0203,b8fb9979f480198fe653835a81cd92bc,Finance,JCL_GRP_COLL,Job Collection,JP_0019
+JCL_0204,63a12b13e1c8ac3a649b747ea3dda5d2,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0019
+JCL_0205,dac45618f29fe935d88860246829483a,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0019
+JCL_0206,51541f23ab6cb880e60dd4c55496d1f0,Finance & Accounting,JCL_GRP_OCC,Occupation Code,JP_0019
+JCL_0207,f35c47b6e073fd86cfee0f8370f76129,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0019
+JCL_0208,283606ee76c56a64e48320df16e62521,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0019
+JCL_0209,b9f547834fe52e258ea66c98d255d06f,Eligible,JCL_GRP_STOCK,Stock,JP_0019
+JCL_0210,580da3ce0ebcf988232f1a253be13b7a,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0020
+JCL_0211,91879af6abfcc61898b9b1c7a6942da4,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0020
+JCL_0212,444fc4d38d703e65b3f07e37a07b1b2d,No,JCL_GRP_CUST,Customer Facing,JP_0020
+JCL_0213,e7ef494d89e2933cee534fd66374f6ad,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0020
+JCL_0214,3c4132863b61f77fe7004f3715d569f3,Finance,JCL_GRP_COLL,Job Collection,JP_0020
+JCL_0215,f15fb0de1b253d0a90037f3a283c5b23,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0020
+JCL_0216,c8da1ee64d849ea388fbafcc6abd435d,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0020
+JCL_0217,8a26a17654c6b9991381c2b2e55df5f7,Finance & Accounting,JCL_GRP_OCC,Occupation Code,JP_0020
+JCL_0218,19eda0829f35869f5acd6000b1edfd27,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0020
+JCL_0219,b00f9e2dfcc0985ed8728642ef3c5768,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0020
+JCL_0220,ccc518dbdab17e5890406fccb4d72e51,Eligible,JCL_GRP_STOCK,Stock,JP_0020
+JCL_0221,e578eb35d06e6e64f8302b2c3c188d3d,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0021
+JCL_0222,88ee35a661e03afc60b7270819a6cbd7,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0021
+JCL_0223,03ef4a0e8a2f3584782fa165fe99cb5f,No,JCL_GRP_CUST,Customer Facing,JP_0021
+JCL_0224,753e7f14d784b5905d79b7c4e143d855,First/Mid Officials & Mgrs,JCL_GRP_EEO1,EEO1 Code,JP_0021
+JCL_0225,4046b31f6c6426d5189fb168cb0ce59d,Finance,JCL_GRP_COLL,Job Collection,JP_0021
+JCL_0226,9004887b0987e8204445282b2f2761ab,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0021
+JCL_0227,f09fb498b5ef4d2b0bb8d512abeebba3,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0021
+JCL_0228,fdccc6e6d1b42c52ec05f1f4fc430752,Finance & Accounting,JCL_GRP_OCC,Occupation Code,JP_0021
+JCL_0229,ad48da298a26c3a29a1c1968bfdf94e9,Employee Referral,JCL_GRP_RECR,Recruitment Channel,JP_0021
+JCL_0230,41368782cdaeb724bf0e683742569c38,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0021
+JCL_0231,b6ba1f479ff7dc2226940d8a918023c5,Eligible,JCL_GRP_STOCK,Stock,JP_0021
+JCL_0232,31922b841089f1e94e38c113fe9d8ef3,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0022
+JCL_0233,23f3813c90f905f414f943e2c829fc53,Not Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0022
+JCL_0234,e75f756d27a7872c787ce799c79e39cf,No,JCL_GRP_CUST,Customer Facing,JP_0022
+JCL_0235,7dd6ff0b7fa4fcf9920a31cda2655fbc,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0022
+JCL_0236,65312a85f25950e9b24b09d9445e2392,Finance,JCL_GRP_COLL,Job Collection,JP_0022
+JCL_0237,eb514aea15052919ad6609331564a108,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0022
+JCL_0238,2e1f554d9fe23e602b8ae4e8a34f7129,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0022
+JCL_0239,74d311a9acb3a832b9b14d869baba043,Finance & Accounting,JCL_GRP_OCC,Occupation Code,JP_0022
+JCL_0240,58730e9677eaf06bf6325952cfaa7095,Recruiting Fair,JCL_GRP_RECR,Recruitment Channel,JP_0022
+JCL_0241,0005fac6d621a79c0eda6840587fdff3,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0022
+JCL_0242,f05396f481f305a8ba0532c9c45996ed,Eligible,JCL_GRP_STOCK,Stock,JP_0022
+JCL_0243,ef9550201ca84bce80957818b5de808a,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0023
+JCL_0244,09733991802a50fb9d3c553fb897f275,Discretionary,JCL_GRP_BONUS,Bonus Eligibility,JP_0023
+JCL_0245,f18427db0f39e1eeec02d3dac9ccc126,No,JCL_GRP_CUST,Customer Facing,JP_0023
+JCL_0246,9194d25331aacedaf74972d2567458c8,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0023
+JCL_0247,f3fcc7f19dd623328b4d84e5118ec307,Finance,JCL_GRP_COLL,Job Collection,JP_0023
+JCL_0248,d796b68ab47d9b5e1b7df182dd26fcdc,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0023
+JCL_0249,febbe20aa6785d781984aab209234706,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0023
+JCL_0250,ed736adbb7ea65f1a0dda3ef49d065ed,Finance & Accounting,JCL_GRP_OCC,Occupation Code,JP_0023
+JCL_0251,7e0291ffbf6d8e67b766790d96257092,Direct Sourcing,JCL_GRP_RECR,Recruitment Channel,JP_0023
+JCL_0252,4a0a3c662e9f3039fdd094742d292ece,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0023
+JCL_0253,a7ba87d871fc2359a873cf85ceca82dd,Eligible,JCL_GRP_STOCK,Stock,JP_0023
+JCL_0254,b088a38ef06c0f2a41d39ef075265baf,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0024
+JCL_0255,5bcf5813d505bf72f8c18dd0e6bbb6fa,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0024
+JCL_0256,d8bad09972fe77f49c26ed6b3e1d2692,No,JCL_GRP_CUST,Customer Facing,JP_0024
+JCL_0257,5f70ec570ad452d26a9c6183bf66f236,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0024
+JCL_0258,6de93cac09095f9dffe04d0e9a4d044c,Finance,JCL_GRP_COLL,Job Collection,JP_0024
+JCL_0259,169042a56b635fb7b0be33e68ebbaf71,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0024
+JCL_0260,6f6abcb8b4bae6a589512e03c0298201,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0024
+JCL_0261,924cfa29db00506d6caaaad00859ccc3,Finance & Accounting,JCL_GRP_OCC,Occupation Code,JP_0024
+JCL_0262,3fdb0ad8f332cb6ec02064b9258ef66b,Internal Transfer,JCL_GRP_RECR,Recruitment Channel,JP_0024
+JCL_0263,3509fb2cfa1d79bf9c9f1c781ff73c8c,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0024
+JCL_0264,afa35edabcabf76ac434f3fd6d6f6960,Eligible,JCL_GRP_STOCK,Stock,JP_0024
+JCL_0265,be41fc929c5fe865b6efcad9bd312232,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0025
+JCL_0266,64f646c7a7d842b647242cf6014c7ead,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0025
+JCL_0267,3ceb6561100617bcb9a2fd22e4be2341,No,JCL_GRP_CUST,Customer Facing,JP_0025
+JCL_0268,498341798c9f30deec8273d30259b8df,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0025
+JCL_0269,3b28d7309a418700d91c5cde7c961d58,Finance,JCL_GRP_COLL,Job Collection,JP_0025
+JCL_0270,e737fc5d5428ebf5dd51134e3864dafa,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0025
+JCL_0271,0888eb8e6dd6b6fd9f0920b9a557e2e4,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0025
+JCL_0272,88982aaf20b95de66848cac21fb40b51,Finance & Accounting,JCL_GRP_OCC,Occupation Code,JP_0025
+JCL_0273,899a113a1aae6b054dc09056fa4f4e48,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0025
+JCL_0274,b4fff49bcc7548536c64b9e4d2d9311c,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0025
+JCL_0275,33af181f5431efdf8acd073f90a5ef42,Eligible,JCL_GRP_STOCK,Stock,JP_0025
+JCL_0276,6483a19a1309cc956d5ffad5e6d03773,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0026
+JCL_0277,2c47f8e3a1d19635daf0918255647c1d,Not Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0026
+JCL_0278,f44d775bc4a255a6242dfc2fff513d47,No,JCL_GRP_CUST,Customer Facing,JP_0026
+JCL_0279,e5aecf26bef7be404ef5338a08a835da,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0026
+JCL_0280,b3fa3d41f2a5560493a3a0c3e7bb9e91,Finance,JCL_GRP_COLL,Job Collection,JP_0026
+JCL_0281,b7557225cee0f9b2e451d66f81e10fc6,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0026
+JCL_0282,60209d3eb87aca8f97364ea010749d7a,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0026
+JCL_0283,47f26088a8b411c7f25d6c0c1d6fa9fa,Finance & Accounting,JCL_GRP_OCC,Occupation Code,JP_0026
+JCL_0284,2b604bc6ff32714d62930039731ab9c4,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0026
+JCL_0285,ba55c0a5ee3a897cec95359413b3f44d,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0026
+JCL_0286,235775e442d7d9523a843bb05ce2f03d,Eligible,JCL_GRP_STOCK,Stock,JP_0026
+JCL_0287,8cb06e4db74c65588087da160bd71c09,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0027
+JCL_0288,d937eb392f2226d1b00524a064720fa3,Discretionary,JCL_GRP_BONUS,Bonus Eligibility,JP_0027
+JCL_0289,7c22aa4cff978d9a29b34916a4ad8846,No,JCL_GRP_CUST,Customer Facing,JP_0027
+JCL_0290,709009b2324f9086efdb2b4be40b18f4,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0027
+JCL_0291,f9c02636a0998075c1e7ff9dd0ec84b9,Finance,JCL_GRP_COLL,Job Collection,JP_0027
+JCL_0292,4ff9c9f8b21e7e71a562a495851d4a5f,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0027
+JCL_0293,8c438cbb16b8b5d81218370ae1ed1021,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0027
+JCL_0294,6a518f7636e5b845b2a92873ed1d4950,Finance & Accounting,JCL_GRP_OCC,Occupation Code,JP_0027
+JCL_0295,e237528cd45a71bce1aae6e159233f7a,Employee Referral,JCL_GRP_RECR,Recruitment Channel,JP_0027
+JCL_0296,36e67faad3d2d3930b09aee9b0e7343b,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0027
+JCL_0297,1bfc36a2a4d07e25d3531f57623db0b7,Eligible,JCL_GRP_STOCK,Stock,JP_0027
+JCL_0298,3f984446540e68663581a37334bf8826,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0028
+JCL_0299,9b78416066f57e8575ebf95cbfdc4f6b,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0028
+JCL_0300,48e680e137f60e523f0bae760cf67fc3,No,JCL_GRP_CUST,Customer Facing,JP_0028
+JCL_0301,8bc4c1c1b2c9345f9e86988cf9b8f3d4,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0028
+JCL_0302,d6bc0de02c0cb8898112d1bbc9b5ac1b,Risk & Compliance,JCL_GRP_COLL,Job Collection,JP_0028
+JCL_0303,6af7ef2d1d61d6dd45d7c9c87942399f,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0028
+JCL_0304,c977c2eb4a198ff0c6e770b529f8a2c8,"NOC 4 - Education, Law & Social Services",JCL_GRP_NOC,National Occupation Code,JP_0028
+JCL_0305,26bc6c078665e4fb2d09de0f6dc61271,Risk & Compliance,JCL_GRP_OCC,Occupation Code,JP_0028
+JCL_0306,cdbcdb7e301792f5296f00f06931a7ff,Recruiting Fair,JCL_GRP_RECR,Recruitment Channel,JP_0028
+JCL_0307,b1ccaf1af2a47031e5b1ef666f003d12,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0028
+JCL_0308,4bb49402936af01ea1cc25b0d8841d1b,Not Eligible,JCL_GRP_STOCK,Stock,JP_0028
+JCL_0309,daaaf9e55af02e6157c1bdf290f69cec,Officials and Managers,JCL_GRP_AAP,AAP Job Group,JP_0029
+JCL_0310,f099bd438c2d6e325a33546d06c3ab89,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0029
+JCL_0311,baaae256d1a724d7e097b5863250e09c,No,JCL_GRP_CUST,Customer Facing,JP_0029
+JCL_0312,5666f6ad391fdd915b6b09dc35b5562a,First/Mid Officials & Mgrs,JCL_GRP_EEO1,EEO1 Code,JP_0029
+JCL_0313,42f3f86e9a19bae635163860259d7578,Risk & Compliance,JCL_GRP_COLL,Job Collection,JP_0029
+JCL_0314,c914376ba845fa87bd20898d3c855e43,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0029
+JCL_0315,dea80d1256b1a6e2ee8be80dceefa9b0,NOC 0 - Management,JCL_GRP_NOC,National Occupation Code,JP_0029
+JCL_0316,b292cb020f2f2c166012f804e8a3fd98,Risk & Compliance,JCL_GRP_OCC,Occupation Code,JP_0029
+JCL_0317,fb01973eaa4acaf45161c306f7deb685,Direct Sourcing,JCL_GRP_RECR,Recruitment Channel,JP_0029
+JCL_0318,926d736c63d4409017ab5023626072a9,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0029
+JCL_0319,f2b3ed5378474ee6114437b0df490402,Eligible,JCL_GRP_STOCK,Stock,JP_0029
+JCL_0320,db350fc60fa66405629b3f0250be8025,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0030
+JCL_0321,f61c89375c496d324e15a93787225578,Not Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0030
+JCL_0322,30138c20c1d97b90a72341807c210e6d,No,JCL_GRP_CUST,Customer Facing,JP_0030
+JCL_0323,8980cc589ed80ef3750af7110f0556c4,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0030
+JCL_0324,0ead5eb7eee8d925c12fae06b23483a0,Risk & Compliance,JCL_GRP_COLL,Job Collection,JP_0030
+JCL_0325,f1e74fa54f9f9597176ca0748a4031c6,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0030
+JCL_0326,f398a2700cbd6ee00bc6fa3b7e29fed1,"NOC 4 - Education, Law & Social Services",JCL_GRP_NOC,National Occupation Code,JP_0030
+JCL_0327,520cc5fec72497e9d2c4aa68da2e12e0,Risk & Compliance,JCL_GRP_OCC,Occupation Code,JP_0030
+JCL_0328,abc88e57e41622aafe5057a6c9d0d361,Internal Transfer,JCL_GRP_RECR,Recruitment Channel,JP_0030
+JCL_0329,877bf80ed702cc59ea52394df9052d6f,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0030
+JCL_0330,badfa837305f193ae72b6320a10a400f,Eligible,JCL_GRP_STOCK,Stock,JP_0030
+JCL_0331,5a9392301417491117fae67bfbc84862,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0031
+JCL_0332,c57d764ab52bf9f673ede6327054a49f,Discretionary,JCL_GRP_BONUS,Bonus Eligibility,JP_0031
+JCL_0333,62a28e3e91db7ec5cfecf58172c010ae,No,JCL_GRP_CUST,Customer Facing,JP_0031
+JCL_0334,6f7cd9bfeca93ea945c82da0b4979930,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0031
+JCL_0335,edf882712ada25640bc34770a7c765fc,Risk & Compliance,JCL_GRP_COLL,Job Collection,JP_0031
+JCL_0336,42ff7ddd98cb111a1e5ae5a53a5c62b9,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0031
+JCL_0337,db1cfc9d44d80ab8bcc25a8005b9b25e,"NOC 4 - Education, Law & Social Services",JCL_GRP_NOC,National Occupation Code,JP_0031
+JCL_0338,b0c71592db35f02facf0b84027046b53,Risk & Compliance,JCL_GRP_OCC,Occupation Code,JP_0031
+JCL_0339,60d52c335cb61f680ef43f60e7920777,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0031
+JCL_0340,eb775c1d3ec439696d162f46f058789e,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0031
+JCL_0341,efa031fbaa00d42f27029ad9cbddb4c0,Not Eligible,JCL_GRP_STOCK,Stock,JP_0031
+JCL_0342,5fd951e020da6013eea80577259e8f80,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0032
+JCL_0343,efe1ef254b7acfb1c2cc69b47977b361,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0032
+JCL_0344,8dd63dd1ff2dcbf48fcefc2d75868ff2,No,JCL_GRP_CUST,Customer Facing,JP_0032
+JCL_0345,bee53d7b57f5a070459fe64a9a9c19ef,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0032
+JCL_0346,6d21f7043a5468ccedd2fe1fea5e83c8,Risk & Compliance,JCL_GRP_COLL,Job Collection,JP_0032
+JCL_0347,014b6b994a2ad153535e8003dd7bfaf6,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0032
+JCL_0348,1f63068b3670fa8cddc58c711bc3b2ae,"NOC 4 - Education, Law & Social Services",JCL_GRP_NOC,National Occupation Code,JP_0032
+JCL_0349,c04fbf862b71089bc5d1c3eab41b8404,Risk & Compliance,JCL_GRP_OCC,Occupation Code,JP_0032
+JCL_0350,de8c38dd184356843b37707d806fda1f,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0032
+JCL_0351,2a1378c3dfc64c189169c9cf02075706,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0032
+JCL_0352,c36e5988bd2c855f5537fa9a3c6862fe,Not Eligible,JCL_GRP_STOCK,Stock,JP_0032
+JCL_0353,2608cde56697653789f73f7c3a0d71f6,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0033
+JCL_0354,0c9b5f695f845b462d7e6ddd238f0b74,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0033
+JCL_0355,20c8d4af4b87dce24c848eed42f9176f,No,JCL_GRP_CUST,Customer Facing,JP_0033
+JCL_0356,2f46d9795b1cf1668aa53fffbf798da8,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0033
+JCL_0357,bce50357369d6ff8ffa5b9a280d18128,Risk & Compliance,JCL_GRP_COLL,Job Collection,JP_0033
+JCL_0358,c381622560694c91408f1124940cfcb7,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0033
+JCL_0359,986370d2bbd1f35e0b43a0a90bba6b93,"NOC 4 - Education, Law & Social Services",JCL_GRP_NOC,National Occupation Code,JP_0033
+JCL_0360,606df8f87800350ab3df15a64078ecbc,Risk & Compliance,JCL_GRP_OCC,Occupation Code,JP_0033
+JCL_0361,52b0fed007af987a6256536a9fde3985,Employee Referral,JCL_GRP_RECR,Recruitment Channel,JP_0033
+JCL_0362,90423201b113b8c18abc199911ae8405,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0033
+JCL_0363,8c9800e636d4946477134bff1c109cfe,Eligible,JCL_GRP_STOCK,Stock,JP_0033
+JCL_0364,963c31087ad3b5b2f10632d7b9fe96a6,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0034
+JCL_0365,cf1d0bcd61021f7ea9fabcff91e9a28f,Not Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0034
+JCL_0366,f605b27cabcc5dd99d497422a24b6f4b,No,JCL_GRP_CUST,Customer Facing,JP_0034
+JCL_0367,fb685067e1253e5de9aed0ca6840fb16,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0034
+JCL_0368,67c7254b1a82b04ba96baad2257f25e3,Risk & Compliance,JCL_GRP_COLL,Job Collection,JP_0034
+JCL_0369,3ac7a72d2f5768cd6b0dfd6954fcc9b9,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0034
+JCL_0370,8d2833f2fb2c6ad1d01de5d6ef4b46ee,"NOC 4 - Education, Law & Social Services",JCL_GRP_NOC,National Occupation Code,JP_0034
+JCL_0371,ae30765e22fb1bd7021e611c06a76bd6,Risk & Compliance,JCL_GRP_OCC,Occupation Code,JP_0034
+JCL_0372,5bbcaa4ddb8155a4f0a8a90c3f0c7ab1,Recruiting Fair,JCL_GRP_RECR,Recruitment Channel,JP_0034
+JCL_0373,42c5caf7c41b6b6a413a838972231b96,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0034
+JCL_0374,966248769aa45833928d1ce2e98ce7df,Not Eligible,JCL_GRP_STOCK,Stock,JP_0034
+JCL_0375,60b40d18435dc14c7690779115d61285,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0035
+JCL_0376,2c28c31cc5b186c3f50624165f8885ee,Discretionary,JCL_GRP_BONUS,Bonus Eligibility,JP_0035
+JCL_0377,a4d8316604feec68636dff50bc7dade5,No,JCL_GRP_CUST,Customer Facing,JP_0035
+JCL_0378,9a4dc24ec6c3410e93c52f7d6c1fdfa6,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0035
+JCL_0379,22c81d25acb07d8cba58881077cb05f1,Risk & Compliance,JCL_GRP_COLL,Job Collection,JP_0035
+JCL_0380,5d12925598ce5612226943441bf93efa,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0035
+JCL_0381,c9bbabe4f19bc88c28d6cdda8070e79f,"NOC 4 - Education, Law & Social Services",JCL_GRP_NOC,National Occupation Code,JP_0035
+JCL_0382,3dff9fbaba344f5d02f4a164949a2258,Risk & Compliance,JCL_GRP_OCC,Occupation Code,JP_0035
+JCL_0383,ced412498f4be16d7754c3939aa36119,Direct Sourcing,JCL_GRP_RECR,Recruitment Channel,JP_0035
+JCL_0384,33aa76692aa141b5e6eaf8e83fdeada9,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0035
+JCL_0385,26bc8e8b8bf7cc71e23aed55357443ea,Not Eligible,JCL_GRP_STOCK,Stock,JP_0035
+JCL_0386,b6e628b90ded7916c168f73e984b8ea2,Officials and Managers,JCL_GRP_AAP,AAP Job Group,JP_0036
+JCL_0387,1e46697334d51ab2485c396840b1b425,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0036
+JCL_0388,09ac37d8eade0d1e6f47c6f928fc0876,No,JCL_GRP_CUST,Customer Facing,JP_0036
+JCL_0389,c93440601ebd158f64e57353a6b25a9b,First/Mid Officials & Mgrs,JCL_GRP_EEO1,EEO1 Code,JP_0036
+JCL_0390,9bfbe18e846166d23597e25c169423e5,Risk & Compliance,JCL_GRP_COLL,Job Collection,JP_0036
+JCL_0391,21dd7cb855174be4784706ee419a6005,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0036
+JCL_0392,335f62c96953bfeeaa890072ef1baa0c,NOC 0 - Management,JCL_GRP_NOC,National Occupation Code,JP_0036
+JCL_0393,65ece7a1b9aa369de9d94028942c709f,Risk & Compliance,JCL_GRP_OCC,Occupation Code,JP_0036
+JCL_0394,fb7bb4c5b86382e1bd465b88dfd89ec0,Internal Transfer,JCL_GRP_RECR,Recruitment Channel,JP_0036
+JCL_0395,43cd521e3ef52554272eac05b6f24ce6,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0036
+JCL_0396,458ca6f6f0e3cd5ce40cba3e1f639e12,Eligible,JCL_GRP_STOCK,Stock,JP_0036
+JCL_0397,5c3acdb3a3f0cf92c4d01e8939c1c55c,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0037
+JCL_0398,fae523069fe6faedf43e5392d0fb17c7,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0037
+JCL_0399,ee7ee731ea2560d402b16fa012a8c492,No,JCL_GRP_CUST,Customer Facing,JP_0037
+JCL_0400,a1048d8a55e7ca60516ea001465544ac,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0037
+JCL_0401,17c30013adc840fcb79ee46b9eeb864d,Corporate,JCL_GRP_COLL,Job Collection,JP_0037
+JCL_0402,38ef9778f19ff46e4228111188b21c65,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0037
+JCL_0403,78317085219a1656da25659e076604f1,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0037
+JCL_0404,3084018a7e7f663b087336a6ecdb321d,Operations & Support,JCL_GRP_OCC,Occupation Code,JP_0037
+JCL_0405,114d8218aadc59d954f4a866bac43be5,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0037
+JCL_0406,8d01bb1971403c18b5d928e074b92b2b,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0037
+JCL_0407,739da2db9d27c4c41206fe6d56b2c6a8,Not Eligible,JCL_GRP_STOCK,Stock,JP_0037
+JCL_0408,f61ad8f6d610bcc2c25e7031b1c706b9,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0038
+JCL_0409,263be01584d65a7e9f9e3225736647e0,Not Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0038
+JCL_0410,74050ab5571fde5e91c6ab000d45925e,No,JCL_GRP_CUST,Customer Facing,JP_0038
+JCL_0411,528d95da27e31fa6c255311ae6d76246,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0038
+JCL_0412,744b714f5088f9961911de6b52c47574,Corporate,JCL_GRP_COLL,Job Collection,JP_0038
+JCL_0413,fb5fcecf407e0aa680972b6eeab7f79c,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0038
+JCL_0414,d4d9a4b60935d3fc920c61f1ea136ff8,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0038
+JCL_0415,6bec499d15ca9c26ebf2c0802bd8420b,Operations & Support,JCL_GRP_OCC,Occupation Code,JP_0038
+JCL_0416,ad3d3b739c177577928c12a6645118af,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0038
+JCL_0417,84983c0f587b240f52afaffd2d614370,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0038
+JCL_0418,2b03094bf74c521bbd53f2d8f4077a74,Not Eligible,JCL_GRP_STOCK,Stock,JP_0038
+JCL_0419,c97fa8f87e3122d79d4972c12128c667,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0039
+JCL_0420,7b42c8d74528c2566a171d0f4b028597,Discretionary,JCL_GRP_BONUS,Bonus Eligibility,JP_0039
+JCL_0421,f8334d8436e56691dd9630d927430cc4,No,JCL_GRP_CUST,Customer Facing,JP_0039
+JCL_0422,d9b934606451465e7a2d6f3b7f6b33ce,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0039
+JCL_0423,0de3058d57a133be9aaea1678a6a5ce6,Corporate,JCL_GRP_COLL,Job Collection,JP_0039
+JCL_0424,2828cc4d5f7c8c1c3d8adaea479db5e1,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0039
+JCL_0425,0acf59713410ee832a7906a0d4682e71,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0039
+JCL_0426,68090b807d700050c3815aa62a48770c,Operations & Support,JCL_GRP_OCC,Occupation Code,JP_0039
+JCL_0427,6474e1dfe45cc0dd58d385207497e00c,Employee Referral,JCL_GRP_RECR,Recruitment Channel,JP_0039
+JCL_0428,73706db9c3dd56c8289b898992edfa03,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0039
+JCL_0429,fd5b56b9d1e9afc27167eb5b36004379,Eligible,JCL_GRP_STOCK,Stock,JP_0039
+JCL_0430,22d6a63d8d2932523bc766319cf16148,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0040
+JCL_0431,e349a88b71203e4f3dbdfa4a2daa9697,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0040
+JCL_0432,fde0b6c29d73cb3882e755ea0a33e3a8,No,JCL_GRP_CUST,Customer Facing,JP_0040
+JCL_0433,4a7e6751875db714462782324021b89c,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0040
+JCL_0434,83d9181addb4a5a6b2d642dfd4f7eb88,Corporate,JCL_GRP_COLL,Job Collection,JP_0040
+JCL_0435,255e4ec8f55640cf764b9e503d9c44ca,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0040
+JCL_0436,0137b1afb9c66703d1d349a48adfab91,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0040
+JCL_0437,86237fb6e1ef97d91c755bd3b8f6321b,Operations & Support,JCL_GRP_OCC,Occupation Code,JP_0040
+JCL_0438,b7fc8f5c6ba596bd48048aeaab494d52,Recruiting Fair,JCL_GRP_RECR,Recruitment Channel,JP_0040
+JCL_0439,c7e61da1103e6c93f4da84d2f5c0f290,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0040
+JCL_0440,7e43c740fa5583c15a2c3597dd3dcea5,Not Eligible,JCL_GRP_STOCK,Stock,JP_0040
+JCL_0441,08661dd910e8edab73809a5055710d2b,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0041
+JCL_0442,4912a7f484d627d30ecc5a797ae3e198,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0041
+JCL_0443,ad8f06700abfd4f85460c64579c62375,Yes,JCL_GRP_CUST,Customer Facing,JP_0041
+JCL_0444,45f13f46d2a0782c1f97fc9318a4e62a,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0041
+JCL_0445,40de768da9977934de5141d491fc299e,Corporate,JCL_GRP_COLL,Job Collection,JP_0041
+JCL_0446,02ededde74def00dabfb590ec87352a8,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0041
+JCL_0447,4275e01c69ac3c7e79e9e9c36f7beaeb,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0041
+JCL_0448,8f8873d0d198f7676930eab665d5d361,Operations & Support,JCL_GRP_OCC,Occupation Code,JP_0041
+JCL_0449,4af051f39a15b8e97e94121f8a3fb09e,Direct Sourcing,JCL_GRP_RECR,Recruitment Channel,JP_0041
+JCL_0450,de08029217755cb967a76c8220ec5ca9,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0041
+JCL_0451,c2d5a8b328c3adb64082710e3225775f,Not Eligible,JCL_GRP_STOCK,Stock,JP_0041
+JCL_0452,1c0c85986864e3fb624cf2f6f6394934,Officials and Managers,JCL_GRP_AAP,AAP Job Group,JP_0042
+JCL_0453,bcb0f39c4d7024a33fe61103c13fbdf7,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0042
+JCL_0454,a161ceb8486c31864962edaa10a3673d,No,JCL_GRP_CUST,Customer Facing,JP_0042
+JCL_0455,16d159cae02567a04774787ec27e5291,First/Mid Officials & Mgrs,JCL_GRP_EEO1,EEO1 Code,JP_0042
+JCL_0456,f3a0800e0836f357f8fd87a0f19f2cf4,Corporate,JCL_GRP_COLL,Job Collection,JP_0042
+JCL_0457,355756654b39ac3aace20b5893d833ab,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0042
+JCL_0458,d9bc39ec79adeca41447cb67c7af9cf7,NOC 0 - Management,JCL_GRP_NOC,National Occupation Code,JP_0042
+JCL_0459,230b91867935b48a9b2ef5727c0e8813,Operations & Support,JCL_GRP_OCC,Occupation Code,JP_0042
+JCL_0460,08db59d3eaa2aa65527c7d5512d1d3b4,Internal Transfer,JCL_GRP_RECR,Recruitment Channel,JP_0042
+JCL_0461,32e473f8d56254fa6807367abbbd31ca,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0042
+JCL_0462,a3a5e3238d7f69747050663e701977a4,Eligible,JCL_GRP_STOCK,Stock,JP_0042
+JCL_0463,ff47c9d5e51917a9a18cd32d703d242a,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0043
+JCL_0464,a2ecd4a4044184ee216e788c1f3c89a8,Discretionary,JCL_GRP_BONUS,Bonus Eligibility,JP_0043
+JCL_0465,f1f576a4e5d580af13ccc050694c5c39,No,JCL_GRP_CUST,Customer Facing,JP_0043
+JCL_0466,07dd96968d4de34f5c4c56048cf7f25b,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0043
+JCL_0467,62fc7b2c69e0e90e01c5a0f717a68bb4,Corporate,JCL_GRP_COLL,Job Collection,JP_0043
+JCL_0468,1c9af0b409945eb85e348422d806d9bc,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0043
+JCL_0469,ab68f5abff6da44cb350b779dd2a33b1,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0043
+JCL_0470,4c50d9d7e41bfaad04c688bbdd43deac,Operations & Support,JCL_GRP_OCC,Occupation Code,JP_0043
+JCL_0471,72a79da731e80ad6b8f259bfc4c3b355,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0043
+JCL_0472,552e905030673f7462a97bbe755a9fca,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0043
+JCL_0473,199197354c56c2a63cf2808ef8ffab6a,Not Eligible,JCL_GRP_STOCK,Stock,JP_0043
+JCL_0474,8a74d06fb997b16fa08dddde13e6871b,Officials and Managers,JCL_GRP_AAP,AAP Job Group,JP_0044
+JCL_0475,b5c188369e8f6f4323966a1a6240e7d5,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0044
+JCL_0476,8ced1ff864b1eafef763a464d34093a8,No,JCL_GRP_CUST,Customer Facing,JP_0044
+JCL_0477,bf6fe3801afd5b9e419e1dde613fc8be,First/Mid Officials & Mgrs,JCL_GRP_EEO1,EEO1 Code,JP_0044
+JCL_0478,a3f700329dbfd88727167c6711e3d275,Corporate,JCL_GRP_COLL,Job Collection,JP_0044
+JCL_0479,bccd76dd48c49508b9628f017b291b30,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0044
+JCL_0480,dd462d58825df884a9dca73dcf4d95a0,NOC 0 - Management,JCL_GRP_NOC,National Occupation Code,JP_0044
+JCL_0481,330d787ece2bbc7c08bb4a06e5c430c3,Operations & Support,JCL_GRP_OCC,Occupation Code,JP_0044
+JCL_0482,987f8e47826320b8423c752cede9f82c,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0044
+JCL_0483,3cf389ae40d305f2697ec4157ad3229d,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0044
+JCL_0484,cce5994dcdaebe68c71915172ad7a45e,Eligible,JCL_GRP_STOCK,Stock,JP_0044
+JCL_0485,4c14fad4d04a92f4b1ae1171077ce285,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0045
+JCL_0486,df090a68f945d385d2c0f7d5033a642f,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0045
+JCL_0487,71d7b7d8acb2b8696fc268a9293dffef,No,JCL_GRP_CUST,Customer Facing,JP_0045
+JCL_0488,52dd537af18ed26639605c823578366c,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0045
+JCL_0489,988fe7585beb0c9188cee56ccc230db4,Corporate,JCL_GRP_COLL,Job Collection,JP_0045
+JCL_0490,2555b6a079a7133d1ddab31e9e39b576,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0045
+JCL_0491,312cd160ae773f436092fc4f83bb3f85,"NOC 4 - Education, Law & Social Services",JCL_GRP_NOC,National Occupation Code,JP_0045
+JCL_0492,99b0a40241c3066a1b7b1a5e70d1d782,Corporate Functions,JCL_GRP_OCC,Occupation Code,JP_0045
+JCL_0493,f6638c5359ade251b44abf15be2b81e3,Employee Referral,JCL_GRP_RECR,Recruitment Channel,JP_0045
+JCL_0494,f14e4d6297eb05f7e3346ac56b02df2d,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0045
+JCL_0495,286d786ad6909ca2f9adb21f3fa751cb,Eligible,JCL_GRP_STOCK,Stock,JP_0045
+JCL_0496,d74a918785b1692aa6a76903db124b95,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0046
+JCL_0497,a933e546583651fc514bc2996e9b3550,Not Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0046
+JCL_0498,70affa31f25a456cd1497d2899f9addf,No,JCL_GRP_CUST,Customer Facing,JP_0046
+JCL_0499,7e726acac5d0f3cebdc79b27cef66e3b,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0046
+JCL_0500,28bd466be36aa8ab0be96697a6a885e3,Corporate,JCL_GRP_COLL,Job Collection,JP_0046
+JCL_0501,a3567da99ae0003ed80ec833024954e5,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0046
+JCL_0502,716b86667d02993a53d68463afc851d8,"NOC 4 - Education, Law & Social Services",JCL_GRP_NOC,National Occupation Code,JP_0046
+JCL_0503,48ea10cd7549c69576e4715ff792edd3,Corporate Functions,JCL_GRP_OCC,Occupation Code,JP_0046
+JCL_0504,74f6e67e73b5fa71ca1793da62bffaee,Recruiting Fair,JCL_GRP_RECR,Recruitment Channel,JP_0046
+JCL_0505,a0ff37ae09f7bdcedb04a10f8dc810eb,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0046
+JCL_0506,4ea590afa041f2953ad1b7f1f20e371a,Not Eligible,JCL_GRP_STOCK,Stock,JP_0046
+JCL_0507,ff419e7255d30a1f9f29aa659d03ce45,Officials and Managers,JCL_GRP_AAP,AAP Job Group,JP_0047
+JCL_0508,f5964ce620a2462b5e7945d21a483a23,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0047
+JCL_0509,a8256d7e54fd2e2782f71350742601d3,No,JCL_GRP_CUST,Customer Facing,JP_0047
+JCL_0510,4e05025ce89b77340a1210c4c34718a7,First/Mid Officials & Mgrs,JCL_GRP_EEO1,EEO1 Code,JP_0047
+JCL_0511,04950481dbc037a12093aa5b0159b10c,Corporate,JCL_GRP_COLL,Job Collection,JP_0047
+JCL_0512,4e7c99d58b151b31c90a23472fcf3089,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0047
+JCL_0513,3a34833180908d13300a264170c4e972,NOC 0 - Management,JCL_GRP_NOC,National Occupation Code,JP_0047
+JCL_0514,7a953bbc861a05a98912c8e7dea64263,Corporate Functions,JCL_GRP_OCC,Occupation Code,JP_0047
+JCL_0515,d05f7ef9da854dbbcbe645681b385bc6,Direct Sourcing,JCL_GRP_RECR,Recruitment Channel,JP_0047
+JCL_0516,4408445e28de3999b0343eee774dbfd3,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0047
+JCL_0517,e60787445374a824c5edbfcbe964b471,Eligible,JCL_GRP_STOCK,Stock,JP_0047
+JCL_0518,40973bed7614a925666b102b24f45749,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0048
+JCL_0519,556c900d7339198baf1cc93c03b0f1e9,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0048
+JCL_0520,5305d4e4ec7d4f0d1b4852e37baa8938,No,JCL_GRP_CUST,Customer Facing,JP_0048
+JCL_0521,e213ed3d8b9b90cf30f0f0aa8f5e5096,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0048
+JCL_0522,6daa324b9de7ef2616d0df7d219b0746,Corporate,JCL_GRP_COLL,Job Collection,JP_0048
+JCL_0523,085d7a3e6b540a0b7ff728d50c2ad999,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0048
+JCL_0524,7cec4c4a16e7f4fa2075f44beb50bbd6,"NOC 4 - Education, Law & Social Services",JCL_GRP_NOC,National Occupation Code,JP_0048
+JCL_0525,6b0c9a288062a09261bc229a879a34fa,Corporate Functions,JCL_GRP_OCC,Occupation Code,JP_0048
+JCL_0526,bab11e866a887dcaa25792fe17970004,Internal Transfer,JCL_GRP_RECR,Recruitment Channel,JP_0048
+JCL_0527,78270679ca10725d0b1347076fbf4590,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0048
+JCL_0528,6098503096a4eeb4309b302fcc9fca97,Eligible,JCL_GRP_STOCK,Stock,JP_0048
+JCL_0529,5ccd4c1182486d00982544a1cd08938a,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0049
+JCL_0530,2d2392998c997b3816ad6be8be06816d,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0049
+JCL_0531,e9970419db4b7d427cebe3e848baf697,No,JCL_GRP_CUST,Customer Facing,JP_0049
+JCL_0532,abd43a871fa9d879691e60208bb5b93d,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0049
+JCL_0533,191caf3ab01aeac45c98dcc888220bca,Corporate,JCL_GRP_COLL,Job Collection,JP_0049
+JCL_0534,1ee513c77f5a5816cb62bdd63128f380,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0049
+JCL_0535,7cd5bd852eb771ed8b1cbe327a4ed369,"NOC 4 - Education, Law & Social Services",JCL_GRP_NOC,National Occupation Code,JP_0049
+JCL_0536,4a8c721e17ac24d4f6f91ee34639e6fe,Corporate Functions,JCL_GRP_OCC,Occupation Code,JP_0049
+JCL_0537,f45ae59e2ed08a26557b686864445c5a,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0049
+JCL_0538,b04df6aa0f7185719c15a0b48f4c53b4,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0049
+JCL_0539,8610c6f07b0095a6f7e5ebe9804148ff,Not Eligible,JCL_GRP_STOCK,Stock,JP_0049
+JCL_0540,3d55ecfdc5321ac8c94ac4fc4441f521,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0050
+JCL_0541,2e69194c72ba0c51f17202dd78501971,Not Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0050
+JCL_0542,6c348092e9632de2572b1b6f91a354e1,No,JCL_GRP_CUST,Customer Facing,JP_0050
+JCL_0543,922baac06de10715d0e3cf254bd38d9a,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0050
+JCL_0544,4abb8299ee4c60d56ba5037c0fd95103,Corporate,JCL_GRP_COLL,Job Collection,JP_0050
+JCL_0545,ffb27befc1445b82a0bac9b4b1a733a0,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0050
+JCL_0546,baea5bd054376beba1ef7fcebd2016d3,"NOC 4 - Education, Law & Social Services",JCL_GRP_NOC,National Occupation Code,JP_0050
+JCL_0547,73faa25b38a59e008238a14ba746949b,Corporate Functions,JCL_GRP_OCC,Occupation Code,JP_0050
+JCL_0548,d7bbd3aa08f5f6ddec962d33c6321bd2,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0050
+JCL_0549,ea5c598670eea0d257a02e00a15205dc,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0050
+JCL_0550,222567f3a1827c1a14d8e37dc51beefa,Not Eligible,JCL_GRP_STOCK,Stock,JP_0050
+JCL_0551,c64839bb5e269c650ae8989e7f34d7a1,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0051
+JCL_0552,aab1d5bfffa96adbf240af482c829411,Discretionary,JCL_GRP_BONUS,Bonus Eligibility,JP_0051
+JCL_0553,17757461e8b7472ed919032be9913f1a,No,JCL_GRP_CUST,Customer Facing,JP_0051
+JCL_0554,ab95d28a130179d0fd204f56626c8b1b,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0051
+JCL_0555,65114b0265ef9c00e676dd3e5101b902,Corporate,JCL_GRP_COLL,Job Collection,JP_0051
+JCL_0556,dc5f9c35bd2c2019abb09723772ffad1,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0051
+JCL_0557,43d9d71422569f45ed179d143402bca3,"NOC 4 - Education, Law & Social Services",JCL_GRP_NOC,National Occupation Code,JP_0051
+JCL_0558,9ddbfa0d808a29c4807e469b0715af10,Corporate Functions,JCL_GRP_OCC,Occupation Code,JP_0051
+JCL_0559,3cda31d80238a3c9ba10a5dba4c90696,Employee Referral,JCL_GRP_RECR,Recruitment Channel,JP_0051
+JCL_0560,0875fbb53eed4e738b99c52731b8c28a,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0051
+JCL_0561,dc1aea5a56590010c89c35f1b51256c0,Eligible,JCL_GRP_STOCK,Stock,JP_0051
+JCL_0562,fb16a53eeb92aff3fb58d69540507976,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0052
+JCL_0563,137b830d9c1c373fee536a1df6e7d3a0,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0052
+JCL_0564,f5a2c6edd026c4623fa839e155469292,No,JCL_GRP_CUST,Customer Facing,JP_0052
+JCL_0565,1ad46dc93a5e8e4010b71274b31d6cf7,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0052
+JCL_0566,fdf89e39b5a1ae35e68c98710c41a07c,Corporate,JCL_GRP_COLL,Job Collection,JP_0052
+JCL_0567,ff1c8a129b7bf87cd923b1a6851fa234,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0052
+JCL_0568,e68d7eff3b12a71ff7c9e9462d6bfc40,"NOC 4 - Education, Law & Social Services",JCL_GRP_NOC,National Occupation Code,JP_0052
+JCL_0569,5ca602e16ab5c7fd5da6d97d8cc81446,Corporate Functions,JCL_GRP_OCC,Occupation Code,JP_0052
+JCL_0570,b08182e4704e3b74558e736af157b89f,Recruiting Fair,JCL_GRP_RECR,Recruitment Channel,JP_0052
+JCL_0571,bdfe3d1ee9ee6fc7304d20efc39ca56d,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0052
+JCL_0572,28be329c95a3470a9468a7f4da70345a,Not Eligible,JCL_GRP_STOCK,Stock,JP_0052
+JCL_0573,a96cae4d63191639e476e1b3f47bfa7b,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0053
+JCL_0574,1011f37923f7ec7598974673f25819ed,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0053
+JCL_0575,d047f1f8346b029bd25cc79eee922c94,No,JCL_GRP_CUST,Customer Facing,JP_0053
+JCL_0576,0d3827ee59e9aa9dbac12abb9990cda7,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0053
+JCL_0577,326f6c94f681c38942e145695a2948bc,Risk & Compliance,JCL_GRP_COLL,Job Collection,JP_0053
+JCL_0578,f8fca158bf680c164c1921ac4ede353d,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0053
+JCL_0579,6fe55e902b2faf7544d9f27bdde975ca,"NOC 4 - Education, Law & Social Services",JCL_GRP_NOC,National Occupation Code,JP_0053
+JCL_0580,f2ea93e4ac2b6bec3bc4bca2b059276b,Risk & Compliance,JCL_GRP_OCC,Occupation Code,JP_0053
+JCL_0581,65124eed2e11c0226f6e3d29e2ef7613,Direct Sourcing,JCL_GRP_RECR,Recruitment Channel,JP_0053
+JCL_0582,c7121464d48593099968f2081e6bba90,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0053
+JCL_0583,4f92cd26bed95425ca369b7ba6f64357,Not Eligible,JCL_GRP_STOCK,Stock,JP_0053
+JCL_0584,2db0b8dcfded34a2526ef40b59ff69b5,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0054
+JCL_0585,380ab3a91db10e22e7c531e0bba65341,Not Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0054
+JCL_0586,985f817994325ca1e3aa111dd53b1117,No,JCL_GRP_CUST,Customer Facing,JP_0054
+JCL_0587,88c2a51f06c180c6424924556ff99cbb,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0054
+JCL_0588,1fb295da30700b55a8ffb7b803407f45,Risk & Compliance,JCL_GRP_COLL,Job Collection,JP_0054
+JCL_0589,817cf3203ca0dd0d018784848538dcee,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0054
+JCL_0590,eea704ebbe5ea132155429e2b0791236,"NOC 4 - Education, Law & Social Services",JCL_GRP_NOC,National Occupation Code,JP_0054
+JCL_0591,35ceef5b8b8cf9ef9cfc52eba48e11b5,Risk & Compliance,JCL_GRP_OCC,Occupation Code,JP_0054
+JCL_0592,2c6a26b54ceca61e2d547b985c8eb0d1,Internal Transfer,JCL_GRP_RECR,Recruitment Channel,JP_0054
+JCL_0593,cb51c243b66cd5a2c2bdb3e056f3ddae,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0054
+JCL_0594,1cdd4ce6a7ce38cf06faf88abae576f9,Eligible,JCL_GRP_STOCK,Stock,JP_0054
+JCL_0595,9358403e4278ac6b0a6d41e226e9cf2a,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0055
+JCL_0596,84df89cc4dbbe49fda0a2bae0911e96c,Discretionary,JCL_GRP_BONUS,Bonus Eligibility,JP_0055
+JCL_0597,d7b4791b1bb405377b759b4b615158d3,No,JCL_GRP_CUST,Customer Facing,JP_0055
+JCL_0598,e54e42955901a57f57bf272026f2d51e,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0055
+JCL_0599,35e4be21aee8fbabe00a337564369248,Risk & Compliance,JCL_GRP_COLL,Job Collection,JP_0055
+JCL_0600,0c3f4bb533fbc94edcf5c134f8a4a29d,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0055
+JCL_0601,cea8ed7886dfa66c1c66946a6f801ce4,"NOC 4 - Education, Law & Social Services",JCL_GRP_NOC,National Occupation Code,JP_0055
+JCL_0602,99942b7d68759646b7c734b197bfea36,Risk & Compliance,JCL_GRP_OCC,Occupation Code,JP_0055
+JCL_0603,a99e5c15ca818c9124235b62282d16c6,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0055
+JCL_0604,7504602e8ad7dbeefa2c22c6907603fe,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0055
+JCL_0605,5a9297b6f15db835f0067cd519e531b5,Not Eligible,JCL_GRP_STOCK,Stock,JP_0055
+JCL_0606,97166ed9ef678ac98fdf7afbc9d6c184,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0056
+JCL_0607,39f10565a66e7c545a79eee587f47ed8,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0056
+JCL_0608,c2be81654c384774d8328e07be9ac3fa,No,JCL_GRP_CUST,Customer Facing,JP_0056
+JCL_0609,f1da9fa8f542454c6e09dac858447a76,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0056
+JCL_0610,23cf3c7704357c5b54f2b20a98fa4864,Risk & Compliance,JCL_GRP_COLL,Job Collection,JP_0056
+JCL_0611,549c83cf28629129d227f590c844cba9,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0056
+JCL_0612,97928c7c56195e719c29914e5eead10d,"NOC 4 - Education, Law & Social Services",JCL_GRP_NOC,National Occupation Code,JP_0056
+JCL_0613,1c76af7f31da3458c3fe0e2bcae66469,Risk & Compliance,JCL_GRP_OCC,Occupation Code,JP_0056
+JCL_0614,e2bf17b464d5dc850224f58ba96220e3,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0056
+JCL_0615,b4d063b166cd27a7035235f9d5bd8954,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0056
+JCL_0616,c81cb51d55dc85c561916f54ffe7fa9f,Not Eligible,JCL_GRP_STOCK,Stock,JP_0056
+JCL_0617,e4fa7369d93636d0b4bd881ea8a93ee1,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0057
+JCL_0618,e93266be1e1f6d4d97527f7f0ac854f0,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0057
+JCL_0619,97cefe180866d0d99f962ef389e68af6,No,JCL_GRP_CUST,Customer Facing,JP_0057
+JCL_0620,af58ab02ee0a7b83b977fe12d839af87,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0057
+JCL_0621,f2229e24a95c28d98b2196b5ea732e86,Risk & Compliance,JCL_GRP_COLL,Job Collection,JP_0057
+JCL_0622,4867385f44c45ffe23b34bdc4ece553d,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0057
+JCL_0623,c3febd3a4627dcb5920fc55c5f35d1b8,"NOC 4 - Education, Law & Social Services",JCL_GRP_NOC,National Occupation Code,JP_0057
+JCL_0624,cdb69b7680f4edac8d6baceab6b3d431,Risk & Compliance,JCL_GRP_OCC,Occupation Code,JP_0057
+JCL_0625,cd659dc9dfbcecb7c7064342a5d31b36,Employee Referral,JCL_GRP_RECR,Recruitment Channel,JP_0057
+JCL_0626,bbefd6642ed040f652662d1df6ac017c,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0057
+JCL_0627,514215d75927df0298e631da2242f87b,Eligible,JCL_GRP_STOCK,Stock,JP_0057
+JCL_0628,008df3bd028c1ad1bf1b6aef920dd712,Officials and Managers,JCL_GRP_AAP,AAP Job Group,JP_0058
+JCL_0629,6a90fa8933c1b36d7779dab168cbe7b6,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0058
+JCL_0630,97d151831a0e748b4e939ba8a5a499e6,Yes,JCL_GRP_CUST,Customer Facing,JP_0058
+JCL_0631,abc7ae79b4fbd4da532cf0a780e99667,First/Mid Officials & Mgrs,JCL_GRP_EEO1,EEO1 Code,JP_0058
+JCL_0632,72816c54c9d11e34a4d8164d3e0f763a,Commercial,JCL_GRP_COLL,Job Collection,JP_0058
+JCL_0633,086be162aba940c5338f50f8c3ea2134,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0058
+JCL_0634,85eb35c0e1141fc5f4dc4eca8b1eb9d5,NOC 0 - Management,JCL_GRP_NOC,National Occupation Code,JP_0058
+JCL_0635,53858b155e68ce24fba39909d7ac8f89,Commercial & Sales,JCL_GRP_OCC,Occupation Code,JP_0058
+JCL_0636,e1a5f2f35877843d332fe1bf2120145a,Recruiting Fair,JCL_GRP_RECR,Recruitment Channel,JP_0058
+JCL_0637,1d0004711fb3576b0ac6bab66beca8d7,41-0000 Sales & Related,JCL_GRP_SOC,Standard Occupation Code,JP_0058
+JCL_0638,465944c0f0bb225da6d95ca140cafdef,Eligible,JCL_GRP_STOCK,Stock,JP_0058
+JCL_0639,dc61f40788edefef8af8cac89de831f2,Sales Workers,JCL_GRP_AAP,AAP Job Group,JP_0059
+JCL_0640,5123e9455482de9074050a953723309a,Discretionary,JCL_GRP_BONUS,Bonus Eligibility,JP_0059
+JCL_0641,b114c09335a69aa55e3023f40320e430,Yes,JCL_GRP_CUST,Customer Facing,JP_0059
+JCL_0642,05260e81a29fe44ab4142d00fd152491,Sales Workers,JCL_GRP_EEO1,EEO1 Code,JP_0059
+JCL_0643,0cc6f325b3516890dae32ca81d42cb2f,Commercial,JCL_GRP_COLL,Job Collection,JP_0059
+JCL_0644,661d8a47976ec755f47783a3aa148fad,Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0059
+JCL_0645,01e4cceb61d602ddbad65e5889b6d8b1,NOC 6 - Sales & Service,JCL_GRP_NOC,National Occupation Code,JP_0059
+JCL_0646,528c4d0826d4273516ca785d84a3a3a7,Commercial & Sales,JCL_GRP_OCC,Occupation Code,JP_0059
+JCL_0647,b7e560fef2460d907f352f7a04c82268,Direct Sourcing,JCL_GRP_RECR,Recruitment Channel,JP_0059
+JCL_0648,e89268c6db7289642fee0bc2f2c03095,41-0000 Sales & Related,JCL_GRP_SOC,Standard Occupation Code,JP_0059
+JCL_0649,2be48735f13a7b75b05fbcc457aa35b9,Eligible,JCL_GRP_STOCK,Stock,JP_0059
+JCL_0650,29f00c8379d34de3e863a3fde7f486e7,Sales Workers,JCL_GRP_AAP,AAP Job Group,JP_0060
+JCL_0651,70d46b92147f1df200145740aecaca1a,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0060
+JCL_0652,860e20f66b4377ff3f85f7f4e4d3c13c,Yes,JCL_GRP_CUST,Customer Facing,JP_0060
+JCL_0653,84062ee8c7d9e958fc126277719affc0,Sales Workers,JCL_GRP_EEO1,EEO1 Code,JP_0060
+JCL_0654,1ead6d0d2c336d0128f3d7ea201b69d6,Commercial,JCL_GRP_COLL,Job Collection,JP_0060
+JCL_0655,51a11f24eba56e45cd3662263cdc4b88,Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0060
+JCL_0656,d7275bc63e22e568fe3a60f9bc3a007c,NOC 6 - Sales & Service,JCL_GRP_NOC,National Occupation Code,JP_0060
+JCL_0657,008bddda200bb0f6dfbf13295c81beef,Commercial & Sales,JCL_GRP_OCC,Occupation Code,JP_0060
+JCL_0658,2a44befb25ee61aa1af44cdf0a1e17c7,Internal Transfer,JCL_GRP_RECR,Recruitment Channel,JP_0060
+JCL_0659,a6e218381f98df98005818a6a98dce5b,41-0000 Sales & Related,JCL_GRP_SOC,Standard Occupation Code,JP_0060
+JCL_0660,5e3f569189c5bda926c04ce9578360f3,Eligible,JCL_GRP_STOCK,Stock,JP_0060
+JCL_0661,2b5b180e212c0b9bd1603ae404b124ff,Sales Workers,JCL_GRP_AAP,AAP Job Group,JP_0061
+JCL_0662,588d65a72e1c4641ef5d80c5a2b145ab,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0061
+JCL_0663,bccd0b52852c243fea8367903701a300,Yes,JCL_GRP_CUST,Customer Facing,JP_0061
+JCL_0664,3daad32de41fc290c5b1838bb9c22db1,Sales Workers,JCL_GRP_EEO1,EEO1 Code,JP_0061
+JCL_0665,b99262636862eb2b9af9bbb5d520d8a2,Commercial,JCL_GRP_COLL,Job Collection,JP_0061
+JCL_0666,3fddaf7f22cc2e06b22dfe27bea2f011,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0061
+JCL_0667,19a2491afab338d96698c06537847301,NOC 6 - Sales & Service,JCL_GRP_NOC,National Occupation Code,JP_0061
+JCL_0668,cfe10c3ccf93789540479b3c03a244db,Commercial & Sales,JCL_GRP_OCC,Occupation Code,JP_0061
+JCL_0669,5bbb27a5bc8a538cb7a8d423e93cd36f,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0061
+JCL_0670,89c07a2bccc56d77c4719a964086fba2,41-0000 Sales & Related,JCL_GRP_SOC,Standard Occupation Code,JP_0061
+JCL_0671,e90616d583d2e870f8e9fd2606f2c207,Eligible,JCL_GRP_STOCK,Stock,JP_0061
+JCL_0672,6657310c8d0c9a99f60db2d60c61df76,Officials and Managers,JCL_GRP_AAP,AAP Job Group,JP_0062
+JCL_0673,82c9c610606e76c7b9b4b5cead585e84,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0062
+JCL_0674,978588f30922a7135efd0f6fe3dae81c,Yes,JCL_GRP_CUST,Customer Facing,JP_0062
+JCL_0675,067cda2dc69c4e4cb1b15edc0d0b41c9,First/Mid Officials & Mgrs,JCL_GRP_EEO1,EEO1 Code,JP_0062
+JCL_0676,acc89d3a8c0951f4ed28f0a621738f9a,Commercial,JCL_GRP_COLL,Job Collection,JP_0062
+JCL_0677,96dfe29277cd312bf6b41cd407504302,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0062
+JCL_0678,217b7af0535a8d7c9f18d03ab1cd96fe,NOC 0 - Management,JCL_GRP_NOC,National Occupation Code,JP_0062
+JCL_0679,67422a44e4660af0d63d7c63daaa7986,Commercial & Sales,JCL_GRP_OCC,Occupation Code,JP_0062
+JCL_0680,c1e9b8c16b4504f9e89dabe0ce85621f,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0062
+JCL_0681,8d6c5d6a2952f3683eea0a7731687a80,41-0000 Sales & Related,JCL_GRP_SOC,Standard Occupation Code,JP_0062
+JCL_0682,12e4130974e8aeab71b9e2f51390736f,Eligible,JCL_GRP_STOCK,Stock,JP_0062
+JCL_0683,7de0c005631e24529e7394f423191ba6,Officials and Managers,JCL_GRP_AAP,AAP Job Group,JP_0063
+JCL_0684,87bcd205c73e2547313fdf7184c5bb66,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0063
+JCL_0685,11aceda9cc98af39918ee0b7cc350637,Yes,JCL_GRP_CUST,Customer Facing,JP_0063
+JCL_0686,7ef2ea5c9f928c684239fb63a97eab9d,First/Mid Officials & Mgrs,JCL_GRP_EEO1,EEO1 Code,JP_0063
+JCL_0687,9008753f597a829b03d717ad83798c35,Commercial,JCL_GRP_COLL,Job Collection,JP_0063
+JCL_0688,c5417ef0f96253c0b8762ba6327dcf98,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0063
+JCL_0689,6aa9795ad706f19c5d4f0001a6c340c6,NOC 0 - Management,JCL_GRP_NOC,National Occupation Code,JP_0063
+JCL_0690,e168fdcb2dbda9ee5b74d602736e769d,Commercial & Sales,JCL_GRP_OCC,Occupation Code,JP_0063
+JCL_0691,95618d52f2a99c4764209d7d4d027f84,Employee Referral,JCL_GRP_RECR,Recruitment Channel,JP_0063
+JCL_0692,d1a2ce0e61c858cb80c8b5c56c8cd0c0,41-0000 Sales & Related,JCL_GRP_SOC,Standard Occupation Code,JP_0063
+JCL_0693,fef1c6e77f90e2243c52f168d81cda03,Eligible,JCL_GRP_STOCK,Stock,JP_0063
+JCL_0694,66060e77677c4bf6022132ff2e459724,Sales Workers,JCL_GRP_AAP,AAP Job Group,JP_0064
+JCL_0695,ff355fb9c18e1b3d2e62e41f6951ac32,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0064
+JCL_0696,7a1a429a39323dee6f88f2461d22f7ad,Yes,JCL_GRP_CUST,Customer Facing,JP_0064
+JCL_0697,0fb5a25b5178fc73e0e084ae96961bad,Sales Workers,JCL_GRP_EEO1,EEO1 Code,JP_0064
+JCL_0698,4a53370400a10f82a44569727971ec5d,Commercial,JCL_GRP_COLL,Job Collection,JP_0064
+JCL_0699,5f3d38bea3ec8ceaf4eaea7ace67c10e,Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0064
+JCL_0700,4f8466042843c589d5787902d7a6a473,NOC 6 - Sales & Service,JCL_GRP_NOC,National Occupation Code,JP_0064
+JCL_0701,f1332107c7457ede529c961a00fb4eaa,Commercial & Sales,JCL_GRP_OCC,Occupation Code,JP_0064
+JCL_0702,af1fc8f0b311904dba89e9ed4e37410f,Recruiting Fair,JCL_GRP_RECR,Recruitment Channel,JP_0064
+JCL_0703,1c602db6e2968a8a3a8e6fc5c32ed0f8,41-0000 Sales & Related,JCL_GRP_SOC,Standard Occupation Code,JP_0064
+JCL_0704,7222e568cd128dbcd6dd110f2d4e0ca1,Eligible,JCL_GRP_STOCK,Stock,JP_0064
+JCL_0705,b38d65a42be6df48f261e0614f4a06c8,Sales Workers,JCL_GRP_AAP,AAP Job Group,JP_0065
+JCL_0706,ad24d1155f30c814d7578a47b8058a62,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0065
+JCL_0707,ebee0a3bbdc597bf272eb7bdfad2f18e,Yes,JCL_GRP_CUST,Customer Facing,JP_0065
+JCL_0708,320408430320aa85b6c9c48844189f7f,Sales Workers,JCL_GRP_EEO1,EEO1 Code,JP_0065
+JCL_0709,f103a51ba0d0a3efb847ce3803e1e3b3,Commercial,JCL_GRP_COLL,Job Collection,JP_0065
+JCL_0710,147c0a7e3582668e7edd44502c9c35f6,Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0065
+JCL_0711,8a1a9ab082db5e25f9127dc77782bb78,NOC 6 - Sales & Service,JCL_GRP_NOC,National Occupation Code,JP_0065
+JCL_0712,ddcfe96fe248b3bf71f1751605ed55c9,Commercial & Sales,JCL_GRP_OCC,Occupation Code,JP_0065
+JCL_0713,0f94178b0c8225a994ad2b382fce473e,Direct Sourcing,JCL_GRP_RECR,Recruitment Channel,JP_0065
+JCL_0714,e8c6eadf8e80c44b3a422d4b651c4f65,41-0000 Sales & Related,JCL_GRP_SOC,Standard Occupation Code,JP_0065
+JCL_0715,aca794284a1f3d8149cb5ef980f5cc8a,Eligible,JCL_GRP_STOCK,Stock,JP_0065
+JCL_0716,2d1e0afb87e2addbd73314f5d7e6a204,Sales Workers,JCL_GRP_AAP,AAP Job Group,JP_0066
+JCL_0717,0af0c3f8c9f67a834b2b52dff8a0c8e9,Not Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0066
+JCL_0718,42cc6c89332390673b191dc7d8730391,Yes,JCL_GRP_CUST,Customer Facing,JP_0066
+JCL_0719,c5c58ce167e9a1e4f6c7b5132156b2c3,Sales Workers,JCL_GRP_EEO1,EEO1 Code,JP_0066
+JCL_0720,b57784fa3449cf1a3b8d1b110f629419,Commercial,JCL_GRP_COLL,Job Collection,JP_0066
+JCL_0721,1e9fe91047532536cce6328c20632519,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0066
+JCL_0722,34d2e521d5b5691c8f075bad26f9be6b,NOC 6 - Sales & Service,JCL_GRP_NOC,National Occupation Code,JP_0066
+JCL_0723,a1e91a3959a9d0ba91cdcad52b0b6235,Commercial & Sales,JCL_GRP_OCC,Occupation Code,JP_0066
+JCL_0724,eb1b0da69d4e7ea8f50db318f9322825,Internal Transfer,JCL_GRP_RECR,Recruitment Channel,JP_0066
+JCL_0725,a61d7a979e72b0508f1053e574bd2120,41-0000 Sales & Related,JCL_GRP_SOC,Standard Occupation Code,JP_0066
+JCL_0726,062697571da392027d15a7c2adc1d8cc,Eligible,JCL_GRP_STOCK,Stock,JP_0066
+JCL_0727,614a2437a43625efa1cc615eb9e9e2b0,Sales Workers,JCL_GRP_AAP,AAP Job Group,JP_0067
+JCL_0728,4a7487705208342987ae265f8fb200e3,Discretionary,JCL_GRP_BONUS,Bonus Eligibility,JP_0067
+JCL_0729,d406a6e9c2a025dae0038539417c0485,Yes,JCL_GRP_CUST,Customer Facing,JP_0067
+JCL_0730,a6d80a8c03abc220a3ff907ac8d8f988,Sales Workers,JCL_GRP_EEO1,EEO1 Code,JP_0067
+JCL_0731,3fec6fc742e75cb59bff8467ce298a34,Commercial,JCL_GRP_COLL,Job Collection,JP_0067
+JCL_0732,a13be7df55a9034d16851d8ca466365e,Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0067
+JCL_0733,0524d5d2fb63283553a89e0048c68d66,NOC 6 - Sales & Service,JCL_GRP_NOC,National Occupation Code,JP_0067
+JCL_0734,97e5b4ba3d35570a18559a6d33a2fc42,Commercial & Sales,JCL_GRP_OCC,Occupation Code,JP_0067
+JCL_0735,ee442d4ff344cdda1a028df9a152d085,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0067
+JCL_0736,a06018b31b660594b3ea9c83c21ee93b,41-0000 Sales & Related,JCL_GRP_SOC,Standard Occupation Code,JP_0067
+JCL_0737,89fa38f28264698c264819f6493c28db,Eligible,JCL_GRP_STOCK,Stock,JP_0067
+JCL_0738,01cf5fc95e3cebe2f46428d55fe4f28e,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0068
+JCL_0739,5e07ac19d0f97a73e49a72950dfb7318,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0068
+JCL_0740,ab4a616eebe4253ba8ad12a65d1c37fe,No,JCL_GRP_CUST,Customer Facing,JP_0068
+JCL_0741,c58316a68b9bdf21312c435d33ce66bf,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0068
+JCL_0742,9962ea379cb0f620dbb78df433c10561,Commercial,JCL_GRP_COLL,Job Collection,JP_0068
+JCL_0743,f729c306c78adbacea3b32b27dbabf7d,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0068
+JCL_0744,f017773856877485b1b92a87d909f6ea,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0068
+JCL_0745,4ba9c82136f2b8905e41fcd2ed9e660c,Commercial & Sales,JCL_GRP_OCC,Occupation Code,JP_0068
+JCL_0746,97dbf5be4a4eb7d9832763bfc1b6af1c,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0068
+JCL_0747,5934f7660a7134f51400d597e4656de4,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0068
+JCL_0748,70ff67d727265023f135812a73ee173d,Not Eligible,JCL_GRP_STOCK,Stock,JP_0068
+JCL_0749,3f5a99a249bdbd9d4c4c2b9bcb15fe1c,Officials and Managers,JCL_GRP_AAP,AAP Job Group,JP_0069
+JCL_0750,6b3d770e7b1203d1a8e95efa81310116,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0069
+JCL_0751,81186c2854b0ed2e3ad6338019687874,No,JCL_GRP_CUST,Customer Facing,JP_0069
+JCL_0752,7cb879dcd063f0a670739cc54a7f9825,First/Mid Officials & Mgrs,JCL_GRP_EEO1,EEO1 Code,JP_0069
+JCL_0753,e78b68fa38cab0c29cef2bb57b738f6d,Commercial,JCL_GRP_COLL,Job Collection,JP_0069
+JCL_0754,60b6967883a0d40b24317c098b69edd9,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0069
+JCL_0755,7d6981caf4a19e6a55f0a40271677025,NOC 0 - Management,JCL_GRP_NOC,National Occupation Code,JP_0069
+JCL_0756,b3275957378d892ec80dd3d1aa402c50,Commercial & Sales,JCL_GRP_OCC,Occupation Code,JP_0069
+JCL_0757,54f2270d15e21a798d92064e38eed260,Employee Referral,JCL_GRP_RECR,Recruitment Channel,JP_0069
+JCL_0758,e3c1914568e60aacbd76de78c1865e02,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0069
+JCL_0759,df4a2a23f1fe09c2832211a651270b46,Eligible,JCL_GRP_STOCK,Stock,JP_0069
+JCL_0760,53192c47660bc8743cf48c0a736cab4d,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0070
+JCL_0761,5920423853a45bf15d7bc2045139428d,Not Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0070
+JCL_0762,046f95795f37e4aee8cefb3b4dc6b159,No,JCL_GRP_CUST,Customer Facing,JP_0070
+JCL_0763,ef54a2e485600eea405a4f48242702f4,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0070
+JCL_0764,fa79575b259b7bd47e4b4a47d2bdcaab,Commercial,JCL_GRP_COLL,Job Collection,JP_0070
+JCL_0765,701f9c0874cbd9190ac56ad4996c5777,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0070
+JCL_0766,7343ef0eee387c45ccfd333119e490c1,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0070
+JCL_0767,d03af07c414eefb919f2c4712cc3912e,Commercial & Sales,JCL_GRP_OCC,Occupation Code,JP_0070
+JCL_0768,903058bb4d34ff80e5a30a594383e42a,Recruiting Fair,JCL_GRP_RECR,Recruitment Channel,JP_0070
+JCL_0769,00cac5d10577711c72ffc119d2261562,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0070
+JCL_0770,586c1fed90f55017cf3fb626ae7a908d,Not Eligible,JCL_GRP_STOCK,Stock,JP_0070
+JCL_0771,dc85165d564d4222c2cfa0bb5201c92c,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0071
+JCL_0772,811908f5ab6391bc37f85ec8fa5ce421,Discretionary,JCL_GRP_BONUS,Bonus Eligibility,JP_0071
+JCL_0773,4bb993bd50fe5f5594fca1703d395943,No,JCL_GRP_CUST,Customer Facing,JP_0071
+JCL_0774,244c60448a8efc68eb14f903eecb2278,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0071
+JCL_0775,bffa461d68f34ef1db092cead08937fc,Commercial,JCL_GRP_COLL,Job Collection,JP_0071
+JCL_0776,c17659c80e797d32533bbe68a8b705ca,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0071
+JCL_0777,85bc48759d455d7122d214d86c29bdc4,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0071
+JCL_0778,45ec976d0cda42468f3ef9f19cd1d358,Commercial & Sales,JCL_GRP_OCC,Occupation Code,JP_0071
+JCL_0779,bd5ea3e131bde45e0a1d39f2d367b629,Direct Sourcing,JCL_GRP_RECR,Recruitment Channel,JP_0071
+JCL_0780,2b2f04927773bd263c4a25ff9eb4cd6b,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0071
+JCL_0781,7d72730c2b355ee7502d9ddf2387aefc,Not Eligible,JCL_GRP_STOCK,Stock,JP_0071
+JCL_0782,23a5466c1a8546aaa385f404f3a43e4b,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0072
+JCL_0783,48508d1b154183fd74f0f53b9035ae4a,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0072
+JCL_0784,dee212556af1634e62290bf1d5cc7fc2,No,JCL_GRP_CUST,Customer Facing,JP_0072
+JCL_0785,16ca7d1ae47d6bc6dfb00564f08aff5e,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0072
+JCL_0786,6833b2071a118676934e8c862a9da884,Commercial,JCL_GRP_COLL,Job Collection,JP_0072
+JCL_0787,c875edd6ec2569e3d72e3943b36f479a,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0072
+JCL_0788,908cc1252a018df7806f81fb51057041,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0072
+JCL_0789,b889aa69596dedf5c6269ecc0775c435,Commercial & Sales,JCL_GRP_OCC,Occupation Code,JP_0072
+JCL_0790,3e21e601aa21b7b24645f686776ea75b,Internal Transfer,JCL_GRP_RECR,Recruitment Channel,JP_0072
+JCL_0791,cec1a2e6157ca8354ee75eb9875a39d3,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0072
+JCL_0792,cbf479e957436d87658a6c4569fb315e,Eligible,JCL_GRP_STOCK,Stock,JP_0072
+JCL_0793,c6fca22c38decf400a112ea212978866,Officials and Managers,JCL_GRP_AAP,AAP Job Group,JP_0073
+JCL_0794,dd1b26685636951bd38e12dcace3d641,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0073
+JCL_0795,3d65050ba7f4ade75a71096ff2f673a9,No,JCL_GRP_CUST,Customer Facing,JP_0073
+JCL_0796,3cee2079ac127e0cbd9b6e0afa89e475,Exec/Sr Officials & Mgrs,JCL_GRP_EEO1,EEO1 Code,JP_0073
+JCL_0797,a07ef00f4261c792d3be85053e87ede8,Corporate,JCL_GRP_COLL,Job Collection,JP_0073
+JCL_0798,3e77fe013b2ce1766537ddd86bba109c,Exempt,JCL_GRP_LOAN,Loan Originator Code,JP_0073
+JCL_0799,17ce44d48d518409b9cbcfe411298cf1,NOC 0 - Management,JCL_GRP_NOC,National Occupation Code,JP_0073
+JCL_0800,123e21b77dc8e246d4462433cbdc53fd,Corporate Functions,JCL_GRP_OCC,Occupation Code,JP_0073
+JCL_0801,c721cd2a214053ec331c54d0aa627e47,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0073
+JCL_0802,8d5da99add9ff6abed933eb66d256580,11-0000 Management,JCL_GRP_SOC,Standard Occupation Code,JP_0073
+JCL_0803,82d2e0e68e3be04bbd58f81d01757a0f,Restricted,JCL_GRP_STOCK,Stock,JP_0073
+JCL_0804,fa76c4d242b406eb2dad2fc6a8324f02,Officials and Managers,JCL_GRP_AAP,AAP Job Group,JP_0074
+JCL_0805,f84be260c22c8b35130d735b35da0369,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0074
+JCL_0806,fe6d2a7e70c12db9366908ea619a5d05,No,JCL_GRP_CUST,Customer Facing,JP_0074
+JCL_0807,912985928b397866075d056856cb0453,Exec/Sr Officials & Mgrs,JCL_GRP_EEO1,EEO1 Code,JP_0074
+JCL_0808,0002c69e9dc4dfdba6e969e5d946ff14,Corporate,JCL_GRP_COLL,Job Collection,JP_0074
+JCL_0809,eddf83f9ae835016edb3b42631e83434,Exempt,JCL_GRP_LOAN,Loan Originator Code,JP_0074
+JCL_0810,2aff76a9e3354c3e483b049004c322ae,NOC 0 - Management,JCL_GRP_NOC,National Occupation Code,JP_0074
+JCL_0811,6bf3c7faf2ccae6fa08b52f7e36cbaf6,Corporate Functions,JCL_GRP_OCC,Occupation Code,JP_0074
+JCL_0812,eca57b90f7615d58f6766eb6bdf4237d,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0074
+JCL_0813,613047811feddb9ada24fc862cf750b4,11-0000 Management,JCL_GRP_SOC,Standard Occupation Code,JP_0074
+JCL_0814,50a06efb5073b68a01343d8f2f85cd71,Restricted,JCL_GRP_STOCK,Stock,JP_0074
+JCL_0815,15c8e79ee3de2273426db914f96a43bc,Officials and Managers,JCL_GRP_AAP,AAP Job Group,JP_0075
+JCL_0816,41241a1cb6e7b507e1f59a6a9a7ac41e,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0075
+JCL_0817,15c20811f50f4199b466236fc5f7b09c,No,JCL_GRP_CUST,Customer Facing,JP_0075
+JCL_0818,d24d599baa8e2a7d878767c81c8a4264,Exec/Sr Officials & Mgrs,JCL_GRP_EEO1,EEO1 Code,JP_0075
+JCL_0819,9e2d15345bb5fc9bbf2cc61e1a92b046,Corporate,JCL_GRP_COLL,Job Collection,JP_0075
+JCL_0820,29ac0afb44b0865d60b344d1ad487694,Exempt,JCL_GRP_LOAN,Loan Originator Code,JP_0075
+JCL_0821,530c5d99534ed4f4d873bb2f96f50273,NOC 0 - Management,JCL_GRP_NOC,National Occupation Code,JP_0075
+JCL_0822,821de3b5ffb00ba24ec89f2679fd34c9,Corporate Functions,JCL_GRP_OCC,Occupation Code,JP_0075
+JCL_0823,7da36bf5c619033fbd4d6ed348adbedd,Employee Referral,JCL_GRP_RECR,Recruitment Channel,JP_0075
+JCL_0824,895e2771c38a962b817d2e3015ef8571,11-0000 Management,JCL_GRP_SOC,Standard Occupation Code,JP_0075
+JCL_0825,5a3bcf5e39d4dd099efd8662acef05f4,Restricted,JCL_GRP_STOCK,Stock,JP_0075
+JCL_0826,e0bfcc7e3a40594c731bac18b824f3b4,Officials and Managers,JCL_GRP_AAP,AAP Job Group,JP_0076
+JCL_0827,e633106c69bae75aa9fc55e4a08f1a2c,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0076
+JCL_0828,369edd839736a8756f0ae15dc3d5402f,No,JCL_GRP_CUST,Customer Facing,JP_0076
+JCL_0829,ce48baccdd0b885fc78a4818a22bbe0b,Exec/Sr Officials & Mgrs,JCL_GRP_EEO1,EEO1 Code,JP_0076
+JCL_0830,b746d5142ee35b5ce8aefe51fdbc48ce,Corporate,JCL_GRP_COLL,Job Collection,JP_0076
+JCL_0831,0af7768f1c859b4f7f80751943164db9,Exempt,JCL_GRP_LOAN,Loan Originator Code,JP_0076
+JCL_0832,2ff38b7f72cbf5081b69af192cd1cfad,NOC 0 - Management,JCL_GRP_NOC,National Occupation Code,JP_0076
+JCL_0833,859351d6e87eae361dc2467b4f858d9e,Corporate Functions,JCL_GRP_OCC,Occupation Code,JP_0076
+JCL_0834,f0167c27d7ff2bdd2a348353b2bfe2ae,Recruiting Fair,JCL_GRP_RECR,Recruitment Channel,JP_0076
+JCL_0835,65a7a44905e29f18bc3d9b78e1a806a0,11-0000 Management,JCL_GRP_SOC,Standard Occupation Code,JP_0076
+JCL_0836,f2f13849423a486d1ade784c4ba75cf4,Restricted,JCL_GRP_STOCK,Stock,JP_0076
+JCL_0837,fa1b17a2573ca8930f6d74ab67d12915,Officials and Managers,JCL_GRP_AAP,AAP Job Group,JP_0077
+JCL_0838,a8f5963eb7509d886f5a4540c1e8a138,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0077
+JCL_0839,f0b179b74b102bb5ae90be0acc8cf99a,No,JCL_GRP_CUST,Customer Facing,JP_0077
+JCL_0840,45f9e2de61ba3866eb38c9b8598eb7b9,Exec/Sr Officials & Mgrs,JCL_GRP_EEO1,EEO1 Code,JP_0077
+JCL_0841,99a7d15fffa3ea2d37bd930fb462accf,Corporate,JCL_GRP_COLL,Job Collection,JP_0077
+JCL_0842,5eaab380bf8d18ea5f4048b18ff74687,Exempt,JCL_GRP_LOAN,Loan Originator Code,JP_0077
+JCL_0843,fdc2f8a63afd455a66d9e66eefc8ca97,NOC 0 - Management,JCL_GRP_NOC,National Occupation Code,JP_0077
+JCL_0844,968626c392348e5940b70d6c9ad9d4e0,Corporate Functions,JCL_GRP_OCC,Occupation Code,JP_0077
+JCL_0845,18a7faf967fe58489d38c1dfa3f319a2,Direct Sourcing,JCL_GRP_RECR,Recruitment Channel,JP_0077
+JCL_0846,821bdd35b5096b73da40e9156ea9e1e9,11-0000 Management,JCL_GRP_SOC,Standard Occupation Code,JP_0077
+JCL_0847,d1a6efd848ad25ae21d894dc6be709da,Restricted,JCL_GRP_STOCK,Stock,JP_0077
+JCL_0848,bc105b7435babfdade950b05351d9666,Officials and Managers,JCL_GRP_AAP,AAP Job Group,JP_0078
+JCL_0849,fdfe230d590de31069dd3daee3cc8f54,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0078
+JCL_0850,3da2f98d158bd1acdd33b18d9721ae7f,No,JCL_GRP_CUST,Customer Facing,JP_0078
+JCL_0851,da5631a38e0aa34ccc11db3f6c496951,Exec/Sr Officials & Mgrs,JCL_GRP_EEO1,EEO1 Code,JP_0078
+JCL_0852,d36186a00c99402bf638f408a9d70bd8,Corporate,JCL_GRP_COLL,Job Collection,JP_0078
+JCL_0853,e8dc56c5a740add6551ebdbf3750e2f8,Exempt,JCL_GRP_LOAN,Loan Originator Code,JP_0078
+JCL_0854,de2dac894e9e55e5ab8249a5670945d7,NOC 0 - Management,JCL_GRP_NOC,National Occupation Code,JP_0078
+JCL_0855,27d02513f2c13c67361b362d25146541,Corporate Functions,JCL_GRP_OCC,Occupation Code,JP_0078
+JCL_0856,7a455d709c065e08d47ec8d6c34bd1d0,Internal Transfer,JCL_GRP_RECR,Recruitment Channel,JP_0078
+JCL_0857,c74045b9ba06ada7f219d8019136066e,11-0000 Management,JCL_GRP_SOC,Standard Occupation Code,JP_0078
+JCL_0858,25434a0346af63c312470f94c7f729a8,Restricted,JCL_GRP_STOCK,Stock,JP_0078
+JCL_0859,0eb4aad73907afdf713916424a79777a,Officials and Managers,JCL_GRP_AAP,AAP Job Group,JP_0079
+JCL_0860,a3293f5e65cd79346593659a42432c1d,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0079
+JCL_0861,60a3276a7066954cefe88b22f58d5bf2,No,JCL_GRP_CUST,Customer Facing,JP_0079
+JCL_0862,c31fad54768aa5750683e77fa7c53e1a,Exec/Sr Officials & Mgrs,JCL_GRP_EEO1,EEO1 Code,JP_0079
+JCL_0863,70ac212ad09feee1b19c6013976368c1,Corporate,JCL_GRP_COLL,Job Collection,JP_0079
+JCL_0864,e0619152c38953ea7d7e4243668b432d,Exempt,JCL_GRP_LOAN,Loan Originator Code,JP_0079
+JCL_0865,bf6c8504a396873b57d2fc8352308d79,NOC 0 - Management,JCL_GRP_NOC,National Occupation Code,JP_0079
+JCL_0866,34aebc8ed44521a8cfc469dacbc0974d,Corporate Functions,JCL_GRP_OCC,Occupation Code,JP_0079
+JCL_0867,528715a36ea4d9a43163462681310c19,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0079
+JCL_0868,13b60828a66cf27da123aa4b6323db2a,11-0000 Management,JCL_GRP_SOC,Standard Occupation Code,JP_0079
+JCL_0869,6d4c7a8a40e228d764de08bdc196e7b0,Restricted,JCL_GRP_STOCK,Stock,JP_0079
+JCL_0870,a2a0f39838013898a295a3b8ecc00a6a,Officials and Managers,JCL_GRP_AAP,AAP Job Group,JP_0080
+JCL_0871,1bfb9946c7da0f02321493aacb0475c9,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0080
+JCL_0872,6a154500c3d930fd5dc7fb33677c7c6a,No,JCL_GRP_CUST,Customer Facing,JP_0080
+JCL_0873,ca24f9150a492b935711c8c193587103,Exec/Sr Officials & Mgrs,JCL_GRP_EEO1,EEO1 Code,JP_0080
+JCL_0874,2367670dfa2696bef55ced0b621fc459,Corporate,JCL_GRP_COLL,Job Collection,JP_0080
+JCL_0875,a86cb3b33fe850fec7ff5829fc5fcaa8,Exempt,JCL_GRP_LOAN,Loan Originator Code,JP_0080
+JCL_0876,f78bdad2f040ce667eaf2aaeac51af5b,NOC 0 - Management,JCL_GRP_NOC,National Occupation Code,JP_0080
+JCL_0877,5d6562bc1a48c3ed2050264c87b10594,Corporate Functions,JCL_GRP_OCC,Occupation Code,JP_0080
+JCL_0878,f655c5ec4aeb19a52354c4a043ff4413,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0080
+JCL_0879,5b145cf1cc9404d3f29f4ec042981125,11-0000 Management,JCL_GRP_SOC,Standard Occupation Code,JP_0080
+JCL_0880,ed6dba5a4d7f7b059c1f9a075dcf6d2e,Restricted,JCL_GRP_STOCK,Stock,JP_0080
+JCL_0881,e48795ad50772881b10f2232e079a230,Administrative Support,JCL_GRP_AAP,AAP Job Group,JP_0081
+JCL_0882,f523168a1f36a351760b12f32b05217d,Not Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0081
+JCL_0883,7293a1e2466444db00aa0135cafff93e,No,JCL_GRP_CUST,Customer Facing,JP_0081
+JCL_0884,65c04b00db53ed98b1b9ba07701c2627,Administrative Support,JCL_GRP_EEO1,EEO1 Code,JP_0081
+JCL_0885,53ce81458f17bbc597deca6afc49b219,Corporate,JCL_GRP_COLL,Job Collection,JP_0081
+JCL_0886,274edce2a79ea39f886660d14b9b73b6,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0081
+JCL_0887,f8e16dd4e027c0350e38e51697195398,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0081
+JCL_0888,125f6535760fbb8dda12216434915f3c,Corporate Functions,JCL_GRP_OCC,Occupation Code,JP_0081
+JCL_0889,a5b8f6397650875ab7bf48104041ce08,Employee Referral,JCL_GRP_RECR,Recruitment Channel,JP_0081
+JCL_0890,d3f221ffe2c7a247bb2b030488a081a5,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0081
+JCL_0891,3034011bc88eb3d66e13bdbcf3567b6e,Eligible,JCL_GRP_STOCK,Stock,JP_0081
+JCL_0892,5cc92727d426e70db9988deb70aacad3,Administrative Support,JCL_GRP_AAP,AAP Job Group,JP_0082
+JCL_0893,29e4a6c1abc9aff1db13593c2d9d99b9,Not Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0082
+JCL_0894,ee5d3b1dcd877543aba0a3b57136e753,No,JCL_GRP_CUST,Customer Facing,JP_0082
+JCL_0895,f17fd11e163ab50579b5080091a4087c,Administrative Support,JCL_GRP_EEO1,EEO1 Code,JP_0082
+JCL_0896,11f1f4811686f1b6be6a2686344b64c6,Corporate,JCL_GRP_COLL,Job Collection,JP_0082
+JCL_0897,5b631037a49498f18b56fa107df9f5f1,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0082
+JCL_0898,12dd9971bf6e1c17c1b7a7057fa0e026,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0082
+JCL_0899,efff47835a4a2e309f2e2caab52892ed,Corporate Functions,JCL_GRP_OCC,Occupation Code,JP_0082
+JCL_0900,aa374d7f21f59c969aa0839a82512acb,Recruiting Fair,JCL_GRP_RECR,Recruitment Channel,JP_0082
+JCL_0901,6760ad9524a518add658bf2be18d9bf4,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0082
+JCL_0902,b428bf2e926f76b5a1b7e2af3345b6d4,Not Eligible,JCL_GRP_STOCK,Stock,JP_0082
+JCL_0903,f87d25a4e0f1dbe5c45bfd6cd40687b5,Administrative Support,JCL_GRP_AAP,AAP Job Group,JP_0083
+JCL_0904,f5bade930fc6af001ed29aee63f435f1,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0083
+JCL_0905,150243c768dc6b110899048457225552,No,JCL_GRP_CUST,Customer Facing,JP_0083
+JCL_0906,452a02383102bff6e2da53c84a4ac625,Administrative Support,JCL_GRP_EEO1,EEO1 Code,JP_0083
+JCL_0907,328126c15a696231f1a2ca6d65468042,Corporate,JCL_GRP_COLL,Job Collection,JP_0083
+JCL_0908,574cde910707fb01580b0bd2d90ab392,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0083
+JCL_0909,89622aa0af5beb8041514968ddf63a43,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0083
+JCL_0910,74256aefd22afacaa71396ebc13d924c,Corporate Functions,JCL_GRP_OCC,Occupation Code,JP_0083
+JCL_0911,2037b1a8c10d5fdc6bef36ef1229ee74,Direct Sourcing,JCL_GRP_RECR,Recruitment Channel,JP_0083
+JCL_0912,555f9fa1f5093207860bd334b6286db6,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0083
+JCL_0913,1fae90a2355082506c8bb3bfa08f0258,Not Eligible,JCL_GRP_STOCK,Stock,JP_0083
+JCL_0914,ec8be1919d49063d54e255e18e6ec323,Administrative Support,JCL_GRP_AAP,AAP Job Group,JP_0084
+JCL_0915,ebe3c0b7e784e77f109ad3319e8aad83,Not Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0084
+JCL_0916,2589343d78409d8acdf35a6191678c6a,No,JCL_GRP_CUST,Customer Facing,JP_0084
+JCL_0917,3fd75ce86783bb5c30111b6649a7270c,Administrative Support,JCL_GRP_EEO1,EEO1 Code,JP_0084
+JCL_0918,56870218d9f613c282366298354d8888,Corporate,JCL_GRP_COLL,Job Collection,JP_0084
+JCL_0919,677792bf448f793caaa4c2a417f45162,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0084
+JCL_0920,936858c204a3e53a3bad76ee5f22f02d,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0084
+JCL_0921,14631b3454716e41d0962307fb431dc7,Corporate Functions,JCL_GRP_OCC,Occupation Code,JP_0084
+JCL_0922,093a1f765d21358757ef22591c7abad8,Internal Transfer,JCL_GRP_RECR,Recruitment Channel,JP_0084
+JCL_0923,3a79c537705ff0613e5905c9939f9def,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0084
+JCL_0924,c91fe0a472a85b7e00539a7a914f2ca3,Eligible,JCL_GRP_STOCK,Stock,JP_0084
+JCL_0925,1a6216d57c1ad0801a0bf1f75dfd4b66,Administrative Support,JCL_GRP_AAP,AAP Job Group,JP_0085
+JCL_0926,0d6024858123072c9a2bee4bc805bbb6,Not Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0085
+JCL_0927,52256ffb7e7eb6e1ab6305a4ca8c7903,No,JCL_GRP_CUST,Customer Facing,JP_0085
+JCL_0928,4ac80f0a85530763e5108893d2054b49,Administrative Support,JCL_GRP_EEO1,EEO1 Code,JP_0085
+JCL_0929,8f2986cf5d02a16705ad3ddeaefac023,Corporate,JCL_GRP_COLL,Job Collection,JP_0085
+JCL_0930,4ab40ab4843799aa44ef5957dbb47ae3,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0085
+JCL_0931,a39ed1c175e7449119de3a55797cc243,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0085
+JCL_0932,081e50bf0a2b5e929bcf10e3210a5443,Corporate Functions,JCL_GRP_OCC,Occupation Code,JP_0085
+JCL_0933,cc236924f93f458a105a1e554935f707,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0085
+JCL_0934,56de1645b61ffbfebf4b259c60cf5d07,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0085
+JCL_0935,6720842371cfb80dce8c5912702f0a84,Not Eligible,JCL_GRP_STOCK,Stock,JP_0085
+JCL_0936,a192c65deb3b23f70ae89bb8540a73eb,Officials and Managers,JCL_GRP_AAP,AAP Job Group,JP_0086
+JCL_0937,431d8cc63f1bf401eb3c0c8f82686fb0,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0086
+JCL_0938,17156f27c03873de453c4da2e5345714,No,JCL_GRP_CUST,Customer Facing,JP_0086
+JCL_0939,f1a5fdcc481e6308665efa98f8f3e6e5,First/Mid Officials & Mgrs,JCL_GRP_EEO1,EEO1 Code,JP_0086
+JCL_0940,fe18c5690cf5d65169234fa2feaf3da3,Corporate,JCL_GRP_COLL,Job Collection,JP_0086
+JCL_0941,f81aeb5bdba6338c675daea0cd2cdec0,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0086
+JCL_0942,1022ab3f939b230c91f55878c5335c9d,NOC 0 - Management,JCL_GRP_NOC,National Occupation Code,JP_0086
+JCL_0943,68124bc7b4170c1c533c2361b7fe0d3c,Corporate Functions,JCL_GRP_OCC,Occupation Code,JP_0086
+JCL_0944,b124ae5276638021a3d28261d48dbce4,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0086
+JCL_0945,62266bd0db69afdca0aa8c9a065b0877,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0086
+JCL_0946,4493b8a70be81e92d0636c2da502df7a,Eligible,JCL_GRP_STOCK,Stock,JP_0086
+JCL_0947,54cb1bfa8714b7340b2fff53a885576a,Officials and Managers,JCL_GRP_AAP,AAP Job Group,JP_0087
+JCL_0948,0873452482e2e8ebaccbc412acbd15aa,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0087
+JCL_0949,00898919832167906d85f6319e2263e8,No,JCL_GRP_CUST,Customer Facing,JP_0087
+JCL_0950,07dee90c8f183176767d4209b8ef31de,First/Mid Officials & Mgrs,JCL_GRP_EEO1,EEO1 Code,JP_0087
+JCL_0951,355811ea5b5b869475f3466cd024806d,Finance,JCL_GRP_COLL,Job Collection,JP_0087
+JCL_0952,db79b61a7f532ceb4a4b98e4e4796a07,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0087
+JCL_0953,31c1525214fe5ebafe356317c19cb641,NOC 0 - Management,JCL_GRP_NOC,National Occupation Code,JP_0087
+JCL_0954,c12730091f95099866dacc8fe255714f,Finance & Accounting,JCL_GRP_OCC,Occupation Code,JP_0087
+JCL_0955,df5f3d4442a690fa81f28582d08dcd9b,Employee Referral,JCL_GRP_RECR,Recruitment Channel,JP_0087
+JCL_0956,b2d45ac9ca17b3001bbb79fc09fb3af0,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0087
+JCL_0957,9f30bd7995cc0a5a3f5cdb754002c867,Eligible,JCL_GRP_STOCK,Stock,JP_0087
+JCL_0958,b244a99fb19ff825999025e54730d83b,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0088
+JCL_0959,d4ef73146e8f039231a2c30872ce54c7,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0088
+JCL_0960,96a15811c9f6a62652e5a45ba7579c9c,No,JCL_GRP_CUST,Customer Facing,JP_0088
+JCL_0961,acddf1797d068f2cda8de719d498b2d9,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0088
+JCL_0962,e05b052eb32ccb84037f0791c7cd0498,Finance,JCL_GRP_COLL,Job Collection,JP_0088
+JCL_0963,d34a6933f9113ce17139671e649179f6,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0088
+JCL_0964,f296dfeac9919be6ef6f945299dbcfef,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0088
+JCL_0965,1b878545fec4472b9e2008b26e022b3a,Finance & Accounting,JCL_GRP_OCC,Occupation Code,JP_0088
+JCL_0966,fb058ccb996bb5f13fe4abdddfe80315,Recruiting Fair,JCL_GRP_RECR,Recruitment Channel,JP_0088
+JCL_0967,396a2d2a2e9bc7d72a92ed4622a4e150,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0088
+JCL_0968,c88f849de296b78fd82236421fd5a41c,Eligible,JCL_GRP_STOCK,Stock,JP_0088
+JCL_0969,a5703e126ec903f312e699f61c164941,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0089
+JCL_0970,a5b8b778b9cd87a24ed4ae23c58400ab,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0089
+JCL_0971,dc13768075038afee5664ab762ca8cea,No,JCL_GRP_CUST,Customer Facing,JP_0089
+JCL_0972,6ed71b4d1626af6144a68b488b85fcce,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0089
+JCL_0973,6247950692213ae91d7dc15ee28ea7e4,Finance,JCL_GRP_COLL,Job Collection,JP_0089
+JCL_0974,32078fb689307f7f7b647a51be036909,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0089
+JCL_0975,08ff541bed53a6b126fe805b44bd3c39,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0089
+JCL_0976,65c81a1e85e94050c8e5e02a321257b3,Finance & Accounting,JCL_GRP_OCC,Occupation Code,JP_0089
+JCL_0977,a25dc9fa849a9d28bd86c3f2ec4aff29,Direct Sourcing,JCL_GRP_RECR,Recruitment Channel,JP_0089
+JCL_0978,b2036fef082bee2c7d1a3a0db9dbff37,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0089
+JCL_0979,6a878cde02b101c665126c30dea2bdbb,Eligible,JCL_GRP_STOCK,Stock,JP_0089
+JCL_0980,ee0fc2fa18a77ed41ccb7e6ed031bd69,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0090
+JCL_0981,58d9525de75f378bca8cfba5c5e75049,Not Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0090
+JCL_0982,0ea2c0a2ac48766aaad6c0208e946e1d,No,JCL_GRP_CUST,Customer Facing,JP_0090
+JCL_0983,33e6d20f29607fdbb964bd2192d5141e,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0090
+JCL_0984,408eb4ca9904f48b8f24ef6cc8fb5e76,Finance,JCL_GRP_COLL,Job Collection,JP_0090
+JCL_0985,be4e64272a363b53197e35fc4eb53406,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0090
+JCL_0986,5ee25ffc9c359f3acb7668f8b07bfda0,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0090
+JCL_0987,25bb654130f2d6a3879c6a73bb180018,Finance & Accounting,JCL_GRP_OCC,Occupation Code,JP_0090
+JCL_0988,b5a628ed53073ed58eda67a27a6ac72a,Internal Transfer,JCL_GRP_RECR,Recruitment Channel,JP_0090
+JCL_0989,487c4f134ff2785ea4bdacdc19d37d0b,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0090
+JCL_0990,340bdb00339a2fae5d3f9084b6b7cf8a,Eligible,JCL_GRP_STOCK,Stock,JP_0090
+JCL_0991,9fe3243225ab69b95fdc11242cda966c,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0091
+JCL_0992,8d1b2fd1b1827b34a548caece2829a5b,Discretionary,JCL_GRP_BONUS,Bonus Eligibility,JP_0091
+JCL_0993,a353aaec901908095ceb7656f1e862ca,No,JCL_GRP_CUST,Customer Facing,JP_0091
+JCL_0994,2d7db044d3a07fc2b8398c2b91f052e3,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0091
+JCL_0995,a2accd62eca72909edbd94d92f7d349f,Finance,JCL_GRP_COLL,Job Collection,JP_0091
+JCL_0996,dc13beedf958aa9468e7bb4a05be86f3,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0091
+JCL_0997,013638a18b9a270b7b2aef6abb992cbd,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0091
+JCL_0998,401ee6dbc0e971f74fba89b6227abd58,Finance & Accounting,JCL_GRP_OCC,Occupation Code,JP_0091
+JCL_0999,160915b586af70043b669b2b99522900,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0091
+JCL_1000,00e5f5a3584eac0de90ce7af0aa4a438,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0091
+JCL_1001,02a28819c22657773805f560bf1352f0,Eligible,JCL_GRP_STOCK,Stock,JP_0091
+JCL_1002,ef27a9dd91d645f46672021ad5201f41,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0092
+JCL_1003,5bc7c20078fd69a1f9e043c65c8fbc24,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0092
+JCL_1004,65d69e378a843db78a917032cd0c808b,No,JCL_GRP_CUST,Customer Facing,JP_0092
+JCL_1005,fd3a11a99a0c5e5b14636c15602c7c40,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0092
+JCL_1006,15eea1b526559a2aa21c3de474330e65,Finance,JCL_GRP_COLL,Job Collection,JP_0092
+JCL_1007,cca93fc1371cebd2b65644f4db65abcd,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0092
+JCL_1008,1316198b10d33b308b8a42c727f9eb90,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0092
+JCL_1009,26a739304f4671cdcd8094800ff1e8f9,Finance & Accounting,JCL_GRP_OCC,Occupation Code,JP_0092
+JCL_1010,7b67206950408ec3351cd1d4d936dfcc,External Job Site,JCL_GRP_RECR,Recruitment Channel,JP_0092
+JCL_1011,cc2acf8169c62e5a86a0e414ad897e32,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0092
+JCL_1012,0691091279f2256c550aa4b14d031da4,Eligible,JCL_GRP_STOCK,Stock,JP_0092
+JCL_1013,c9b48e1c42bfaccefd1164afe185793e,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0093
+JCL_1014,12b33646634229965fd1cbf8b8a8a0ad,Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0093
+JCL_1015,d248d35b5d75454f0cf69124eada7c91,No,JCL_GRP_CUST,Customer Facing,JP_0093
+JCL_1016,51217570e874f272cc5ce2e577d90ba3,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0093
+JCL_1017,7f8bece799ef16a67f176735a838be5e,Finance,JCL_GRP_COLL,Job Collection,JP_0093
+JCL_1018,28a8bfc14cc32ee7583ee43d29eb9c3d,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0093
+JCL_1019,0b08aa33243acec9b67ec6ce77aa676c,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0093
+JCL_1020,a747acd4caa67e45bfb8b9452293e387,Finance & Accounting,JCL_GRP_OCC,Occupation Code,JP_0093
+JCL_1021,5669de53f253e6a8143fab71e60c8ea9,Employee Referral,JCL_GRP_RECR,Recruitment Channel,JP_0093
+JCL_1022,a6d5c533d26e2a94884f52e6d29e96b1,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0093
+JCL_1023,96d39be7e7ed34097f986aa1da7c3f9e,Eligible,JCL_GRP_STOCK,Stock,JP_0093
+JCL_1024,20ed7ee346f1d22feb4172359db306b3,Professionals,JCL_GRP_AAP,AAP Job Group,JP_0094
+JCL_1025,55aac8c332e56d74aa7ae0df9735120c,Not Eligible,JCL_GRP_BONUS,Bonus Eligibility,JP_0094
+JCL_1026,63e50193c376f2f1764bfca83bfce9cd,No,JCL_GRP_CUST,Customer Facing,JP_0094
+JCL_1027,ccb63fd9f8dc85cdc1c6520dc794ed8f,Professionals,JCL_GRP_EEO1,EEO1 Code,JP_0094
+JCL_1028,5ae7dc31c94f96da5f34a7d3cec2b62e,Finance,JCL_GRP_COLL,Job Collection,JP_0094
+JCL_1029,5c408e527e851c5251676a485f63758f,Not Registered,JCL_GRP_LOAN,Loan Originator Code,JP_0094
+JCL_1030,2fbf68b07cbe50d0f287767bc0a4be49,"NOC 1 - Business, Finance & Administration",JCL_GRP_NOC,National Occupation Code,JP_0094
+JCL_1031,1afc092d8a6e029edaa96e31c040ffdd,Finance & Accounting,JCL_GRP_OCC,Occupation Code,JP_0094
+JCL_1032,97b4428655e72f5acfe723a9c92567f8,Recruiting Fair,JCL_GRP_RECR,Recruitment Channel,JP_0094
+JCL_1033,c4ac84d874d817d11c6a56365eb7a61b,13-0000 Business & Financial Operations,JCL_GRP_SOC,Standard Occupation Code,JP_0094
+JCL_1034,9bfd3314d7998d89270576f5f44ac999,Eligible,JCL_GRP_STOCK,Stock,JP_0094
